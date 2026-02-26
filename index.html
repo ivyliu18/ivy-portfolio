@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ivy | Strategic Operations Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --paper: #f5f2ec;
+    --warm-mid: #c4a882;
+    --accent: #8b3a2a;
+    --light-rule: #e0dbd0;
+    --faded: #9c9488;
+    --bg-section: #eee9e0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    background: rgba(245, 242, 236, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--light-rule);
+  }
+
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--faded);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 48px 80px 72px;
+    border-right: 1px solid var(--light-rule);
+  }
+
+  .lang-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  .lang-tag {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faded);
+    border: 1px solid var(--light-rule);
+    padding: 4px 10px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 84px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.35s forwards;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--faded);
+    letter-spacing: 0.06em;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+  }
+
+  .hero-bio {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    line-height: 2;
+    color: #3a3630;
+    max-width: 500px;
+    border-left: 2px solid var(--warm-mid);
+    padding-left: 20px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.65s forwards;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 5px 12px;
+    background: var(--bg-section);
+    border: 1px solid var(--light-rule);
+    color: var(--ink);
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 80px 72px 80px 48px;
+    position: relative;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: 80px; right: 72px;
+    width: 200px; height: 200px;
+    border: 1px solid var(--light-rule);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .hero-right::after {
+    content: '';
+    position: absolute;
+    top: 120px; right: 112px;
+    width: 120px; height: 120px;
+    border: 1px solid var(--warm-mid);
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--light-rule);
+    border: 1px solid var(--light-rule);
+    margin-bottom: 48px;
+  }
+
+  .stat-item {
+    background: var(--paper);
+    padding: 28px 24px;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faded);
+  }
+
+  .nav-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .nav-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: var(--bg-section);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.2s;
+    border-left: 3px solid transparent;
+  }
+
+  .nav-btn:hover {
+    background: var(--light-rule);
+    border-left-color: var(--accent);
+  }
+
+  .nav-btn-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .nav-btn-sub {
+    font-size: 10px;
+    color: var(--faded);
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+
+  .nav-btn-arrow {
+    font-size: 18px;
+    color: var(--faded);
+    transition: transform 0.2s;
+  }
+
+  .nav-btn:hover .nav-btn-arrow { transform: translateX(4px); }
+
+  /* ── SECTION ── */
+  section {
+    padding: 80px 72px;
+    border-top: 1px solid var(--light-rule);
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    color: var(--faded);
+    max-width: 600px;
+    line-height: 1.9;
+    margin-bottom: 56px;
+  }
+
+  /* ── CASE STUDIES ── */
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--light-rule);
+    border: 1px solid var(--light-rule);
+  }
+
+  .case-card {
+    background: var(--paper);
+    padding: 40px 36px;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .case-card:hover { background: var(--bg-section); }
+
+  .case-card.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .case-num {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--faded);
+    margin-bottom: 20px;
+  }
+
+  .case-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .case-meta {
+    font-size: 11px;
+    color: var(--faded);
+    letter-spacing: 0.06em;
+    margin-bottom: 20px;
+  }
+
+  .case-body {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    line-height: 1.9;
+    color: #3a3630;
+    margin-bottom: 24px;
+  }
+
+  .case-detail {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--light-rule);
+  }
+
+  .case-detail-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+
+  .case-detail-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding-top: 2px;
+  }
+
+  .case-detail-val {
+    font-family: 'Noto Serif TC', serif;
+    color: #3a3630;
+    line-height: 1.7;
+  }
+
+  .case-outcome {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    background: var(--ink);
+    color: var(--paper);
+    margin-top: 16px;
+  }
+
+  /* ── SKILLS WALL ── */
+  .skills-wall {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--light-rule);
+    border: 1px solid var(--light-rule);
+  }
+
+  .skill-card {
+    background: var(--paper);
+    padding: 36px 32px;
+    transition: background 0.2s;
+  }
+
+  .skill-card:hover { background: var(--bg-section); }
+
+  .skill-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .skill-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .skill-years {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .skill-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--faded);
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--light-rule);
+    border: 1px solid var(--light-rule);
+    margin-bottom: 48px;
+  }
+
+  .service-card {
+    background: var(--paper);
+    padding: 36px 28px;
+    transition: background 0.2s;
+  }
+
+  .service-card:hover { background: var(--bg-section); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--light-rule);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--faded);
+    margin-bottom: 20px;
+  }
+
+  .service-for {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ── WRITING SECTION ── */
+  .writing-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1px;
+    background: var(--light-rule);
+    border: 1px solid var(--light-rule);
+    margin-bottom: 1px;
+  }
+
+  .writing-cat {
+    background: var(--bg-section);
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faded);
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+
+  .writing-excerpt {
+    background: var(--paper);
+    padding: 28px 32px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    line-height: 1.9;
+    color: #3a3630;
+    font-style: italic;
+  }
+
+  .writing-excerpt .title {
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    border-top: none;
+  }
+
+  .contact-section .section-eyebrow { color: var(--warm-mid); }
+  .contact-section .section-title { color: var(--paper); }
+  .contact-section .section-desc { color: rgba(245,242,236,0.6); }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,242,236,0.5);
+  }
+
+  .form-input {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 12px 16px;
+    color: var(--paper);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+
+  .form-input:focus { border-color: var(--warm-mid); }
+  .form-input::placeholder { color: rgba(245,242,236,0.3); }
+
+  .submit-btn {
+    padding: 14px 32px;
+    background: var(--warm-mid);
+    border: none;
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+    margin-top: 8px;
+  }
+
+  .submit-btn:hover { background: #d4b892; }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .contact-item-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,242,236,0.4);
+    margin-bottom: 4px;
+  }
+
+  .contact-item-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--paper);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 24px 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(245,242,236,0.3);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 60px 32px; border-right: none; border-bottom: 1px solid var(--light-rule); }
+    .hero-right { padding: 40px 32px; }
+    .case-grid, .skills-wall, .services-grid { grid-template-columns: 1fr; }
+    .case-card.full-width { grid-column: auto; }
+    section { padding: 56px 32px; }
+    .contact-section { grid-template-columns: 1fr; gap: 48px; padding: 56px 32px; }
+    nav { padding: 16px 24px; }
+    footer { padding: 20px 24px; }
+    .writing-row { grid-template-columns: 1fr; }
+    .writing-cat { writing-mode: horizontal-tb; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-brand">Ivy &nbsp;·&nbsp; Strategic Operations</div>
+  <ul class="nav-links">
+    <li><a href="#cases">Case Studies</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="lang-tags">
+      <span class="lang-tag">Traditional Chinese</span>
+      <span class="lang-tag">English</span>
+      <span class="lang-tag">Japanese</span>
+    </div>
+    <div class="hero-eyebrow">Operations · Strategy · English-Market Execution</div>
+    <h1 class="hero-name"><em>Ivy</em><br>Strategic Ops</h1>
+    <div class="hero-title">營運系統 · 商業策略 · 英語市場執行</div>
+    <p class="hero-bio">
+      我幫早期新創在英語市場建立營運系統與商業策略——不只給建議，也實際執行。<br><br>
+      從零建立內部 SOP、獨立處理跨境詐騙危機、設計 AI 半自動化流程、到為潛在客戶撰寫全英文商業提案——非程式碼開發的事，我幾乎都做得出來。<br><br>
+      你雇一個我，不需要同時找營運顧問、英文內容團隊和 AI 工具整合師。
+    </p>
+    <div class="hero-tags">
+      <span class="tag">#英語市場營運</span>
+      <span class="tag">#系統建構與策略</span>
+      <span class="tag">#AI 工作流優化</span>
+      <span class="tag">#跨境風險控管</span>
+      <span class="tag">#全英文商務執行</span>
+      <span class="tag">#草創期全端夥伴</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Working Languages</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Fraud Cases Resolved</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">7</div>
+        <div class="stat-label">Years Teaching & Consulting</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">0→1</div>
+        <div class="stat-label">Systems Built from Scratch</div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <a class="nav-btn" href="#cases">
+        <div>
+          <div class="nav-btn-label">核心專案</div>
+          <div class="nav-btn-sub">Case Studies — 不看年資，看解題難度</div>
+        </div>
+        <span class="nav-btn-arrow">→</span>
+      </a>
+      <a class="nav-btn" href="#services">
+        <div>
+          <div class="nav-btn-label">顧問服務</div>
+          <div class="nav-btn-sub">Services — 委託我來做</div>
+        </div>
+        <span class="nav-btn-arrow">→</span>
+      </a>
+      <a class="nav-btn" href="#writing">
+        <div>
+          <div class="nav-btn-label">思維觀察</div>
+          <div class="nav-btn-sub">Writing — 我怎麼看世界</div>
+        </div>
+        <span class="nav-btn-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CASE STUDIES -->
+<section id="cases">
+  <div class="section-eyebrow">Case Studies — 核心專案</div>
+  <h2 class="section-title">解題紀錄，<em style="font-family:'Cormorant Garamond',serif;font-style:italic">不是職責清單</em></h2>
+  <p class="section-desc">每一個案例都代表一種混亂狀態——沒有 SOP、沒有先例、沒有律師、沒有系統。我進去，然後建立秩序。</p>
+
+  <div class="case-grid">
+    <!-- Case A -->
+    <div class="case-card">
+      <div class="case-num">案例 A / Case A</div>
+      <div class="case-title">三起跨境詐騙危機<br>處置與風控機制建立</div>
+      <div class="case-meta">英國 · Fintech · 無律師獨立作業 · 全程英文</div>
+      <div class="case-body">公司遭遇三起跨境商業詐騙，無法律顧問、無先例可循。我獨立建立完整證據鏈、撰寫英國法院格式 Witness Statement、對接英國警政機關，並在事後設計系統性安全檢核程序，防止同類事件再發生。</div>
+      <div class="case-detail">
+        <div class="case-detail-row">
+          <div class="case-detail-label">危機處置</div>
+          <div class="case-detail-val">梳理往來紀錄 → 建立時間軸證據鏈 → 撰寫 Witness Statement → 對接警察局與執法單位 → 追蹤強制執行</div>
+        </div>
+        <div class="case-detail-row">
+          <div class="case-detail-label">制度建立</div>
+          <div class="case-detail-val">事後設計供應商安全檢核 SOP、付款授權流程、紅旗識別清單——將危機轉化為可複製的風控系統</div>
+        </div>
+        <div class="case-detail-row">
+          <div class="case-detail-label">核心能力</div>
+          <div class="case-detail-val">法律文件寫作、跨文化溝通、高壓下的邏輯建構、風控制度設計</div>
+        </div>
+        <span class="case-outcome">風險控管 · 法律營運 · 制度建立</span>
+      </div>
+    </div>
+
+    <!-- Case B -->
+    <div class="case-card">
+      <div class="case-num">案例 B / Case B</div>
+      <div class="case-title">AI 驅動的菜單資料<br>自動化清洗流程</div>
+      <div class="case-meta">英國 · Fintech · Claude + ChatGPT · 效率提升 ×3</div>
+      <div class="case-body">客戶提供的點餐菜單格式混亂——中英混排、格式不一、欄位缺漏。傳統手動處理每份需耗費大量時間。我以 AI 為工具，設計結構化的提示流程，建立半自動化匯入系統。</div>
+      <div class="case-detail">
+        <div class="case-detail-row">
+          <div class="case-detail-label">問題</div>
+          <div class="case-detail-val">原始菜單資料雜亂、無法直接匯入系統，手動整理耗時且易錯</div>
+        </div>
+        <div class="case-detail-row">
+          <div class="case-detail-label">解法</div>
+          <div class="case-detail-val">設計 AI Prompt 模板 → 建立資料清洗 SOP → 輸出標準化格式 → 半自動匯入流程</div>
+        </div>
+        <div class="case-detail-row">
+          <div class="case-detail-label">成果</div>
+          <div class="case-detail-val">處理時間大幅縮短，人力投入從全手動降至人工確認，可複製應用於所有同類客戶</div>
+        </div>
+        <span class="case-outcome">AI 工作流 · 流程優化</span>
+      </div>
+    </div>
+
+    <!-- Case C -->
+    <div class="case-card full-width">
+      <div class="case-num">案例 C / Case C</div>
+      <div class="case-title">從零建立招聘、薪資與新人培訓系統</div>
+      <div class="case-meta">英國 · Fintech · 無現成系統 · 全流程獨立設計</div>
+      <div class="case-body">公司進入快速擴張期，但完全沒有 HR 系統。我從職位描述撰寫、履歷篩選、面試框架、到 Offer Letter 格式與薪資管理，全部從零自建——同時設計新人 Onboarding 流程與內部培訓架構，兼顧英國勞動法規合規要求。</div>
+      <div class="case-detail" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div>
+          <div class="case-detail-row">
+            <div class="case-detail-label">招聘</div>
+            <div class="case-detail-val">撰寫多語言 JD → 建立篩選標準 → 設計面試問題框架 → 管理 Offer 流程</div>
+          </div>
+          <div class="case-detail-row">
+            <div class="case-detail-label">薪資</div>
+            <div class="case-detail-val">自建薪資追蹤表格、計算英國稅務與 NI 貢獻、對接銀行轉帳</div>
+          </div>
+        </div>
+        <div>
+          <div class="case-detail-row">
+            <div class="case-detail-label">新人培訓</div>
+            <div class="case-detail-val">設計 Onboarding SOP、建立系統操作指南、制定「問題找誰」聯絡架構，讓新人第一週就能獨立運作</div>
+          </div>
+          <div class="case-detail-row">
+            <div class="case-detail-label">合規</div>
+            <div class="case-detail-val">多國廠商 NDA 審閱、法律事務所溝通協調、App Store 上架文件整理</div>
+          </div>
+        </div>
+      </div>
+      <span class="case-outcome">組織設計 · 人才培育 · 合規 · 全端營運</span>
+    </div>
+
+    <!-- Case D -->
+    <div class="case-card">
+      <div class="case-num">案例 D / Case D</div>
+      <div class="case-title">高價值客戶全英文<br>商業提案設計</div>
+      <div class="case-meta">英國 · Fintech · 全英文 · 客製化提案</div>
+      <div class="case-body">針對潛在高價值商業客戶，從零設計全英文客製化銷售提案——包含競爭者分析、客製化定價方案、ROI 試算與視覺呈現。提案目標是讓對方在第一次接觸就感受到服務的專業度與針對性。</div>
+      <div class="case-detail">
+        <div class="case-detail-row">
+          <div class="case-detail-label">策略</div>
+          <div class="case-detail-val">研究客戶現況與痛點 → 設計客製化定價邏輯 → 競爭者對比分析 → 全英文視覺化提案輸出</div>
+        </div>
+        <div class="case-detail-row">
+          <div class="case-detail-label">執行</div>
+          <div class="case-detail-val">獨立完成文案撰寫、數據整理、版面設計，無需外部設計師或文案團隊</div>
+        </div>
+        <span class="case-outcome">商業策略 · 英文提案 · 客戶開發</span>
+      </div>
+    </div>
+
+    <!-- Case E -->
+    <div class="case-card">
+      <div class="case-num">案例 E / Case E</div>
+      <div class="case-title">行銷一條龍——從策略<br>到廣告投放與內容產出</div>
+      <div class="case-meta">英國 · Fintech · Meta · Google · 實體廣告 · AI 產圖</div>
+      <div class="case-body">為商家提供完整行銷支援：從市場定位、廣告受眾設定、到社群內容產出與實體廣告設計。以 AI 工具（Higgsfield 產圖）取代傳統小編，大幅降低內容製作成本，同時維持品牌質感。</div>
+      <div class="case-detail">
+        <div class="case-detail-row">
+          <div class="case-detail-label">廣告投放</div>
+          <div class="case-detail-val">Meta / Google 數位廣告實操、受眾分析與優化、實體廣告設計與執行</div>
+        </div>
+        <div class="case-detail-row">
+          <div class="case-detail-label">AI 內容產出</div>
+          <div class="case-detail-val">Higgsfield 產圖取代攝影師、Claude 半自動化文案生成、建立可複製的內容產出 SOP</div>
+        </div>
+        <span class="case-outcome">行銷策略 · 廣告投放 · AI 工具應用</span>
+      </div>
+    </div>
+
+    <!-- Case F -->
+    <div class="case-card full-width">
+      <div class="case-num">案例 F / Case F</div>
+      <div class="case-title">為 FCA 監管環境設計<br>知識管理架構</div>
+      <div class="case-meta">英國 · Fintech · Google Drive · 9 層架構 · 合規就緒</div>
+      <div class="case-body">早期 fintech 最常見的隱性風險不是缺乏系統，而是系統長歪了之後難以修正。我在公司還小的時候，以 FCA 稽核邏輯為核心，設計一套可隨公司規模擴張的文件管理架構——讓任何人在任何時候都能找到正確版本的正確文件。</div>
+      <div class="case-detail" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div>
+          <div class="case-detail-row">
+            <div class="case-detail-label">設計原則</div>
+            <div class="case-detail-val">合規優先而非便利優先——Corporate & Legal、Compliance & Risk 獨立分層，確保監管文件不與日常操作文件混放</div>
+          </div>
+          <div class="case-detail-row">
+            <div class="case-detail-label">架構決策</div>
+            <div class="case-detail-val">9 層主資料夾 + ISO 8601 命名規則 + 版本控制機制，建立 single source of truth，消除「哪個才是最新版」的認知成本</div>
+          </div>
+        </div>
+        <div>
+          <div class="case-detail-row">
+            <div class="case-detail-label">Access Control</div>
+            <div class="case-detail-val">按文件敏感度設計存取層級——PII、銀行資料限制為 Viewer only；外部分享需 Compliance Officer 或 CEO 審批</div>
+          </div>
+          <div class="case-detail-row">
+            <div class="case-detail-label">延伸建設</div>
+            <div class="case-detail-val">同步建立 Company Standards 文件（遠端規範、溝通準則、行為守則）作為新員工的單一入口</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:28px;padding:24px;background:var(--paper);border:1px solid var(--light-rule);font-family:'DM Mono',monospace;font-size:11px;line-height:2;color:var(--faded);">
+        <div style="color:var(--accent);letter-spacing:0.1em;font-size:10px;text-transform:uppercase;margin-bottom:12px;">Drive Architecture — 架構概覽</div>
+        <div><span style="color:var(--ink);">00</span>_Company_Standards &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← 全員基礎規範</span></div>
+        <div><span style="color:var(--ink);">01</span>_Corporate_&amp;_Legal &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Restricted · CEO Office</span></div>
+        <div><span style="color:var(--ink);">02</span>_Compliance_&amp;_Risk &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← AML · KYB · Transaction Monitoring</span></div>
+        <div><span style="color:var(--ink);">03</span>_Operations_&amp;_CS &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Internal SOP · External SOP · Hardware</span></div>
+        <div><span style="color:var(--ink);">04</span>_Product_&amp;_Engineering &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Roadmap · Tech Docs · Product Lines</span></div>
+        <div><span style="color:var(--ink);">05</span>_Sales_&amp;_Marketing &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Assets · Campaigns · BD</span></div>
+        <div><span style="color:var(--ink);">06</span>_Finance_&amp;_HR &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Reports · Payroll · Contracts</span></div>
+        <div><span style="color:var(--ink);">07</span>_Project_Management &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Minutes · Current Projects</span></div>
+        <div><span style="color:var(--ink);">08</span>_Archive &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Superseded versions</span></div>
+      </div>
+      <span class="case-outcome">系統建構 · 知識管理 · 合規設計</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS WALL -->
+<section id="skills" style="background: var(--bg-section);">
+  <div class="section-eyebrow">Multi-Skill Wall — 跨領域能力</div>
+  <h2 class="section-title">每個技能都有<em style="font-family:'Cormorant Garamond',serif;font-style:italic">真實的下線保障</em></h2>
+  <p class="section-desc">我不追求單一領域的 100 分，但每一項都能快速到達 80 分的可交付狀態——這是通才的核心價值。</p>
+
+  <div class="skills-wall">
+    <div class="skill-card">
+      <span class="skill-icon">⚖️</span>
+      <div class="skill-name">法律與危機營運</div>
+      <div class="skill-years">Fintech · 英國市場 · 三起詐騙案</div>
+      <div class="skill-desc">跨境詐騙處理、合規文件審閱、警政機關溝通、證據鏈建立。無律師狀態下獨立完成英國法院格式文件，並事後建立系統性安全檢核程序。</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🤖</span>
+      <div class="skill-name">AI 工作流設計</div>
+      <div class="skill-years">Claude · Higgsfield · ChatGPT · Perplexity</div>
+      <div class="skill-desc">將 AI 作為真正的生產力槓桿。Claude 半自動化資料處理、Higgsfield 產圖取代小編——擅長找出最值得 AI 化的環節，設計可複製的半自動化流程。</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🌐</span>
+      <div class="skill-name">全英文商務執行</div>
+      <div class="skill-years">法律文件 · 商業提案 · 廠商溝通 · 內容寫作</div>
+      <div class="skill-desc">不只是英文好——而是能代表你的公司在英語市場做有效的商務溝通。從法律文件到銷售提案、從廠商談判到品牌內容，全程獨立處理。</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">📣</span>
+      <div class="skill-name">行銷策略與投放</div>
+      <div class="skill-years">Meta · Google · 實體廣告 · 商家行銷諮詢</div>
+      <div class="skill-desc">數位廣告實操、受眾分析、實體廣告設計，到為商家提供一條龍行銷諮詢。理解品牌溢價邏輯，不為轉化率犧牲品牌質感。</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">✍️</span>
+      <div class="skill-name">內容與文章撰寫</div>
+      <div class="skill-years">中文 · 英文 · 商業 · 思想型長文</div>
+      <div class="skill-desc">中英雙語內容創作——商業提案、品牌文案、思想型長文皆可。熟悉不同平台語境，文字兼具說服力與品牌質感。</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🏗️</span>
+      <div class="skill-name">草創期全端營運</div>
+      <div class="skill-years">10 人以下 · 從零建立 · 英語市場</div>
+      <div class="skill-desc">招聘、薪資、合規、物流、夥伴計畫、廣告投放、文件系統、新人培訓——在沒有系統的狀態下，用自建的 SOP 讓公司運轉。這是多數人沒機會積累的稀缺經驗。</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-eyebrow">Services — 顧問服務</div>
+  <h2 class="section-title">委託我，而不是<em style="font-family:'Cormorant Garamond',serif;font-style:italic">應徵我</em></h2>
+  <p class="section-desc">我接受的合作形式是「委託」與「顧問」，而不是成為你組織內另一個等待審批的員工。如果你需要的是一個可以直接解決混亂、給出判斷、推動執行的人，我們可以談。</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">草創期營運診斷</div>
+      <div class="service-desc">針對 10 人以下的早期團隊，梳理當前營運盲點、建立基礎 SOP 架構、找出最優先需要系統化的環節。適合創辦人正在做所有事、但不確定哪些事應該外包或自動化的階段。</div>
+      <div class="service-for">適合 → 台灣早期新創</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">英語市場商務支援</div>
+      <div class="service-desc">協助台灣品牌或新創進入英語市場：全英文提案撰寫、廠商溝通代理、合規文件整理、客製化銷售策略。我不只翻譯語言，也翻譯商業邏輯與文化語境。</div>
+      <div class="service-for">適合 → 海外市場拓展</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">AI 工作流導入</div>
+      <div class="service-desc">幫助 5–20 人的小型組織找到最值得 AI 化的工作環節，設計實際可用的半自動化流程，降低重複性人工成本。不賣概念，直接交付可用的系統。</div>
+      <div class="service-for">適合 → 需要降本增效的品牌</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">內容與文章撰寫</div>
+      <div class="service-desc">中英雙語內容創作——品牌文案、商業提案、思想型長文、社群內容。熟悉不同平台語境，文字兼具說服力與品牌質感。可搭配 AI 工具大幅提升產出速度。</div>
+      <div class="service-for">適合 → 需要內容支援的品牌與新創</div>
+    </div>
+  </div>
+
+  <!-- 收費結構 -->
+  <div style="margin-top: 64px; border-top: 1px solid var(--light-rule); padding-top: 48px;">
+    <div class="section-eyebrow" style="margin-bottom: 32px;">Pricing — 收費參考</div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--light-rule); border: 1px solid var(--light-rule);">
+      <div style="background: var(--paper); padding: 32px 28px;">
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Starter</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:4px;">從 NT$3,000</div>
+        <div style="font-size:10px;color:var(--faded);letter-spacing:0.08em;margin-bottom:20px;">單次診斷諮詢 · 2 小時</div>
+        <div style="font-size:12px;color:var(--ink);line-height:1.8;">梳理你目前的營運或策略問題，給出具體可執行的方向建議。適合還不確定自己需要什麼的創辦人。</div>
+      </div>
+      <div style="background: var(--bg-section); padding: 32px 28px; position:relative;">
+        <div style="position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:var(--paper);padding:3px 8px;">Most Common</div>
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Project</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:4px;">從 NT$15,000</div>
+        <div style="font-size:10px;color:var(--faded);letter-spacing:0.08em;margin-bottom:20px;">固定範圍專案委託</div>
+        <div style="font-size:12px;color:var(--ink);line-height:1.8;">例如：建立 Onboarding 系統、設計英文提案、導入 AI 工作流。範圍明確、交付具體，完成即結案。</div>
+      </div>
+      <div style="background: var(--paper); padding: 32px 28px;">
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Retainer</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:4px;">從 NT$12,000</div>
+        <div style="font-size:10px;color:var(--faded);letter-spacing:0.08em;margin-bottom:20px;">月度顧問 · 固定時數</div>
+        <div style="font-size:12px;color:var(--ink);line-height:1.8;">持續性的營運或策略支援，適合需要長期夥伴而非一次性顧問的早期團隊。</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;font-size:11px;color:var(--faded);line-height:1.8;">
+      目前提供早期合作優惠價，名額有限。歡迎先聊聊你的情況，我會根據實際需求給出報價——不需要準備好所有問題才能聯絡我。
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section id="writing" style="background: var(--bg-section);">
+  <div class="section-eyebrow">Writing — 思維觀察</div>
+  <h2 class="section-title">我怎麼<em style="font-family:'Cormorant Garamond',serif;font-style:italic">看世界</em></h2>
+  <p class="section-desc">我每一兩週會寫一篇幾千字的長文，主題涵蓋組織結構、跨文化關係、個人成長、形上學。這不是內容行銷，是我思考的方式。</p>
+
+  <div style="border: 1px solid var(--light-rule);">
+    <div class="writing-row">
+      <div class="writing-cat">職場結構</div>
+      <div class="writing-excerpt">
+        <span class="title">代表主題</span>
+        為什麼你在大公司感到窒息不是性格問題——關於「混沌適應型」人格在制式環境中的結構性不適
+      </div>
+    </div>
+    <div class="writing-row">
+      <div class="writing-cat">跨文化</div>
+      <div class="writing-excerpt">
+        <span class="title">代表主題</span>
+        文化差異如何成為關係的透鏡：當你不再用自己的預設值理解另一個人
+      </div>
+    </div>
+    <div class="writing-row">
+      <div class="writing-cat">個人成長</div>
+      <div class="writing-excerpt">
+        <span class="title">代表主題</span>
+        關於通才的焦慮：當你什麼都能做到八十分，你要如何向世界證明你值得被選擇
+      </div>
+    </div>
+    <div class="writing-row" style="margin-bottom:0;">
+      <div class="writing-cat">形上學</div>
+      <div class="writing-excerpt">
+        <span class="title">代表主題</span>
+        死亡作為一種校準工具：當你想清楚了最壞的結局，所有的中間選擇都變得更容易做
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px; font-size: 12px; color: var(--faded); font-family: 'Noto Serif TC', serif; line-height: 1.8;">
+    完整文章即將同步於方格子。如果你對某個主題有興趣，歡迎直接寫信給我。
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div>
+    <div class="section-eyebrow">Contact — 聯絡</div>
+    <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,48px);font-weight:300;line-height:1.1;margin-bottom:16px;color:var(--paper);">如果你在找的是<br><em style="font-style:italic;color:var(--warm-mid)">一個能解決混亂的人</em></h2>
+    <p class="section-desc">我目前接受有限度的顧問合作與長期夥伴關係。如果你是早期新創創辦人、需要跨境支援的品牌，或對合作有任何想法，請告訴我你的情況。</p>
+    <div class="contact-info">
+      <div>
+        <div class="contact-item-label">語言</div>
+        <div class="contact-item-val">繁體中文 · English · 日本語</div>
+      </div>
+      <div>
+        <div class="contact-item-label">時區</div>
+        <div class="contact-item-val">UK / Taiwan — 彈性遠端</div>
+      </div>
+      <div>
+        <div class="contact-item-label">合作形式</div>
+        <div class="contact-item-val">顧問委託 · 專案合作 · 長期夥伴</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="contact-form">
+      <div class="form-field">
+        <label class="form-label">你是誰 / Who are you</label>
+        <input class="form-input" type="text" placeholder="名字 · 公司 · 身份">
+      </div>
+      <div class="form-field">
+        <label class="form-label">你需要什麼 / What do you need</label>
+        <select class="form-input" style="background:rgba(255,255,255,0.07);cursor:pointer;">
+          <option value="" style="background:#1a1814;">請選擇 / Please select</option>
+          <option value="ops" style="background:#1a1814;">草創期營運診斷</option>
+          <option value="cross" style="background:#1a1814;">英語市場商務支援</option>
+          <option value="ai" style="background:#1a1814;">AI 工作流導入</option>
+          <option value="content" style="background:#1a1814;">內容與文章撰寫</option>
+          <option value="other" style="background:#1a1814;">其他合作</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label class="form-label">輕鬆聊聊 / Tell me more</label>
+        <textarea class="form-input" rows="4" placeholder="你目前的狀況、希望解決的問題、或任何想說的事..."></textarea>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="your@email.com">
+      </div>
+      <button class="submit-btn">送出 / Send →</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>Ivy · Strategic Operations Portfolio</span>
+  <span>Traditional Chinese · English · Japanese</span>
+  <span>© 2026 · Built with intention</span>
+</footer>
+
+
+</body>
+</html>
