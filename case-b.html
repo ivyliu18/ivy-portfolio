@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case B — AI 菜單自動化流程 | Ivy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1a1814;--paper:#f5f2ec;--warm-mid:#c4a882;--accent:#8b3a2a;--light-rule:#e0dbd0;--faded:#9c9488;--bg-section:#eee9e0; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;font-size:13px;line-height:1.8; }
+  nav { position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--light-rule); }
+  .nav-brand { font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--ink); }
+  .nav-back { font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s; }
+  .nav-back:hover { color:var(--ink); }
+  .case-hero { padding:140px 72px 80px;border-bottom:1px solid var(--light-rule);display:grid;grid-template-columns:1fr 1fr;gap:80px; }
+  .case-eyebrow { font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px; }
+  .case-title { font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,56px);font-weight:300;line-height:1.1;margin-bottom:24px; }
+  .case-title em { font-style:italic;color:var(--accent); }
+  .case-meta-row { display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px; }
+  .case-tag { font-size:10px;letter-spacing:0.1em;padding:5px 12px;background:var(--bg-section);border:1px solid var(--light-rule);color:var(--ink); }
+  .case-summary { font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;border-left:2px solid var(--warm-mid);padding-left:20px; }
+  .case-stats { display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--light-rule);border:1px solid var(--light-rule);align-self:start;margin-top:48px; }
+  .stat-item { background:var(--paper);padding:28px 24px; }
+  .stat-number { font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1;color:var(--ink);margin-bottom:6px; }
+  .stat-label { font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded); }
+  .case-body { padding:72px;max-width:900px; }
+  .section-label { font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px; }
+  .section-block { margin-bottom:56px; }
+  .section-block h3 { font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:16px; }
+  .section-block p { font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:16px; }
+  .process-steps { display:flex;flex-direction:column;gap:1px;margin-top:24px; }
+  .process-step { display:grid;grid-template-columns:48px 1fr;gap:24px;background:var(--bg-section);padding:24px;border:1px solid var(--light-rule); }
+  .step-num { font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--accent);line-height:1; }
+  .step-content h4 { font-size:12px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;color:var(--ink); }
+  .step-content p { font-family:'Noto Serif TC',serif;font-size:13px;line-height:1.8;color:var(--faded);margin:0; }
+  .outcome-box { background:var(--ink);color:var(--paper);padding:40px;margin-top:56px; }
+  .outcome-box .section-label { color:var(--warm-mid); }
+  .outcome-box h3 { font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:16px;color:var(--paper); }
+  .outcome-box p { font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:rgba(245,242,236,0.7); }
+  .rationale-box { border:1px solid var(--light-rule);padding:40px;margin-top:40px; }
+  .rationale-box p { font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630; }
+  .back-cta { padding:72px;border-top:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center; }
+  .back-cta a { font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s; }
+  .back-cta a:hover { color:var(--ink); }
+  .next-case { text-align:right; }
+  .next-label { font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--faded);margin-bottom:4px; }
+  .next-title { font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--ink); }
+  @media(max-width:900px){.case-hero{grid-template-columns:1fr;padding:120px 32px 56px;gap:40px;}.case-body{padding:48px 32px;}.back-cta{padding:48px 32px;flex-direction:column;gap:24px;text-align:center;}nav{padding:16px 24px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">Ivy · Strategic Operations</a>
+  <a class="nav-back" href="index.html#cases">← 返回所有案例</a>
+</nav>
+<div class="case-hero">
+  <div>
+    <div class="case-eyebrow">案例 B / Case B · AI 工作流 · 流程優化</div>
+    <h1 class="case-title">AI 驅動的菜單資料<br><em>自動化清洗流程</em></h1>
+    <div class="case-meta-row">
+      <span class="case-tag">英國 · Fintech</span>
+      <span class="case-tag">Claude + ChatGPT</span>
+      <span class="case-tag">效率提升 ×3</span>
+      <span class="case-tag">半自動化系統</span>
+    </div>
+    <p class="case-summary">客戶提供的點餐菜單格式混亂——中英混排、格式不一、欄位缺漏。傳統手動處理每份需耗費大量時間。我以 AI 為工具，設計結構化的提示流程，建立半自動化匯入系統，處理時間大幅縮短。</p>
+  </div>
+  <div>
+    <div class="case-stats">
+      <div class="stat-item"><div class="stat-number">×3</div><div class="stat-label">Efficiency Gain</div></div>
+      <div class="stat-item"><div class="stat-number">0</div><div class="stat-label">Extra Headcount Needed</div></div>
+      <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Replicable Across Clients</div></div>
+      <div class="stat-item"><div class="stat-number">AI</div><div class="stat-label">Claude + ChatGPT</div></div>
+    </div>
+  </div>
+</div>
+<div class="case-body">
+  <div class="section-block">
+    <div class="section-label">背景 / Background</div>
+    <h3>每一份菜單都是一場格式災難</h3>
+    <p>NeroPay 的商家客戶——多數是中東和土耳其餐廳——在加入服務時需要提交菜單資料供系統匯入。但這些菜單格式極度混亂：有的是 PDF 掃描圖片、有的是 WhatsApp 截圖、有的是中英混排的 Word 文件，欄位名稱、價格格式、分類方式全都不統一。</p>
+    <p>傳統做法是全手動整理，每份菜單需要大量人工時間——而且隨著商家數量增加，這個成本會線性增長。</p>
+  </div>
+  <div class="section-block">
+    <div class="section-label">執行流程 / Process</div>
+    <h3>設計可複製的 AI 處理框架</h3>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-content"><h4>問題拆解</h4><p>分析所有菜單的常見格式問題，歸納出需要標準化的欄位類型與錯誤模式。</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-content"><h4>Prompt 模板設計</h4><p>針對不同格式問題設計對應的 AI Prompt，讓 Claude / ChatGPT 能夠準確識別並轉換資料結構。</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-content"><h4>建立清洗 SOP</h4><p>將 AI 處理流程標準化成 SOP，任何同事都能按步驟操作，不需要每次重新判斷。</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-content"><h4>半自動化匯入</h4><p>輸出標準化格式後，人工只需做最終確認，大幅降低每份菜單的處理時間。</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="outcome-box">
+    <div class="section-label">成果 / Outcome</div>
+    <h3>從全手動到人工確認</h3>
+    <p>處理時間大幅縮短，人力投入從全手動降至最終人工確認，且整套流程可複製應用於所有同類商家客戶。隨著商家數量增加，這個系統的邊際成本趨近於零。</p>
+  </div>
+  <div class="rationale-box">
+    <div class="section-label">我的判斷 / Rationale</div>
+    <p>我的判斷是：AI 的價值不在於取代思考，而在於取代重複。菜單清洗是一個有固定規律的工作——一旦你能描述清楚「什麼是標準格式」，AI 就能幫你執行。設計 Prompt 本質上是在寫規則，而不是在用工具。這個思維讓我在使用 AI 工具時始終從「問題結構」出發，而不是從「這個工具能做什麼」出發。</p>
+  </div>
+</div>
+<div class="back-cta">
+  <a href="index.html#cases">← 返回所有案例</a>
+  <div class="next-case">
+    <div class="next-label">下一個案例</div>
+    <a href="case-c.html" class="next-title">案例 C — 招聘與新人培訓系統 →</a>
+  </div>
+</div>
+</body>
+</html>

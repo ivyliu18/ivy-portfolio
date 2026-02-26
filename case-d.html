@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case D — 高價值客戶商業提案 | Ivy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1a1814;--paper:#f5f2ec;--warm-mid:#c4a882;--accent:#8b3a2a;--light-rule:#e0dbd0;--faded:#9c9488;--bg-section:#eee9e0;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;font-size:13px;line-height:1.8;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--light-rule);}
+  .nav-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--ink);}
+  .nav-back{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+  .nav-back:hover{color:var(--ink);}
+  .case-hero{padding:140px 72px 80px;border-bottom:1px solid var(--light-rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+  .case-eyebrow{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+  .case-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,56px);font-weight:300;line-height:1.1;margin-bottom:24px;}
+  .case-title em{font-style:italic;color:var(--accent);}
+  .case-meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+  .case-tag{font-size:10px;letter-spacing:0.1em;padding:5px 12px;background:var(--bg-section);border:1px solid var(--light-rule);color:var(--ink);}
+  .case-summary{font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;border-left:2px solid var(--warm-mid);padding-left:20px;}
+  .case-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--light-rule);border:1px solid var(--light-rule);align-self:start;margin-top:48px;}
+  .stat-item{background:var(--paper);padding:28px 24px;}
+  .stat-number{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1;color:var(--ink);margin-bottom:6px;}
+  .stat-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);}
+  .case-body{padding:72px;max-width:900px;}
+  .section-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;}
+  .section-block{margin-bottom:56px;}
+  .section-block h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:16px;}
+  .section-block p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:16px;}
+  .process-steps{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
+  .process-step{display:grid;grid-template-columns:48px 1fr;gap:24px;background:var(--bg-section);padding:24px;border:1px solid var(--light-rule);}
+  .step-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--accent);line-height:1;}
+  .step-content h4{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;color:var(--ink);}
+  .step-content p{font-family:'Noto Serif TC',serif;font-size:13px;line-height:1.8;color:var(--faded);margin:0;}
+  .outcome-box{background:var(--ink);color:var(--paper);padding:40px;margin-top:56px;}
+  .outcome-box .section-label{color:var(--warm-mid);}
+  .outcome-box h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:16px;color:var(--paper);}
+  .outcome-box p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:rgba(245,242,236,0.7);}
+  .rationale-box{border:1px solid var(--light-rule);padding:40px;margin-top:40px;}
+  .rationale-box p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;}
+  .back-cta{padding:72px;border-top:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center;}
+  .back-cta a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+  .back-cta a:hover{color:var(--ink);}
+  .next-case{text-align:right;}
+  .next-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--faded);margin-bottom:4px;}
+  .next-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--ink);}
+  @media(max-width:900px){.case-hero{grid-template-columns:1fr;padding:120px 32px 56px;gap:40px;}.case-body{padding:48px 32px;}.back-cta{padding:48px 32px;flex-direction:column;gap:24px;text-align:center;}nav{padding:16px 24px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">Ivy · Strategic Operations</a>
+  <a class="nav-back" href="index.html#cases">← 返回所有案例</a>
+</nav>
+<div class="case-hero">
+  <div>
+    <div class="case-eyebrow">案例 D / Case D · 商業策略 · 英文提案 · 客戶開發</div>
+    <h1 class="case-title">高價值客戶<br><em>全英文商業提案設計</em></h1>
+    <div class="case-meta-row">
+      <span class="case-tag">英國 · Fintech</span>
+      <span class="case-tag">全英文</span>
+      <span class="case-tag">客製化提案</span>
+      <span class="case-tag">競爭者分析</span>
+    </div>
+    <p class="case-summary">針對潛在高價值商業客戶，從零設計全英文客製化銷售提案——包含競爭者分析、客製化定價方案、ROI 試算與視覺呈現。讓對方在第一次接觸就感受到服務的專業度與針對性。</p>
+  </div>
+  <div>
+    <div class="case-stats">
+      <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">English Output</div></div>
+      <div class="stat-item"><div class="stat-number">客製</div><div class="stat-label">Bespoke per Client</div></div>
+      <div class="stat-item"><div class="stat-number">0</div><div class="stat-label">External Copywriters</div></div>
+      <div class="stat-item"><div class="stat-number">全端</div><div class="stat-label">Strategy to Design</div></div>
+    </div>
+  </div>
+</div>
+<div class="case-body">
+  <div class="section-block">
+    <div class="section-label">背景 / Background</div>
+    <h3>讓第一次接觸就有說服力</h3>
+    <p>對於高價值的潛在商家客戶，標準的銷售話術和通用簡報無法產生足夠的說服力。這類客戶通常已經在使用某個競爭對手的服務，需要一個非常具體的理由才會願意切換。</p>
+    <p>我的任務是設計一份讓對方感覺「這份提案是為我量身設計的」全英文商業文件，從競爭者比較到定價方案，所有內容都針對該客戶的實際情況客製化。</p>
+  </div>
+  <div class="section-block">
+    <div class="section-label">執行流程 / Process</div>
+    <h3>從研究到視覺化的完整提案流程</h3>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-content"><h4>客戶研究</h4><p>了解客戶的業務規模、現有服務商、主要痛點，作為提案的切入基礎。</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-content"><h4>競爭者對比分析</h4><p>整理主要競爭對手的定價、功能、合約條件，設計清晰的對比表格讓差異一目了然。</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-content"><h4>客製化定價設計</h4><p>根據客戶的交易量與業務需求，設計具競爭力且有利潤空間的客製化定價方案。</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-content"><h4>全英文視覺化輸出</h4><p>獨立完成文案撰寫、數據整理、版面設計，無需外部設計師或文案團隊，交付可直接使用的提案文件。</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="outcome-box">
+    <div class="section-label">成果 / Outcome</div>
+    <h3>專業度讓提案本身就是品牌展示</h3>
+    <p>一份設計精良的客製化提案，不只是在說服客戶選擇服務，也在展示公司的專業水準。這份提案的品質本身就成為「為什麼選擇我們」的一部分答案。</p>
+  </div>
+  <div class="rationale-box">
+    <div class="section-label">我的判斷 / Rationale</div>
+    <p>很多早期新創的銷售材料都是「我們有什麼功能」，但高價值客戶想看的是「你了解我的問題嗎」。客製化提案的核心不是炫耀產品，而是讓對方感覺被理解。這需要的不只是英文寫作能力，還需要能快速消化競爭者資訊、理解客戶業務邏輯、並把這些轉化成有說服力的敘事——這三件事合在一起，才是真正的商業提案能力。</p>
+  </div>
+</div>
+<div class="back-cta">
+  <a href="index.html#cases">← 返回所有案例</a>
+  <div class="next-case">
+    <div class="next-label">下一個案例</div>
+    <a href="case-e.html" class="next-title">案例 E — 行銷一條龍 →</a>
+  </div>
+</div>
+</body>
+</html>

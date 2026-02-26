@@ -642,6 +642,9 @@
     letter-spacing: 0.1em;
   }
 
+  .case-card { transition: box-shadow 0.2s, transform 0.2s; }
+  .case-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
@@ -690,8 +693,8 @@
     <h1 class="hero-name"><em>Ivy</em><br>Strategic Ops</h1>
     <div class="hero-title">營運系統 · 商業策略 · 英語市場執行</div>
     <p class="hero-bio">
-      我幫早期新創在英語市場建立營運系統與商業策略：不只給建議，也實際執行。<br><br>
-      從零建立內部 SOP、獨立處理跨境詐騙危機、設計 AI 半自動化流程、到為潛在客戶撰寫全英文商業提案，運營相關，我幾乎都做得出來。<br><br>
+      我幫早期新創在英語市場建立營運系統與商業策略——不只給建議，也實際執行。<br><br>
+      從零建立內部 SOP、獨立處理跨境詐騙危機、設計 AI 半自動化流程、到為潛在客戶撰寫全英文商業提案——非程式碼開發的事，我幾乎都做得出來。<br><br>
       你雇一個我，不需要同時找營運顧問、英文內容團隊和 AI 工具整合師。
     </p>
     <div class="hero-tags">
@@ -756,7 +759,7 @@
 
   <div class="case-grid">
     <!-- Case A -->
-    <div class="case-card">
+    <div class="case-card" style="cursor:pointer;" onclick="location.href='case-a.html'">
       <div class="case-num">案例 A / Case A</div>
       <div class="case-title">三起跨境詐騙危機<br>處置與風控機制建立</div>
       <div class="case-meta">英國 · Fintech · 無律師獨立作業 · 全程英文</div>
@@ -779,7 +782,7 @@
     </div>
 
     <!-- Case B -->
-    <div class="case-card">
+    <div class="case-card" style="cursor:pointer;" onclick="location.href='case-b.html'">
       <div class="case-num">案例 B / Case B</div>
       <div class="case-title">AI 驅動的菜單資料<br>自動化清洗流程</div>
       <div class="case-meta">英國 · Fintech · Claude + ChatGPT · 效率提升 ×3</div>
@@ -802,7 +805,7 @@
     </div>
 
     <!-- Case C -->
-    <div class="case-card full-width">
+    <div class="case-card full-width" style="cursor:pointer;" onclick="location.href='case-c.html'">
       <div class="case-num">案例 C / Case C</div>
       <div class="case-title">從零建立招聘、薪資與新人培訓系統</div>
       <div class="case-meta">英國 · Fintech · 無現成系統 · 全流程獨立設計</div>
@@ -833,7 +836,7 @@
     </div>
 
     <!-- Case D -->
-    <div class="case-card">
+    <div class="case-card" style="cursor:pointer;" onclick="location.href='case-d.html'">
       <div class="case-num">案例 D / Case D</div>
       <div class="case-title">高價值客戶全英文<br>商業提案設計</div>
       <div class="case-meta">英國 · Fintech · 全英文 · 客製化提案</div>
@@ -852,7 +855,7 @@
     </div>
 
     <!-- Case E -->
-    <div class="case-card">
+    <div class="case-card" style="cursor:pointer;" onclick="location.href='case-e.html'">
       <div class="case-num">案例 E / Case E</div>
       <div class="case-title">行銷一條龍——從策略<br>到廣告投放與內容產出</div>
       <div class="case-meta">英國 · Fintech · Meta · Google · 實體廣告 · AI 產圖</div>
@@ -871,7 +874,7 @@
     </div>
 
     <!-- Case F -->
-    <div class="case-card full-width">
+    <div class="case-card full-width" style="cursor:pointer;" onclick="location.href='case-f.html'">
       <div class="case-num">案例 F / Case F</div>
       <div class="case-title">為 FCA 監管環境設計<br>知識管理架構</div>
       <div class="case-meta">英國 · Fintech · Google Drive · 9 層架構 · 合規就緒</div>
@@ -993,6 +996,18 @@
       <div class="service-desc">中英雙語內容創作——品牌文案、商業提案、思想型長文、社群內容。熟悉不同平台語境，文字兼具說服力與品牌質感。可搭配 AI 工具大幅提升產出速度。</div>
       <div class="service-for">適合 → 需要內容支援的品牌與新創</div>
     </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-title">產業研究與市場報告</div>
+      <div class="service-desc">為你的市場進入決策或投資提案提供研究支撐——競品分析、產業趨勢、目標市場規模。全英文輸出，搭配 AI 工具與 Canva 視覺化，交付可直接使用的成品報告。</div>
+      <div class="service-for">適合 → 準備進入新市場或尋求融資的新創</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-title">商業流程建立與 SOP 設計</div>
+      <div class="service-desc">為沒有系統的早期團隊從零設計可執行、可交接的標準作業流程——onboarding、客服、合規、HR 皆可。讓你的公司在你不在的時候也能正常運轉。</div>
+      <div class="service-for">適合 → 準備擴張或交接的草創團隊</div>
+    </div>
   </div>
 
   <!-- 收費結構 -->
@@ -1063,7 +1078,7 @@
   </div>
 
   <div style="margin-top: 24px; font-size: 12px; color: var(--faded); font-family: 'Noto Serif TC', serif; line-height: 1.8;">
-    完整文章即將同步於Medium。如果你對某個主題有興趣，非常歡迎直接寫信給我。
+    文章陸續發布於 Medium 與方格子。<a href="writing.html" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">查看所有文章主題 →</a>
   </div>
 </section>
 
@@ -1089,32 +1104,34 @@
     </div>
   </div>
   <div>
-    <div class="contact-form">
+    <form class="contact-form" action="https://formspree.io/f/xkovyoad" method="POST">
       <div class="form-field">
         <label class="form-label">你是誰 / Who are you</label>
-        <input class="form-input" type="text" placeholder="名字 · 公司 · 身份">
+        <input class="form-input" type="text" name="name" placeholder="名字 · 公司 · 身份" required>
       </div>
       <div class="form-field">
         <label class="form-label">你需要什麼 / What do you need</label>
-        <select class="form-input" style="background:rgba(255,255,255,0.07);cursor:pointer;">
+        <select class="form-input" name="service" style="background:rgba(255,255,255,0.07);cursor:pointer;" required>
           <option value="" style="background:#1a1814;">請選擇 / Please select</option>
-          <option value="ops" style="background:#1a1814;">草創期營運診斷</option>
-          <option value="cross" style="background:#1a1814;">英語市場商務支援</option>
-          <option value="ai" style="background:#1a1814;">AI 工作流導入</option>
-          <option value="content" style="background:#1a1814;">內容與文章撰寫</option>
-          <option value="other" style="background:#1a1814;">其他合作</option>
+          <option value="草創期營運診斷" style="background:#1a1814;">草創期營運診斷</option>
+          <option value="英語市場商務支援" style="background:#1a1814;">英語市場商務支援</option>
+          <option value="AI工作流導入" style="background:#1a1814;">AI 工作流導入</option>
+          <option value="內容與文章撰寫" style="background:#1a1814;">內容與文章撰寫</option>
+          <option value="產業研究與市場報告" style="background:#1a1814;">產業研究與市場報告</option>
+          <option value="商業流程建立與SOP設計" style="background:#1a1814;">商業流程建立與 SOP 設計</option>
+          <option value="其他合作" style="background:#1a1814;">其他合作</option>
         </select>
       </div>
       <div class="form-field">
-        <label class="form-label">輕鬆聊聊 / Tell me more</label>
-        <textarea class="form-input" rows="4" placeholder="你目前的狀況、希望解決的問題、或任何想說的事..."></textarea>
+        <label class="form-label">簡單說說 / Tell me more</label>
+        <textarea class="form-input" name="message" rows="4" placeholder="你目前的狀況、希望解決的問題、或任何想說的事..."></textarea>
       </div>
       <div class="form-field">
         <label class="form-label">Email</label>
-        <input class="form-input" type="email" placeholder="your@email.com">
+        <input class="form-input" type="email" name="email" placeholder="your@email.com" required>
       </div>
-      <button class="submit-btn">送出 / Send →</button>
-    </div>
+      <button class="submit-btn" type="submit">送出 / Send →</button>
+    </form>
   </div>
 </div>
 
