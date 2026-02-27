@@ -104,6 +104,99 @@
       </div>
     </div>
   </div>
+  /* Flowchart */
+  .flowchart-section { margin-bottom:56px; }
+  .flowchart-wrap { margin-top:24px;overflow-x:auto; }
+  .fc { display:flex;flex-direction:column;align-items:center;gap:0; }
+  .fc-node { width:100%;max-width:560px;display:grid;grid-template-columns:120px 1fr;gap:0;border:1px solid var(--light-rule); }
+  .fc-node + .fc-node { border-top:none; }
+  .fc-left { background:var(--bg-section);padding:20px 16px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;border-right:1px solid var(--light-rule); }
+  .fc-tool { font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:4px; }
+  .fc-step-num { font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--ink);line-height:1; }
+  .fc-right { padding:20px 24px;background:var(--paper); }
+  .fc-right h4 { font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);margin-bottom:6px; }
+  .fc-right p { font-family:'Noto Serif TC',serif;font-size:12.5px;line-height:1.8;color:var(--faded);margin:0; }
+  .fc-arrow { width:1px;height:28px;background:var(--light-rule);position:relative;display:flex;justify-content:center; }
+  .fc-arrow::after { content:'↓';position:absolute;bottom:-10px;font-size:12px;color:var(--faded); }
+  .fc-decision { width:100%;max-width:560px;border:1px solid var(--warm-mid);padding:16px 24px;background:var(--paper);display:flex;align-items:center;gap:16px; }
+  .fc-decision-label { font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-mid);white-space:nowrap; }
+  .fc-decision p { font-family:'Noto Serif TC',serif;font-size:12.5px;color:#3a3630;line-height:1.7;margin:0; }
+  .fc-end { width:100%;max-width:560px;background:var(--ink);padding:20px 24px;display:flex;align-items:center;justify-content:space-between; }
+  .fc-end span { font-family:'Noto Serif TC',serif;font-size:13px;color:var(--paper); }
+  .fc-end .fc-metric { font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--warm-mid); }
+  <div class="section-block flowchart-section">
+    <div class="section-label">流程圖 / Workflow Diagram</div>
+    <h3>從菜單圖片到系統匯入的完整路徑</h3>
+    <div class="flowchart-wrap">
+      <div class="fc">
+
+        <div class="fc-node">
+          <div class="fc-left">
+            <div class="fc-tool">Input</div>
+            <div class="fc-step-num">01</div>
+          </div>
+          <div class="fc-right">
+            <h4>商家提供菜單原始檔</h4>
+            <p>PDF 掃描圖、WhatsApp 截圖、Word 文件——格式不一，欄位混亂。這是問題的起點。</p>
+          </div>
+        </div>
+
+        <div class="fc-arrow"></div>
+
+        <div class="fc-node">
+          <div class="fc-left">
+            <div class="fc-tool">Internal System</div>
+            <div class="fc-step-num">02</div>
+          </div>
+          <div class="fc-right">
+            <h4>從 ePos 系統下載標準 CSV 模板</h4>
+            <p>以系統要求的欄位結構為基準，這是 AI 的「目標格式」——讓 Claude 知道終點長什麼樣。</p>
+          </div>
+        </div>
+
+        <div class="fc-arrow"></div>
+
+        <div class="fc-node">
+          <div class="fc-left">
+            <div class="fc-tool">Claude</div>
+            <div class="fc-step-num">03</div>
+          </div>
+          <div class="fc-right">
+            <h4>雙檔上傳 + Prompt 指令</h4>
+            <p>將菜單原檔與 CSV 模板同時上傳 Claude，以結構化 Prompt 指示 AI 將所有項目對應至標準欄位。工具選擇理由：Claude 在結構化資料與 coding 邏輯上表現最穩定。</p>
+          </div>
+        </div>
+
+        <div class="fc-arrow"></div>
+
+        <div class="fc-node">
+          <div class="fc-left">
+            <div class="fc-tool">Output</div>
+            <div class="fc-step-num">04</div>
+          </div>
+          <div class="fc-right">
+            <h4>生成標準化 CSV 檔案</h4>
+            <p>Claude 輸出符合系統格式的完整 CSV，100 個品項約 5 分鐘內完成。</p>
+          </div>
+        </div>
+
+        <div class="fc-arrow"></div>
+
+        <div class="fc-decision">
+          <div class="fc-decision-label">人工確認</div>
+          <p>二次人工核對：確認品項名稱、價格、分類無誤。準確率高，修改量極低。</p>
+        </div>
+
+        <div class="fc-arrow"></div>
+
+        <div class="fc-end">
+          <span>直接匯入 ePos 系統，上線完成</span>
+          <span class="fc-metric">5 min / 100 items</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
   <div class="outcome-box">
     <div class="section-label">成果 / Outcome</div>
     <h3>從全手動到人工確認</h3>
