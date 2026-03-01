@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>早期新創最常犯的文件管理錯誤 — Ivy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1a1814;--paper:#f5f2ec;--warm-mid:#c4a882;--accent:#8b3a2a;--light-rule:#e0dbd0;--faded:#9c9488;--bg-section:#eee9e0;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;font-size:13px;line-height:1.8;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--light-rule);}
+  .nav-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--ink);}
+  .nav-back{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+  .nav-back:hover{color:var(--ink);}
+
+  .article-hero{padding:140px 72px 64px;border-bottom:1px solid var(--light-rule);}
+  .article-hero-inner{max-width:860px;margin:0 auto;}
+  .article-eyebrow{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+  .article-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,52px);font-weight:300;line-height:1.1;margin-bottom:24px;}
+  .article-byline{display:flex;gap:32px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--faded);}
+  .article-byline span{display:flex;align-items:center;gap:8px;}
+  .article-byline span::before{content:'';display:inline-block;width:16px;height:1px;background:var(--warm-mid);}
+
+  .article-body{padding:64px 72px;}
+  .article-body-inner{max-width:680px;margin:0 auto;}
+  .article-body p{font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;margin-bottom:28px;}
+  .article-body h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;line-height:1.2;margin:56px 0 20px;color:var(--ink);border-left:3px solid var(--accent);padding-left:16px;}
+  .article-body h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;font-style:italic;margin:36px 0 14px;color:var(--ink);}
+  .article-body blockquote{margin:36px 0;padding:20px 28px;border-left:2px solid var(--warm-mid);background:var(--bg-section);}
+  .article-body blockquote p{font-size:14px;color:var(--faded);margin-bottom:0;}
+  .article-body strong{color:var(--ink);font-weight:500;}
+  .article-body em{font-style:italic;color:var(--accent);}
+  .article-body hr{border:none;border-top:1px solid var(--light-rule);margin:48px 0;}
+
+  .article-footer{padding:56px 72px;border-top:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center;}
+  .article-footer a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+  .article-footer a:hover{color:var(--ink);}
+  .footer-tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);}
+
+  @media(max-width:900px){
+    nav{padding:16px 24px;}
+    .article-hero{padding:120px 32px 48px;}
+    .article-body{padding:48px 32px;}
+    .article-footer{padding:32px;flex-direction:column;gap:16px;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Ivy · Strategic Operations</a>
+  <a class="nav-back" href="writing.html">← Writing</a>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <div class="article-eyebrow">營運思維</div>
+    <h1 class="article-headline">早期新創最常犯的文件管理錯誤——以及為什麼它會在你最忙的時候炸掉</h1>
+    <div class="article-byline">
+      <span>2026年3月</span>
+      <span>Ivy</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="article-body-inner">
+
+    <h3>從一年運營經驗裡學到的教訓：架構不是負擔，是基礎設施</h3>
+    <hr>
+
+    <p>在我加入這家 fintech 新創之前，公司已經運行了幾年。但那幾年，幾乎只有技術團隊在開發產品——沒有運營、沒有行銷、沒有任何系統性的文件。</p>
+
+    <p>我是第一個被找來做運營跟行銷規劃的人。</p>
+
+    <p>一開始，我跟大多數人一樣，覺得「先做再說」——新創公司就是這樣，你要先衝，才會知道問題在哪。這個邏輯沒有錯。</p>
+
+    <p>但我後來發現，「先做再說」跟「永遠不整理」之間，有一條很重要的線。那條線叫做：<strong>你第一次招人的時候。</strong></p>
+
+    <hr>
+
+    <h2>一、問題不是在你一個人的時候爆發的</h2>
+
+    <p>當公司只有三到五個人，靠著即時通訊跟口頭溝通勉強運作，你感覺不到問題。每個人都知道規則，因為規則就在你腦子裡。</p>
+
+    <p>問題是在新人進來的那一刻才炸的。</p>
+
+    <p>新同事要 onboard，你才發現根本沒有 onboarding 流程。有客戶投訴，新人不知道退款規則，因為退款規則從來沒有寫下來過——那是一個你跟創辦人之間的默契。有人問客戶溝通的標準，你說「看情況」，因為你自己也不確定標準是什麼。</p>
+
+    <p>每一個「看情況」，都是一個等待爆炸的地雷。</p>
+
+    <hr>
+
+    <h2>二、我在大公司看到的反差</h2>
+
+    <p>在這段時間，我中間去了一家英國本地的科技儀器業百人規模公司待了一段時間。</p>
+
+    <p>他們的 onboarding 流程完整到讓我有點震驚。每一個角色都有清楚的權責說明、標準作業流程、以及一份「第一個月你需要知道的事」文件。新人在第一週就知道找誰問什麼問題，知道什麼事情可以自己決定，什麼事情需要升級。</p>
+
+    <p>這不是官僚，這是效率。</p>
+
+    <p>當一個組織的知識都住在人的腦子裡，這個組織的規模上限，就是那幾個人的記憶容量。</p>
+
+    <hr>
+
+    <h2>三、文件是架構的語言</h2>
+
+    <p>很多人把「建文件」想成一件行政雜事——寫完就塵封在某個資料夾裡，沒有人看。</p>
+
+    <p>但我後來理解，建文件這件事本身，就是在做組織設計。</p>
+
+    <p>當你為每一個部門建立一個資料夾，你就是在畫組織架構圖。當你決定這份文件屬於「法務」還是「營運」，你就是在定義權責邊界。當你寫下退款 SOP，你就是在做決策——不是之後再做，是現在做，做一次，之後每個人都可以用。</p>
+
+    <p><strong>組織架構圖不是給外人看的，是給你自己用的。</strong> 它讓你知道，當公司從三個人變成十個人，哪些職位需要補、哪些流程需要拆分、哪些決策可以下放。</p>
+
+    <hr>
+
+    <h2>四、做了之後才發現：法規要排在前面</h2>
+
+    <p>在我真正開始整理文件之前，我以為我們公司的核心部門就是：商業開發、行銷、客服。</p>
+
+    <p>做了之後才發現，<strong>法規跟安全應該排在最前面。</strong></p>
+
+    <p>我們做的是支付系統，在英國受 FCA（金融行為監管局）監管。客戶的資金在我們的系統裡流動。一個 bug、一筆退款爭議、一個合規問題，都可能讓整個系統卡住，讓客戶的錢出不來。這不是「之後再想」的問題，這是第一天就應該建立的防線。</p>
+
+    <p>後來我把法律獨立出來變成一個分類——不是因為我們有法務部門，而是因為我們接觸法律問題的頻率遠超預期：合作合約、詐騙案件、FCA 監管要求、跨境合規。把這些東西集中放在一個地方，之後要找律師合作、搜集證據、查某個規範，都可以直接找到。</p>
+
+    <p>這個整理的動作，本身就是一種風險控管。</p>
+
+    <hr>
+
+    <h2>五、對外運營跟對內運營，都要同時想</h2>
+
+    <p>很多新創在想「運營」的時候，只想到對外——客戶服務、品牌溝通、商業合作。但對內運營同樣重要，而且往往更緊急。</p>
+
+    <p>當一個同事遇到緊急狀況，他需要一個 SOP 告訴他下一步是什麼。如果沒有 SOP，他就會發 DM 給你，你就會被打斷，然後你的時間就不是你的了。</p>
+
+    <p>當客戶問退款，如果退款規則沒有標準化，每次都是「看情況」，客戶的體驗就會不一致，品牌信任就會慢慢被侵蝕——不是因為某一次的壞決定，而是因為沒有決定。</p>
+
+    <p><strong>標準本身，就是對品牌聲譽的保護。</strong></p>
+
+    <hr>
+
+    <h2>六、什麼時候開始建文件？</h2>
+
+    <p>不是第一天。</p>
+
+    <p>新創公司的第一天，你應該去做事，不是去寫文件。你要先跑，才會知道跑的過程裡有什麼絆腳石。</p>
+
+    <p>但如果你夠細心，大概六到八個月之後，你就會開始看到模式——哪些問題一直重複出現、哪些決策一直需要重新解釋、哪些流程一直因為換人而中斷。</p>
+
+    <p><strong>那個時候，就是建文件的時機。</strong> 不是因為你有空，而是因為你已經有足夠的素材知道要建什麼。</p>
+
+    <hr>
+
+    <h2>七、用 AI 加速，不是用 AI 取代判斷</h2>
+
+    <p>現在的工具很多，AI 可以幫你做很多架構層面的工作：你只需要描述你的產業、你的運營狀況、你的客戶類型，它就可以幫你生成一個初版的文件地圖、命名邏輯、資料夾結構。</p>
+
+    <p>但有一件事是 AI 做不到的：它不知道你的公司哪裡最脆弱。</p>
+
+    <p>那個判斷，需要你自己在裡面待過、踩過雷、然後回過頭來說「這裡要補一道牆」。AI 給你地圖，你告訴它哪些路你走過、哪些路上有坑。然後你們一起把那張地圖變成一個真正可以用的系統。</p>
+
+    <hr>
+
+    <h2>結論：「之後再整理」是最昂貴的一句話</h2>
+
+    <p>每次你說「之後再整理」，你都在未來替自己預約一場加班。</p>
+
+    <p>不是今天的加班，是在你最忙、最疲憊、最需要系統支撐你的那個時刻的加班。那個時刻往往是招了新人、接了大客戶、或者出了一個你沒有預料到的危機。</p>
+
+    <p>你不需要第一天就把所有文件都建好。你只需要在你知道答案的時候，把答案寫下來。</p>
+
+    <p>那些寫下來的答案，就是你的組織架構。</p>
+
+    <hr>
+    <p><em>下一篇：為什麼你的英文行銷文案沒有轉換率——以及 AI 能幫你修什麼、不能幫你修什麼</em></p>
+
+  </div>
+</div>
+
+<div class="article-footer">
+  <a href="writing.html">← 返回所有文章</a>
+  <div class="footer-tag">營運思維</div>
+</div>
+
+</body>
+</html>
