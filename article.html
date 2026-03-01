@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">文章 — Ivy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1a1814;--paper:#f5f2ec;--warm-mid:#c4a882;--accent:#8b3a2a;--light-rule:#e0dbd0;--faded:#9c9488;--bg-section:#eee9e0;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;font-size:13px;line-height:1.8;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--light-rule);}
+  .nav-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--ink);}
+  .nav-back{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+  .nav-back:hover{color:var(--ink);}
+
+  /* Article header */
+  .article-hero{padding:140px 72px 64px;border-bottom:1px solid var(--light-rule);max-width:900px;}
+  .article-eyebrow{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+  .article-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.5vw,58px);font-weight:300;line-height:1.1;margin-bottom:24px;}
+  .article-headline em{font-style:italic;color:var(--accent);}
+  .article-byline{display:flex;gap:32px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--faded);}
+  .article-byline span{display:flex;align-items:center;gap:8px;}
+  .article-byline span::before{content:'';display:inline-block;width:16px;height:1px;background:var(--warm-mid);}
+
+  /* Article body */
+  .article-body{padding:64px 72px;max-width:780px;}
+
+  /* Markdown rendered styles */
+  .article-body p{font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;margin-bottom:28px;}
+  .article-body h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;line-height:1.2;margin:56px 0 20px;color:var(--ink);border-left:3px solid var(--accent);padding-left:16px;}
+  .article-body h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;font-style:italic;margin:36px 0 14px;color:var(--ink);}
+  .article-body blockquote{margin:36px 0;padding:20px 28px;border-left:2px solid var(--warm-mid);background:var(--bg-section);}
+  .article-body blockquote p{font-size:14px;color:var(--faded);margin-bottom:0;}
+  .article-body ul,
+  .article-body ol{font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;margin:0 0 28px 20px;}
+  .article-body li{margin-bottom:8px;}
+  .article-body strong{color:var(--ink);font-weight:500;}
+  .article-body em{font-style:italic;color:var(--accent);}
+  .article-body a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);transition:opacity 0.2s;}
+  .article-body a:hover{opacity:0.6;}
+  .article-body hr{border:none;border-top:1px solid var(--light-rule);margin:48px 0;}
+  .article-body code{font-family:'DM Mono',monospace;font-size:12px;background:var(--bg-section);padding:2px 6px;border-radius:2px;}
+
+  /* Pull quote — use > > double blockquote for emphasis */
+  .article-body blockquote blockquote{border-left:none;background:none;padding:0;}
+  .article-body blockquote blockquote p{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--ink);line-height:1.5;}
+
+  /* Loading state */
+  .loading{padding:140px 72px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);}
+
+  /* Footer */
+  .article-footer{padding:56px 72px;border-top:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center;}
+  .article-footer a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+  .article-footer a:hover{color:var(--ink);}
+  .footer-tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);}
+
+  @media(max-width:900px){
+    nav{padding:16px 24px;}
+    .article-hero{padding:120px 32px 48px;}
+    .article-body{padding:48px 32px;}
+    .article-footer{padding:32px;flex-direction:column;gap:16px;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">Ivy · Strategic Operations</a>
+  <a class="nav-back" href="writing.html">← Writing</a>
+</nav>
+
+<div id="article-hero" class="article-hero" style="display:none;">
+  <div class="article-eyebrow" id="article-cat"></div>
+  <h1 class="article-headline" id="article-title-display"></h1>
+  <div class="article-byline">
+    <span id="article-date"></span>
+    <span>Ivy</span>
+  </div>
+</div>
+
+<div id="loading" class="loading">Loading…</div>
+
+<div class="article-body" id="article-body" style="display:none;"></div>
+
+<div class="article-footer" id="article-footer" style="display:none;">
+  <a href="writing.html">← 返回所有文章</a>
+  <div class="footer-tag" id="footer-cat"></div>
+</div>
+
+<!-- marked.js for Markdown parsing -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script>
+  // Get article slug from URL param: article.html?slug=my-article
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug');
+
+  if (!slug) {
+    document.getElementById('loading').textContent = '找不到文章。';
+  } else {
+    fetch(`articles/${slug}.md`)
+      .then(r => {
+        if (!r.ok) throw new Error('Not found');
+        return r.text();
+      })
+      .then(raw => {
+        // Parse frontmatter (--- key: value --- at top of file)
+        const fm = {};
+        let content = raw;
+        const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+        if (fmMatch) {
+          fmMatch[1].split('\n').forEach(line => {
+            const [k, ...v] = line.split(':');
+            if (k && v.length) fm[k.trim()] = v.join(':').trim();
+          });
+          content = fmMatch[2];
+        }
+
+        // Update page title
+        const title = fm.title || slug;
+        document.getElementById('page-title').textContent = title + ' — Ivy';
+        document.getElementById('article-title-display').innerHTML = title;
+        document.getElementById('article-cat').textContent = fm.category || '';
+        document.getElementById('footer-cat').textContent = fm.category || '';
+        document.getElementById('article-date').textContent = fm.date || '';
+
+        // Render markdown
+        document.getElementById('article-body').innerHTML = marked.parse(content);
+
+        // Show elements
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('article-hero').style.display = 'block';
+        document.getElementById('article-body').style.display = 'block';
+        document.getElementById('article-footer').style.display = 'flex';
+      })
+      .catch(() => {
+        document.getElementById('loading').textContent = '文章載入失敗，請稍後再試。';
+      });
+  }
+</script>
+</body>
+</html>
