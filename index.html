@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ivy | Strategic Operations Portfolio</title>
+<title>Ivy Liu — Strategic Operations & Brand Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -14,9 +14,13 @@
     --light-rule: #e0dbd0;
     --faded: #9c9488;
     --bg-section: #eee9e0;
+    --pale: #eae4d8;
+    --sage: #4f6652;
+    --slate: #3a4a5c;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
   body {
     background: var(--paper);
@@ -27,7 +31,7 @@
     overflow-x: hidden;
   }
 
-  /* ── NOISE OVERLAY ── */
+  /* NOISE OVERLAY */
   body::before {
     content: '';
     position: fixed;
@@ -62,15 +66,15 @@
 
   .nav-links {
     display: flex;
-    gap: 32px;
+    gap: 28px;
     list-style: none;
   }
 
   .nav-links a {
     text-decoration: none;
     color: var(--faded);
-    font-size: 11px;
-    letter-spacing: 0.12em;
+    font-size: 10px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     transition: color 0.2s;
   }
@@ -97,6 +101,7 @@
     display: flex;
     gap: 8px;
     margin-bottom: 40px;
+    flex-wrap: wrap;
   }
 
   .lang-tag {
@@ -311,7 +316,7 @@
     margin-bottom: 56px;
   }
 
-  /* ── CASE STUDIES ── */
+  /* ── NeroPay CASE STUDIES ── */
   .case-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -324,16 +329,18 @@
     background: var(--paper);
     padding: 40px 36px;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
     position: relative;
     overflow: hidden;
   }
 
-  .case-card:hover { background: var(--bg-section); }
-
-  .case-card.full-width {
-    grid-column: 1 / -1;
+  .case-card:hover {
+    background: var(--bg-section);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
   }
+
+  .case-card.full-width { grid-column: 1 / -1; }
 
   .case-num {
     font-size: 10px;
@@ -363,12 +370,6 @@
     line-height: 1.9;
     color: #3a3630;
     margin-bottom: 24px;
-  }
-
-  .case-detail {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--light-rule);
   }
 
   .case-detail-row {
@@ -402,6 +403,271 @@
     background: var(--ink);
     color: var(--paper);
     margin-top: 16px;
+  }
+
+  .case-detail-block {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--light-rule);
+  }
+
+  /* ── BRAND STRATEGY SECTION (dark) ── */
+  #brand-strategy {
+    background: var(--ink);
+    color: var(--paper);
+    border-top: none;
+  }
+
+  #brand-strategy .section-eyebrow { color: var(--warm-mid); }
+  #brand-strategy .section-title { color: var(--paper); }
+  #brand-strategy .section-desc { color: rgba(245,242,236,0.5); }
+
+  .brand-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .brand-card {
+    background: #1e1c19;
+    padding: 48px 44px;
+    cursor: pointer;
+    transition: background 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand-card:hover { background: #252320; }
+
+  .brand-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--warm-mid);
+    transition: width 0.5s ease;
+  }
+
+  .brand-card:hover::before { width: 100%; }
+
+  .brand-card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--warm-mid);
+    opacity: 0.7;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .brand-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 400;
+    color: var(--paper);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-card-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .brand-card-summary {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    line-height: 1.85;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 28px;
+  }
+
+  .brand-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .b-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid rgba(196,168,130,0.25);
+    color: rgba(196,168,130,0.7);
+  }
+
+  /* Brand case expandable detail */
+  .brand-detail {
+    display: none;
+    grid-column: 1 / -1;
+    background: var(--pale);
+    padding: 72px 64px;
+    position: relative;
+    animation: slideDown 0.45s ease;
+    color: var(--ink);
+  }
+
+  .brand-detail.open { display: block; }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .brand-detail-close {
+    position: absolute;
+    top: 28px; right: 44px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--faded);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    background: none;
+    border: none;
+  }
+
+  .brand-detail-close:hover { color: var(--accent); }
+
+  .brand-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 72px;
+  }
+
+  .detail-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .detail-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  .detail-body {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    line-height: 1.9;
+    color: rgba(26,24,20,0.65);
+    margin-bottom: 32px;
+  }
+
+  .detail-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--ink);
+    padding: 28px 0;
+    border-top: 1px solid var(--light-rule);
+    border-bottom: 1px solid var(--light-rule);
+    margin: 32px 0;
+  }
+
+  .detail-steps { margin: 32px 0; }
+
+  .d-step {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--light-rule);
+  }
+
+  .d-step:last-child { border-bottom: none; }
+
+  .d-step-n {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--warm-mid);
+    padding-top: 3px;
+  }
+
+  .d-step-body strong {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+
+  .d-step-body p {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    color: rgba(26,24,20,0.55);
+    line-height: 1.75;
+  }
+
+  .detail-sidebar { padding-top: 4px; }
+
+  .sidebar-block {
+    padding: 24px;
+    background: var(--paper);
+    margin-bottom: 14px;
+    border: 1px solid var(--light-rule);
+  }
+
+  .sidebar-block:last-child { margin-bottom: 0; }
+
+  .sidebar-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    margin-bottom: 14px;
+  }
+
+  .sidebar-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .sidebar-list li {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(26,24,20,0.65);
+    display: flex;
+    gap: 10px;
+  }
+
+  .sidebar-list li::before {
+    content: '→';
+    color: var(--warm-mid);
+    flex-shrink: 0;
+  }
+
+  .sidebar-insight {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--ink);
+    font-style: italic;
   }
 
   /* ── SKILLS WALL ── */
@@ -447,6 +713,48 @@
     font-size: 12px;
     line-height: 1.8;
     color: var(--faded);
+  }
+
+  /* ── HOW I WORK ── */
+  #approach { background: var(--pale); }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--light-rule);
+    border: 1px solid var(--light-rule);
+  }
+
+  .approach-item {
+    background: var(--paper);
+    padding: 44px 36px;
+    transition: background 0.2s;
+  }
+
+  .approach-item:hover { background: var(--bg-section); }
+
+  .approach-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--warm-mid);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .approach-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .approach-body {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    line-height: 1.85;
+    color: rgba(26,24,20,0.6);
   }
 
   /* ── SERVICES ── */
@@ -496,6 +804,59 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent);
+  }
+
+  /* ── ABOUT / EXPERIENCE ── */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    background: var(--bg-section);
+  }
+
+  .about-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    line-height: 1.95;
+    color: rgba(26,24,20,0.65);
+    margin-bottom: 20px;
+  }
+
+  .about-text strong {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .exp-item {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--light-rule);
+  }
+
+  .exp-item:first-child { border-top: 1px solid var(--light-rule); }
+
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+
+  .exp-where {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .exp-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 12px;
+    color: rgba(26,24,20,0.55);
+    line-height: 1.75;
   }
 
   /* ── WRITING SECTION ── */
@@ -612,7 +973,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 32px;
+    gap: 28px;
   }
 
   .contact-item-label {
@@ -629,6 +990,29 @@
     color: var(--paper);
   }
 
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .contact-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,242,236,0.4);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .contact-link::before { content: '→'; color: var(--warm-mid); }
+  .contact-link:hover { color: var(--warm-mid); }
+
   /* ── FOOTER ── */
   footer {
     background: var(--ink);
@@ -642,8 +1026,16 @@
     letter-spacing: 0.1em;
   }
 
-  .case-card { transition: box-shadow 0.2s, transform 0.2s; }
-  .case-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  /* ── FADE IN ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
@@ -656,12 +1048,17 @@
     .hero { grid-template-columns: 1fr; }
     .hero-left { padding: 60px 32px; border-right: none; border-bottom: 1px solid var(--light-rule); }
     .hero-right { padding: 40px 32px; }
-    .case-grid, .skills-wall, .services-grid { grid-template-columns: 1fr; }
+    .case-grid, .skills-wall, .services-grid, .approach-grid { grid-template-columns: 1fr; }
     .case-card.full-width { grid-column: auto; }
+    .brand-cases-grid { grid-template-columns: 1fr; }
+    .brand-detail { padding: 48px 24px; }
+    .brand-detail-grid { grid-template-columns: 1fr; gap: 40px; }
     section { padding: 56px 32px; }
+    #about { grid-template-columns: 1fr; gap: 48px; padding: 56px 32px; }
     .contact-section { grid-template-columns: 1fr; gap: 48px; padding: 56px 32px; }
     nav { padding: 16px 24px; }
-    footer { padding: 20px 24px; }
+    .nav-links { display: none; }
+    footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
     .writing-row { grid-template-columns: 1fr; }
     .writing-cat { writing-mode: horizontal-tb; transform: none; }
   }
@@ -671,17 +1068,19 @@
 
 <!-- NAVIGATION -->
 <nav>
-  <div class="nav-brand">Ivy &nbsp;·&nbsp; Strategic Operations</div>
+  <div class="nav-brand">Ivy Liu &nbsp;·&nbsp; Strategic Operations</div>
   <ul class="nav-links">
-    <li><a href="#cases">Case Studies</a></li>
+    <li><a href="#cases">NeroPay Cases</a></li>
+    <li><a href="#brand-strategy">Brand Strategy</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#approach">Approach</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#writing">Writing</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-left">
     <div class="lang-tags">
@@ -689,20 +1088,21 @@
       <span class="lang-tag">English</span>
       <span class="lang-tag">Japanese</span>
     </div>
-    <div class="hero-eyebrow">Operations · Strategy · English-Market Execution</div>
-    <h1 class="hero-name"><em>Ivy</em><br>Strategic Ops</h1>
-    <div class="hero-title">營運系統 · 商業策略 · 英語市場執行</div>
+    <div class="hero-eyebrow">Operations · Brand Strategy · English-Market Execution</div>
+    <h1 class="hero-name"><em>Ivy</em><br>Liu</h1>
+    <div class="hero-title">營運系統 · 品牌策略 · 英語市場執行</div>
     <p class="hero-bio">
-      我幫早期新創在英語市場建立營運系統與商業策略——不只給建議，也實際執行。<br><br>
-      從零建立內部 SOP、獨立處理跨境詐騙危機、設計 AI 半自動化流程、到為潛在客戶撰寫全英文商業提案——非程式碼開發的事，我幾乎都做得出來。<br><br>
-      你雇一個我，不需要同時找營運顧問、英文內容團隊和 AI 工具整合師。
+      我把模糊的商業需求，轉化成可被任何人執行的系統與策略。<br><br>
+      從跨境詐騙危機到英國 Fintech 從零建立 HR 系統，從台灣多品牌 B2B 開發機制到 AI 半自動化工作流——我進去混亂的地方，然後建立秩序。<br><br>
+      你雇一個我，不需要同時找營運顧問、品牌策略師、英文內容團隊和 AI 工具整合師。
     </p>
     <div class="hero-tags">
       <span class="tag">#英語市場營運</span>
-      <span class="tag">#系統建構與策略</span>
+      <span class="tag">#品牌策略</span>
+      <span class="tag">#系統建構</span>
       <span class="tag">#AI 工作流優化</span>
+      <span class="tag">#B2B 開發設計</span>
       <span class="tag">#跨境風險控管</span>
-      <span class="tag">#全英文商務執行</span>
       <span class="tag">#草創期全端夥伴</span>
     </div>
   </div>
@@ -713,23 +1113,30 @@
         <div class="stat-label">Working Languages</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Fraud Cases Resolved</div>
+        <div class="stat-number">4</div>
+        <div class="stat-label">Brand Strategy Cases</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">7</div>
-        <div class="stat-label">Years Teaching & Consulting</div>
+        <div class="stat-number">6</div>
+        <div class="stat-label">Operations Cases (NeroPay)</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">0→1</div>
-        <div class="stat-label">Systems Built from Scratch</div>
+        <div class="stat-number">7+</div>
+        <div class="stat-label">Years Cross-Industry Experience</div>
       </div>
     </div>
     <div class="nav-buttons">
       <a class="nav-btn" href="#cases">
         <div>
-          <div class="nav-btn-label">核心專案</div>
-          <div class="nav-btn-sub">Case Studies — 不看年資，看解題難度</div>
+          <div class="nav-btn-label">英國 Fintech 營運案例</div>
+          <div class="nav-btn-sub">NeroPay Cases — 詐騙、HR、AI、行銷</div>
+        </div>
+        <span class="nav-btn-arrow">→</span>
+      </a>
+      <a class="nav-btn" href="#brand-strategy">
+        <div>
+          <div class="nav-btn-label">台灣品牌策略經驗</div>
+          <div class="nav-btn-sub">Brand Strategy — NESS · WUWOW · Apollo</div>
         </div>
         <span class="nav-btn-arrow">→</span>
       </a>
@@ -740,77 +1147,59 @@
         </div>
         <span class="nav-btn-arrow">→</span>
       </a>
-      <a class="nav-btn" href="#writing">
-        <div>
-          <div class="nav-btn-label">思維觀察</div>
-          <div class="nav-btn-sub">Writing — 我怎麼看世界</div>
-        </div>
-        <span class="nav-btn-arrow">→</span>
-      </a>
     </div>
   </div>
 </div>
 
-<!-- CASE STUDIES -->
+<!-- ── NeroPay CASE STUDIES ── -->
 <section id="cases">
-  <div class="section-eyebrow">Case Studies — 核心專案</div>
+  <div class="section-eyebrow">NeroPay Cases — 英國 Fintech 核心專案</div>
   <h2 class="section-title">解題紀錄，<em style="font-family:'Cormorant Garamond',serif;font-style:italic">不是職責清單</em></h2>
   <p class="section-desc">每一個案例都代表一種混亂狀態——沒有 SOP、沒有先例、沒有律師、沒有系統。我進去，然後建立秩序。</p>
 
   <div class="case-grid">
-    <!-- Case A -->
-    <div class="case-card" style="cursor:pointer;" onclick="location.href='case-a.html'">
+    <div class="case-card fade-in">
       <div class="case-num">案例 A / Case A</div>
       <div class="case-title">三起跨境詐騙危機<br>處置與風控機制建立</div>
       <div class="case-meta">英國 · Fintech · 無律師獨立作業 · 全程英文</div>
       <div class="case-body">公司遭遇三起跨境商業詐騙，無法律顧問、無先例可循。我獨立建立完整證據鏈、撰寫英國法院格式 Witness Statement、對接英國警政機關，並在事後設計系統性安全檢核程序，防止同類事件再發生。</div>
-      <div class="case-detail">
+      <div class="case-detail-block">
         <div class="case-detail-row">
           <div class="case-detail-label">危機處置</div>
-          <div class="case-detail-val">梳理往來紀錄 → 建立時間軸證據鏈 → 撰寫 Witness Statement → 對接警察局與執法單位 → 追蹤強制執行</div>
+          <div class="case-detail-val">梳理往來紀錄 → 建立時間軸證據鏈 → 撰寫 Witness Statement → 對接警察局 → 追蹤強制執行</div>
         </div>
         <div class="case-detail-row">
           <div class="case-detail-label">制度建立</div>
-          <div class="case-detail-val">事後設計供應商安全檢核 SOP、付款授權流程、紅旗識別清單——將危機轉化為可複製的風控系統</div>
-        </div>
-        <div class="case-detail-row">
-          <div class="case-detail-label">核心能力</div>
-          <div class="case-detail-val">法律文件寫作、跨文化溝通、高壓下的邏輯建構、風控制度設計</div>
+          <div class="case-detail-val">供應商安全檢核 SOP、付款授權流程、紅旗識別清單——將危機轉化為可複製的風控系統</div>
         </div>
         <span class="case-outcome">風險控管 · 法律營運 · 制度建立</span>
       </div>
     </div>
 
-    <!-- Case B -->
-    <div class="case-card" style="cursor:pointer;" onclick="location.href='case-b.html'">
+    <div class="case-card fade-in" style="transition-delay:0.08s">
       <div class="case-num">案例 B / Case B</div>
       <div class="case-title">AI 驅動的菜單資料<br>自動化清洗流程</div>
-      <div class="case-meta">英國 · Fintech · Claude + ChatGPT/Gemini/Perplexity/Canva · 效率提升 ×3</div>
-      <div class="case-body">客戶提供的點餐菜單格式混亂——中英混排、格式不一、欄位缺漏。傳統手動處理每份需耗費大量時間。我以 AI 為工具，設計結構化的提示流程，建立半自動化匯入系統。</div>
-      <div class="case-detail">
-        <div class="case-detail-row">
-          <div class="case-detail-label">問題</div>
-          <div class="case-detail-val">原始菜單資料雜亂、無法直接匯入系統，手動整理耗時且易錯</div>
-        </div>
+      <div class="case-meta">英國 · Fintech · Claude + ChatGPT/Gemini · 效率提升 ×3</div>
+      <div class="case-body">客戶提供的點餐菜單格式混亂——中英混排、格式不一、欄位缺漏。我以 AI 為工具，設計結構化的提示流程，建立半自動化匯入系統，處理時間大幅縮短。</div>
+      <div class="case-detail-block">
         <div class="case-detail-row">
           <div class="case-detail-label">解法</div>
           <div class="case-detail-val">設計 AI Prompt 模板 → 建立資料清洗 SOP → 輸出標準化格式 → 半自動匯入流程</div>
         </div>
         <div class="case-detail-row">
           <div class="case-detail-label">成果</div>
-          <div class="case-detail-val">處理時間大幅縮短，人力投入從全手動降至人工確認，可複製應用於所有同類客戶</div>
+          <div class="case-detail-val">人力從全手動降至人工確認，可複製應用於所有同類客戶</div>
         </div>
         <span class="case-outcome">AI 工作流 · 流程優化</span>
       </div>
     </div>
 
-    <!-- Case C -->
-    <div class="case-card full-width" style="cursor:pointer;" onclick="location.href='case-c.html'">
+    <div class="case-card full-width fade-in" style="transition-delay:0.16s">
       <div class="case-num">案例 C / Case C</div>
       <div class="case-title">從零建立招聘、薪資與新人培訓系統</div>
       <div class="case-meta">英國 · Fintech · 無現成系統 · 全流程獨立設計</div>
       <div class="case-body">公司進入快速擴張期，但完全沒有 HR 系統。我從職位描述撰寫、履歷篩選、面試框架、到 Offer Letter 格式與薪資管理，全部從零自建——同時設計新人 Onboarding 流程與內部培訓架構，兼顧英國勞動法規合規要求。</div>
-      <div class="case-detail" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div class="case-detail-block" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
         <div>
           <div class="case-detail-row">
             <div class="case-detail-label">招聘</div>
@@ -824,7 +1213,7 @@
         <div>
           <div class="case-detail-row">
             <div class="case-detail-label">新人培訓</div>
-            <div class="case-detail-val">設計 Onboarding SOP、建立系統操作指南、制定「問題找誰」聯絡架構，讓新人第一週就能獨立運作</div>
+            <div class="case-detail-val">設計 Onboarding SOP、建立系統操作指南、讓新人第一週就能獨立運作</div>
           </div>
           <div class="case-detail-row">
             <div class="case-detail-label">合規</div>
@@ -835,79 +1224,76 @@
       <span class="case-outcome">組織設計 · 人才培育 · 合規 · 全端營運</span>
     </div>
 
-    <!-- Case D -->
-    <div class="case-card" style="cursor:pointer;" onclick="location.href='case-d.html'">
+    <div class="case-card fade-in" style="transition-delay:0.08s">
       <div class="case-num">案例 D / Case D</div>
       <div class="case-title">高價值客戶全英文<br>商業提案設計</div>
       <div class="case-meta">英國 · Fintech · 全英文 · 客製化提案</div>
-      <div class="case-body">針對潛在高價值商業客戶，從零設計全英文客製化銷售提案——包含競爭者分析、客製化定價方案、ROI 試算與視覺呈現。提案目標是讓對方在第一次接觸就感受到服務的專業度與針對性。</div>
-      <div class="case-detail">
+      <div class="case-body">針對潛在高價值商業客戶，從零設計全英文客製化銷售提案——包含競爭者分析、客製化定價方案、ROI 試算與視覺呈現。</div>
+      <div class="case-detail-block">
         <div class="case-detail-row">
           <div class="case-detail-label">策略</div>
-          <div class="case-detail-val">研究客戶現況與痛點 → 設計客製化定價邏輯 → 競爭者對比分析 → 全英文視覺化提案輸出</div>
+          <div class="case-detail-val">研究客戶痛點 → 客製化定價邏輯 → 競爭者對比 → 全英文視覺化提案</div>
         </div>
         <div class="case-detail-row">
           <div class="case-detail-label">執行</div>
-          <div class="case-detail-val">獨立完成文案撰寫、數據整理、版面設計，無需外部設計師或文案團隊</div>
+          <div class="case-detail-val">獨立完成文案、數據整理、版面設計，無需外部設計師或文案團隊</div>
         </div>
         <span class="case-outcome">商業策略 · 英文提案 · 客戶開發</span>
       </div>
     </div>
 
-    <!-- Case E -->
-    <div class="case-card" style="cursor:pointer;" onclick="location.href='case-e.html'">
+    <div class="case-card fade-in" style="transition-delay:0.16s">
       <div class="case-num">案例 E / Case E</div>
       <div class="case-title">行銷一條龍——從策略<br>到廣告投放與內容產出</div>
       <div class="case-meta">英國 · Fintech · Meta · Google · 實體廣告 · AI 產圖</div>
-      <div class="case-body">為商家提供完整行銷支援：從市場定位、廣告受眾設定、到社群內容產出與實體廣告設計。以 AI 工具（Higgsfield 產圖）取代傳統小編，大幅降低內容製作成本，同時維持品牌質感。</div>
-      <div class="case-detail">
+      <div class="case-body">為商家提供完整行銷支援：從市場定位、廣告受眾設定、到社群內容產出與實體廣告設計。以 Higgsfield AI 產圖取代傳統小編，大幅降低內容製作成本。</div>
+      <div class="case-detail-block">
         <div class="case-detail-row">
           <div class="case-detail-label">廣告投放</div>
           <div class="case-detail-val">Meta / Google 數位廣告實操、受眾分析與優化、實體廣告設計與執行</div>
         </div>
         <div class="case-detail-row">
-          <div class="case-detail-label">AI 內容產出</div>
-          <div class="case-detail-val">Higgsfield 產圖取代攝影師、Claude 半自動化文案生成、建立可複製的內容產出 SOP</div>
+          <div class="case-detail-label">AI 內容</div>
+          <div class="case-detail-val">Higgsfield 產圖取代攝影師、Claude 半自動化文案生成、建立可複製內容 SOP</div>
         </div>
         <span class="case-outcome">行銷策略 · 廣告投放 · AI 工具應用</span>
       </div>
     </div>
 
-    <!-- Case F -->
-    <div class="case-card full-width" style="cursor:pointer;" onclick="location.href='case-f.html'">
+    <div class="case-card full-width fade-in" style="transition-delay:0.08s">
       <div class="case-num">案例 F / Case F</div>
       <div class="case-title">為 FCA 監管環境設計<br>知識管理架構</div>
       <div class="case-meta">英國 · Fintech · Google Drive · 9 層架構 · 合規就緒</div>
-      <div class="case-body">早期 fintech 最常見的隱性風險不是缺乏系統，而是系統長歪了之後難以修正。我在公司還小的時候，以 FCA 稽核邏輯為核心，設計一套可隨公司規模擴張的文件管理架構——讓任何人在任何時候都能找到正確版本的正確文件。</div>
-      <div class="case-detail" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div class="case-body">以 FCA 稽核邏輯為核心，設計一套可隨公司規模擴張的文件管理架構——讓任何人在任何時候都能找到正確版本的正確文件。</div>
+      <div class="case-detail-block" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
         <div>
           <div class="case-detail-row">
             <div class="case-detail-label">設計原則</div>
-            <div class="case-detail-val">合規優先而非便利優先——Corporate & Legal、Compliance & Risk 獨立分層，確保監管文件不與日常操作文件混放</div>
+            <div class="case-detail-val">合規優先——Corporate & Legal、Compliance & Risk 獨立分層，確保監管文件不與日常操作文件混放</div>
           </div>
           <div class="case-detail-row">
             <div class="case-detail-label">架構決策</div>
-            <div class="case-detail-val">9 層主資料夾 + ISO 8601 命名規則 + 版本控制機制，建立 single source of truth，消除「哪個才是最新版」的認知成本</div>
+            <div class="case-detail-val">9 層主資料夾 + ISO 8601 命名規則 + 版本控制，建立 single source of truth</div>
           </div>
         </div>
         <div>
           <div class="case-detail-row">
             <div class="case-detail-label">Access Control</div>
-            <div class="case-detail-val">按文件敏感度設計存取層級——PII、銀行資料限制為 Viewer only；外部分享需 Compliance Officer 或 CEO 審批</div>
+            <div class="case-detail-val">按文件敏感度設計存取層級——PII、銀行資料限制為 Viewer only；外部分享需 CEO 審批</div>
           </div>
           <div class="case-detail-row">
             <div class="case-detail-label">延伸建設</div>
-            <div class="case-detail-val">同步建立 Company Standards 文件（遠端規範、溝通準則、行為守則）作為新員工的單一入口</div>
+            <div class="case-detail-val">同步建立 Company Standards 文件（遠端規範、溝通準則、行為守則）作為新員工單一入口</div>
           </div>
         </div>
       </div>
-      <div style="margin-top:28px;padding:24px;background:var(--paper);border:1px solid var(--light-rule);font-family:'DM Mono',monospace;font-size:11px;line-height:2;color:var(--faded);">
-        <div style="color:var(--accent);letter-spacing:0.1em;font-size:10px;text-transform:uppercase;margin-bottom:12px;">Drive Architecture — 架構概覽</div>
+      <div style="margin-top:24px;padding:20px 24px;background:var(--bg-section);border:1px solid var(--light-rule);font-family:'DM Mono',monospace;font-size:11px;line-height:2;color:var(--faded);">
+        <div style="color:var(--accent);letter-spacing:0.1em;font-size:10px;text-transform:uppercase;margin-bottom:10px;">Drive Architecture — 架構概覽</div>
         <div><span style="color:var(--ink);">00</span>_Company_Standards &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← 全員基礎規範</span></div>
         <div><span style="color:var(--ink);">01</span>_Corporate_&amp;_Legal &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Restricted · CEO Office</span></div>
         <div><span style="color:var(--ink);">02</span>_Compliance_&amp;_Risk &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← AML · KYB · Transaction Monitoring</span></div>
-        <div><span style="color:var(--ink);">03</span>_Operations_&amp;_CS &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Internal SOP · External SOP · Hardware</span></div>
-        <div><span style="color:var(--ink);">04</span>_Product_&amp;_Engineering &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Roadmap · Tech Docs · Product Lines</span></div>
+        <div><span style="color:var(--ink);">03</span>_Operations_&amp;_CS &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Internal SOP · External SOP</span></div>
+        <div><span style="color:var(--ink);">04</span>_Product_&amp;_Engineering &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Roadmap · Tech Docs</span></div>
         <div><span style="color:var(--ink);">05</span>_Sales_&amp;_Marketing &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Assets · Campaigns · BD</span></div>
         <div><span style="color:var(--ink);">06</span>_Finance_&amp;_HR &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Reports · Payroll · Contracts</span></div>
         <div><span style="color:var(--ink);">07</span>_Project_Management &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Minutes · Current Projects</span></div>
@@ -915,97 +1301,434 @@
       </div>
       <span class="case-outcome">系統建構 · 知識管理 · 合規設計</span>
     </div>
+  </div>
+</section>
+
+<!-- ── BRAND STRATEGY SECTION ── -->
+<section id="brand-strategy" style="padding:80px 72px;">
+  <div class="section-eyebrow">Brand Strategy — 台灣品牌策略經驗</div>
+  <h2 class="section-title" style="color:var(--paper);">策略分析，<em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--warm-mid);">讓任何人都能執行</em></h2>
+  <p class="section-desc">代理商多品牌環境下，為 B2B、EdTech、HR Tech、Wellness 品牌設計可落地的策略與 SOP——不只提建議，也讓建議可以被別人執行。</p>
+
+  <div class="brand-cases-grid">
+
+    <!-- NESS -->
+    <div class="brand-card fade-in" onclick="toggleBrand('ness')">
+      <span class="brand-card-num">01 / 04</span>
+      <h3 class="brand-card-name">NESS Wellness</h3>
+      <span class="brand-card-type">企業內訓 · B2B 開發系統設計</span>
+      <p class="brand-card-summary">為代理品牌 NESS 設計一套完整的企業客戶開發機制，讓無銷售背景的成員也能找到並引起企業 HR 窗口的興趣。</p>
+      <div class="brand-tags">
+        <span class="b-tag">流程設計</span>
+        <span class="b-tag">Target Role 分類</span>
+        <span class="b-tag">Reach Out SOP</span>
+        <span class="b-tag">B2B</span>
+      </div>
+    </div>
+    <div class="brand-detail" id="brand-detail-ness">
+      <button class="brand-detail-close" onclick="toggleBrand('ness')">✕ Close</button>
+      <div class="brand-detail-grid">
+        <div>
+          <span class="detail-label">案例 01 — NESS Wellness</span>
+          <h3 class="detail-heading">把「幫品牌找客戶」<br>設計成任何人都能執行的系統</h3>
+          <p class="detail-body">台灣代理商承接 NESS 的企業內訓推廣，需要從零建立 B2B 客戶開發機制。挑戰在於：執行者多半沒有業務背景，但仍需要有效率地找到企業窗口並引起興趣。</p>
+          <div class="detail-quote">"如何讓人不需要懂銷售，也能讓對方主動說出『可以了解看看』？"</div>
+          <div class="detail-steps">
+            <div class="d-step">
+              <span class="d-step-n">01</span>
+              <div class="d-step-body">
+                <strong>找到對的人</strong>
+                <p>定義 6 大目標角色（HR、L&D、ESG、行政、部門主管、醫療教育），每個角色都有對應的優先順序與開發邏輯。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">02</span>
+              <div class="d-step-body">
+                <strong>引起興趣，而非推銷</strong>
+                <p>設計 9 大名單來源策略（LinkedIn、104、官網、FB 社群、商會、活動平台等），為 HR / 行政 / 主管三種角色各設計一套無壓力訊息模板。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">03</span>
+              <div class="d-step-body">
+                <strong>明確的轉介觸發點</strong>
+                <p>列出所有「有興趣」的判斷標準，一旦符合就立即轉介，不等待、不追進度——轉介後任務完成。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-title">核心設計原則</p>
+            <ul class="sidebar-list">
+              <li>不提品牌名，先確認需求</li>
+              <li>不介紹課程內容、不報價</li>
+              <li>明確的「停止點」：轉介後即結束</li>
+              <li>降低執行者的判斷成本</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-title">9 大名單來源</p>
+            <ul class="sidebar-list">
+              <li>LinkedIn（外商首選）</li>
+              <li>104 人力銀行（台灣中小企業）</li>
+              <li>公司官網 HR 信箱</li>
+              <li>Facebook HR 社群</li>
+              <li>協會商會會員名單</li>
+              <li>舊客戶同產業外擴（成功率最高）</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-insight">"數據衡量執行結果，但這份文件展示的是讓結果成為可能的系統設計本身。"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WUWOW -->
+    <div class="brand-card fade-in" style="transition-delay:0.1s" onclick="toggleBrand('wuwow')">
+      <span class="brand-card-num">02 / 04</span>
+      <h3 class="brand-card-name">WUWOW × TutorABC</h3>
+      <span class="brand-card-type">EdTech · 校園推廣 + 社群重定位</span>
+      <p class="brand-card-summary">為兩個英語教學品牌設計差異化定位、校園 KOC 計畫、社群內容策略，以及透過合作場域擴大觸及的三階段 Outreach 模型。</p>
+      <div class="brand-tags">
+        <span class="b-tag">品牌定位</span>
+        <span class="b-tag">KOC 計畫</span>
+        <span class="b-tag">社群策略</span>
+        <span class="b-tag">EdTech</span>
+      </div>
+    </div>
+    <div class="brand-detail" id="brand-detail-wuwow">
+      <button class="brand-detail-close" onclick="toggleBrand('wuwow')">✕ Close</button>
+      <div class="brand-detail-grid">
+        <div>
+          <span class="detail-label">案例 02 — WUWOW × TutorABC</span>
+          <h3 class="detail-heading">兩個品牌，兩種定位，<br>一套完整的學生族群滲透策略</h3>
+          <p class="detail-body">TutorABC 強調品質與認證，WUWOW 強調趣味與敏捷學習。我的工作是把這兩個品牌的差異化講清楚，並設計各自的學生市場切入點。</p>
+          <div class="detail-quote">"WUWOW 的迷因內容帶來流量，但笑完就走——真正需要解決的是：誰願意信任品牌來學英文？"</div>
+          <div class="detail-steps">
+            <div class="d-step">
+              <span class="d-step-n">01</span>
+              <div class="d-step-body">
+                <strong>校園 KOC 招募計畫</strong>
+                <p>設計大使招募機制、獎勵制度（課程點數 → 數位證書 → 實習推薦路徑），把 referral 包裝成「Campus Marketing Lab」，避免直銷感。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">02</span>
+              <div class="d-step-body">
+                <strong>社群內容三層架構</strong>
+                <p>拉新（高互動短影音）→ 留存（系列知識型貼文）→ 導流（CTA + 免費資源包），每層功能明確，不混在一起。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">03</span>
+              <div class="d-step-body">
+                <strong>LinkedIn 數位徽章差異化</strong>
+                <p>讓學生把 TutorABC 學習成果放上 LinkedIn 履歷，把課程平台升級為「履歷加值工具」。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">04</span>
+              <div class="d-step-body">
+                <strong>場域合作三階段 Outreach</strong>
+                <p>市場篩選 → 初次接觸（一頁式合作簡介，強調對方好處）→ 深入提案（Demo + 分潤模式說明）。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-title">TutorABC vs WUWOW 定位差異</p>
+            <ul class="sidebar-list">
+              <li>TutorABC → 專業、認證、職場英文</li>
+              <li>WUWOW → 趣味、敏捷、口說、學生族群</li>
+              <li>合體 = Top-down + Bottom-up</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-title">KOC 計畫 KPI</p>
+            <ul class="sidebar-list">
+              <li>第一批校園大使 10 位</li>
+              <li>每人產出 ≥2 則 UGC 內容</li>
+              <li>2–3 場校園活動曝光</li>
+              <li>每場觸及 ≥100 名學生</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-insight">"把 referral 包裝成學習成長——讓學生覺得參與的是社群，而不是在幫品牌做業務。"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Apollo -->
+    <div class="brand-card fade-in" style="transition-delay:0.2s" onclick="toggleBrand('apollo')">
+      <span class="brand-card-num">03 / 04</span>
+      <h3 class="brand-card-name">Apollo (MayoHR)</h3>
+      <span class="brand-card-type">HR Tech · 外商市場切入分析</span>
+      <p class="brand-card-summary">分析台灣人資系統的品牌定位落差，找出切入外商市場的策略缺口——並提出從內容策略到決策鏈滲透的具體行動方案。</p>
+      <div class="brand-tags">
+        <span class="b-tag">市場分析</span>
+        <span class="b-tag">B2B 行銷</span>
+        <span class="b-tag">HR Tech</span>
+        <span class="b-tag">外商策略</span>
+      </div>
+    </div>
+    <div class="brand-detail" id="brand-detail-apollo">
+      <button class="brand-detail-close" onclick="toggleBrand('apollo')">✕ Close</button>
+      <div class="brand-detail-grid">
+        <div>
+          <span class="detail-label">案例 03 — Apollo (MayoHR)</span>
+          <h3 class="detail-heading">功能很強，但外商不買單——<br>問題出在訊息傳遞，不在產品</h3>
+          <p class="detail-body">Apollo 的 HR 系統在台灣法規合規與全流程整合上具備明顯優勢，理論上非常適合外商在台公司。但 LinkedIn 內容幾乎沒有互動——問題不在產品，在於他們用的是台灣本土 HR 的語言，而不是外商決策者想聽的語言。</p>
+          <div class="detail-quote">"外商 HR Manager 要看的不是功能清單，而是：這個系統能讓我在總部面前交出什麼 KPI？"</div>
+          <div class="detail-steps">
+            <div class="d-step">
+              <span class="d-step-n">診斷</span>
+              <div class="d-step-body">
+                <strong>定位與行銷的落差</strong>
+                <p>Apollo 具備切入外商的所有條件（ISO27001、在地法規更新、全模組整合），但訊息傳遞鎖定本土中小企業，錯失外商 HR/Finance 的需求語言。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">切入</span>
+              <div class="d-step-body">
+                <strong>外商決策鏈的三個層次</strong>
+                <p>全球 HR/IT 設定系統標準 → 區域 HR/IT 篩選在地方案 → 在地 HR 實際使用。先打在地 HR，再給他們英文資料向總部提案。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">策略</span>
+              <div class="d-step-body">
+                <strong>內容重構方向</strong>
+                <p>外商在台 HR 法規痛點白皮書（中英雙語）、外商 HR 訪談影片、KPI 型案例標題（「導入後薪資結算時間縮短 40%，避免 300 萬勞檢罰金」）。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">背書</span>
+              <div class="d-step-body">
+                <strong>品牌國際化路徑</strong>
+                <p>與 Deloitte、PwC 等顧問公司合作打包方案；公開外商合作案例；參展 HR Tech Asia 等國際活動。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-title">Apollo 的切入優勢</p>
+            <ul class="sidebar-list">
+              <li>台灣勞基法自動更新，外商最怕合規出錯</li>
+              <li>ISO27001，符合外商 IT 審核</li>
+              <li>全模組一站式整合</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-title">外商滲透率低的根因</p>
+            <ul class="sidebar-list">
+              <li>LinkedIn 內容以本土 HR 為受眾</li>
+              <li>缺少英文內容與外商案例</li>
+              <li>沒有對應外商決策者的 KPI 語言</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-insight">"先打在地 HR 建立需求，再提供英文資料讓他們提案給總部。"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 整合品牌策略 -->
+    <div class="brand-card fade-in" style="transition-delay:0.3s" onclick="toggleBrand('strategy')">
+      <span class="brand-card-num">04 / 04</span>
+      <h3 class="brand-card-name">整合品牌策略</h3>
+      <span class="brand-card-type">多品牌經營 · 代理商運營架構設計</span>
+      <p class="brand-card-summary">統籌 NESS、Fully、Apollo 等多品牌的 B2B 推廣策略，設計跨品牌協作架構、社群發文系統、以及講師的三期商業化路徑。</p>
+      <div class="brand-tags">
+        <span class="b-tag">多品牌策略</span>
+        <span class="b-tag">社群系統設計</span>
+        <span class="b-tag">商業化路徑</span>
+      </div>
+    </div>
+    <div class="brand-detail" id="brand-detail-strategy">
+      <button class="brand-detail-close" onclick="toggleBrand('strategy')">✕ Close</button>
+      <div class="brand-detail-grid">
+        <div>
+          <span class="detail-label">案例 04 — 整合品牌策略</span>
+          <h3 class="detail-heading">跨品牌代理商的<br>運營架構從無到有</h3>
+          <p class="detail-body">同時負責多個代理品牌的策略規劃——員工福祉（NESS）、彈性福利（Fully）、人資系統（Apollo），到英語教育（WUWOW/TutorABC）。這份案例展示如何在多品牌環境下，設計統一的運營邏輯與差異化的推廣策略。</p>
+          <div class="detail-quote">"代理商不是每個品牌都從頭做——而是找到共同的企業窗口，用不同品牌回應他們不同的需求。"</div>
+          <div class="detail-steps">
+            <div class="d-step">
+              <span class="d-step-n">架構</span>
+              <div class="d-step-body">
+                <strong>品牌企劃組 vs 企業組分工</strong>
+                <p>品牌企劃組負責策略制定與素材提供；企業組負責發信、對接、名單跟進。分工讓每個人專注在自己最有效的部分。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">社群</span>
+              <div class="d-step-body">
+                <strong>5–6 篇/週的內容架構</strong>
+                <p>設計週發文系統：週一教育資訊、週二生活趣聞、週三互動流行、週四人物故事、週五資源分享。搭配台灣受眾最佳時段與 A/B 測試機制。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">商業化</span>
+              <div class="d-step-body">
+                <strong>講師三期商業化路徑</strong>
+                <p>短期（個人品牌打中小企業）→ 中期（平台講師 + Bundle Selling）→ 長期（認證制度 + 授權模組化），設計明確的收入雙軌：線下授課 + 訂閱制錄播課。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">組合</span>
+              <div class="d-step-body">
+                <strong>Fully + NESS 組合提案</strong>
+                <p>Fully 強調數位化彈性福利與 ESG 整合；NESS 強調沉浸式體驗與測評數據回饋，可形成組合提案，瞄準同一批企業 HR 窗口。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-title">涵蓋品牌類型</p>
+            <ul class="sidebar-list">
+              <li>NESS — 企業身心健康 / EAP</li>
+              <li>Fully — 數位彈性福利平台</li>
+              <li>Apollo — HR Tech / 人資系統</li>
+              <li>WUWOW/TutorABC — EdTech</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-title">共同目標客群</p>
+            <ul class="sidebar-list">
+              <li>外商、科技業、金融業：高預算、重 ESG</li>
+              <li>快速成長新創：需要系統但缺乏專業人資</li>
+              <li>醫療、製造：法規合規壓力大</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-insight">"不同品牌，同一批企業窗口——學會用對的順序敲對的門。"</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </section>
 
-<!-- SKILLS WALL -->
+<!-- ── SKILLS WALL ── -->
 <section id="skills" style="background: var(--bg-section);">
   <div class="section-eyebrow">Multi-Skill Wall — 跨領域能力</div>
   <h2 class="section-title">每個技能都有<em style="font-family:'Cormorant Garamond',serif;font-style:italic">真實的下線保障</em></h2>
   <p class="section-desc">我不追求單一領域的 100 分，但每一項都能快速到達 80 分的可交付狀態——這是通才的核心價值。</p>
 
   <div class="skills-wall">
-    <div class="skill-card">
+    <div class="skill-card fade-in">
       <span class="skill-icon">⚖️</span>
       <div class="skill-name">法律與危機營運</div>
       <div class="skill-years">Fintech · 英國市場 · 三起詐騙案</div>
       <div class="skill-desc">跨境詐騙處理、合規文件審閱、警政機關溝通、證據鏈建立。無律師狀態下獨立完成英國法院格式文件，並事後建立系統性安全檢核程序。</div>
     </div>
-    <div class="skill-card">
+    <div class="skill-card fade-in" style="transition-delay:0.06s">
       <span class="skill-icon">🤖</span>
       <div class="skill-name">AI 工作流設計</div>
       <div class="skill-years">Claude · Higgsfield · ChatGPT · Perplexity</div>
       <div class="skill-desc">將 AI 作為真正的生產力槓桿。Claude 半自動化資料處理、Higgsfield 產圖取代小編——擅長找出最值得 AI 化的環節，設計可複製的半自動化流程。</div>
     </div>
-    <div class="skill-card">
+    <div class="skill-card fade-in" style="transition-delay:0.12s">
       <span class="skill-icon">🌐</span>
       <div class="skill-name">全英文商務執行</div>
       <div class="skill-years">法律文件 · 商業提案 · 廠商溝通 · 內容寫作</div>
       <div class="skill-desc">不只是英文好——而是能代表你的公司在英語市場做有效的商務溝通。從法律文件到銷售提案、從廠商談判到品牌內容，全程獨立處理。</div>
     </div>
-    <div class="skill-card">
+    <div class="skill-card fade-in" style="transition-delay:0.06s">
+      <span class="skill-icon">📊</span>
+      <div class="skill-name">品牌策略設計</div>
+      <div class="skill-years">B2B · EdTech · HR Tech · Wellness · 多品牌</div>
+      <div class="skill-desc">從市場分析到可執行 SOP——為代理商品牌設計差異化定位、開發系統與社群策略。讓策略不只停在 deck 裡，而是真的被執行。</div>
+    </div>
+    <div class="skill-card fade-in" style="transition-delay:0.12s">
       <span class="skill-icon">📣</span>
       <div class="skill-name">行銷策略與投放</div>
       <div class="skill-years">Meta · Google · 實體廣告 · 商家行銷諮詢</div>
       <div class="skill-desc">數位廣告實操、受眾分析、實體廣告設計，到為商家提供一條龍行銷諮詢。理解品牌溢價邏輯，不為轉化率犧牲品牌質感。</div>
     </div>
-    <div class="skill-card">
-      <span class="skill-icon">✍️</span>
-      <div class="skill-name">內容與文章撰寫</div>
-      <div class="skill-years">中文 · 英文 · 商業 · 思想型長文</div>
-      <div class="skill-desc">中英雙語內容創作——商業提案、品牌文案、思想型長文皆可。熟悉不同平台語境，文字兼具說服力與品牌質感。</div>
-    </div>
-    <div class="skill-card">
+    <div class="skill-card fade-in" style="transition-delay:0.18s">
       <span class="skill-icon">🏗️</span>
       <div class="skill-name">草創期全端營運</div>
       <div class="skill-years">10 人以下 · 從零建立 · 英語市場</div>
-      <div class="skill-desc">招聘、薪資、合規、物流、夥伴計畫、廣告投放、文件系統、新人培訓——在沒有系統的狀態下，用自建的 SOP 讓公司運轉。這是多數人沒機會積累的稀缺經驗。</div>
+      <div class="skill-desc">招聘、薪資、合規、物流、廣告投放、文件系統、新人培訓——在沒有系統的狀態下，用自建的 SOP 讓公司運轉。這是多數人沒機會積累的稀缺經驗。</div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ── HOW I WORK ── -->
+<section id="approach">
+  <div class="section-eyebrow">How I Work — 思考框架</div>
+  <h2 class="section-title">每個專案背後，<em style="font-family:'Cormorant Garamond',serif;font-style:italic">三個固定框架</em></h2>
+  <p class="section-desc">不管是 Fintech 營運還是品牌策略，我用同樣的思考邏輯進入每一個混亂的場景。</p>
+
+  <div class="approach-grid">
+    <div class="approach-item fade-in">
+      <div class="approach-icon">問</div>
+      <h3 class="approach-title">先問「為什麼不做」</h3>
+      <p class="approach-body">設計流程前，我習慣先定義邊界——哪些事是這個人不應該做的，往往比「應該做什麼」更能降低執行摩擦、提高成功率。</p>
+    </div>
+    <div class="approach-item fade-in" style="transition-delay:0.1s">
+      <div class="approach-icon">拆</div>
+      <h3 class="approach-title">把模糊需求拆解成維度</h3>
+      <p class="approach-body">「幫品牌找客戶」這種需求，我會把它拆成：誰是目標（角色）× 在哪裡找（來源）× 怎麼說（訊息）× 什麼時候停（轉介點）。拆完之後，任何人都能執行。</p>
+    </div>
+    <div class="approach-item fade-in" style="transition-delay:0.2s">
+      <div class="approach-icon">測</div>
+      <h3 class="approach-title">設計可測試的假設</h3>
+      <p class="approach-body">每個策略都應該可以被驗證。我在設計時就埋入 KPI、A/B 測試邏輯或階段性里程碑，讓後來的人能追蹤與調整——即使我不在場。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
 <section id="services">
   <div class="section-eyebrow">Services — 顧問服務</div>
   <h2 class="section-title">委託我，而不是<em style="font-family:'Cormorant Garamond',serif;font-style:italic">應徵我</em></h2>
   <p class="section-desc">我接受的合作形式是「委託」與「顧問」，而不是成為你組織內另一個等待審批的員工。如果你需要的是一個可以直接解決混亂、給出判斷、推動執行的人，我們可以談。</p>
 
   <div class="services-grid">
-    <div class="service-card">
+    <div class="service-card fade-in">
       <div class="service-num">01</div>
       <div class="service-title">草創期營運診斷</div>
-      <div class="service-desc">針對 10 人以下的早期團隊，梳理當前營運盲點、建立基礎 SOP 架構、找出最優先需要系統化的環節。適合創辦人正在做所有事、但不確定哪些事應該外包或自動化的階段。</div>
+      <div class="service-desc">針對 10 人以下的早期團隊，梳理當前營運盲點、建立基礎 SOP 架構、找出最優先需要系統化的環節。</div>
       <div class="service-for">適合 → 台灣早期新創</div>
     </div>
-    <div class="service-card">
+    <div class="service-card fade-in" style="transition-delay:0.06s">
       <div class="service-num">02</div>
       <div class="service-title">英語市場商務支援</div>
-      <div class="service-desc">協助台灣品牌或新創進入英語市場：全英文提案撰寫、廠商溝通代理、合規文件整理、客製化銷售策略。我不只翻譯語言，也翻譯商業邏輯與文化語境。</div>
+      <div class="service-desc">協助台灣品牌或新創進入英語市場：全英文提案撰寫、廠商溝通代理、合規文件整理、客製化銷售策略。</div>
       <div class="service-for">適合 → 海外市場拓展</div>
     </div>
-    <div class="service-card">
+    <div class="service-card fade-in" style="transition-delay:0.12s">
       <div class="service-num">03</div>
       <div class="service-title">AI 工作流導入</div>
-      <div class="service-desc">幫助 5–20 人的小型組織找到最值得 AI 化的工作環節，設計實際可用的半自動化流程，降低重複性人工成本。不賣概念，直接交付可用的系統。</div>
+      <div class="service-desc">幫助 5–20 人的小型組織找到最值得 AI 化的工作環節，設計實際可用的半自動化流程，降低重複性人工成本。</div>
       <div class="service-for">適合 → 需要降本增效的品牌</div>
     </div>
-    <div class="service-card">
+    <div class="service-card fade-in" style="transition-delay:0.06s">
       <div class="service-num">04</div>
-      <div class="service-title">內容與文章撰寫</div>
-      <div class="service-desc">中英雙語內容創作——品牌文案、商業提案、思想型長文、社群內容。熟悉不同平台語境，文字兼具說服力與品牌質感。可搭配 AI 工具大幅提升產出速度。</div>
-      <div class="service-for">適合 → 需要內容支援的品牌與新創</div>
+      <div class="service-title">品牌策略與 B2B 開發設計</div>
+      <div class="service-desc">為台灣品牌設計可落地的 B2B 開發機制、定位差異化策略與社群內容架構——讓策略不只停在 deck 裡，而是真的被執行。</div>
+      <div class="service-for">適合 → 代理商 · 多品牌企業</div>
     </div>
-    <div class="service-card">
+    <div class="service-card fade-in" style="transition-delay:0.12s">
       <div class="service-num">05</div>
       <div class="service-title">產業研究與市場報告</div>
-      <div class="service-desc">為你的市場進入決策或投資提案提供研究支撐——競品分析、產業趨勢、目標市場規模。全英文輸出，搭配 AI 工具與 Canva 視覺化，交付可直接使用的成品報告。</div>
-      <div class="service-for">適合 → 準備進入新市場或尋求融資的新創</div>
+      <div class="service-desc">為你的市場進入決策或投資提案提供研究支撐——競品分析、產業趨勢、目標市場規模。全英文輸出，交付可直接使用的成品報告。</div>
+      <div class="service-for">適合 → 準備進入新市場的新創</div>
     </div>
-    <div class="service-card">
+    <div class="service-card fade-in" style="transition-delay:0.18s">
       <div class="service-num">06</div>
       <div class="service-title">商業流程建立與 SOP 設計</div>
-      <div class="service-desc">為沒有系統的早期團隊從零設計可執行、可交接的標準作業流程——onboarding、客服、合規、HR 皆可。讓你的公司在你不在的時候也能正常運轉。</div>
+      <div class="service-desc">為沒有系統的早期團隊從零設計可執行、可交接的標準作業流程——onboarding、客服、合規、HR 皆可。</div>
       <div class="service-for">適合 → 準備擴張或交接的草創團隊</div>
     </div>
   </div>
@@ -1018,29 +1741,62 @@
         <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Starter</div>
         <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:4px;">Bespoke Rate</div>
         <div style="font-size:10px;color:var(--faded);letter-spacing:0.08em;margin-bottom:20px;">單次診斷諮詢 · 2 小時</div>
-        <div style="font-size:12px;color:var(--ink);line-height:1.8;">梳理你目前的營運或策略問題，給出具體可執行的方向建議。適合還不確定自己需要什麼的創辦人。</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--ink);line-height:1.8;">梳理你目前的營運或策略問題，給出具體可執行的方向建議。</div>
       </div>
       <div style="background: var(--bg-section); padding: 32px 28px; position:relative;">
         <div style="position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:var(--paper);padding:3px 8px;">Most Common</div>
         <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Project</div>
         <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:4px;">Bespoke Rate</div>
         <div style="font-size:10px;color:var(--faded);letter-spacing:0.08em;margin-bottom:20px;">固定範圍專案委託</div>
-        <div style="font-size:12px;color:var(--ink);line-height:1.8;">例如：建立 Onboarding 系統、設計英文提案、導入 AI 工作流。範圍明確、交付具體，完成即結案。</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--ink);line-height:1.8;">範圍明確、交付具體，完成即結案。</div>
       </div>
       <div style="background: var(--paper); padding: 32px 28px;">
         <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Retainer</div>
         <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:4px;">Bespoke Rate</div>
         <div style="font-size:10px;color:var(--faded);letter-spacing:0.08em;margin-bottom:20px;">月度顧問 · 固定時數</div>
-        <div style="font-size:12px;color:var(--ink);line-height:1.8;">持續性的營運或策略支援，適合需要長期夥伴而非一次性顧問的早期團隊。</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--ink);line-height:1.8;">持續性的營運或策略支援，適合需要長期夥伴的早期團隊。</div>
       </div>
     </div>
-    <div style="margin-top:16px;font-size:11px;color:var(--faded);line-height:1.8;">
+    <div style="margin-top:16px;font-family:'Noto Serif TC',serif;font-size:11px;color:var(--faded);line-height:1.8;">
       目前提供早期合作優惠價，名額有限。歡迎先聊聊你的情況，我會根據實際需求給出報價——不需要準備好所有問題才能聯絡我。
     </div>
   </div>
 </section>
 
-<!-- WRITING -->
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div>
+    <div class="section-eyebrow">About — 關於我</div>
+    <h2 class="section-title">跨語言、跨文化、<em style="font-family:'Cormorant Garamond',serif;font-style:italic">跨產業的操盤者</em></h2>
+    <p class="about-text">我的背景很雜——<strong>七年教學經驗</strong>、英語教育、健身訓練、跨國工作，然後進入行銷策略與 Fintech 營運領域。這些經歷讓我習慣站在使用者的角度想事情，而不只是從品牌端出發。</p>
+    <p class="about-text">在台灣品牌企劃組的工作讓我獨立建立從 <strong>分析 → 策略 → SOP</strong> 的完整流程。在英國 NeroPay 的工作讓我在沒有系統的環境下，從零建立可運作的公司骨架。</p>
+    <p class="about-text">目前正在籌備自己的<strong>策略顧問服務</strong>，專注協助台灣早期品牌進入英語市場。預計 2026 年正式啟動。</p>
+    <div class="lang-tags" style="margin-top:32px;">
+      <span class="lang-tag">繁體中文</span>
+      <span class="lang-tag">English</span>
+      <span class="lang-tag">日本語</span>
+    </div>
+  </div>
+  <div>
+    <div class="exp-item fade-in">
+      <p class="exp-role">Operations & AI Workflow</p>
+      <p class="exp-where">NeroPay · 英國 Fintech 新創</p>
+      <p class="exp-desc">負責商戶開發、詐欺案件管理、AI 流程優化、行銷活動、HR 系統建立、合規文件，以及針對中東餐飲商戶的業務開發。從零建立公司各項運作系統。</p>
+    </div>
+    <div class="exp-item fade-in" style="transition-delay:0.1s">
+      <p class="exp-role">品牌企劃組 專案經理 / 企劃</p>
+      <p class="exp-where">台灣行銷公司（代理 NESS, WUWOW, Apollo, Fully 等品牌）</p>
+      <p class="exp-desc">負責多品牌策略規劃與品牌導入企劃，設計可執行的 B2B 開發系統、社群內容架構與 KOC 計畫。</p>
+    </div>
+    <div class="exp-item fade-in" style="transition-delay:0.2s">
+      <p class="exp-role">英語教師 / 跨文化教育</p>
+      <p class="exp-where">多國工作 · 7 年教學經驗</p>
+      <p class="exp-desc">建立跨文化溝通能力，教學背景使我習慣把複雜概念拆解成可消化的形式傳達給不同受眾。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── WRITING ── -->
 <section id="writing" style="background: var(--bg-section);">
   <div class="section-eyebrow">Writing — 思維觀察</div>
   <h2 class="section-title">我怎麼<em style="font-family:'Cormorant Garamond',serif;font-style:italic">看世界</em></h2>
@@ -1076,17 +1832,16 @@
       </div>
     </div>
   </div>
-
   <div style="margin-top: 24px; font-size: 12px; color: var(--faded); font-family: 'Noto Serif TC', serif; line-height: 1.8;">
-    文章陸續發布於 Medium。<a href="writing.html" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">查看所有文章主題 →</a>
+    文章陸續發布於 Medium。
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ── CONTACT ── -->
 <div class="contact-section" id="contact">
   <div>
     <div class="section-eyebrow">Contact — 聯絡</div>
-    <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,48px);font-weight:300;line-height:1.1;margin-bottom:16px;color:var(--paper);">如果你在找的是<br><em style="font-style:italic;color:var(--warm-mid)">一個能解決混亂的人</em></h2>
+    <h2 class="section-title">如果你在找的是<br><em style="font-style:italic;color:var(--warm-mid)">一個能解決混亂的人</em></h2>
     <p class="section-desc">我目前接受有限度的顧問合作與長期夥伴關係。如果你是早期新創創辦人、需要跨境支援的品牌，或對合作有任何想法，請告訴我你的情況。</p>
     <div class="contact-info">
       <div>
@@ -1100,6 +1855,14 @@
       <div>
         <div class="contact-item-label">合作形式</div>
         <div class="contact-item-val">顧問委託 · 專案合作 · 長期夥伴</div>
+      </div>
+      <div>
+        <div class="contact-item-label">Connect</div>
+        <div class="contact-links">
+          <a href="mailto:ivy@example.com" class="contact-link">Email</a>
+          <a href="#" class="contact-link">LinkedIn</a>
+          <a href="#" class="contact-link">Download CV</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1116,7 +1879,7 @@
           <option value="草創期營運診斷" style="background:#1a1814;">草創期營運診斷</option>
           <option value="英語市場商務支援" style="background:#1a1814;">英語市場商務支援</option>
           <option value="AI工作流導入" style="background:#1a1814;">AI 工作流導入</option>
-          <option value="內容與文章撰寫" style="background:#1a1814;">內容與文章撰寫</option>
+          <option value="品牌策略與B2B開發設計" style="background:#1a1814;">品牌策略與 B2B 開發設計</option>
           <option value="產業研究與市場報告" style="background:#1a1814;">產業研究與市場報告</option>
           <option value="商業流程建立與SOP設計" style="background:#1a1814;">商業流程建立與 SOP 設計</option>
           <option value="其他合作" style="background:#1a1814;">其他合作</option>
@@ -1135,13 +1898,39 @@
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ── -->
 <footer>
-  <span>Ivy · Strategic Operations Portfolio</span>
+  <span>Ivy Liu · Strategic Operations & Brand Portfolio</span>
   <span>Traditional Chinese · English · Japanese</span>
   <span>© 2026 · Built with intention</span>
 </footer>
 
+<script>
+  // Scroll fade-in
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // Brand strategy expandable
+  function toggleBrand(id) {
+    const detail = document.getElementById('brand-detail-' + id);
+    const isOpen = detail.classList.contains('open');
+
+    // Close all brand details
+    document.querySelectorAll('.brand-detail').forEach(d => d.classList.remove('open'));
+
+    if (!isOpen) {
+      detail.classList.add('open');
+      setTimeout(() => {
+        detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+  }
+</script>
 
 </body>
 </html>
