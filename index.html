@@ -316,6 +316,54 @@
     margin-bottom: 56px;
   }
 
+  /* ── CASE EXPAND HINT ── */
+  .case-expand-hint {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--warm-mid);
+    margin-top: 16px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .case-card:hover .case-expand-hint { opacity: 1; }
+
+  /* ── NERO DETAIL PANELS ── */
+  .nero-detail {
+    display: none;
+    grid-column: 1 / -1;
+    background: var(--pale);
+    padding: 72px 64px;
+    position: relative;
+    animation: slideDown 0.45s ease;
+    border-top: 2px solid var(--warm-mid);
+  }
+
+  .nero-detail.open { display: block; }
+
+  .nero-detail-full { }
+
+  .nero-detail-close {
+    position: absolute;
+    top: 28px; right: 44px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--faded);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    background: none;
+    border: none;
+  }
+
+  .nero-detail-close:hover { color: var(--accent); }
+
+  .nero-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 64px;
+  }
+
   /* ── NeroPay CASE STUDIES ── */
   .case-grid {
     display: grid;
@@ -1050,6 +1098,8 @@
     .hero-right { padding: 40px 32px; }
     .case-grid, .skills-wall, .services-grid, .approach-grid { grid-template-columns: 1fr; }
     .case-card.full-width { grid-column: auto; }
+    .nero-detail { padding: 48px 24px; }
+    .nero-detail-grid { grid-template-columns: 1fr; gap: 40px; }
     .brand-cases-grid { grid-template-columns: 1fr; }
     .brand-detail { padding: 48px 24px; }
     .brand-detail-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1158,149 +1208,448 @@
   <p class="section-desc">每一個案例都代表一種混亂狀態——沒有 SOP、沒有先例、沒有律師、沒有系統。我進去，然後建立秩序。</p>
 
   <div class="case-grid">
-    <div class="case-card fade-in">
+
+    <!-- Case A -->
+    <div class="case-card fade-in" onclick="toggleCase('a')">
       <div class="case-num">案例 A / Case A</div>
       <div class="case-title">三起跨境詐騙危機<br>處置與風控機制建立</div>
       <div class="case-meta">英國 · Fintech · 無律師獨立作業 · 全程英文</div>
       <div class="case-body">公司遭遇三起跨境商業詐騙，無法律顧問、無先例可循。我獨立建立完整證據鏈、撰寫英國法院格式 Witness Statement、對接英國警政機關，並在事後設計系統性安全檢核程序，防止同類事件再發生。</div>
-      <div class="case-detail-block">
-        <div class="case-detail-row">
-          <div class="case-detail-label">危機處置</div>
-          <div class="case-detail-val">梳理往來紀錄 → 建立時間軸證據鏈 → 撰寫 Witness Statement → 對接警察局 → 追蹤強制執行</div>
+      <div class="case-expand-hint">點擊展開詳細內容 ↓</div>
+    </div>
+    <div class="nero-detail" id="nero-detail-a">
+      <button class="nero-detail-close" onclick="toggleCase('a')">✕ 關閉</button>
+      <div class="nero-detail-grid">
+        <div>
+          <span class="detail-label">案例 A — 跨境詐騙危機處置</span>
+          <h3 class="detail-heading">無律師、無先例，<br>獨立建立完整法律操作鏈</h3>
+          <p class="detail-body">三起性質不同的跨境商業詐騙，每一起都需要從零梳理——沒有法律顧問可以問，沒有內部前例可以參考。我在高壓環境下獨立完成從蒐證到對接執法機關的完整流程。</p>
+          <div class="detail-steps">
+            <div class="d-step">
+              <span class="d-step-n">01</span>
+              <div class="d-step-body">
+                <strong>證據鏈建立</strong>
+                <p>系統性梳理所有往來紀錄（email、合約、付款憑證），建立時間軸，確保每一個關鍵節點都有對應文件支撐。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">02</span>
+              <div class="d-step-body">
+                <strong>Witness Statement 撰寫</strong>
+                <p>按照英國法院格式撰寫正式 Witness Statement，語言精準、邏輯嚴謹，無需律師代勞。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">03</span>
+              <div class="d-step-body">
+                <strong>警政機關對接與追蹤</strong>
+                <p>直接對接英國警察局與相關執法單位，持續追蹤強制執行進度，確保案件不被擱置。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">04</span>
+              <div class="d-step-body">
+                <strong>事後風控系統設計</strong>
+                <p>將危機轉化為制度：設計供應商安全檢核 SOP、付款授權流程、紅旗識別清單，防止同類事件再發生。</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="case-detail-row">
-          <div class="case-detail-label">制度建立</div>
-          <div class="case-detail-val">供應商安全檢核 SOP、付款授權流程、紅旗識別清單——將危機轉化為可複製的風控系統</div>
+        <div class="detail-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-title">核心能力展示</p>
+            <ul class="sidebar-list">
+              <li>法律文件寫作（英國格式）</li>
+              <li>跨文化執法機關溝通</li>
+              <li>高壓下的邏輯建構能力</li>
+              <li>危機後制度化設計</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-title">建立的風控制度</p>
+            <ul class="sidebar-list">
+              <li>供應商安全檢核 SOP</li>
+              <li>付款授權流程（雙重確認）</li>
+              <li>紅旗識別清單</li>
+              <li>異常行為通報機制</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-insight">"危機的價值不在事件本身，而在事後能否轉化為讓公司更安全的系統。"</p>
+          </div>
         </div>
-        <span class="case-outcome">風險控管 · 法律營運 · 制度建立</span>
       </div>
+      <span class="case-outcome">風險控管 · 法律營運 · 制度建立</span>
     </div>
 
-    <div class="case-card fade-in" style="transition-delay:0.08s">
+    <!-- Case B -->
+    <div class="case-card fade-in" style="transition-delay:0.08s" onclick="toggleCase('b')">
       <div class="case-num">案例 B / Case B</div>
       <div class="case-title">AI 驅動的菜單資料<br>自動化清洗流程</div>
-      <div class="case-meta">英國 · Fintech · Claude + ChatGPT/Gemini · 效率提升 ×3</div>
+      <div class="case-meta">英國 · Fintech · Claude + ChatGPT/Gemini/Perplexity/Canva · 效率提升 ×3</div>
       <div class="case-body">客戶提供的點餐菜單格式混亂——中英混排、格式不一、欄位缺漏。我以 AI 為工具，設計結構化的提示流程，建立半自動化匯入系統，處理時間大幅縮短。</div>
-      <div class="case-detail-block">
-        <div class="case-detail-row">
-          <div class="case-detail-label">解法</div>
-          <div class="case-detail-val">設計 AI Prompt 模板 → 建立資料清洗 SOP → 輸出標準化格式 → 半自動匯入流程</div>
+      <div class="case-expand-hint">點擊展開詳細內容 ↓</div>
+    </div>
+    <div class="nero-detail" id="nero-detail-b">
+      <button class="nero-detail-close" onclick="toggleCase('b')">✕ 關閉</button>
+      <div class="nero-detail-grid">
+        <div>
+          <span class="detail-label">案例 B — AI 工作流設計</span>
+          <h3 class="detail-heading">讓 AI 真正成為<br>生產力工具，而不是玩具</h3>
+          <p class="detail-body">原始菜單資料雜亂、無法直接匯入系統，手動整理一份需要耗費大量時間且容易出錯。問題的核心不是「AI 能不能做」，而是「怎麼設計流程讓 AI 穩定輸出可用格式」。</p>
+          <div class="detail-steps">
+            <div class="d-step">
+              <span class="d-step-n">01</span>
+              <div class="d-step-body">
+                <strong>問題拆解</strong>
+                <p>分析原始菜單的所有混亂類型：語言混排、格式不一致、欄位缺漏、特殊字元、價格格式差異——逐一定義處理規則。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">02</span>
+              <div class="d-step-body">
+                <strong>AI Prompt 模板設計</strong>
+                <p>設計結構化 Prompt，明確定義輸入格式、輸出格式、例外處理規則，確保 AI 每次輸出都符合系統匯入要求。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">03</span>
+              <div class="d-step-body">
+                <strong>半自動化 SOP 建立</strong>
+                <p>將 AI 流程包裝成任何人都能操作的 SOP：貼入原始資料 → AI 清洗輸出 → 人工確認 → 匯入系統，全程只需最少人力介入。</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="case-detail-row">
-          <div class="case-detail-label">成果</div>
-          <div class="case-detail-val">人力從全手動降至人工確認，可複製應用於所有同類客戶</div>
+        <div class="detail-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-title">使用工具</p>
+            <ul class="sidebar-list">
+              <li>Claude — 主要資料清洗引擎</li>
+              <li>ChatGPT / Gemini — 交叉驗證</li>
+              <li>Perplexity — 菜品資訊補全</li>
+              <li>Canva — 輸出視覺化格式</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-title">成果</p>
+            <ul class="sidebar-list">
+              <li>處理時間縮短約 ×3</li>
+              <li>人力從全手動降至人工確認</li>
+              <li>錯誤率大幅降低</li>
+              <li>可複製應用於所有同類客戶</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-insight">"AI 不是魔法，是工程問題——關鍵在於設計讓它穩定輸出的流程。"</p>
+          </div>
         </div>
-        <span class="case-outcome">AI 工作流 · 流程優化</span>
       </div>
+      <span class="case-outcome">AI 工作流 · 流程優化 · 可複製系統</span>
     </div>
 
-    <div class="case-card full-width fade-in" style="transition-delay:0.16s">
+    <!-- Case C (full width) -->
+    <div class="case-card full-width fade-in" style="transition-delay:0.08s" onclick="toggleCase('c')">
       <div class="case-num">案例 C / Case C</div>
       <div class="case-title">從零建立招聘、薪資與新人培訓系統</div>
       <div class="case-meta">英國 · Fintech · 無現成系統 · 全流程獨立設計</div>
       <div class="case-body">公司進入快速擴張期，但完全沒有 HR 系統。我從職位描述撰寫、履歷篩選、面試框架、到 Offer Letter 格式與薪資管理，全部從零自建——同時設計新人 Onboarding 流程與內部培訓架構，兼顧英國勞動法規合規要求。</div>
-      <div class="case-detail-block" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div class="case-expand-hint">點擊展開詳細內容 ↓</div>
+    </div>
+    <div class="nero-detail nero-detail-full" id="nero-detail-c">
+      <button class="nero-detail-close" onclick="toggleCase('c')">✕ 關閉</button>
+      <div class="nero-detail-grid" style="grid-template-columns: 1fr 1fr 300px;">
         <div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">招聘</div>
-            <div class="case-detail-val">撰寫多語言 JD → 建立篩選標準 → 設計面試問題框架 → 管理 Offer 流程</div>
-          </div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">薪資</div>
-            <div class="case-detail-val">自建薪資追蹤表格、計算英國稅務與 NI 貢獻、對接銀行轉帳</div>
+          <span class="detail-label">招聘系統</span>
+          <h3 class="detail-heading" style="font-size:24px;">從 JD 到 Offer，<br>全流程自建</h3>
+          <div class="detail-steps">
+            <div class="d-step">
+              <span class="d-step-n">→</span>
+              <div class="d-step-body">
+                <strong>多語言 JD 撰寫</strong>
+                <p>針對不同職位撰寫英文 JD，確保吸引對的候選人。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">→</span>
+              <div class="d-step-body">
+                <strong>篩選標準與面試框架</strong>
+                <p>建立履歷篩選評分標準，設計結構化面試問題，確保評估一致性。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">→</span>
+              <div class="d-step-body">
+                <strong>Offer 流程管理</strong>
+                <p>設計 Offer Letter 格式，管理談判流程，確保法規合規。</p>
+              </div>
+            </div>
           </div>
         </div>
         <div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">新人培訓</div>
-            <div class="case-detail-val">設計 Onboarding SOP、建立系統操作指南、讓新人第一週就能獨立運作</div>
+          <span class="detail-label">薪資與合規</span>
+          <h3 class="detail-heading" style="font-size:24px;">英國稅務 · 勞動法規<br>全部自理</h3>
+          <div class="detail-steps">
+            <div class="d-step">
+              <span class="d-step-n">→</span>
+              <div class="d-step-body">
+                <strong>薪資追蹤系統</strong>
+                <p>自建薪資計算表格，涵蓋英國稅務、National Insurance 貢獻、假別扣除。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">→</span>
+              <div class="d-step-body">
+                <strong>新人 Onboarding SOP</strong>
+                <p>設計讓新人第一週就能獨立運作的完整 Onboarding 流程，包含系統操作指南與「問題找誰」架構。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">→</span>
+              <div class="d-step-body">
+                <strong>多國廠商 NDA 審閱</strong>
+                <p>法律事務所溝通協調、App Store 上架文件整理。</p>
+              </div>
+            </div>
           </div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">合規</div>
-            <div class="case-detail-val">多國廠商 NDA 審閱、法律事務所溝通協調、App Store 上架文件整理</div>
+        </div>
+        <div class="detail-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-title">從零建立的系統</p>
+            <ul class="sidebar-list">
+              <li>招聘流程 SOP</li>
+              <li>薪資計算追蹤表</li>
+              <li>Onboarding 手冊</li>
+              <li>內部培訓架構</li>
+              <li>合規文件庫</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-insight">"10 人以下的公司，HR 系統從零建立的成本最低，但被忽略的代價最高。"</p>
           </div>
         </div>
       </div>
       <span class="case-outcome">組織設計 · 人才培育 · 合規 · 全端營運</span>
     </div>
 
-    <div class="case-card fade-in" style="transition-delay:0.08s">
+    <!-- Case D -->
+    <div class="case-card fade-in" onclick="toggleCase('d')">
       <div class="case-num">案例 D / Case D</div>
       <div class="case-title">高價值客戶全英文<br>商業提案設計</div>
       <div class="case-meta">英國 · Fintech · 全英文 · 客製化提案</div>
       <div class="case-body">針對潛在高價值商業客戶，從零設計全英文客製化銷售提案——包含競爭者分析、客製化定價方案、ROI 試算與視覺呈現。</div>
-      <div class="case-detail-block">
-        <div class="case-detail-row">
-          <div class="case-detail-label">策略</div>
-          <div class="case-detail-val">研究客戶痛點 → 客製化定價邏輯 → 競爭者對比 → 全英文視覺化提案</div>
+      <div class="case-expand-hint">點擊展開詳細內容 ↓</div>
+    </div>
+    <div class="nero-detail" id="nero-detail-d">
+      <button class="nero-detail-close" onclick="toggleCase('d')">✕ 關閉</button>
+      <div class="nero-detail-grid">
+        <div>
+          <span class="detail-label">案例 D — 全英文商業提案</span>
+          <h3 class="detail-heading">讓對方在第一次接觸<br>就感受到針對性與專業度</h3>
+          <p class="detail-body">高價值客戶的銷售提案不能是通用模板——每一份都需要展示你真的研究過對方的處境、痛點與需求。我獨立完成從研究到輸出的全流程，無需外部設計師或文案團隊。</p>
+          <div class="detail-steps">
+            <div class="d-step">
+              <span class="d-step-n">01</span>
+              <div class="d-step-body">
+                <strong>客戶現況研究</strong>
+                <p>分析目標客戶的業務規模、現有痛點、競爭環境，確保提案從對方的角度出發。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">02</span>
+              <div class="d-step-body">
+                <strong>客製化定價邏輯設計</strong>
+                <p>根據客戶規模與需求設計差異化定價方案，搭配 ROI 試算，讓數字說話。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">03</span>
+              <div class="d-step-body">
+                <strong>競爭者對比分析</strong>
+                <p>整理市場競品資料，以對方熟悉的語境呈現我們的差異化優勢。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">04</span>
+              <div class="d-step-body">
+                <strong>全英文視覺化提案輸出</strong>
+                <p>獨立完成文案撰寫、版面設計，交付可直接使用的完整提案文件。</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="case-detail-row">
-          <div class="case-detail-label">執行</div>
-          <div class="case-detail-val">獨立完成文案、數據整理、版面設計，無需外部設計師或文案團隊</div>
+        <div class="detail-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-title">提案涵蓋要素</p>
+            <ul class="sidebar-list">
+              <li>客戶現況與痛點分析</li>
+              <li>客製化解決方案說明</li>
+              <li>競爭者對比表格</li>
+              <li>分層定價方案</li>
+              <li>ROI 試算模型</li>
+              <li>Next Steps 行動建議</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-insight">"銷售提案的本質是：在對方還沒開口問之前，就已經回答了他最在意的問題。"</p>
+          </div>
         </div>
-        <span class="case-outcome">商業策略 · 英文提案 · 客戶開發</span>
       </div>
+      <span class="case-outcome">商業策略 · 英文提案 · 客戶開發</span>
     </div>
 
-    <div class="case-card fade-in" style="transition-delay:0.16s">
+    <!-- Case E -->
+    <div class="case-card fade-in" style="transition-delay:0.08s" onclick="toggleCase('e')">
       <div class="case-num">案例 E / Case E</div>
       <div class="case-title">行銷一條龍——從策略<br>到廣告投放與內容產出</div>
       <div class="case-meta">英國 · Fintech · Meta · Google · 實體廣告 · AI 產圖</div>
-      <div class="case-body">為商家提供完整行銷支援：從市場定位、廣告受眾設定、到社群內容產出與實體廣告設計。以 Higgsfield AI 產圖取代傳統小編，大幅降低內容製作成本。</div>
-      <div class="case-detail-block">
-        <div class="case-detail-row">
-          <div class="case-detail-label">廣告投放</div>
-          <div class="case-detail-val">Meta / Google 數位廣告實操、受眾分析與優化、實體廣告設計與執行</div>
+      <div class="case-body">為商家提供完整行銷支援：從市場定位、廣告受眾設定、到社群內容產出與實體廣告設計。以 Higgsfield AI 產圖取代傳統小編，大幅降低內容製作成本，同時維持品牌質感。</div>
+      <div class="case-expand-hint">點擊展開詳細內容 ↓</div>
+    </div>
+    <div class="nero-detail" id="nero-detail-e">
+      <button class="nero-detail-close" onclick="toggleCase('e')">✕ 關閉</button>
+      <div class="nero-detail-grid">
+        <div>
+          <span class="detail-label">案例 E — 行銷策略與執行</span>
+          <h3 class="detail-heading">一個人做完<br>整個行銷部門的工作</h3>
+          <p class="detail-body">針對中東餐飲商家的行銷需求，從定位策略到內容產出到廣告投放，全部獨立執行。AI 工具的引入不只是降低成本，而是讓一個人能做出過去需要整個團隊才能完成的輸出量。</p>
+          <div class="detail-steps">
+            <div class="d-step">
+              <span class="d-step-n">策略</span>
+              <div class="d-step-body">
+                <strong>市場定位與受眾分析</strong>
+                <p>研究目標商家的客群特性、競爭環境，定義品牌調性與行銷優先順序。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">數位</span>
+              <div class="d-step-body">
+                <strong>Meta / Google 廣告投放</strong>
+                <p>從受眾設定、素材製作、到效果追蹤，全程實操，持續優化 CTR 與 ROAS。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">AI</span>
+              <div class="d-step-body">
+                <strong>Higgsfield 產圖取代攝影師</strong>
+                <p>用 AI 生成品牌視覺素材，大幅降低內容製作成本，同時建立可複製的視覺風格 SOP。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">實體</span>
+              <div class="d-step-body">
+                <strong>實體廣告設計與執行</strong>
+                <p>設計店面物料、傳單、活動看板，確保線上線下品牌視覺一致性。</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="case-detail-row">
-          <div class="case-detail-label">AI 內容</div>
-          <div class="case-detail-val">Higgsfield 產圖取代攝影師、Claude 半自動化文案生成、建立可複製內容 SOP</div>
+        <div class="detail-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-title">工具與平台</p>
+            <ul class="sidebar-list">
+              <li>Meta Ads Manager</li>
+              <li>Google Ads</li>
+              <li>Higgsfield AI（產圖）</li>
+              <li>Claude（文案生成）</li>
+              <li>Canva（視覺設計）</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-title">交付內容</p>
+            <ul class="sidebar-list">
+              <li>品牌定位策略文件</li>
+              <li>廣告素材與文案庫</li>
+              <li>可複製內容產出 SOP</li>
+              <li>實體廣告設計稿</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-insight">"AI 讓一個人的輸出量等於一個小團隊——關鍵是知道在哪裡用它。"</p>
+          </div>
         </div>
-        <span class="case-outcome">行銷策略 · 廣告投放 · AI 工具應用</span>
       </div>
+      <span class="case-outcome">行銷策略 · 廣告投放 · AI 工具應用</span>
     </div>
 
-    <div class="case-card full-width fade-in" style="transition-delay:0.08s">
+    <!-- Case F (full width) -->
+    <div class="case-card full-width fade-in" style="transition-delay:0.08s" onclick="toggleCase('f')">
       <div class="case-num">案例 F / Case F</div>
       <div class="case-title">為 FCA 監管環境設計<br>知識管理架構</div>
       <div class="case-meta">英國 · Fintech · Google Drive · 9 層架構 · 合規就緒</div>
       <div class="case-body">以 FCA 稽核邏輯為核心，設計一套可隨公司規模擴張的文件管理架構——讓任何人在任何時候都能找到正確版本的正確文件。</div>
-      <div class="case-detail-block" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div class="case-expand-hint">點擊展開詳細內容 ↓</div>
+    </div>
+    <div class="nero-detail nero-detail-full" id="nero-detail-f">
+      <button class="nero-detail-close" onclick="toggleCase('f')">✕ 關閉</button>
+      <div class="nero-detail-grid">
         <div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">設計原則</div>
-            <div class="case-detail-val">合規優先——Corporate & Legal、Compliance & Risk 獨立分層，確保監管文件不與日常操作文件混放</div>
+          <span class="detail-label">案例 F — 知識管理架構</span>
+          <h3 class="detail-heading">系統長歪了之後<br>難以修正——趁小時建好</h3>
+          <p class="detail-body">早期 fintech 最常見的隱性風險不是缺乏系統，而是系統長歪了之後難以修正。我以 FCA 稽核邏輯為核心，在公司還小的時候建立一套可擴張的文件架構。</p>
+          <div class="detail-steps">
+            <div class="d-step">
+              <span class="d-step-n">原則</span>
+              <div class="d-step-body">
+                <strong>合規優先，而非便利優先</strong>
+                <p>Corporate & Legal、Compliance & Risk 獨立分層，確保監管文件不與日常操作文件混放。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">架構</span>
+              <div class="d-step-body">
+                <strong>9 層主資料夾 + 命名規則</strong>
+                <p>ISO 8601 命名規則 + 版本控制機制，建立 single source of truth，消除「哪個才是最新版」的認知成本。</p>
+              </div>
+            </div>
+            <div class="d-step">
+              <span class="d-step-n">存取</span>
+              <div class="d-step-body">
+                <strong>Access Control 設計</strong>
+                <p>按文件敏感度設計存取層級——PII、銀行資料限制為 Viewer only；外部分享需 Compliance Officer 或 CEO 審批。</p>
+              </div>
+            </div>
           </div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">架構決策</div>
-            <div class="case-detail-val">9 層主資料夾 + ISO 8601 命名規則 + 版本控制，建立 single source of truth</div>
+          <div style="margin-top:28px;padding:20px 24px;background:var(--paper);border:1px solid var(--light-rule);font-family:'DM Mono',monospace;font-size:11px;line-height:2;color:var(--faded);">
+            <div style="color:var(--accent);letter-spacing:0.1em;font-size:10px;text-transform:uppercase;margin-bottom:10px;">Drive Architecture — 架構概覽</div>
+            <div><span style="color:var(--ink);">00</span>_Company_Standards &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← 全員基礎規範</span></div>
+            <div><span style="color:var(--ink);">01</span>_Corporate_&amp;_Legal &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Restricted · CEO Office</span></div>
+            <div><span style="color:var(--ink);">02</span>_Compliance_&amp;_Risk &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← AML · KYB · Transaction Monitoring</span></div>
+            <div><span style="color:var(--ink);">03</span>_Operations_&amp;_CS &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Internal SOP · External SOP</span></div>
+            <div><span style="color:var(--ink);">04</span>_Product_&amp;_Engineering &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Roadmap · Tech Docs</span></div>
+            <div><span style="color:var(--ink);">05</span>_Sales_&amp;_Marketing &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Assets · Campaigns · BD</span></div>
+            <div><span style="color:var(--ink);">06</span>_Finance_&amp;_HR &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Reports · Payroll · Contracts</span></div>
+            <div><span style="color:var(--ink);">07</span>_Project_Management &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Minutes · Current Projects</span></div>
+            <div><span style="color:var(--ink);">08</span>_Archive &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Superseded versions</span></div>
           </div>
         </div>
-        <div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">Access Control</div>
-            <div class="case-detail-val">按文件敏感度設計存取層級——PII、銀行資料限制為 Viewer only；外部分享需 CEO 審批</div>
+        <div class="detail-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-title">設計考量</p>
+            <ul class="sidebar-list">
+              <li>FCA 稽核邏輯優先</li>
+              <li>可隨公司規模擴張</li>
+              <li>任何人都能找到文件</li>
+              <li>消除版本混亂問題</li>
+            </ul>
           </div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">延伸建設</div>
-            <div class="case-detail-val">同步建立 Company Standards 文件（遠端規範、溝通準則、行為守則）作為新員工單一入口</div>
+          <div class="sidebar-block">
+            <p class="sidebar-title">延伸建設</p>
+            <ul class="sidebar-list">
+              <li>Company Standards 文件</li>
+              <li>遠端工作規範</li>
+              <li>溝通準則 & 行為守則</li>
+              <li>新員工單一入口指南</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-insight">"好的文件架構，是讓公司在你不在的時候也能找到正確答案。"</p>
           </div>
         </div>
-      </div>
-      <div style="margin-top:24px;padding:20px 24px;background:var(--bg-section);border:1px solid var(--light-rule);font-family:'DM Mono',monospace;font-size:11px;line-height:2;color:var(--faded);">
-        <div style="color:var(--accent);letter-spacing:0.1em;font-size:10px;text-transform:uppercase;margin-bottom:10px;">Drive Architecture — 架構概覽</div>
-        <div><span style="color:var(--ink);">00</span>_Company_Standards &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← 全員基礎規範</span></div>
-        <div><span style="color:var(--ink);">01</span>_Corporate_&amp;_Legal &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Restricted · CEO Office</span></div>
-        <div><span style="color:var(--ink);">02</span>_Compliance_&amp;_Risk &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← AML · KYB · Transaction Monitoring</span></div>
-        <div><span style="color:var(--ink);">03</span>_Operations_&amp;_CS &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Internal SOP · External SOP</span></div>
-        <div><span style="color:var(--ink);">04</span>_Product_&amp;_Engineering &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Roadmap · Tech Docs</span></div>
-        <div><span style="color:var(--ink);">05</span>_Sales_&amp;_Marketing &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Assets · Campaigns · BD</span></div>
-        <div><span style="color:var(--ink);">06</span>_Finance_&amp;_HR &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Reports · Payroll · Contracts</span></div>
-        <div><span style="color:var(--ink);">07</span>_Project_Management &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Minutes · Current Projects</span></div>
-        <div><span style="color:var(--ink);">08</span>_Archive &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Superseded versions</span></div>
       </div>
       <span class="case-outcome">系統建構 · 知識管理 · 合規設計</span>
     </div>
+
   </div>
 </section>
 
@@ -1859,9 +2208,9 @@
       <div>
         <div class="contact-item-label">Connect</div>
         <div class="contact-links">
-          <a href="mailto:ivy@example.com" class="contact-link">Email</a>
-          <a href="#" class="contact-link">LinkedIn</a>
-          <a href="#" class="contact-link">Download CV</a>
+          <a href="mailto:liushihyu1@gmail.com" class="contact-link">Email</a>
+          <a href="https://www.linkedin.com/in/shihyu-liu/" target="_blank" class="contact-link">LinkedIn</a>
+          <a href="https://drive.google.com/file/d/1hkiOyCb9_Jwao18kWvy7ksZ530fnE2Ka/view?usp=drive_link" target="_blank" class="contact-link">Download CV</a>
         </div>
       </div>
     </div>
@@ -1905,7 +2254,7 @@
   <span>© 2026 · Built with intention</span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Scroll fade-in
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1914,6 +2263,19 @@
   }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // NeroPay Case A–F toggle
+  function toggleCase(id) {
+    const detail = document.getElementById('nero-detail-' + id);
+    const isOpen = detail.classList.contains('open');
+    document.querySelectorAll('.nero-detail').forEach(d => d.classList.remove('open'));
+    if (!isOpen) {
+      detail.classList.add('open');
+      setTimeout(() => {
+        detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+  }
 
   // Brand strategy expandable
   function toggleBrand(id) {
@@ -1925,12 +2287,4 @@
 
     if (!isOpen) {
       detail.classList.add('open');
-      setTimeout(() => {
-        detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
-    }
-  }
-</script>
-
-</body>
-</html>
+ 
