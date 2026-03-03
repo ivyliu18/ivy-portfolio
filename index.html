@@ -2254,7 +2254,7 @@
   <span>© 2026 · Built with intention</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Scroll fade-in
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -2281,10 +2281,15 @@
   function toggleBrand(id) {
     const detail = document.getElementById('brand-detail-' + id);
     const isOpen = detail.classList.contains('open');
-
-    // Close all brand details
     document.querySelectorAll('.brand-detail').forEach(d => d.classList.remove('open'));
-
     if (!isOpen) {
       detail.classList.add('open');
- 
+      setTimeout(() => {
+        detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+  }
+</script>
+
+</body>
+</html>
