@@ -1,124 +1,150 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case E — 行銷一條龍 | Ivy</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Case E — End-to-End Marketing | Ivy Liu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#1a1814;--paper:#f5f2ec;--warm-mid:#c4a882;--accent:#8b3a2a;--light-rule:#e0dbd0;--faded:#9c9488;--bg-section:#eee9e0;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;font-size:13px;line-height:1.8;}
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--light-rule);}
-  .nav-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--ink);}
-  .nav-back{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
-  .nav-back:hover{color:var(--ink);}
-  .case-hero{padding:140px 72px 80px;border-bottom:1px solid var(--light-rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
-  .case-eyebrow{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
-  .case-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,56px);font-weight:300;line-height:1.1;margin-bottom:24px;}
-  .case-title em{font-style:italic;color:var(--accent);}
-  .case-meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
-  .case-tag{font-size:10px;letter-spacing:0.1em;padding:5px 12px;background:var(--bg-section);border:1px solid var(--light-rule);color:var(--ink);}
-  .case-summary{font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;border-left:2px solid var(--warm-mid);padding-left:20px;}
-  .case-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--light-rule);border:1px solid var(--light-rule);align-self:start;margin-top:48px;}
-  .stat-item{background:var(--paper);padding:28px 24px;}
-  .stat-number{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1;color:var(--ink);margin-bottom:6px;}
-  .stat-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);}
-  .case-body{padding:72px;max-width:900px;}
-  .section-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;}
-  .section-block{margin-bottom:56px;}
-  .section-block h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:16px;}
-  .section-block p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:16px;}
-  .process-steps{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
-  .process-step{display:grid;grid-template-columns:48px 1fr;gap:24px;background:var(--bg-section);padding:24px;border:1px solid var(--light-rule);}
-  .step-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--accent);line-height:1;}
-  .step-content h4{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;color:var(--ink);}
-  .step-content p{font-family:'Noto Serif TC',serif;font-size:13px;line-height:1.8;color:var(--faded);margin:0;}
-  .outcome-box{background:var(--ink);color:var(--paper);padding:40px;margin-top:56px;}
-  .outcome-box .section-label{color:var(--warm-mid);}
-  .outcome-box h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:16px;color:var(--paper);}
-  .outcome-box p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:rgba(245,242,236,0.7);}
-  .rationale-box{border:1px solid var(--light-rule);padding:40px;margin-top:40px;}
-  .rationale-box p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;}
-  .back-cta{padding:72px;border-top:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center;}
-  .back-cta a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
-  .back-cta a:hover{color:var(--ink);}
-  .next-case{text-align:right;}
-  .next-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--faded);margin-bottom:4px;}
-  .next-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--ink);}
-  @media(max-width:900px){.case-hero{grid-template-columns:1fr;padding:120px 32px 56px;gap:40px;}.case-body{padding:48px 32px;}.back-cta{padding:48px 32px;flex-direction:column;gap:24px;text-align:center;}nav{padding:16px 24px;}}
+:root{--black:#0a0a0a;--white:#f8f6f1;--cream:#ede9e1;--mid:#8a8278;--rule:#252320;--accent:#c8a96e;--bg2:#0d0c0a;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--black);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.7;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:20px 56px;border-bottom:1px solid var(--rule);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);}
+.nav-brand{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
+.nav-back{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+.nav-back:hover{color:var(--white);}
+.hero{padding:140px 72px 80px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.eye::before{content:'';width:24px;height:1px;background:var(--accent);}
+h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,56px);font-weight:700;line-height:1.05;margin-bottom:24px;letter-spacing:-0.01em;}
+h1 em{font-style:italic;color:var(--accent);}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+.tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--rule);color:var(--mid);}
+.summary{font-size:15px;line-height:1.9;color:rgba(248,246,241,0.65);border-left:2px solid var(--accent);padding-left:20px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.s-item{background:var(--black);padding:28px 24px;}
+.s-n{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1;margin-bottom:6px;}
+.s-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);}
+.body{padding:72px;max-width:960px;}
+.sec-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+.sec-eye::before{content:'';width:24px;height:1px;background:var(--accent);}
+.sec-block{margin-bottom:64px;}
+.sec-block h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
+.sec-block p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:16px;}
+.steps{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
+.step{display:grid;grid-template-columns:48px 1fr;gap:24px;background:var(--bg2);padding:24px;border:1px solid var(--rule);}
+.s-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);line-height:1;}
+.s-content h4{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;color:var(--white);}
+.s-content p{font-size:13px;line-height:1.85;color:var(--mid);margin:0;}
+.ai-stack{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:24px;}
+.ai-card{background:var(--black);padding:28px 24px;}
+.ai-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:6px;}
+.ai-role{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.ai-desc{font-size:12px;color:var(--mid);line-height:1.8;}
+.channel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:24px;}
+.ch{background:var(--bg2);padding:24px;}
+.ch-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.ch-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:8px;}
+.ch-desc{font-size:12px;color:var(--mid);line-height:1.8;}
+.outcome{background:var(--cream);color:var(--black);padding:44px;margin-top:64px;}
+.outcome h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
+.outcome p{font-size:14px;line-height:2;color:rgba(10,10,10,0.65);}
+.rationale{border:1px solid var(--rule);padding:44px;margin-top:40px;}
+.rationale h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:14px;}
+.rationale p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:14px;}
+.pull{border-left:3px solid var(--accent);padding:16px 24px;background:var(--bg2);margin:20px 0;}
+.pull p{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--white);margin:0;}
+.foot-nav{padding:72px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+.foot-nav a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+.foot-nav a:hover{color:var(--white);}
+.next-block{text-align:right;}
+.next-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-bottom:4px;}
+.next-t{font-family:'Playfair Display',serif;font-size:18px;color:var(--white);text-decoration:none;}
+@media(max-width:900px){nav{padding:16px 24px;}.hero{grid-template-columns:1fr;padding:120px 24px 56px;gap:40px;}.body{padding:48px 24px;}.ai-stack,.channel-grid{grid-template-columns:1fr;}.foot-nav{padding:48px 24px;flex-direction:column;gap:24px;text-align:center;}}
 </style>
 </head>
 <body>
 <nav>
-  <a class="nav-brand" href="index.html">Ivy · Strategic Operations</a>
-  <a class="nav-back" href="index.html#cases">← 返回所有案例</a>
+  <a class="nav-brand" href="index.html">Ivy Liu</a>
+  <a class="nav-back" href="index.html#cases">← All Cases</a>
 </nav>
-<div class="case-hero">
+<div class="hero">
   <div>
-    <div class="case-eyebrow">案例 E / Case E · 行銷策略 · 廣告投放 · AI 工具應用</div>
-    <h1 class="case-title">行銷一條龍——<br><em>從策略到廣告投放與內容產出</em></h1>
-    <div class="case-meta-row">
-      <span class="case-tag">英國 · Fintech</span>
-      <span class="case-tag">Meta · Google</span>
-      <span class="case-tag">實體廣告</span>
-      <span class="case-tag">Higgsfield AI 產圖</span>
+    <div class="eye">Case E · Marketing · Ad Ops · AI Tools</div>
+    <h1>End-to-End Marketing:<br><em>Strategy to Ads to Content</em></h1>
+    <div class="tags">
+      <span class="tag">UK · Fintech</span><span class="tag">Meta · Google</span><span class="tag">Print Ads</span><span class="tag">Higgsfield AI</span><span class="tag">0 External Designers</span>
     </div>
-    <p class="case-summary">為商家提供完整行銷支援：從市場定位、廣告受眾設定、到社群內容產出與實體廣告設計。以 AI 工具（Higgsfield 產圖）取代傳統小編，大幅降低內容製作成本，同時維持品牌質感。</p>
+    <p class="summary">One-person marketing department: market positioning, audience targeting, paid ad management, social content creation, and physical advertising — all run independently. Higgsfield AI replaced a photographer, Claude replaced a copywriter, without sacrificing brand quality.</p>
   </div>
   <div>
-    <div class="case-stats">
-      <div class="stat-item"><div class="stat-number">AI</div><div class="stat-label">Higgsfield + Claude</div></div>
-      <div class="stat-item"><div class="stat-number">0</div><div class="stat-label">External Designers Needed</div></div>
-      <div class="stat-item"><div class="stat-number">3+</div><div class="stat-label">Ad Channels Managed</div></div>
-      <div class="stat-item"><div class="stat-number">全端</div><div class="stat-label">Strategy to Execution</div></div>
+    <div class="stats">
+      <div class="s-item"><div class="s-n">AI</div><div class="s-l">Higgsfield + Claude</div></div>
+      <div class="s-item"><div class="s-n">0</div><div class="s-l">External Designers Needed</div></div>
+      <div class="s-item"><div class="s-n">3+</div><div class="s-l">Ad Channels Managed</div></div>
+      <div class="s-item"><div class="s-n">Full</div><div class="s-l">Strategy to Execution</div></div>
     </div>
   </div>
 </div>
-<div class="case-body">
-  <div class="section-block">
-    <div class="section-label">背景 / Background</div>
-    <h3>早期新創的行銷困境：想做，但沒資源</h3>
-    <p>大多數早期新創都面臨同樣的困境：知道需要行銷，但沒有預算雇用完整的行銷團隊——設計師、文案、投放專員，每個都是獨立的成本。結果往往是要不花大錢外包，要不就什麼都不做。</p>
-    <p>我的任務是用最精簡的資源，同時完成品牌定位、廣告投放、內容產出和實體行銷——而且輸出品質不能讓人覺得「這是小公司做的」。</p>
+<div class="body">
+  <div class="sec-block">
+    <div class="sec-eye">Background</div>
+    <h3>Early startup marketing reality: want everything, budget for nothing</h3>
+    <p>Most early startups face the same constraint: they know they need marketing, but don't have the budget for a full team — a separate designer, copywriter, and media buyer each represents a distinct cost. The result is usually either expensive outsourcing or no marketing at all.</p>
+    <p>My task: use the most efficient available resources to simultaneously handle brand positioning, digital ad placement, content production, and physical marketing — and do it at a quality level that doesn't signal "small company."</p>
   </div>
-  <div class="section-block">
-    <div class="section-label">執行流程 / Process</div>
-    <h3>用 AI 工具壓縮成本，不壓縮品質</h3>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="step-num">01</div>
-        <div class="step-content"><h4>市場定位與策略</h4><p>分析目標商家的受眾特性、消費行為與競爭環境，確定品牌溝通的核心訊息。</p></div>
+  <div class="sec-block">
+    <div class="sec-eye">Process</div>
+    <h3>Compress three roles into one pipeline</h3>
+    <div class="steps">
+      <div class="step"><div class="s-num">01</div><div class="s-content"><h4>Market Positioning & Strategy</h4><p>Analyse target merchant audience characteristics, consumption behaviour, and the competitive landscape. Define the core brand message and communication priority for each channel.</p></div></div>
+      <div class="step"><div class="s-num">02</div><div class="s-content"><h4>Digital Paid Ad Management</h4><p>Meta and Google ad audience targeting, A/B testing, ongoing performance analysis and optimisation. Build campaigns from brief to live, monitor and adjust based on real data.</p></div></div>
+      <div class="step"><div class="s-num">03</div><div class="s-content"><h4>AI-Powered Content Production</h4><p>Higgsfield for image generation replacing photographers and stock imagery. Claude for semi-automated copywriting. Built a replicable content production SOP so the process could continue without me at every step.</p></div></div>
+      <div class="step"><div class="s-num">04</div><div class="s-content"><h4>Physical Ad Design & Execution</h4><p>Designed print collateral for offline channels, maintaining visual consistency between digital and physical brand assets.</p></div></div>
+    </div>
+  </div>
+  <div class="sec-block">
+    <div class="sec-eye">AI Stack</div>
+    <h3>Tools chosen for what they're actually good at</h3>
+    <div class="ai-stack">
+      <div class="ai-card">
+        <div class="ai-name">Higgsfield</div>
+        <div class="ai-role">Image Generation · Visual Assets</div>
+        <div class="ai-desc">Used for marketing visuals — product imagery, campaign graphics, social media assets. Replaced the photographer + brief + revision cycle entirely. Output quality maintained at a level suitable for external-facing brand materials.</div>
       </div>
-      <div class="process-step">
-        <div class="step-num">02</div>
-        <div class="step-content"><h4>數位廣告投放</h4><p>Meta / Google 廣告受眾設定、A/B 測試、投放數據分析與持續優化。</p></div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">03</div>
-        <div class="step-content"><h4>AI 內容產出</h4><p>用 Higgsfield 產圖取代攝影師、Claude 半自動化文案生成，建立可快速複製的內容產出 SOP。</p></div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">04</div>
-        <div class="step-content"><h4>實體廣告設計與執行</h4><p>線下行銷材料設計與執行，確保數位與實體的品牌視覺一致性。</p></div>
+      <div class="ai-card">
+        <div class="ai-name">Claude</div>
+        <div class="ai-role">Copywriting · Content Drafts</div>
+        <div class="ai-desc">Semi-automated ad copy, social post drafts, and merchant-facing communications. With a well-structured prompt and brand voice guidelines, output reaches near-publishable quality with light human review.</div>
       </div>
     </div>
   </div>
-  <div class="outcome-box">
-    <div class="section-label">成果 / Outcome</div>
-    <h3>一個人的行銷部門</h3>
-    <p>在沒有專職行銷團隊的情況下，完成了完整的行銷執行——從策略到投放到內容，全部獨立處理。AI 工具的引入讓邊際成本大幅降低，同時輸出品質維持在可對外展示的水準。</p>
+  <div class="sec-block">
+    <div class="sec-eye">Channels Managed</div>
+    <h3>Digital and physical — unified brand voice</h3>
+    <div class="channel-grid">
+      <div class="ch"><div class="ch-label">Digital — Paid</div><div class="ch-title">Meta & Google Ads</div><div class="ch-desc">Audience targeting, ad creative, budget allocation, A/B testing, performance monitoring and optimisation. All set up and managed independently.</div></div>
+      <div class="ch"><div class="ch-label">Digital — Organic</div><div class="ch-title">Social Content</div><div class="ch-desc">Platform-appropriate content using AI-generated visuals and semi-automated copy. Maintained consistent posting cadence and brand tone.</div></div>
+      <div class="ch"><div class="ch-label">Physical</div><div class="ch-title">Print & Offline</div><div class="ch-desc">Designed and executed physical advertising materials for merchant-facing channels, maintaining visual consistency with the digital brand.</div></div>
+    </div>
   </div>
-  <div class="rationale-box">
-    <div class="section-label">我的判斷 / Rationale</div>
-    <p>我對 AI 工具的使用哲學是：AI 不是用來降低標準的，而是用來讓一個人能做以前需要三個人才能做的事。Higgsfield 產圖不是在取代設計師的創意，而是在取代「找攝影師、溝通需求、等交稿、修改」這個循環。當你能把工具用好，品質不會下降，速度和成本才是真正改變的東西。</p>
+  <div class="outcome">
+    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Outcome</div>
+    <h3>A one-person marketing department</h3>
+    <p>Without a dedicated marketing team, delivered complete marketing execution — from strategy through placement through content, fully independently. AI tool integration reduced the marginal cost of each content piece dramatically while maintaining a quality standard that doesn't signal "small company." The SOP is designed for full handoff.</p>
+  </div>
+  <div class="rationale">
+    <h3>My Rationale</h3>
+    <p>My philosophy on AI tools: AI doesn't lower standards, it lets one person do what previously required three. Higgsfield isn't replacing a designer's creativity — it's replacing the "find a photographer, brief them, wait for delivery, request revisions" cycle. When you can use tools well, quality doesn't drop. Speed and cost are what actually change.</p>
+    <div class="pull"><p>"The right question isn't 'can AI do this as well as a specialist?' It's 'can I get to 85% of the output quality in 10% of the time and cost — and is 85% enough for this use case?'"</p></div>
+    <p>For early-stage startup marketing, the answer is almost always yes. Brand quality matters — but shipping consistent, professional-looking content consistently matters more than occasional perfection with long gaps.</p>
   </div>
 </div>
-<div class="back-cta">
-  <a href="index.html#cases">← 返回所有案例</a>
-  <div class="next-case">
-    <div class="next-label">下一個案例</div>
-    <a href="case-f.html" class="next-title">案例 F — 知識管理架構設計 →</a>
+<div class="foot-nav">
+  <a href="case-d.html">← Case D — Bespoke Sales Proposals</a>
+  <div class="next-block">
+    <div class="next-l">Next Case</div>
+    <a href="case-f.html" class="next-t">Case F — Knowledge Architecture →</a>
   </div>
 </div>
 </body>

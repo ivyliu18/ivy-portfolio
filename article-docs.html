@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Most Common Document Management Mistake Early Startups Make — Ivy Liu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#f8f6f1;--cream:#ede9e1;--mid:#8a8278;--rule:#252320;--accent:#c8a96e;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--black);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.7;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:20px 56px;border-bottom:1px solid var(--rule);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);}
+.nav-brand{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
+.nav-back{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+.nav-back:hover{color:var(--white);}
+.hero{padding:140px 72px 64px;border-bottom:1px solid var(--rule);max-width:900px;}
+.eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.eye::before{content:'';width:24px;height:1px;background:var(--accent);}
+h1{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,58px);font-weight:700;line-height:1.05;margin-bottom:28px;letter-spacing:-0.01em;}
+.byline{display:flex;gap:32px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
+.body{padding:64px 72px;max-width:780px;}
+.body p{font-size:15px;line-height:2;color:rgba(248,246,241,0.7);margin-bottom:28px;}
+.body h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;line-height:1.2;margin:56px 0 20px;color:var(--white);border-left:3px solid var(--accent);padding-left:16px;letter-spacing:-0.01em;}
+.body h3{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin:36px 0 14px;color:var(--white);}
+.body blockquote{margin:36px 0;padding:20px 28px;border-left:2px solid var(--accent);background:#0d0c0a;}
+.body blockquote p{font-size:14px;color:var(--mid);margin-bottom:0;}
+.body strong{color:var(--white);font-weight:600;}
+.body em{font-style:italic;color:var(--accent);}
+.body hr{border:none;border-top:1px solid var(--rule);margin:48px 0;}
+.foot{padding:56px 72px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+.foot a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+.foot a:hover{color:var(--white);}
+.foot-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);}
+@media(max-width:900px){nav{padding:16px 24px;}.hero{padding:120px 24px 48px;}.body{padding:48px 24px;}.foot{padding:32px 24px;flex-direction:column;gap:16px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">Ivy Liu</a>
+  <a class="nav-back" href="index.html#writing">← Writing</a>
+</nav>
+<div class="hero">
+  <div class="eye">Operations Thinking</div>
+  <h1>The Most Common Document Management Mistake Early Startups Make — and Why It Explodes When You're Busiest</h1>
+  <div class="byline"><span>March 2026</span><span>Ivy Liu</span></div>
+</div>
+<div class="body">
+  <h3>From a year of operational experience: architecture isn't overhead, it's infrastructure</h3>
+  <hr>
+  <p>Before I joined this fintech startup, the company had been running for a few years. But those years were almost exclusively product development — no operations, no marketing, no systematic documentation of anything.</p>
+  <p>I was the first person brought in specifically for operations and marketing. And like most people, I started with a "ship first, organise later" mentality. In a startup, you have to move fast before you know what the problems are. That logic isn't wrong.</p>
+  <p>But I later discovered there's an important line between "ship first, organise later" and "never organise at all." That line is: <strong>the moment you hire your first person.</strong></p>
+  <hr>
+  <h2>I. The problem doesn't surface when it's just you</h2>
+  <p>When a company has three to five people running on instant messages and verbal agreements, you can't feel the problem. Everyone knows the rules because the rules live in everyone's head.</p>
+  <p>The problem explodes the moment a new person joins. You suddenly need to onboard someone and discover there's no onboarding process. A customer complains, and the new hire doesn't know the refund policy, because the refund policy was a tacit agreement between you and the founder — never written down. Someone asks about the communication standard, and you say "it depends" because you're genuinely not sure what the standard is.</p>
+  <p>Every "it depends" is a landmine waiting to detonate.</p>
+  <hr>
+  <h2>II. What I observed at a structured company</h2>
+  <p>During this period, I spent time at a local UK tech company with around 100 employees. Their onboarding was thorough enough to be almost startling. Every role had clear accountability definitions, standard operating procedures, and a "things you need to know in your first month" document. New hires in week one already knew who to ask for what, and what they could decide independently versus what needed escalation.</p>
+  <p>This isn't bureaucracy. This is efficiency.</p>
+  <p>When an organisation's knowledge lives entirely inside human heads, the scaling limit of that organisation is the memory capacity of those humans.</p>
+  <hr>
+  <h2>III. Documentation is a form of organisational design</h2>
+  <p>Many people think "building documentation" is administrative busywork — written and then left to gather dust in some folder nobody visits. But I've come to understand that the act of building documentation is itself organisational design.</p>
+  <p>When you create a folder for each department, you're drawing an org chart. When you decide whether a document belongs under "Legal" or "Operations," you're defining accountability boundaries. When you write a refund SOP, you're making a decision — not deferring it to later. You're making it once, and everyone gets to use it forever after.</p>
+  <p><strong>An org chart isn't for external display. It's for internal use.</strong> It tells you which roles need to be filled as you go from three people to ten, which processes need to be split, which decisions can be delegated.</p>
+  <hr>
+  <h2>IV. What I only realised once I started: compliance comes first</h2>
+  <p>Before I actually built our document architecture, I assumed our core departments would be Commercial Development, Marketing, and Customer Service.</p>
+  <p>Doing the work revealed that <strong>compliance and legal should come first.</strong></p>
+  <p>We're a payment system operating under FCA regulation in the UK. Customer funds flow through our infrastructure. A bug, a chargeback dispute, a compliance question — any of these can freeze the system and leave a customer's money stuck. This isn't something you think about "later." It's the defence you build on day one.</p>
+  <p>I ultimately isolated Legal as its own category — not because we had a legal department, but because the frequency with which legal issues appeared was far higher than I'd anticipated: vendor contracts, fraud cases, FCA requirements, cross-jurisdictional compliance. Centralising all of it made every subsequent legal interaction — finding a solicitor, collecting evidence, checking a regulation — dramatically faster.</p>
+  <p>That act of organisation was itself a form of risk management.</p>
+  <hr>
+  <h2>V. External and internal operations — both matter simultaneously</h2>
+  <p>Many startups, when they think "operations," only think outward — customer service, brand communications, commercial partnerships. Internal operations matter just as much, and are usually more urgent.</p>
+  <p>When a colleague hits an emergency, they need an SOP telling them what to do next. Without one, they message you, you get interrupted, and your time is no longer yours. When a customer asks about refunds, an unstandardised "it depends" produces inconsistent customer experiences, which slowly erodes brand trust — not because of any single bad decision, but because of the absence of a decision.</p>
+  <p><strong>Standards themselves are protection for brand reputation.</strong></p>
+  <hr>
+  <h2>VI. When to start building documentation</h2>
+  <p>Not on day one. On day one of a startup, you should be doing things, not writing about things. You need to run first to understand what's tripping you.</p>
+  <p>But if you're paying attention, somewhere around six to eight months in, you'll start seeing patterns — which problems keep recurring, which decisions keep needing re-explanation, which processes keep breaking when personnel changes.</p>
+  <p><strong>That's when you build documentation.</strong> Not because you have time. Because you now have enough material to know what needs building.</p>
+  <hr>
+  <h2>VII. Using AI to accelerate, not to replace judgment</h2>
+  <p>The tools available now can handle a lot of the structural work: you describe your industry, your operational situation, your customer profile, and AI can generate a first draft of a document map, a naming logic, a folder structure. That's genuinely useful.</p>
+  <p>But there's one thing AI cannot do: it doesn't know where your company is most fragile. That knowledge requires being inside the system, stepping on the landmines, and then looking back to say "this is where we need a wall." AI gives you the map. You tell it which roads you've walked and where the potholes are. Together, you turn that map into something actually usable.</p>
+  <hr>
+  <h2>Conclusion: "We'll sort it later" is the most expensive sentence</h2>
+  <p>Every time you say "we'll sort it later," you're scheduling an overtime session for your future self. Not today's overtime — the overtime in the moment when you're most stretched, most exhausted, and most in need of systems holding things together. That moment is usually: when you've just hired someone new, when you've just landed a big client, or when a crisis you didn't anticipate has just landed in your inbox.</p>
+  <p>You don't need to build every document on day one. You just need to write down the answer when you know the answer.</p>
+  <p>Those written-down answers become your organisational architecture.</p>
+  <hr>
+  <p><em>Next: Why your English marketing copy isn't converting — and what AI can and can't fix</em></p>
+</div>
+<div class="foot">
+  <a href="index.html#writing">← Back to Writing</a>
+  <div class="foot-tag">Operations Thinking</div>
+</div>
+</body>
+</html>

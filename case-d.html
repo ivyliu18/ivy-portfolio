@@ -1,124 +1,130 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case D — 高價值客戶商業提案 | Ivy</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Case D — Bespoke Sales Proposals | Ivy Liu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#1a1814;--paper:#f5f2ec;--warm-mid:#c4a882;--accent:#8b3a2a;--light-rule:#e0dbd0;--faded:#9c9488;--bg-section:#eee9e0;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;font-size:13px;line-height:1.8;}
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--light-rule);}
-  .nav-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--ink);}
-  .nav-back{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
-  .nav-back:hover{color:var(--ink);}
-  .case-hero{padding:140px 72px 80px;border-bottom:1px solid var(--light-rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
-  .case-eyebrow{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
-  .case-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,56px);font-weight:300;line-height:1.1;margin-bottom:24px;}
-  .case-title em{font-style:italic;color:var(--accent);}
-  .case-meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
-  .case-tag{font-size:10px;letter-spacing:0.1em;padding:5px 12px;background:var(--bg-section);border:1px solid var(--light-rule);color:var(--ink);}
-  .case-summary{font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;border-left:2px solid var(--warm-mid);padding-left:20px;}
-  .case-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--light-rule);border:1px solid var(--light-rule);align-self:start;margin-top:48px;}
-  .stat-item{background:var(--paper);padding:28px 24px;}
-  .stat-number{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1;color:var(--ink);margin-bottom:6px;}
-  .stat-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);}
-  .case-body{padding:72px;max-width:900px;}
-  .section-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;}
-  .section-block{margin-bottom:56px;}
-  .section-block h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:16px;}
-  .section-block p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:16px;}
-  .process-steps{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
-  .process-step{display:grid;grid-template-columns:48px 1fr;gap:24px;background:var(--bg-section);padding:24px;border:1px solid var(--light-rule);}
-  .step-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--accent);line-height:1;}
-  .step-content h4{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;color:var(--ink);}
-  .step-content p{font-family:'Noto Serif TC',serif;font-size:13px;line-height:1.8;color:var(--faded);margin:0;}
-  .outcome-box{background:var(--ink);color:var(--paper);padding:40px;margin-top:56px;}
-  .outcome-box .section-label{color:var(--warm-mid);}
-  .outcome-box h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:16px;color:var(--paper);}
-  .outcome-box p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:rgba(245,242,236,0.7);}
-  .rationale-box{border:1px solid var(--light-rule);padding:40px;margin-top:40px;}
-  .rationale-box p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;}
-  .back-cta{padding:72px;border-top:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center;}
-  .back-cta a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
-  .back-cta a:hover{color:var(--ink);}
-  .next-case{text-align:right;}
-  .next-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--faded);margin-bottom:4px;}
-  .next-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--ink);}
-  @media(max-width:900px){.case-hero{grid-template-columns:1fr;padding:120px 32px 56px;gap:40px;}.case-body{padding:48px 32px;}.back-cta{padding:48px 32px;flex-direction:column;gap:24px;text-align:center;}nav{padding:16px 24px;}}
+:root{--black:#0a0a0a;--white:#f8f6f1;--cream:#ede9e1;--mid:#8a8278;--rule:#252320;--accent:#c8a96e;--bg2:#0d0c0a;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--black);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.7;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:20px 56px;border-bottom:1px solid var(--rule);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);}
+.nav-brand{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
+.nav-back{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+.nav-back:hover{color:var(--white);}
+.hero{padding:140px 72px 80px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.eye::before{content:'';width:24px;height:1px;background:var(--accent);}
+h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,56px);font-weight:700;line-height:1.05;margin-bottom:24px;letter-spacing:-0.01em;}
+h1 em{font-style:italic;color:var(--accent);}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+.tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--rule);color:var(--mid);}
+.summary{font-size:15px;line-height:1.9;color:rgba(248,246,241,0.65);border-left:2px solid var(--accent);padding-left:20px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.s-item{background:var(--black);padding:28px 24px;}
+.s-n{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1;margin-bottom:6px;}
+.s-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);}
+.body{padding:72px;max-width:960px;}
+.sec-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+.sec-eye::before{content:'';width:24px;height:1px;background:var(--accent);}
+.sec-block{margin-bottom:64px;}
+.sec-block h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
+.sec-block p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:16px;}
+.steps{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
+.step{display:grid;grid-template-columns:48px 1fr;gap:24px;background:var(--bg2);padding:24px;border:1px solid var(--rule);}
+.s-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);line-height:1;}
+.s-content h4{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;color:var(--white);}
+.s-content p{font-size:13px;line-height:1.85;color:var(--mid);margin:0;}
+.proposal-anatomy{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:24px;}
+.pa{background:var(--bg2);padding:28px 24px;}
+.pa-n{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--rule);line-height:1;margin-bottom:12px;}
+.pa-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:8px;}
+.pa-desc{font-size:12px;color:var(--mid);line-height:1.8;}
+.outcome{background:var(--cream);color:var(--black);padding:44px;margin-top:64px;}
+.outcome h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
+.outcome p{font-size:14px;line-height:2;color:rgba(10,10,10,0.65);}
+.rationale{border:1px solid var(--rule);padding:44px;margin-top:40px;}
+.rationale h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:14px;}
+.rationale p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:14px;}
+.pull{border-left:3px solid var(--accent);padding:16px 24px;background:var(--bg2);margin:20px 0;}
+.pull p{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--white);margin:0;}
+.foot-nav{padding:72px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+.foot-nav a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+.foot-nav a:hover{color:var(--white);}
+.next-block{text-align:right;}
+.next-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-bottom:4px;}
+.next-t{font-family:'Playfair Display',serif;font-size:18px;color:var(--white);text-decoration:none;}
+@media(max-width:900px){nav{padding:16px 24px;}.hero{grid-template-columns:1fr;padding:120px 24px 56px;gap:40px;}.body{padding:48px 24px;}.proposal-anatomy{grid-template-columns:1fr;}.foot-nav{padding:48px 24px;flex-direction:column;gap:24px;text-align:center;}}
 </style>
 </head>
 <body>
 <nav>
-  <a class="nav-brand" href="index.html">Ivy · Strategic Operations</a>
-  <a class="nav-back" href="index.html#cases">← 返回所有案例</a>
+  <a class="nav-brand" href="index.html">Ivy Liu</a>
+  <a class="nav-back" href="index.html#cases">← All Cases</a>
 </nav>
-<div class="case-hero">
+<div class="hero">
   <div>
-    <div class="case-eyebrow">案例 D / Case D · 商業策略 · 英文提案 · 客戶開發</div>
-    <h1 class="case-title">高價值客戶<br><em>全英文商業提案設計</em></h1>
-    <div class="case-meta-row">
-      <span class="case-tag">英國 · Fintech</span>
-      <span class="case-tag">全英文</span>
-      <span class="case-tag">客製化提案</span>
-      <span class="case-tag">競爭者分析</span>
+    <div class="eye">Case D · Commercial Strategy · Business Development</div>
+    <h1>High-Value Client<br><em>Bespoke Sales Proposals</em></h1>
+    <div class="tags">
+      <span class="tag">UK · Fintech</span><span class="tag">100% English</span><span class="tag">Bespoke per Client</span><span class="tag">Competitor Analysis</span><span class="tag">0 External Copywriters</span>
     </div>
-    <p class="case-summary">針對潛在高價值商業客戶，從零設計全英文客製化銷售提案——包含競爭者分析、客製化定價方案、ROI 試算與視覺呈現。讓對方在第一次接觸就感受到服務的專業度與針對性。</p>
+    <p class="summary">For high-value prospect merchants already using a competitor, a generic pitch doesn't work. I designed fully customised English-language sales proposals — including competitor analysis, tailored pricing, ROI modelling, and visual layout — independently from strategy through to final document.</p>
   </div>
   <div>
-    <div class="case-stats">
-      <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">English Output</div></div>
-      <div class="stat-item"><div class="stat-number">客製</div><div class="stat-label">Bespoke per Client</div></div>
-      <div class="stat-item"><div class="stat-number">0</div><div class="stat-label">External Copywriters</div></div>
-      <div class="stat-item"><div class="stat-number">全端</div><div class="stat-label">Strategy to Design</div></div>
+    <div class="stats">
+      <div class="s-item"><div class="s-n">100%</div><div class="s-l">English Output</div></div>
+      <div class="s-item"><div class="s-n">0</div><div class="s-l">External Copywriters</div></div>
+      <div class="s-item"><div class="s-n">Bespoke</div><div class="s-l">Per Client</div></div>
+      <div class="s-item"><div class="s-n">Full</div><div class="s-l">Strategy to Design</div></div>
     </div>
   </div>
 </div>
-<div class="case-body">
-  <div class="section-block">
-    <div class="section-label">背景 / Background</div>
-    <h3>讓第一次接觸就有說服力</h3>
-    <p>對於高價值的潛在商家客戶，標準的銷售話術和通用簡報無法產生足夠的說服力。這類客戶通常已經在使用某個競爭對手的服務，需要一個非常具體的理由才會願意切換。</p>
-    <p>我的任務是設計一份讓對方感覺「這份提案是為我量身設計的」全英文商業文件，從競爭者比較到定價方案，所有內容都針對該客戶的實際情況客製化。</p>
+<div class="body">
+  <div class="sec-block">
+    <div class="sec-eye">Background</div>
+    <h3>Making the first contact count</h3>
+    <p>For high-value potential merchant clients, standard sales scripts and generic decks don't produce sufficient conviction to switch providers. These clients are already using a competitor and need a very specific reason to consider making a change.</p>
+    <p>My task: design a full English-language business document that makes the recipient feel this was built specifically for them — from competitor comparison to pricing to layout. The proposal itself needed to serve as a demonstration of NeroPay's professionalism.</p>
   </div>
-  <div class="section-block">
-    <div class="section-label">執行流程 / Process</div>
-    <h3>從研究到視覺化的完整提案流程</h3>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="step-num">01</div>
-        <div class="step-content"><h4>客戶研究</h4><p>了解客戶的業務規模、現有服務商、主要痛點，作為提案的切入基礎。</p></div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">02</div>
-        <div class="step-content"><h4>競爭者對比分析</h4><p>整理主要競爭對手的定價、功能、合約條件，設計清晰的對比表格讓差異一目了然。</p></div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">03</div>
-        <div class="step-content"><h4>客製化定價設計</h4><p>根據客戶的交易量與業務需求，設計具競爭力且有利潤空間的客製化定價方案。</p></div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">04</div>
-        <div class="step-content"><h4>全英文視覺化輸出</h4><p>獨立完成文案撰寫、數據整理、版面設計，無需外部設計師或文案團隊，交付可直接使用的提案文件。</p></div>
-      </div>
+  <div class="sec-block">
+    <div class="sec-eye">Process</div>
+    <h3>From research to ready-to-send</h3>
+    <div class="steps">
+      <div class="step"><div class="s-num">01</div><div class="s-content"><h4>Client Research</h4><p>Understand the prospect's business scale, current payment provider, primary pain points, and transaction profile — the foundation for every claim in the proposal.</p></div></div>
+      <div class="step"><div class="s-num">02</div><div class="s-content"><h4>Competitor Comparison Analysis</h4><p>Map the key competitor's pricing, features, and contract terms. Design a side-by-side comparison table that makes the differential immediately legible — not a wall of text, a visual argument.</p></div></div>
+      <div class="step"><div class="s-num">03</div><div class="s-content"><h4>Bespoke Pricing Design</h4><p>Build a custom fee structure based on the client's transaction volume and business model — competitive enough to win, structured to maintain margin.</p></div></div>
+      <div class="step"><div class="s-num">04</div><div class="s-content"><h4>Full English Visual Output</h4><p>Write the copy, organise the data, design the layout. No external designers or copywriters — delivered as a ready-to-send proposal document.</p></div></div>
     </div>
   </div>
-  <div class="outcome-box">
-    <div class="section-label">成果 / Outcome</div>
-    <h3>專業度讓提案本身就是品牌展示</h3>
-    <p>一份設計精良的客製化提案，不只是在說服客戶選擇服務，也在展示公司的專業水準。這份提案的品質本身就成為「為什麼選擇我們」的一部分答案。</p>
+  <div class="sec-block">
+    <div class="sec-eye">Proposal Anatomy</div>
+    <h3>What goes into a persuasive bespoke proposal</h3>
+    <div class="proposal-anatomy">
+      <div class="pa"><div class="pa-n">01</div><div class="pa-title">Context Frame</div><div class="pa-desc">Opens with the client's own situation — their volume, their current frustrations, their business type. Signals immediately that this wasn't copy-pasted.</div></div>
+      <div class="pa"><div class="pa-n">02</div><div class="pa-title">Competitor Comparison</div><div class="pa-desc">Visual table: NeroPay vs current provider across fees, settlement speed, support, and contract terms. Designed so a busy owner can see the key differences in 30 seconds.</div></div>
+      <div class="pa"><div class="pa-n">03</div><div class="pa-title">Custom Pricing</div><div class="pa-desc">Specific rate card built for their transaction volume — not a brochure rate. Includes a savings estimate based on their estimated monthly volume.</div></div>
+      <div class="pa"><div class="pa-n">04</div><div class="pa-title">Next Steps</div><div class="pa-desc">Clear, low-friction CTA: one-line ask, a direct contact, and an easy first action. Removes every barrier to a follow-up conversation.</div></div>
+    </div>
   </div>
-  <div class="rationale-box">
-    <div class="section-label">我的判斷 / Rationale</div>
-    <p>很多早期新創的銷售材料都是「我們有什麼功能」，但高價值客戶想看的是「你了解我的問題嗎」。客製化提案的核心不是炫耀產品，而是讓對方感覺被理解。這需要的不只是英文寫作能力，還需要能快速消化競爭者資訊、理解客戶業務邏輯、並把這些轉化成有說服力的敘事——這三件事合在一起，才是真正的商業提案能力。</p>
+  <div class="outcome">
+    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Outcome</div>
+    <h3>The proposal quality itself is the brand signal</h3>
+    <p>A well-crafted bespoke proposal does two things simultaneously: it makes a specific argument for switching, and it demonstrates the standard of professionalism the client can expect from the relationship. The quality of the document is itself an answer to "why should I trust NeroPay?"</p>
+  </div>
+  <div class="rationale">
+    <h3>My Rationale</h3>
+    <p>Most early startup sales materials are "here's what we offer." High-value clients want to see "do you understand my problem?" Customisation isn't about impressing people with effort — it's about making the prospect feel seen and understood. That requires three things working together: the ability to quickly absorb competitor intelligence, an understanding of the client's business logic, and the ability to translate that into a persuasive narrative.</p>
+    <div class="pull"><p>"The best proposals don't pitch a product — they reflect the client's situation back at them with a clear answer to 'what changes if I switch?'"</p></div>
+    <p>Doing this in English, independently, for a UK market — without external copywriters or designers — is a practical demonstration of what "full English business execution" actually looks like in practice.</p>
   </div>
 </div>
-<div class="back-cta">
-  <a href="index.html#cases">← 返回所有案例</a>
-  <div class="next-case">
-    <div class="next-label">下一個案例</div>
-    <a href="case-e.html" class="next-title">案例 E — 行銷一條龍 →</a>
+<div class="foot-nav">
+  <a href="case-c.html">← Case C — HR Systems from Zero</a>
+  <div class="next-block">
+    <div class="next-l">Next Case</div>
+    <a href="case-e.html" class="next-t">Case E — End-to-End Marketing →</a>
   </div>
 </div>
 </body>
