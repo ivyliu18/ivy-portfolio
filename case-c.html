@@ -1,169 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case C — HR Systems from Zero | Ivy Liu</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>案例 C — 從零建立招聘、薪資與新人培訓體系 | Ivy Liu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--black:#0a0a0a;--white:#f8f6f1;--cream:#ede9e1;--mid:#8a8278;--rule:#252320;--accent:#c8a96e;--bg2:#0d0c0a;}
+:root{--ink:#1a1814;--paper:#f5f2ec;--warm-mid:#c4a882;--accent:#8b3a2a;--light-rule:#e0dbd0;--faded:#9c9488;--bg-section:#eee9e0;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--black);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.7;}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:20px 56px;border-bottom:1px solid var(--rule);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);}
-.nav-brand{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
-.nav-back{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
-.nav-back:hover{color:var(--white);}
-.hero{padding:140px 72px 80px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
-.eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.eye::before{content:'';width:24px;height:1px;background:var(--accent);}
-h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,56px);font-weight:700;line-height:1.05;margin-bottom:24px;letter-spacing:-0.01em;}
+body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;font-size:13px;line-height:1.8;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--light-rule);}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--ink);}
+.nav-back{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+.nav-back:hover{color:var(--ink);}
+.hero{padding:140px 72px 80px;border-bottom:1px solid var(--light-rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.eye{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,56px);font-weight:300;line-height:1.1;margin-bottom:24px;}
 h1 em{font-style:italic;color:var(--accent);}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
-.tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--rule);color:var(--mid);}
-.summary{font-size:15px;line-height:1.9;color:rgba(248,246,241,0.65);border-left:2px solid var(--accent);padding-left:20px;}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);}
-.s-item{background:var(--black);padding:28px 24px;}
-.s-n{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1;margin-bottom:6px;}
-.s-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);}
-.body{padding:72px;max-width:960px;}
-.sec-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
-.sec-eye::before{content:'';width:24px;height:1px;background:var(--accent);}
+.tag{font-size:10px;letter-spacing:0.1em;padding:5px 12px;background:var(--bg-section);border:1px solid var(--light-rule);color:var(--ink);}
+.summary{font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;border-left:2px solid var(--warm-mid);padding-left:20px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--light-rule);border:1px solid var(--light-rule);}
+.s-item{background:var(--paper);padding:28px 24px;}
+.s-n{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1;margin-bottom:6px;}
+.s-l{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);}
+.body{padding:72px;max-width:900px;}
+.sec-eye{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;}
 .sec-block{margin-bottom:64px;}
-.sec-block h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
-.sec-block p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:16px;}
+.sec-block h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:16px;}
+.sec-block p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:16px;}
 .steps{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
-.step{display:grid;grid-template-columns:48px 1fr;gap:24px;background:var(--bg2);padding:24px;border:1px solid var(--rule);}
-.s-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);line-height:1;}
-.s-content h4{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;color:var(--white);}
-.s-content p{font-size:13px;line-height:1.85;color:var(--mid);margin:0;}
-.deliverables{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:24px;}
-.del{background:var(--bg2);padding:24px;}
-.del-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
-.del-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:8px;}
-.del-list{list-style:none;}
-.del-list li{font-size:12px;color:var(--mid);line-height:1.7;padding:3px 0 3px 14px;position:relative;}
-.del-list li::before{content:'→';position:absolute;left:0;color:var(--accent);}
-.outcome{background:var(--cream);color:var(--black);padding:44px;margin-top:64px;}
-.outcome h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
-.outcome p{font-size:14px;line-height:2;color:rgba(10,10,10,0.65);}
-.rationale{border:1px solid var(--rule);padding:44px;margin-top:40px;}
-.rationale h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:14px;}
-.rationale p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:14px;}
-.pull{border-left:3px solid var(--accent);padding:16px 24px;background:var(--bg2);margin:20px 0;}
-.pull p{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--white);margin:0;}
-.foot-nav{padding:72px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
-.foot-nav a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
-.foot-nav a:hover{color:var(--white);}
+.step{display:grid;grid-template-columns:48px 1fr;gap:24px;background:var(--bg-section);padding:24px;border:1px solid var(--light-rule);}
+.s-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--accent);line-height:1;}
+.s-c h4{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;color:var(--ink);}
+.s-c p{font-family:'Noto Serif TC',serif;font-size:13px;line-height:1.8;color:var(--faded);margin:0;}
+.outcome{background:var(--ink);color:var(--paper);padding:44px;margin-top:64px;}
+.outcome h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:16px;color:var(--paper);}
+.outcome p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:rgba(245,242,236,0.7);}
+.rationale{border:1px solid var(--light-rule);padding:44px;margin-top:40px;}
+.rationale h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:14px;}
+.rationale p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:14px;}
+.pull{border-left:3px solid var(--accent);padding:16px 24px;background:var(--bg-section);margin:20px 0;}
+.pull p{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--ink);margin:0;}
+.foot-nav{padding:72px;border-top:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center;}
+.foot-nav a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+.foot-nav a:hover{color:var(--ink);}
 .next-block{text-align:right;}
-.next-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-bottom:4px;}
-.next-t{font-family:'Playfair Display',serif;font-size:18px;color:var(--white);text-decoration:none;}
-@media(max-width:900px){nav{padding:16px 24px;}.hero{grid-template-columns:1fr;padding:120px 24px 56px;gap:40px;}.body{padding:48px 24px;}.deliverables{grid-template-columns:1fr;}.foot-nav{padding:48px 24px;flex-direction:column;gap:24px;text-align:center;}}
+.next-l{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--faded);margin-bottom:4px;}
+.next-t{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--ink);text-decoration:none;}
+@media(max-width:900px){nav{padding:16px 24px;}.hero{grid-template-columns:1fr;padding:120px 24px 56px;gap:40px;}.body{padding:48px 24px;}.foot-nav{padding:48px 24px;flex-direction:column;gap:24px;text-align:center;}}
 </style>
 </head>
 <body>
 <nav>
-  <a class="nav-brand" href="index.html">Ivy Liu</a>
-  <a class="nav-back" href="index.html#cases">← All Cases</a>
+  <a class="nav-brand" href="index.html">Ivy Liu · 策略營運</a>
+  <a class="nav-back" href="index.html#cases">← 返回所有案例</a>
 </nav>
 <div class="hero">
   <div>
-    <div class="eye">Case C · People Operations · Compliance</div>
-    <h1>Building Recruitment, Payroll<br><em>&amp; Onboarding from Zero</em></h1>
-    <div class="tags">
-      <span class="tag">UK · Fintech</span><span class="tag">No Existing HR Systems</span><span class="tag">End-to-End Design</span><span class="tag">UK Labour Law Compliant</span><span class="tag">Multilingual JDs</span>
-    </div>
-    <p class="summary">The company entered rapid growth with zero HR infrastructure — no job description templates, no interview process, no Offer Letter format, no payroll system, no onboarding guide. I built every component independently, while ensuring compliance with UK employment law throughout.</p>
+    <div class="eye">案例 C · 人力資源 · 組織設計 · 合規</div>
+    <h1>從零建立招聘、薪資<br><em>與新人培訓體系</em></h1>
+    <div class="tags"><span class="tag">英國 · Fintech</span><span class="tag">無現成系統</span><span class="tag">全流程獨立設計</span><span class="tag">符合英國勞動法規</span></div>
+    <p class="summary">公司進入快速擴張期，但完全沒有 HR 基礎建設。我從職位描述撰寫、履歷篩選、面試框架、到 Offer Letter 格式與薪資管理，全部從零自建——同時設計新人 Onboarding 流程與內部培訓架構，兼顧英國勞動法規合規要求。</p>
   </div>
   <div>
-    <div class="stats">
-      <div class="s-item"><div class="s-n">0</div><div class="s-l">Existing HR Systems</div></div>
-      <div class="s-item"><div class="s-n">Full</div><div class="s-l">End-to-End Design</div></div>
-      <div class="s-item"><div class="s-n">UK</div><div class="s-l">Labour Law Compliant</div></div>
-      <div class="s-item"><div class="s-n">Multi</div><div class="s-l">Multilingual JDs Built</div></div>
-    </div>
+    <div class="stats"><div class="s-item"><div class="s-n">0</div><div class="s-l">現有 HR 系統</div></div><div class="s-item"><div class="s-n">全端</div><div class="s-l">端到端設計</div></div><div class="s-item"><div class="s-n">英國</div><div class="s-l">勞動法規合規</div></div><div class="s-item"><div class="s-n">多語</div><div class="s-l">多語言職缺描述</div></div></div>
   </div>
 </div>
 <div class="body">
   <div class="sec-block">
-    <div class="sec-eye">Background</div>
-    <h3>A growing company with nothing in place</h3>
-    <p>When the decision was made to start hiring, NeroPay had no HR infrastructure at all — no job description templates, no candidate screening criteria, no interview framework, no Offer Letter format, no payroll calculation method, and no new hire onboarding guidance. Everything needed to be designed from scratch, simultaneously ensuring UK employment law compliance.</p>
-    <p>An added layer of complexity: the company's merchant clients were predominantly from Middle Eastern and Turkish communities, meaning candidates needed relevant language and cultural backgrounds. This required JD writing and interview design to account for cross-cultural factors beyond standard UK hiring practice.</p>
+    <div class="sec-eye">背景</div>
+    <h3>情境說明</h3>
+    <p>當公司決定開始招人的時候，沒有任何 HR 基礎建設——沒有職位描述模板、沒有面試流程、沒有 Offer Letter 格式、沒有薪資計算方式，也沒有新人入職的任何引導。所有事情都需要從零開始設計，同時還要確保符合英國勞動法規。更複雜的是，公司的商家客戶以中東和土耳其族群為主，招聘的候選人也需要具備對應的語言和文化背景，這讓 JD 撰寫和面試設計都需要額外考量跨文化因素。</p>
   </div>
   <div class="sec-block">
-    <div class="sec-eye">Process</div>
-    <h3>From first hire to operational system</h3>
-    <div class="steps">
-      <div class="step"><div class="s-num">01</div><div class="s-content"><h4>Recruitment System Build</h4><p>Wrote multilingual job descriptions, established candidate screening criteria, designed structured interview question frameworks, and managed the full Offer process through to signed contracts.</p></div></div>
-      <div class="step"><div class="s-num">02</div><div class="s-content"><h4>Payroll Management System</h4><p>Self-built payroll tracking spreadsheets, calculated UK tax and National Insurance contributions, coordinated bank transfers, and ensured on-time monthly payment in full regulatory compliance.</p></div></div>
-      <div class="step"><div class="s-num">03</div><div class="s-content"><h4>New Hire Onboarding Design</h4><p>Designed a structured Onboarding SOP, built system operation guides, and created an escalation contact map — so new hires could operate independently within their first week.</p></div></div>
-      <div class="step"><div class="s-num">04</div><div class="s-content"><h4>Compliance Document Handling</h4><p>Reviewed multi-jurisdiction vendor NDAs, coordinated with external law firms, and ensured all employee documentation met UK employment law requirements. Also managed App Store submission document preparation.</p></div></div>
-    </div>
-  </div>
-  <div class="sec-block">
-    <div class="sec-eye">Deliverables Built</div>
-    <h3>A complete HR foundation — handoff-ready from day one</h3>
-    <div class="deliverables">
-      <div class="del">
-        <div class="del-label">Recruitment</div>
-        <div class="del-title">Hiring Pipeline</div>
-        <ul class="del-list">
-          <li>Multilingual job descriptions (English + Arabic)</li>
-          <li>Structured screening criteria per role</li>
-          <li>Interview question bank with evaluation rubric</li>
-          <li>Offer Letter template (UK-compliant)</li>
-          <li>Employment contract template with T&C review</li>
-        </ul>
-      </div>
-      <div class="del">
-        <div class="del-label">Payroll</div>
-        <div class="del-title">Pay Operations</div>
-        <ul class="del-list">
-          <li>Monthly payroll tracking spreadsheet</li>
-          <li>UK tax and NI contribution calculator</li>
-          <li>Bank transfer coordination process</li>
-          <li>Payslip documentation standard</li>
-        </ul>
-      </div>
-      <div class="del">
-        <div class="del-label">Onboarding</div>
-        <div class="del-title">New Hire System</div>
-        <ul class="del-list">
-          <li>First-week onboarding SOP</li>
-          <li>System access and tool setup guides</li>
-          <li>Who-to-contact reference document</li>
-          <li>Role-specific task checklist (first 30 days)</li>
-        </ul>
-      </div>
-      <div class="del">
-        <div class="del-label">Compliance</div>
-        <div class="del-title">Legal & Regulatory</div>
-        <ul class="del-list">
-          <li>Multi-jurisdiction NDA review and markup</li>
-          <li>Law firm coordination and briefing</li>
-          <li>GDPR-aware data handling guidelines</li>
-          <li>App Store legal documentation preparation</li>
-        </ul>
-      </div>
-    </div>
+    <div class="sec-eye">執行流程</div>
+    <h3>主要執行步驟</h3>
+    <div class="steps"><div class="step"><div class="s-num">01</div><div class="s-c"><h4>招聘系統建立</h4><p>撰寫多語言職缺描述、建立候選人篩選標準、設計結構化面試問題框架、管理 Offer 流程。</p></div></div><div class="step"><div class="s-num">02</div><div class="s-c"><h4>薪資管理系統</h4><p>自建薪資追蹤表格、計算英國稅務與 NI 貢獻、對接銀行轉帳，確保每月準時發薪且符合法規。</p></div></div><div class="step"><div class="s-num">03</div><div class="s-c"><h4>新人 Onboarding 設計</h4><p>設計 Onboarding SOP、建立系統操作指南、制定「問題找誰」聯絡架構，讓新人第一週就能獨立運作。</p></div></div><div class="step"><div class="s-num">04</div><div class="s-c"><h4>合規文件處理</h4><p>多國廠商 NDA 審閱、法律事務所溝通協調、確保所有員工文件符合英國勞動法規要求。</p></div></div></div>
   </div>
   <div class="outcome">
-    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Outcome</div>
-    <h3>A transferable HR foundation — built once, used by everyone</h3>
-    <p>The company now has a complete recruitment pipeline, payroll management system, and new hire training framework. Any new manager joining can take over this system directly and continue operating it — no rebuilding from scratch required. The systems are documented, tested, and handoff-ready.</p>
+    <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-mid);margin-bottom:16px;">成果</div>
+    <h3>交付物完成，可複製的框架留了下來</h3>
+    <p>公司現在有完整的招聘流程、薪資管理系統和新人培訓架構。任何新加入的管理者都能直接接手這套系統繼續運作，不需要從頭重建。系統文件完整，設計為可完整交接。</p>
   </div>
   <div class="rationale">
-    <h3>My Rationale</h3>
-    <p>HR infrastructure gets treated as "something to sort out later" in many early startups. But once you start hiring, "later" is already too late. My judgement: even a three-person company is worth investing one dedicated effort to design these processes properly.</p>
-    <div class="pull"><p>"A well-designed process brings not just efficiency, but predictability — everyone knows what the next step is, and founders can direct their attention to decisions that actually require judgment."</p></div>
-    <p>The cross-cultural dimension of this work was also significant — writing JDs and designing interviews for a multilingual team serving a specific ethnic merchant community required a level of cultural sensitivity and linguistic precision that goes beyond standard UK HR practice.</p>
+    <h3>我的判斷</h3>
+    <p>HR 系統在很多早期新創被視為「之後再說」的事——但一旦公司開始招人，這個「之後」就已經太晚了。我的判斷是：即使是三人公司，也值得花一次時間把流程設計好。因為設計好的流程帶來的不只是效率，而是可預期性——每個人都知道下一步是什麼，創辦人就可以把注意力放在真正需要判斷的地方。</p>
   </div>
 </div>
 <div class="foot-nav">
-  <a href="case-b.html">← Case B — AI Menu Automation</a>
+  <a href="index.html#cases">← 返回所有案例</a>
   <div class="next-block">
-    <div class="next-l">Next Case</div>
-    <a href="case-d.html" class="next-t">Case D — Bespoke Sales Proposals →</a>
+    <div class="next-l">下一個案例</div>
+    <a href="case-d.html" class="next-t">案例 D — 高價值客戶商業提案 →</a>
   </div>
 </div>
 </body>

@@ -1,349 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>P&G Envie de Plus — Consulting Case | Ivy Liu</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>案例 G — 寶潔法國 Envie de Plus 顧問專案 | Ivy Liu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--black:#0a0a0a;--white:#f8f6f1;--cream:#ede9e1;--mid:#8a8278;--rule:#252320;--accent:#c8a96e;--bg2:#0d0c0a;}
+:root{--ink:#1a1814;--paper:#f5f2ec;--warm-mid:#c4a882;--accent:#8b3a2a;--light-rule:#e0dbd0;--faded:#9c9488;--bg-section:#eee9e0;--pale:#eae4d8;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--black);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.7;}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:20px 56px;border-bottom:1px solid var(--rule);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);}
-.nav-brand{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
-.nav-back{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
-.nav-back:hover{color:var(--white);}
-
-/* HERO */
-.hero{padding:140px 72px 80px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
-.eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.eye::before{content:'';width:24px;height:1px;background:var(--accent);}
-.client-badge{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:4px 12px;display:inline-block;margin-bottom:20px;}
-h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,56px);font-weight:700;line-height:1.05;margin-bottom:24px;letter-spacing:-0.01em;}
+body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;font-size:13px;line-height:1.8;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--light-rule);}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--ink);}
+.nav-back{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+.nav-back:hover{color:var(--ink);}
+.hero{padding:140px 72px 80px;border-bottom:1px solid var(--light-rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.badge{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:4px 12px;display:inline-block;margin-bottom:20px;}
+.eye{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.8vw,52px);font-weight:300;line-height:1.1;margin-bottom:24px;}
 h1 em{font-style:italic;color:var(--accent);}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
-.tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--rule);color:var(--mid);}
-.summary{font-size:15px;line-height:1.9;color:rgba(248,246,241,0.65);border-left:2px solid var(--accent);padding-left:20px;}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);align-self:start;margin-top:0;}
-.s-item{background:var(--black);padding:28px 24px;}
-.s-n{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1;margin-bottom:6px;}
-.s-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);}
-.meta-table{margin-top:16px;border:1px solid var(--rule);}
-.mt-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule);}
-.mt-row:last-child{border-bottom:none;}
-.mk{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);padding:12px 14px;border-right:1px solid var(--rule);background:var(--bg2);}
-.mv{font-size:12px;color:rgba(248,246,241,0.6);padding:12px 14px;}
-
-/* BODY */
+.tag{font-size:10px;letter-spacing:0.1em;padding:5px 12px;background:var(--bg-section);border:1px solid var(--light-rule);color:var(--ink);}
+.summary{font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;border-left:2px solid var(--warm-mid);padding-left:20px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--light-rule);border:1px solid var(--light-rule);}
+.s-item{background:var(--paper);padding:28px 24px;}
+.s-n{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1;margin-bottom:6px;}
+.s-l{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);}
+.meta-t{margin-top:16px;border:1px solid var(--light-rule);}
+.mt-r{display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid var(--light-rule);}
+.mt-r:last-child{border-bottom:none;}
+.mk{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--faded);padding:12px 14px;border-right:1px solid var(--light-rule);background:var(--bg-section);}
+.mv{font-family:'Noto Serif TC',serif;font-size:12px;color:#3a3630;padding:12px 14px;line-height:1.6;}
 .body{padding:72px;max-width:960px;}
-.sec-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
-.sec-eye::before{content:'';width:24px;height:1px;background:var(--accent);}
+.sec-eye{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;}
 .sec-block{margin-bottom:64px;}
-.sec-block h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
-.sec-block p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:16px;}
-
-/* RESEARCH DIAGRAM */
-.research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:24px;}
-.rg-item{background:var(--bg2);padding:32px 24px;}
+.sec-block h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:16px;}
+.sec-block p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:16px;}
+.research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--light-rule);border:1px solid var(--light-rule);margin-top:24px;}
+.rg{background:var(--bg-section);padding:28px 24px;}
 .rg-icon{font-size:28px;margin-bottom:14px;}
-.rg-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:8px;}
-.rg-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
-.rg-desc{font-size:12px;line-height:1.85;color:var(--mid);}
-
-/* FINDINGS */
-.finding-list{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
-.finding{display:grid;grid-template-columns:40px 1fr;gap:20px;background:var(--bg2);padding:24px;border:1px solid var(--rule);}
-.f-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);line-height:1;}
-.f-content h4{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;color:var(--white);}
-.f-content p{font-size:13px;line-height:1.85;color:var(--mid);margin:0;}
-
-/* TOOLS */
-.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:24px;}
-.tool-card{background:var(--black);padding:28px 24px;}
-.tool-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:6px;}
-.tool-role{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
-.tool-desc{font-size:12px;line-height:1.85;color:var(--mid);}
-
-/* RECOMMENDATIONS */
-.rec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:24px;}
-.rec{background:var(--bg2);padding:28px 24px;position:relative;overflow:hidden;}
-.rec::after{content:'';position:absolute;bottom:0;left:0;width:3px;height:0;background:var(--accent);top:0;transition:height 0.3s;}
-.rec:hover::after{height:100%;}
-.rec-horizon{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);opacity:0.7;margin-bottom:8px;}
-.rec-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:10px;}
-.rec-desc{font-size:12px;line-height:1.85;color:var(--mid);}
-
-/* OUTCOME */
-.outcome{background:var(--cream);color:var(--black);padding:48px;margin-top:64px;}
-.outcome h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
-.outcome p{font-size:14px;line-height:2;color:rgba(10,10,10,0.65);margin-bottom:14px;}
-.outcome-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(10,10,10,0.15);margin-top:32px;}
-.os{padding:24px;background:rgba(255,255,255,0.4);}
-.os-n{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--black);line-height:1;margin-bottom:4px;}
-.os-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(10,10,10,0.5);}
-
-/* RATIONALE */
-.rationale{border:1px solid var(--rule);padding:44px;margin-top:40px;}
-.rationale h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:14px;}
-.rationale p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:14px;}
-.rationale p:last-child{margin-bottom:0;}
-.insight-pull{border-left:3px solid var(--accent);padding:16px 24px;background:var(--bg2);margin:24px 0;}
-.insight-pull p{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--white);margin:0;}
-
-/* FOOT */
-.foot-nav{padding:72px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
-.foot-nav a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
-.foot-nav a:hover{color:var(--white);}
-
-@media(max-width:900px){
-  nav{padding:16px 24px;}
-  .hero{grid-template-columns:1fr;padding:120px 24px 56px;gap:40px;}
-  .body{padding:48px 24px;}
-  .research-grid,.tools-grid,.rec-grid,.outcome-stats{grid-template-columns:1fr;}
-  .foot-nav{padding:48px 24px;flex-direction:column;gap:24px;}
-}
+.rg-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:6px;}
+.rg-sub{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.rg-desc{font-family:'Noto Serif TC',serif;font-size:12px;color:var(--faded);line-height:1.8;}
+.findings{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
+.finding{display:grid;grid-template-columns:40px 1fr;gap:20px;background:var(--bg-section);padding:24px;border:1px solid var(--light-rule);}
+.f-n{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--accent);line-height:1;}
+.f-c h4{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;color:var(--ink);}
+.f-c p{font-family:'Noto Serif TC',serif;font-size:13px;color:var(--faded);line-height:1.8;margin:0;}
+.rec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--light-rule);border:1px solid var(--light-rule);margin-top:24px;}
+.rec{background:var(--bg-section);padding:28px 24px;}
+.rec-h{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);opacity:0.7;margin-bottom:8px;}
+.rec-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;margin-bottom:10px;}
+.rec-desc{font-family:'Noto Serif TC',serif;font-size:12px;color:var(--faded);line-height:1.8;}
+.outcome{background:var(--pale);color:var(--ink);padding:44px;margin-top:64px;}
+.outcome h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:16px;}
+.outcome p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:rgba(26,24,20,0.65);margin-bottom:12px;}
+.os-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(26,24,20,0.12);margin-top:28px;}
+.os{padding:24px;background:rgba(255,255,255,0.5);}
+.os-n{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--ink);line-height:1;margin-bottom:4px;}
+.os-l{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(26,24,20,0.5);}
+.rationale{border:1px solid var(--light-rule);padding:44px;margin-top:40px;}
+.rationale h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:14px;}
+.rationale p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:14px;}
+.pull{border-left:3px solid var(--accent);padding:16px 24px;background:var(--bg-section);margin:20px 0;}
+.pull p{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--ink);margin:0;}
+.foot-nav{padding:72px;border-top:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center;}
+.foot-nav a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+.foot-nav a:hover{color:var(--ink);}
+@media(max-width:900px){nav{padding:16px 24px;}.hero{grid-template-columns:1fr;padding:120px 24px 56px;gap:40px;}.body{padding:48px 24px;}.research-grid,.rec-grid,.os-grid{grid-template-columns:1fr;}.foot-nav{padding:48px 24px;flex-direction:column;gap:24px;text-align:center;}}
 </style>
 </head>
 <body>
-
 <nav>
-  <a class="nav-brand" href="index.html">Ivy Liu</a>
-  <a class="nav-back" href="index.html#cases">← All Cases</a>
+  <a class="nav-brand" href="index.html">Ivy Liu · 策略營運</a>
+  <a class="nav-back" href="index.html#cases">← 返回所有案例</a>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div>
-    <div class="eye">Case G · Graduate Consulting Project · Consumer Strategy · Services Marketing</div>
-    <div class="client-badge">Procter & Gamble France · MSc University of Manchester · 2025</div>
-    <h1>Redesigning P&G's <em>Envie de Plus</em><br>Digital Cashback Programme</h1>
+    <div class="eye">案例 G · 消費者策略 · 研究方法論 · 服務行銷</div>
+    <div class="badge">寶潔法國 · 商業諮詢碩士顧問專案 · 曼徹斯特大學 · 2025</div>
+    <h1>寶潔法國——重新設計<br><em>Envie de Plus</em> 數位現金回饋計畫</h1>
     <div class="tags">
-      <span class="tag">P&G France</span>
-      <span class="tag">Gen Z & Millennial Consumers</span>
-      <span class="tag">Mixed-Methods Research</span>
-      <span class="tag">NVivo + SPSS</span>
-      <span class="tag">7,500-word Report</span>
-      <span class="tag">Phased Roadmap</span>
+      <span class="tag">P&G 法國</span><span class="tag">Z 世代與千禧世代消費者</span><span class="tag">混合研究方法</span><span class="tag">NVivo + SPSS</span><span class="tag">7,500 字顧問報告</span>
     </div>
-    <p class="summary">
-      Delivered an independent consulting engagement for Procter & Gamble France — diagnosing why the Envie de Plus digital cashback programme failed to drive awareness, engagement, and retention among Gen Z and Millennial consumers, and designing a research-backed strategic and tactical roadmap to address each gap.
-    </p>
+    <p class="summary">為寶潔法國提供獨立顧問服務——診斷 Z 世代與千禧世代消費者為何對 Envie de Plus 數位現金回饋計畫缺乏參與動機，並設計以研究為基礎的策略路線圖，改善計畫的品牌知名度、使用體驗與長期留存率。</p>
   </div>
   <div>
     <div class="stats">
-      <div class="s-item"><div class="s-n">15</div><div class="s-l">Semi-Structured Interviews</div></div>
-      <div class="s-item"><div class="s-n">48</div><div class="s-l">Survey Respondents</div></div>
-      <div class="s-item"><div class="s-n">7.5k</div><div class="s-l">Word Consulting Report</div></div>
-      <div class="s-item"><div class="s-n">2</div><div class="s-l">Analysis Tools: NVivo & SPSS</div></div>
+      <div class="s-item"><div class="s-n">15</div><div class="s-l">場半結構式訪談</div></div>
+      <div class="s-item"><div class="s-n">48</div><div class="s-l">份問卷調查</div></div>
+      <div class="s-item"><div class="s-n">7.5k</div><div class="s-l">字顧問報告</div></div>
+      <div class="s-item"><div class="s-n">2</div><div class="s-l">分析工具：NVivo + SPSS</div></div>
     </div>
-    <div class="meta-table">
-      <div class="mt-row"><div class="mk">Client</div><div class="mv">Procter & Gamble France — Envie de Plus digital cashback programme</div></div>
-      <div class="mt-row"><div class="mk">Role</div><div class="mv">External Consultant · Independent researcher and strategist</div></div>
-      <div class="mt-row"><div class="mk">Context</div><div class="mv">MSc Business Consultancy Project, University of Manchester, 2025</div></div>
-      <div class="mt-row"><div class="mk">Focus</div><div class="mv">Consumer awareness, UX friction, trust barriers, Gen Z & Millennial loyalty</div></div>
+    <div class="meta-t">
+      <div class="mt-r"><div class="mk">客戶</div><div class="mv">寶潔法國（P&G France）— Envie de Plus 數位現金回饋計畫</div></div>
+      <div class="mt-r"><div class="mk">角色</div><div class="mv">外部顧問 · 獨立研究員與策略師</div></div>
+      <div class="mt-r"><div class="mk">背景</div><div class="mv">商業諮詢碩士顧問專案，曼徹斯特大學，2025 年</div></div>
+      <div class="mt-r"><div class="mk">研究焦點</div><div class="mv">消費者認知度、UX 摩擦、信任障礙、Z 世代忠誠度</div></div>
     </div>
   </div>
 </div>
 
-<!-- BODY -->
 <div class="body">
 
-  <!-- BACKGROUND -->
   <div class="sec-block">
-    <div class="sec-eye">Background</div>
-    <h3>A well-funded programme with an awareness and trust problem</h3>
-    <p>Envie de Plus is P&G France's digital cashback loyalty platform — a programme offering consumers money back on P&G product purchases. Despite the financial incentive, adoption and active engagement among younger consumers remained persistently low. The question P&G needed answered wasn't "does the offer work?" but "why aren't they finding it, trusting it, and coming back to it?"</p>
-    <p>My role was to bring independent, evidence-based perspective: design the research, execute it, analyse the data rigorously, benchmark the platform against competitors, and deliver a strategic report with actionable recommendations and a phased implementation roadmap.</p>
+    <div class="sec-eye">背景</div>
+    <h3>一個有資源卻面臨認知度與信任問題的計畫</h3>
+    <p>Envie de Plus 是寶潔法國推出的數位現金回饋忠誠計畫——消費者購買 P&G 產品後可獲得現金回饋。儘管提供了金錢誘因，年輕消費者的加入率與活躍參與度卻持續偏低。寶潔需要回答的問題不是「這個優惠有沒有吸引力」，而是「為什麼他們找不到它、不信任它、用了也不回來？」</p>
+    <p>我的角色是帶入獨立的、以實證為基礎的觀點：設計研究架構、執行田調、嚴謹地分析數據、對標競爭對手，並交付含有可行建議與分階段實施路線圖的策略報告。</p>
   </div>
 
-  <!-- RESEARCH DESIGN -->
   <div class="sec-block">
-    <div class="sec-eye">Research Design</div>
-    <h3>Mixed-methods: qualitative depth + quantitative validation</h3>
-    <p>The research combined three strands to triangulate findings — secondary desk research on the French cashback and loyalty market to establish context, qualitative interviews to surface nuanced consumer language and mental models, and a quantitative survey to test how widespread specific pain points were.</p>
+    <div class="sec-eye">研究設計</div>
+    <h3>混合研究方法：質性深度 + 量化驗證</h3>
+    <p>研究結合三個維度進行三角交叉驗證——次級資料桌上研究建立市場背景，質性訪談挖掘消費者的細緻心理模型，量化問卷測試特定痛點的普遍程度。</p>
     <div class="research-grid">
-      <div class="rg-item">
+      <div class="rg">
         <div class="rg-icon">📋</div>
-        <div class="rg-title">Secondary Research</div>
-        <div class="rg-sub">Context · Market · Competitive Landscape</div>
-        <div class="rg-desc">Desk research on the French cashback and loyalty market — consumer behaviour trends, regulatory context, category dynamics, and the competitive landscape of loyalty platforms operating in France.</div>
+        <div class="rg-title">次級研究</div>
+        <div class="rg-sub">背景 · 市場 · 競爭格局</div>
+        <div class="rg-desc">針對法國現金回饋與忠誠計畫市場的桌上研究——消費者行為趨勢、法規背景、品類動態，以及在法國運營的忠誠平台競爭格局。</div>
       </div>
-      <div class="rg-item">
+      <div class="rg">
         <div class="rg-icon">🎙️</div>
-        <div class="rg-title">15 Semi-Structured Interviews</div>
-        <div class="rg-sub">Qualitative Depth · Thematic Analysis</div>
-        <div class="rg-desc">In-depth interviews with Gen Z and Millennial consumers exploring their cashback behaviours, expectations, barriers, and perceptions of Envie de Plus specifically. Analysed using NVivo reflective thematic analysis.</div>
+        <div class="rg-title">15 場半結構式訪談</div>
+        <div class="rg-sub">質性深度 · 主題分析</div>
+        <div class="rg-desc">與 Z 世代及千禧世代消費者進行深度訪談，探索其現金回饋行為、預期、障礙，以及對 Envie de Plus 的具體看法。使用 NVivo 進行反思性主題分析。</div>
       </div>
-      <div class="rg-item">
+      <div class="rg">
         <div class="rg-icon">📊</div>
-        <div class="rg-title">48-Respondent Online Survey</div>
-        <div class="rg-sub">Quantitative Validation · SPSS</div>
-        <div class="rg-desc">Structured survey measuring awareness levels, UX pain points, trust dimensions, and feature preferences. Analysed in SPSS using descriptive statistics, non-parametric tests, and reliability checks to validate qualitative themes.</div>
+        <div class="rg-title">48 份線上問卷調查</div>
+        <div class="rg-sub">量化驗證 · SPSS</div>
+        <div class="rg-desc">結構化問卷，測量認知度水準、UX 痛點、信任維度與功能偏好。透過 SPSS 進行描述統計、非參數檢定與信度檢驗，驗證質性主題的普遍性。</div>
       </div>
     </div>
   </div>
 
-  <!-- ANALYSIS TOOLS -->
   <div class="sec-block">
-    <div class="sec-eye">Analytical Tools</div>
-    <h3>Rigorous translation from raw data to decision-ready insight</h3>
-    <p>The analysis wasn't just descriptive — it was designed to identify the mechanisms behind low engagement, not just the symptoms.</p>
-    <div class="tools-grid">
-      <div class="tool-card">
-        <div class="tool-name">NVivo</div>
-        <div class="tool-role">Qualitative Analysis · Reflective Thematic Coding</div>
-        <div class="tool-desc">Used for systematic coding of interview transcripts. Reflective thematic analysis (following Braun & Clarke's framework) surfaced recurring patterns in consumer language around awareness, trust, privacy concerns, UX friction, and perceived value — producing themes grounded in participants' own framing rather than imposed categories.</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-name">SPSS</div>
-        <div class="tool-role">Quantitative Analysis · Non-Parametric Testing</div>
-        <div class="tool-desc">Survey data analysed using descriptive statistics to profile the sample, non-parametric tests (Mann-Whitney, Kruskal-Wallis) to test group differences, and Cronbach's alpha reliability checks on multi-item scales. This allowed statistically grounded statements about which barriers were most prevalent and whether they varied by demographic group.</div>
-      </div>
+    <div class="sec-eye">核心發現</div>
+    <h3>四個阻礙參與與留存的結構性障礙</h3>
+    <p>研究結果持續指向四個層次的摩擦——每個層次都需要不同類型的介入。</p>
+    <div class="findings">
+      <div class="finding"><div class="f-n">01</div><div class="f-c"><h4>認知度落差——發現機制失靈</h4><p>多數 Z 世代與千禧世代消費者從未在實體或數位接觸點接觸過 Envie de Plus。計畫在消費者意願與品牌相關性最高的時刻——產品購買當下——完全隱形。次要數位頻道對年輕受眾的優化嚴重不足。</p></div></div>
+      <div class="finding"><div class="f-n">02</div><div class="f-c"><h4>UX 摩擦——註冊與兌換流程過於複雜</h4><p>無論是註冊流程還是現金回饋提交流程，受訪者都認為不必要地繁瑣。受訪者描述了多個卡關環節：建立帳號、上傳收據、了解哪些商品符合資格，以及理解兌換時程。每個額外步驟都是潛在的流失點。</p></div></div>
+      <div class="finding"><div class="f-n">03</div><div class="f-c"><h4>信任與隱私疑慮——年輕消費者抱持懷疑</h4><p>特別是 Z 世代受訪者對資料蒐集及使用方式表達了懷疑。他們認為 P&G 的數據處理政策缺乏透明度，形成了單靠金錢誘因無法克服的信任障礙。隱私不是次要問題——而是參與的前提條件。</p></div></div>
+      <div class="finding"><div class="f-n">04</div><div class="f-c"><h4>淺層參與——缺乏習慣養成機制</h4><p>即便是已註冊的用戶，也傾向零散使用計畫。沒有遊戲化進階系統、沒有個人化關聯引擎，也沒有社群或社交維度來創造回訪理由。這個計畫在需要建立關係的地方，只是一個交易行為。</p></div></div>
     </div>
   </div>
 
-  <!-- KEY FINDINGS -->
   <div class="sec-block">
-    <div class="sec-eye">Key Findings</div>
-    <h3>Four structural barriers preventing adoption and loyalty</h3>
-    <p>The research consistently pointed to four distinct layers of friction — each requiring a different type of intervention.</p>
-    <div class="finding-list">
-      <div class="finding">
-        <div class="f-num">01</div>
-        <div class="f-content">
-          <h4>Awareness Gap — Discovery Is Broken</h4>
-          <p>Most Gen Z and Millennial consumers had never encountered Envie de Plus through in-store or digital touchpoints. The programme was invisible at the exact moment of product purchase — the point where intent and relevance are highest. Secondary digital channels were under-optimised for younger audiences.</p>
-        </div>
-      </div>
-      <div class="finding">
-        <div class="f-num">02</div>
-        <div class="f-content">
-          <h4>UX Friction — Registration and Redemption Complexity</h4>
-          <p>Both the sign-up flow and the cashback submission process were experienced as unnecessarily complex. Participants described friction at multiple stages: creating accounts, uploading receipts, understanding which products qualified, and navigating redemption timelines. Each additional step was a potential drop-off point.</p>
-        </div>
-      </div>
-      <div class="finding">
-        <div class="f-num">03</div>
-        <div class="f-content">
-          <h4>Trust and Privacy Concerns — Younger Consumers Are Sceptical</h4>
-          <p>Gen Z respondents in particular expressed scepticism about data collection and how their information would be used. Perceived lack of transparency about P&G's data practices created a trust barrier that monetary incentives alone couldn't overcome. Privacy wasn't a minor concern — it was a pre-condition for engagement.</p>
-        </div>
-      </div>
-      <div class="finding">
-        <div class="f-num">04</div>
-        <div class="f-content">
-          <h4>Shallow Engagement — No Mechanism for Habit Formation</h4>
-          <p>Even users who had registered tended to use the platform sporadically. There was no gamified progression system, no personalised relevance engine, and no social or community dimension to create habitual return. The programme was transactional where it needed to be relational.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BENCHMARKING -->
-  <div class="sec-block">
-    <div class="sec-eye">Competitive Benchmarking</div>
-    <h3>Where Envie de Plus lags — and where the innovation space lies</h3>
-    <p>I benchmarked Envie de Plus against leading competitor cashback and loyalty platforms on four dimensions — UX design, personalisation capability, sustainability communication, and gamification features. The analysis identified specific service gaps and innovation opportunities rather than generic comparisons.</p>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:24px;">
-      <div style="background:var(--bg2);padding:28px 20px;">
-        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">UX Design</div>
-        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:8px;">Simplification Gap</div>
-        <div style="font-size:12px;color:var(--mid);line-height:1.8;">Competitor platforms offer one-click receipt capture and instant qualification feedback. Envie de Plus required significantly more steps to reach the same outcome.</div>
-      </div>
-      <div style="background:var(--bg2);padding:28px 20px;">
-        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Personalisation</div>
-        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:8px;">Relevance Engine Missing</div>
-        <div style="font-size:12px;color:var(--mid);line-height:1.8;">Best-in-class platforms surface relevant offers based on purchase history and preferences. Envie de Plus presented a generic catalogue with no behavioural adaptation.</div>
-      </div>
-      <div style="background:var(--bg2);padding:28px 20px;">
-        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Sustainability</div>
-        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:8px;">Untapped ESG Signal</div>
-        <div style="font-size:12px;color:var(--mid);line-height:1.8;">Competitors increasingly use sustainability positioning as a loyalty differentiator. Gen Z respondents valued brands that made their environmental credentials visible — an angle Envie de Plus wasn't leveraging.</div>
-      </div>
-      <div style="background:var(--bg2);padding:28px 20px;">
-        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Gamification</div>
-        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:8px;">No Progression System</div>
-        <div style="font-size:12px;color:var(--mid);line-height:1.8;">Competitor platforms with streak systems, tier upgrades, and reward milestones showed markedly higher return visit rates. Envie de Plus had no equivalent engagement mechanics.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- RECOMMENDATIONS -->
-  <div class="sec-block">
-    <div class="sec-eye">Strategic & Tactical Recommendations</div>
-    <h3>A phased roadmap across five intervention areas</h3>
-    <p>The recommendations were structured around feasibility, impact, and sequencing — short-term tactical wins that build the foundation for longer-term strategic initiatives, with risk assessment at each stage.</p>
+    <div class="sec-eye">策略建議</div>
+    <h3>跨五個介入面向的分階段路線圖</h3>
+    <p>建議按照可行性、影響力與實施順序進行結構化——短期戰術性快速勝利奠定長期策略舉措的基礎，每個階段均附有風險評估。</p>
     <div class="rec-grid">
-      <div class="rec">
-        <div class="rec-horizon">Tactical · Short-Term</div>
-        <div class="rec-title">On-Pack Awareness Campaigns</div>
-        <div class="rec-desc">Embed Envie de Plus discovery triggers at the physical point of purchase — QR codes, pack copy, and in-aisle materials that intercept consumers exactly when they're engaged with P&G products. Close the awareness gap where it matters most: at the shelf.</div>
-      </div>
-      <div class="rec">
-        <div class="rec-horizon">Tactical · Short-Term</div>
-        <div class="rec-title">Simplified Cashback Communication</div>
-        <div class="rec-desc">Rewrite the programme's value proposition for clarity — plain-language explanation of how cashback works, what qualifies, how long it takes, and what to expect. Remove every unnecessary step from registration and receipt submission. Reduce perceived effort before first engagement.</div>
-      </div>
-      <div class="rec">
-        <div class="rec-horizon">Strategic · Medium-Term</div>
-        <div class="rec-title">Gamified Loyalty Journey</div>
-        <div class="rec-desc">Introduce a progression system with streaks, milestones, tier unlocks, and reward mechanics that create reasons to return beyond individual transactions. Design the journey so each cashback redemption advances a visible goal — not just a single isolated reward.</div>
-      </div>
-      <div class="rec">
-        <div class="rec-horizon">Strategic · Medium-Term</div>
-        <div class="rec-title">Opt-In Personalisation with Transparent Data Use</div>
-        <div class="rec-desc">Build a personalisation layer that surfaces relevant offers based on stated preferences and purchase history — with explicit opt-in, clear privacy controls, and transparent explanation of how data improves the experience. Address trust barriers head-on rather than hoping users won't notice them.</div>
-      </div>
-      <div class="rec">
-        <div class="rec-horizon">Strategic · Long-Term</div>
-        <div class="rec-title">AI-Driven Customer Support</div>
-        <div class="rec-desc">Deploy AI-powered support for common friction points — receipt validation queries, cashback status, eligibility questions — reducing resolution time and reducing the support burden that currently erodes user experience at key moments in the journey.</div>
-      </div>
-      <div class="rec">
-        <div class="rec-horizon">Positioning · Ongoing</div>
-        <div class="rec-title">Ethical & Sustainability Positioning</div>
-        <div class="rec-desc">Integrate P&G's sustainability credentials into the Envie de Plus experience — eco-friendly product highlights, carbon offset redemption options, and transparency about brand values. For Gen Z consumers, ethical positioning isn't a bonus feature: it's a prerequisite for brand trust.</div>
-      </div>
+      <div class="rec"><div class="rec-h">戰術性 · 短期</div><div class="rec-title">包裝觸發認知機制</div><div class="rec-desc">在實體購買當下嵌入 Envie de Plus 發現觸發點——QR Code、包裝文案和貨架邊材料，在消費者與 P&G 產品互動的最高意願時刻進行攔截，縮短認知落差。</div></div>
+      <div class="rec"><div class="rec-h">戰術性 · 短期</div><div class="rec-title">簡化現金回饋溝通</div><div class="rec-desc">重新撰寫計畫的價值主張，以清晰易懂的語言說明現金回饋運作方式、哪些商品符合資格、需要多長時間，以及預期收到什麼。移除首次使用前所有不必要的步驟。</div></div>
+      <div class="rec"><div class="rec-h">策略性 · 中期</div><div class="rec-title">遊戲化忠誠旅程</div><div class="rec-desc">引入含有連續簽到、里程碑、等級解鎖和獎勵機制的進階系統，創造超越單次交易的回訪理由。設計旅程讓每次現金回饋兌換都能推進一個可見目標——而不只是一次孤立的獎勵。</div></div>
+      <div class="rec"><div class="rec-h">策略性 · 中期</div><div class="rec-title">選擇式個人化 + 透明數據政策</div><div class="rec-desc">建立基於偏好和消費歷史的個人化推薦層——搭配明確的選擇加入機制、清晰的隱私控制，以及透明說明數據如何改善體驗。正面迎擊信任障礙，而非期望用戶視而不見。</div></div>
+      <div class="rec"><div class="rec-h">策略性 · 長期</div><div class="rec-title">AI 客服支援</div><div class="rec-desc">在常見摩擦點部署 AI 驅動的客服支援——收據驗證查詢、回饋狀態、資格問題——縮短解決時間，降低目前侵蝕使用者體驗的客服負擔。</div></div>
+      <div class="rec"><div class="rec-h">品牌定位 · 持續</div><div class="rec-title">道德與永續定位</div><div class="rec-desc">將 P&G 的永續發展承諾整合進 Envie de Plus 的體驗——強調環保商品、碳抵消兌換選項，以及品牌價值觀的透明度。對 Z 世代消費者而言，道德定位不是加分項目，而是品牌信任的前提條件。</div></div>
     </div>
   </div>
 
-  <!-- OUTCOME -->
   <div class="outcome">
-    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Outcome & Deliverables</div>
-    <h3>A complete, evidence-grounded consulting report with phased roadmap</h3>
-    <p>The final deliverable was a 7,500-word consulting report presenting the full research methodology, findings, competitive analysis, and strategic recommendations — structured for a P&G France team to act on directly. The report included a feasibility assessment for each recommendation, a risk register, and a phased implementation roadmap prioritising quick wins alongside longer-term structural changes.</p>
-    <p>The research surfaced insights that generic surveys wouldn't have reached — particularly the privacy-as-precondition dynamic among Gen Z users, and the specific UX steps creating the highest drop-off intent. These informed recommendations that were specific rather than generic, evidence-grounded rather than assumed.</p>
-    <div class="outcome-stats">
-      <div class="os"><div class="os-n">4</div><div class="os-l">Key Barriers Identified</div></div>
-      <div class="os"><div class="os-n">6</div><div class="os-l">Strategic Recommendations</div></div>
-      <div class="os"><div class="os-n">3</div><div class="os-l">Phased Implementation Horizons</div></div>
+    <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">成果與交付物</div>
+    <h3>一份完整的、以實證為基礎的顧問報告與分階段路線圖</h3>
+    <p>最終交付物是一份 7,500 字的顧問報告，呈現完整的研究方法論、發現、競爭分析與策略建議——以 P&G 法國團隊可直接採用的格式進行結構化。報告包含每項建議的可行性評估、風險清單，以及優先排序快速勝利與長期結構性改變的分階段實施路線圖。</p>
+    <p>研究挖掘出一般問卷調查難以觸及的洞察——特別是 Z 世代用戶「隱私是參與前提」的動態，以及造成最高流失意願的具體 UX 環節。這些洞察讓建議具體而非泛泛，以實證為基礎而非依賴假設。</p>
+    <div class="os-grid">
+      <div class="os"><div class="os-n">4</div><div class="os-l">個核心障礙識別</div></div>
+      <div class="os"><div class="os-n">6</div><div class="os-l">項策略建議</div></div>
+      <div class="os"><div class="os-n">3</div><div class="os-l">個分階段實施時程</div></div>
     </div>
   </div>
 
-  <!-- RATIONALE -->
   <div class="rationale">
-    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">My Approach</div>
-    <h3>What this project taught me about evidence-based strategy</h3>
-    <p>The most common failure mode in consumer research is confirming what everyone already suspects. The design challenge was to build a methodology that could surface unexpected findings — which is why the qualitative strand came first, shaping what the survey then tested at scale rather than the other way around.</p>
-    <div class="insight-pull"><p>"Privacy wasn't a secondary concern for Gen Z participants. It was the threshold condition for engagement — something no amount of monetary incentive alone could overcome."</p></div>
-    <p>This kind of insight only emerges in interviews, not surveys. The role of the mixed-methods design was precisely to capture that nuance and then test its prevalence quantitatively. That sequencing — qualitative discovery, then quantitative validation — is now a framework I apply whenever the question is "why aren't users doing what they're supposed to?"</p>
-    <p>The competitive benchmarking was similarly designed to be diagnostic rather than descriptive. Rather than listing what competitors do, I asked: at which specific moments in the user journey does Envie de Plus fall short of what a comparable platform offers? That specificity is what makes a benchmark useful for a product or marketing team actually trying to close a gap.</p>
+    <h3>我的研究取向</h3>
+    <p>消費者研究最常見的失敗模式是在驗證所有人早已預設的結論。設計挑戰在於建立一套能浮現出意料之外發現的研究架構——這也是為什麼質性訪談要先行，先塑造問卷後續要驗證的問題，而不是反過來。</p>
+    <div class="pull"><p>「對 Z 世代受訪者而言，隱私不是次要顧慮——而是參與的門檻條件。再多的金錢誘因，都無法單獨克服這道障礙。」</p></div>
+    <p>這類洞察只有在訪談中才能浮現，問卷無法捕捉。混合研究設計的角色正是：先透過質性研究進行探索性發現，再用量化研究驗證其普遍性。這個先後順序——質性探索，再量化驗證——現在已是我在面對「為什麼使用者沒有做預期行為」這類問題時，固定採用的研究框架。</p>
   </div>
 
 </div>
 
-<!-- FOOTER NAV -->
 <div class="foot-nav">
   <div>
-    <a href="index.html#cases">← Back to All Cases</a>
+    <a href="case-f.html">← 案例 F — 知識管理架構設計</a>
   </div>
-  <div style="display:flex;gap:32px;align-items:center;">
-    <div style="text-align:right;">
-      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-bottom:4px;">Previous Case</div>
-      <a href="case-f.html" style="font-family:'Playfair Display',serif;font-size:18px;color:var(--white);text-decoration:none;">← Case F — Knowledge Architecture</a>
-    </div>
-  </div>
+  <a href="index.html#contact">委託顧問合作 →</a>
 </div>
-
 </body>
 </html>

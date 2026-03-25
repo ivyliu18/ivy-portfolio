@@ -1,175 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case A — Cross-Border Merchant Fraud | Ivy Liu</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>案例 A — 跨境商戶詐騙識別與法律追訴 | Ivy Liu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--black:#0a0a0a;--white:#f8f6f1;--cream:#ede9e1;--mid:#8a8278;--rule:#252320;--accent:#c8a96e;--bg2:#0d0c0a;}
+:root{--ink:#1a1814;--paper:#f5f2ec;--warm-mid:#c4a882;--accent:#8b3a2a;--light-rule:#e0dbd0;--faded:#9c9488;--bg-section:#eee9e0;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--black);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.7;}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:20px 56px;border-bottom:1px solid var(--rule);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);}
-.nav-brand{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
-.nav-back{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
-.nav-back:hover{color:var(--white);}
-.hero{padding:140px 72px 80px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
-.eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.eye::before{content:'';width:24px;height:1px;background:var(--accent);}
-h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,56px);font-weight:700;line-height:1.05;margin-bottom:24px;letter-spacing:-0.01em;}
+body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;font-size:13px;line-height:1.8;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--light-rule);}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--ink);}
+.nav-back{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+.nav-back:hover{color:var(--ink);}
+.hero{padding:140px 72px 80px;border-bottom:1px solid var(--light-rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.eye{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,56px);font-weight:300;line-height:1.1;margin-bottom:24px;}
 h1 em{font-style:italic;color:var(--accent);}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
-.tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--rule);color:var(--mid);}
-.summary{font-size:15px;line-height:1.9;color:rgba(248,246,241,0.65);border-left:2px solid var(--accent);padding-left:20px;}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);}
-.s-item{background:var(--black);padding:28px 24px;}
-.s-n{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1;margin-bottom:6px;}
-.s-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);}
-.meta-table{margin-top:16px;border:1px solid var(--rule);}
-.mt-row{display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid var(--rule);}
-.mt-row:last-child{border-bottom:none;}
-.mk{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);padding:12px 14px;border-right:1px solid var(--rule);background:var(--bg2);}
-.mv{font-size:12px;color:rgba(248,246,241,0.6);padding:12px 14px;line-height:1.6;}
+.tag{font-size:10px;letter-spacing:0.1em;padding:5px 12px;background:var(--bg-section);border:1px solid var(--light-rule);color:var(--ink);}
+.summary{font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;border-left:2px solid var(--warm-mid);padding-left:20px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--light-rule);border:1px solid var(--light-rule);}
+.s-item{background:var(--paper);padding:28px 24px;}
+.s-n{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1;margin-bottom:6px;}
+.s-l{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);}
+.meta-t{margin-top:16px;border:1px solid var(--light-rule);}
+.mt-r{display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid var(--light-rule);}
+.mt-r:last-child{border-bottom:none;}
+.mk{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--faded);padding:12px 14px;border-right:1px solid var(--light-rule);background:var(--bg-section);}
+.mv{font-family:'Noto Serif TC',serif;font-size:12px;color:#3a3630;padding:12px 14px;line-height:1.6;}
 .body{padding:72px;max-width:960px;}
-.sec-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
-.sec-eye::before{content:'';width:24px;height:1px;background:var(--accent);}
+.sec-eye{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;}
 .sec-block{margin-bottom:64px;}
-.sec-block h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
-.sec-block p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:16px;}
+.sec-block h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:16px;}
+.sec-block p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:16px;}
 .timeline{display:flex;flex-direction:column;margin-top:24px;}
-.tl-row{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid var(--rule);padding:20px 0;}
-.tl-row:first-child{border-top:1px solid var(--rule);}
-.tl-date{font-family:'Space Mono',monospace;font-size:10px;color:var(--accent);padding-right:20px;padding-top:2px;}
-.tl-body{font-size:13px;line-height:1.85;color:rgba(248,246,241,0.6);}
-.tl-body strong{display:block;color:var(--white);font-size:14px;margin-bottom:4px;}
+.tl-row{display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid var(--light-rule);padding:20px 0;}
+.tl-row:first-child{border-top:1px solid var(--light-rule);}
+.tl-date{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);padding-right:16px;padding-top:2px;}
+.tl-body{font-family:'Noto Serif TC',serif;font-size:13px;line-height:1.85;color:#3a3630;}
+.tl-body strong{display:block;color:var(--ink);font-size:14px;margin-bottom:4px;}
 .steps{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
-.step{display:grid;grid-template-columns:48px 1fr;gap:24px;background:var(--bg2);padding:24px;border:1px solid var(--rule);}
-.s-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);line-height:1;}
-.s-content h4{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;color:var(--white);}
-.s-content p{font-size:13px;line-height:1.85;color:var(--mid);margin:0;}
-.ev-list{list-style:none;margin-top:16px;border:1px solid var(--rule);}
-.ev-list li{display:grid;grid-template-columns:90px 1fr;gap:16px;padding:14px 16px;border-bottom:1px solid var(--rule);font-size:13px;}
+.step{display:grid;grid-template-columns:48px 1fr;gap:24px;background:var(--bg-section);padding:24px;border:1px solid var(--light-rule);}
+.s-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--accent);line-height:1;}
+.s-c h4{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;color:var(--ink);}
+.s-c p{font-family:'Noto Serif TC',serif;font-size:13px;line-height:1.8;color:var(--faded);margin:0;}
+.ev-list{list-style:none;margin-top:16px;border:1px solid var(--light-rule);}
+.ev-list li{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:14px 16px;border-bottom:1px solid var(--light-rule);}
 .ev-list li:last-child{border-bottom:none;}
-.ev-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);padding-top:2px;}
-.ev-v{color:rgba(248,246,241,0.6);line-height:1.7;}
-.outcome{background:var(--cream);color:var(--black);padding:44px;margin-top:64px;}
-.outcome h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
-.outcome p{font-size:14px;line-height:2;color:rgba(10,10,10,0.65);margin-bottom:12px;}
-.os-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(10,10,10,0.15);margin-top:28px;}
-.os{padding:24px;background:rgba(255,255,255,0.4);}
-.os-n{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--black);line-height:1;margin-bottom:4px;}
-.os-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(10,10,10,0.5);}
-.rationale{border:1px solid var(--rule);padding:44px;margin-top:40px;}
-.rationale h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:14px;}
-.rationale p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:14px;}
-.pull{border-left:3px solid var(--accent);padding:16px 24px;background:var(--bg2);margin:20px 0;}
-.pull p{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--white);margin:0;}
-.foot-nav{padding:72px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
-.foot-nav a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
-.foot-nav a:hover{color:var(--white);}
+.ev-l{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);padding-top:2px;}
+.ev-v{font-family:'Noto Serif TC',serif;font-size:12px;color:#3a3630;line-height:1.7;}
+.outcome{background:var(--ink);color:var(--paper);padding:44px;margin-top:64px;}
+.outcome h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:16px;color:var(--paper);}
+.outcome p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:rgba(245,242,236,0.7);margin-bottom:12px;}
+.os-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.1);margin-top:28px;}
+.os{padding:24px;}
+.os-n{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--warm-mid);line-height:1;margin-bottom:4px;}
+.os-l{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,242,236,0.5);}
+.rationale{border:1px solid var(--light-rule);padding:44px;margin-top:40px;}
+.rationale h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:14px;}
+.rationale p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:14px;}
+.pull{border-left:3px solid var(--accent);padding:16px 24px;background:var(--bg-section);margin:20px 0;}
+.pull p{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--ink);margin:0;}
+.foot-nav{padding:72px;border-top:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center;}
+.foot-nav a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+.foot-nav a:hover{color:var(--ink);}
 .next-block{text-align:right;}
-.next-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-bottom:4px;}
-.next-t{font-family:'Playfair Display',serif;font-size:18px;color:var(--white);text-decoration:none;}
+.next-l{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--faded);margin-bottom:4px;}
+.next-t{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--ink);text-decoration:none;}
 @media(max-width:900px){nav{padding:16px 24px;}.hero{grid-template-columns:1fr;padding:120px 24px 56px;gap:40px;}.body{padding:48px 24px;}.foot-nav{padding:48px 24px;flex-direction:column;gap:24px;text-align:center;}.os-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <nav>
-  <a class="nav-brand" href="index.html">Ivy Liu</a>
-  <a class="nav-back" href="index.html#cases">← All Cases</a>
+  <a class="nav-brand" href="index.html">Ivy Liu · 策略營運</a>
+  <a class="nav-back" href="index.html#cases">← 返回所有案例</a>
 </nav>
 <div class="hero">
   <div>
-    <div class="eye">Case A · Risk Management · Legal Ops</div>
-    <h1>Cross-Border Merchant Fraud:<br><em>Detection, Prosecution & Risk Controls</em></h1>
+    <div class="eye">案例 A · 風險控管 · 法律營運</div>
+    <h1>跨境商戶詐騙：<br><em>識別、追訴與風控機制建立</em></h1>
     <div class="tags">
-      <span class="tag">UK · Fintech</span><span class="tag">No External Lawyers</span><span class="tag">Full English</span><span class="tag">Court Documents</span><span class="tag">0→1 SOP Build</span>
+      <span class="tag">英國 · Fintech</span><span class="tag">無外部律師</span><span class="tag">全程英文</span><span class="tag">法院文件撰寫</span><span class="tag">從零建立 SOP</span>
     </div>
-    <p class="summary">NeroPay faced multiple cross-border merchant fraud incidents with no legal counsel and no precedent. I independently identified fraud patterns, built a complete evidence chain, drafted UK County Court Witness Statements in full English, and designed systemic risk controls to prevent recurrence.</p>
+    <p class="summary">公司遭遇多起跨境商戶詐騙，無法律顧問、無先例可循。我獨立識別詐欺特徵、建立完整證據鏈、以英文撰寫英國縣法院 Witness Statement，並在事後設計系統性風控 SOP，防止同類事件再發生。</p>
   </div>
   <div>
     <div class="stats">
-      <div class="s-item"><div class="s-n">2</div><div class="s-l">County Court Claims Filed</div></div>
-      <div class="s-item"><div class="s-n">0</div><div class="s-l">External Lawyers Used</div></div>
-      <div class="s-item"><div class="s-n">£12k</div><div class="s-l">Total Amount Claimed</div></div>
-      <div class="s-item"><div class="s-n">6wks</div><div class="s-l">Zero to Filed</div></div>
+      <div class="s-item"><div class="s-n">2</div><div class="s-l">件訴訟提交</div></div>
+      <div class="s-item"><div class="s-n">0</div><div class="s-l">外部律師</div></div>
+      <div class="s-item"><div class="s-n">£12k</div><div class="s-l">申索總額</div></div>
+      <div class="s-item"><div class="s-n">6週</div><div class="s-l">從確認到提交</div></div>
     </div>
-    <div class="meta-table">
-      <div class="mt-row"><div class="mk">Company</div><div class="mv">NeroPay (Nero Panda Ltd) — UK Fintech payment platform</div></div>
-      <div class="mt-row"><div class="mk">Role</div><div class="mv">Operations lead · Case handler · Witness (Shih-Yu Liu)</div></div>
-      <div class="mt-row"><div class="mk">Period</div><div class="mv">October 2025 — February 2026</div></div>
-      <div class="mt-row"><div class="mk">Case Refs</div><div class="mv">758MC289 · 779MC033 (England & Wales County Court)</div></div>
+    <div class="meta-t">
+      <div class="mt-r"><div class="mk">公司</div><div class="mv">NeroPay（Nero Panda Ltd）— 英國 Fintech 支付平台</div></div>
+      <div class="mt-r"><div class="mk">角色</div><div class="mv">營運負責人 · 案件主責 · 證人（Ivy Liu）</div></div>
+      <div class="mt-r"><div class="mk">時間</div><div class="mv">2025 年 10 月 — 2026 年 2 月</div></div>
+      <div class="mt-r"><div class="mk">案號</div><div class="mv">758MC289 · 779MC033（英格蘭及威爾斯縣法院）</div></div>
     </div>
   </div>
 </div>
 <div class="body">
   <div class="sec-block">
-    <div class="sec-eye">Background</div>
-    <h3>No lawyer, no precedent, no SOP — high pressure from day one</h3>
-    <p>NeroPay is an early-stage UK fintech startup providing payment processing for small and mid-sized merchants. In late 2025, the company encountered a series of merchant disputes with clear fraud characteristics. The most complex case involved a merchant (Property Documents Ltd) who ran two card transactions of £4,150 each within five hours, withdrew all funds immediately, then initiated chargebacks — leaving NeroPay with a −£8,290 negative balance.</p>
-    <p>When we attempted to recover funds via the merchant's stored card, they reported it lost or stolen. OSINT investigation then revealed the merchant director's KYC photo matched a known serial fraudster with 27 aliases and 73 prior fraud convictions documented in UK national media.</p>
-    <p>The company had no legal counsel, no chargeback SOP, and zero precedent for UK litigation. Every decision, document, and cross-institution contact was handled independently by me.</p>
+    <div class="sec-eye">背景</div>
+    <h3>沒有律師、沒有先例——高壓從第一天開始</h3>
+    <p>NeroPay 是一家處於早期階段的英國 Fintech 新創，專注為中小型商戶提供支付處理服務。2025 年底，公司在短時間內遭遇了具有明顯詐欺特徵的商戶爭議。最複雜的一案涉及一名商戶（Property Documents Ltd）在同一天五小時內用同一張卡刷了兩筆各 £4,150 的大額交易，資金到帳後立即全數提領，隨後透過發卡行發起 chargeback，導致 NeroPay 出現 −£8,290 的負餘額。</p>
+    <p>更棘手的是：當我們嘗試用商戶儲存的卡片自動扣款追回時，對方申報卡片「遺失或被竊」，主動封堵了追款管道。後續的 OSINT 調查還發現，該商戶負責人的 KYC 照片與英國媒體報導中一名擁有 27 個化名、73 項詐欺前科的慣犯高度相符。</p>
+    <p>公司沒有法律顧問，沒有 chargeback SOP，也沒有任何處理英國訴訟的先例。所有的研判、文件撰寫與跨機構溝通，都由我一個人主導完成。</p>
   </div>
   <div class="sec-block">
-    <div class="sec-eye">Timeline</div>
-    <h3>From anomaly detection to court filing</h3>
+    <div class="sec-eye">案件時序</div>
+    <h3>從異常偵測到法院受理</h3>
     <div class="timeline">
-      <div class="tl-row"><div class="tl-date">2025.10.04</div><div class="tl-body"><strong>Merchant registers on NeroPay</strong>SIC codes 58190 and 63990 (publishing/information services) — entirely inconsistent with the large-value card-present transactions that followed.</div></div>
-      <div class="tl-row"><div class="tl-date">2025.10.30</div><div class="tl-body"><strong>Two £4,150 transactions within five hours</strong>Same Visa debit card, same day. Funds transferred to NatWest account and withdrawn immediately.</div></div>
-      <div class="tl-row"><div class="tl-date">2025.11.05–07</div><div class="tl-body"><strong>Merchant requests refund — communications deteriorate</strong>We explained funds had been withdrawn; a top-up was needed before any refund. Merchant began stalling and going silent.</div></div>
-      <div class="tl-row"><div class="tl-date">2025.11.25</div><div class="tl-body"><strong>Issuing bank triggers chargeback — negative balance −£8,300</strong>Formal recovery initiated: WhatsApp notice, email warning, three-day deadline with explicit statement of legal consequences.</div></div>
-      <div class="tl-row"><div class="tl-date">2025.11.26</div><div class="tl-body"><strong>Auto-debit declined — card reported lost/stolen</strong>County Court claim filed same day, case ref 758MC289. Merchant received notice and continued non-response.</div></div>
-      <div class="tl-row"><div class="tl-date">2026.01.13</div><div class="tl-body"><strong>Second claim filed — RSN Works Ltd (ref 779MC033)</strong>Amount: £3,684. Identical fraud pattern: payment received, goods never delivered, four chargebacks triggered.</div></div>
-      <div class="tl-row"><div class="tl-date">2026.02.19</div><div class="tl-body"><strong>Witness Statement signed — hearing preparation begins</strong>All eight Exhibits compiled. Both cases enter formal trial stage.</div></div>
+      <div class="tl-row"><div class="tl-date">2025.10.04</div><div class="tl-body"><strong>商戶完成 NeroPay 平台註冊</strong>登記業務類型為出版與資訊服務（SIC 58190、63990），與後續大額實體刷卡消費完全不符。</div></div>
+      <div class="tl-row"><div class="tl-date">2025.10.30</div><div class="tl-body"><strong>同日五小時內完成兩筆各 £4,150 交易</strong>使用同一張 Visa 簽帳卡，資金到帳後立即全數提領至 NatWest 帳戶。</div></div>
+      <div class="tl-row"><div class="tl-date">2025.11.05–07</div><div class="tl-body"><strong>商戶要求退款，溝通出現矛盾</strong>我方說明資金已提領、需先補足餘額方可退款；商戶開始出現推諉與不回應的行為模式。</div></div>
+      <div class="tl-row"><div class="tl-date">2025.11.25</div><div class="tl-body"><strong>發卡行觸發 chargeback，負餘額 −£8,300</strong>我方啟動正式催款：發出 WhatsApp 通知、電郵警告，並設定三日還款期限，明告法律後果。</div></div>
+      <div class="tl-row"><div class="tl-date">2025.11.26</div><div class="tl-body"><strong>自動扣款遭拒——商戶申報卡片遺失</strong>縣法院同日受理訴訟，案號 758MC289。商戶收到法院通知後仍拒絕回應。</div></div>
+      <div class="tl-row"><div class="tl-date">2026.01.13</div><div class="tl-body"><strong>第二件案件提交（RSN Works Ltd）</strong>案號 779MC033，申索金額 £3,684。相同詐欺模式：收款後不交付貨品，引發四筆 chargeback。</div></div>
+      <div class="tl-row"><div class="tl-date">2026.02.19</div><div class="tl-body"><strong>Witness Statement 完成簽署，進入聆訊準備</strong>八份 Exhibits 全數整理完畢，案件進入正式審理階段。</div></div>
     </div>
   </div>
   <div class="sec-block">
-    <div class="sec-eye">Process</div>
-    <h3>Four layers from chaos to structured prosecution</h3>
+    <div class="sec-eye">執行流程</div>
+    <h3>從混亂到有序的四個層次</h3>
     <div class="steps">
-      <div class="step"><div class="s-num">01</div><div class="s-content"><h4>Anomaly Identification & Fraud Classification</h4><p>Before the chargeback triggered, multiple red flags were already present: same-card double transactions same day, business type inconsistent with spending pattern, immediate full withdrawal. Classified as first-party merchant fraud and escalated to high-alert tracking.</p></div></div>
-      <div class="step"><div class="s-num">02</div><div class="s-content"><h4>Cross-Department Communication & Formal Recovery</h4><p>Coordinated with customer service colleagues across multiple WhatsApp and phone rounds, logging all merchant commitments and behaviour to build a usable communication record for court. Led formal demand notices with explicit CCJ warnings.</p></div></div>
-      <div class="step"><div class="s-num">03</div><div class="s-content"><h4>Independent Legal Document Drafting</h4><p>Researched England & Wales County Court format requirements from scratch. Drafted full Statement of Case and Witness Statement in English, compiled eight Exhibits, filed through HMCTS MoneyClaim Online.</p></div></div>
-      <div class="step"><div class="s-num">04</div><div class="s-content"><h4>OSINT Investigation & Identity Verification</h4><p>Identified high visual match between KYC photo and a documented serial fraudster (27 aliases, 73 convictions). Integrated public record evidence into court documents. Used the merchant's own submitted bank screenshots to rebut their "unauthorised deduction" claim.</p></div></div>
+      <div class="step"><div class="s-num">01</div><div class="s-c"><h4>異常識別與詐欺研判</h4><p>在 chargeback 正式觸發前，已注意到多項紅旗訊號：同日同卡雙筆大額交易、業務類型與消費情境嚴重不符、資金即時提領。識別案件性質為「第一方商戶詐欺（first-party merchant fraud）」，啟動高度警戒追蹤。</p></div></div>
+      <div class="step"><div class="s-num">02</div><div class="s-c"><h4>跨部門溝通與催款協調</h4><p>協調客服同事進行多輪電話與 WhatsApp 溝通，逐一記錄商戶承諾與行為，形成可供法院使用的通訊紀錄。主導發出正式催款通知，並清楚告知 CCJ 等法律後果。</p></div></div>
+      <div class="step"><div class="s-num">03</div><div class="s-c"><h4>法律文件獨立撰寫</h4><p>從零研究英國縣法院訴訟格式要求，全英文撰寫 Statement of Case 及 Witness Statement，整理八份 Exhibits（含 Stripe 交易截圖、匯款紀錄、WhatsApp 通訊、銀行拒款截圖、KYC 文件）。透過 HMCTS MoneyClaim 平台完成提交。</p></div></div>
+      <div class="step"><div class="s-num">04</div><div class="s-c"><h4>OSINT 調查與身份核查</h4><p>發現商戶負責人 KYC 照片與英國媒體報導的慣犯高度相符（27 個化名、73 項前科）。將公開資訊整合進法院文件，同時引用商戶自身提交的銀行截圖，反駁其「非法扣款」的指控，形成自我矛盾的反證。</p></div></div>
     </div>
   </div>
   <div class="sec-block">
-    <div class="sec-eye">Court Exhibits</div>
-    <h3>Eight exhibits — built from zero with no legal support</h3>
+    <div class="sec-eye">法院文件</div>
+    <h3>八份 Exhibits——從零建立，無律師協助</h3>
     <ul class="ev-list">
-      <li><div class="ev-l">Exhibit 1</div><div class="ev-v">NeroPay merchant registration screenshots — proving agreement to T&Cs including chargeback liability and stored card authorisation</div></li>
-      <li><div class="ev-l">Exhibit 2</div><div class="ev-v">Stripe transaction records — two £4,150 transactions, same card, same day, five-hour window</div></li>
-      <li><div class="ev-l">Exhibit 3</div><div class="ev-v">NatWest transfer records confirming funds received and withdrawn: £3,443.86 (11/1) and £4,661.74 (11/4)</div></li>
-      <li><div class="ev-l">Exhibit 4</div><div class="ev-v">WhatsApp logs and call records — demand notices, merchant commitments, subsequent non-responses</div></li>
-      <li><div class="ev-l">Exhibit 5</div><div class="ev-v">Bank decline screenshot: "Payment declined because you reported your card lost or stolen"</div></li>
-      <li><div class="ev-l">Exhibit 6</div><div class="ev-v">HMCTS court notice and Claim Form (case ref 758MC289)</div></li>
-      <li><div class="ev-l">Exhibit 7</div><div class="ev-v">Stripe Dispute details — chargeback reason "credit not processed", Verifi RDR resolution record</div></li>
-      <li><div class="ev-l">Exhibit 8</div><div class="ev-v">UK media reports (Express, Daily Mail) — documenting the suspected serial fraudster identity match</div></li>
+      <li><div class="ev-l">Exhibit 1</div><div class="ev-v">NeroPay 商戶註冊頁面截圖，證明商戶同意並接受條款，包含 chargeback 責任與自動扣款授權</div></li>
+      <li><div class="ev-l">Exhibit 2</div><div class="ev-v">Stripe 支付平台交易紀錄：兩筆 £4,150，同日、同卡、五小時內</div></li>
+      <li><div class="ev-l">Exhibit 3</div><div class="ev-v">NatWest 匯款紀錄：£3,443.86（11/1）及 £4,661.74（11/4），確認資金已到帳並提領</div></li>
+      <li><div class="ev-l">Exhibit 4</div><div class="ev-v">WhatsApp 通訊記錄、電話通話紀錄：催款通知、商戶承諾與後續失聯</div></li>
+      <li><div class="ev-l">Exhibit 5</div><div class="ev-v">銀行拒款截圖：「Payment declined because you reported your card lost or stolen」</div></li>
+      <li><div class="ev-l">Exhibit 6</div><div class="ev-v">HMCTS 法院通知及 Claim Form（案號 758MC289）</div></li>
+      <li><div class="ev-l">Exhibit 7</div><div class="ev-v">Stripe Dispute 詳情：chargeback 原因「credit not processed」，Verifi RDR 解決紀錄</div></li>
+      <li><div class="ev-l">Exhibit 8</div><div class="ev-v">公開媒體報導（Express、Daily Mail），顯示慣犯身份疑似相符</div></li>
     </ul>
   </div>
   <div class="outcome">
-    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Outcome</div>
-    <h3>Crisis resolved — systems built behind it</h3>
-    <p>Both claims formally filed and accepted by England & Wales County Court. Total claimed: £12,014. All documentation drafted independently, no external solicitors. Zero to filing in approximately six weeks.</p>
-    <p>The durable outcome was institutional: this case became NeroPay's reference framework for merchant dispute handling — a Red Flag Checklist, tiered demand notice templates, a chargeback evidence SOP, and a standard structure for HMCTS court documents.</p>
+    <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-mid);margin-bottom:16px;">成果</div>
+    <h3>危機處置完成，制度同步建立</h3>
+    <p>兩件訴訟均完成正式提交並由英格蘭及威爾斯縣法院受理，合計申索金額 £12,014。相關法律文件全程由我獨立撰寫，無外部律師介入，從確認詐欺到完成提交共耗時約六週。</p>
+    <p>更重要的成果在於制度層面：此案成為 NeroPay 日後處理商戶爭議的參考框架，包括紅旗識別清單、分層催款通知模板、chargeback 證據整理 SOP，以及 HMCTS 訴訟文件的標準結構。</p>
     <div class="os-grid">
-      <div class="os"><div class="os-n">2</div><div class="os-l">County Court Claims Filed</div></div>
-      <div class="os"><div class="os-n">£12,014</div><div class="os-l">Total Amount Claimed</div></div>
-      <div class="os"><div class="os-n">1</div><div class="os-l">Systemic SOP Built After</div></div>
+      <div class="os"><div class="os-n">2</div><div class="os-l">件縣法院訴訟提交</div></div>
+      <div class="os"><div class="os-n">£12,014</div><div class="os-l">申索總額</div></div>
+      <div class="os"><div class="os-n">1</div><div class="os-l">套系統性 SOP 建立</div></div>
     </div>
   </div>
   <div class="rationale">
-    <h3>My Rationale</h3>
-    <p>Most people's first instinct here is "we need a lawyer." In a resource-constrained early startup, that option is often too slow and too expensive. My judgement was: with enough logical structure and language capability, many legal documents are self-serviceable — the key is knowing what you're doing, understanding the format requirements, and knowing when to escalate.</p>
-    <div class="pull"><p>"Chargeback management isn't a finance problem. It sits at the intersection of contract law, behavioural pattern analysis, cross-institution communication, and documentation discipline."</p></div>
-    <p>Being able to assess rapidly under uncertainty, act across functional boundaries, and convert each crisis into a replicable institutional asset — that's what makes an early-stage operations role genuinely valuable.</p>
+    <h3>我的判斷</h3>
+    <p>很多人遇到這種情況的第一反應是「我們需要找律師」。但在資源有限的早期新創，這個選項往往太慢、也太貴。我的判斷是：只要有足夠的邏輯架構與語言能力，很多法律文件是可以自己來的——重點是要知道你在做什麼、格式要求是什麼，以及什麼時候需要升級。</p>
+    <div class="pull"><p>「Chargeback 管理不只是財務問題，而是涉及合約條款理解、行為模式分析、跨機構溝通，以及文書能力的複合挑戰。」</p></div>
+    <p>能夠在不確定中快速研判、跨越職能邊界採取行動，並把每一次危機轉化成可複製的制度資產——這才是早期營運角色真正的價值所在。</p>
   </div>
 </div>
 <div class="foot-nav">
-  <a href="index.html#cases">← Back to All Cases</a>
+  <a href="index.html#cases">← 返回所有案例</a>
   <div class="next-block">
-    <div class="next-l">Next Case</div>
-    <a href="case-b.html" class="next-t">Case B — AI Menu Automation →</a>
+    <div class="next-l">下一個案例</div>
+    <a href="case-b.html" class="next-t">案例 B — AI 菜單自動化流程 →</a>
   </div>
 </div>
 </body>

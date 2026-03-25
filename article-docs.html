@@ -1,102 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Most Common Document Management Mistake Early Startups Make — Ivy Liu</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>早期新創最常犯的文件管理錯誤 — Ivy Liu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--black:#0a0a0a;--white:#f8f6f1;--cream:#ede9e1;--mid:#8a8278;--rule:#252320;--accent:#c8a96e;}
+:root{--ink:#1a1814;--paper:#f5f2ec;--warm-mid:#c4a882;--accent:#8b3a2a;--light-rule:#e0dbd0;--faded:#9c9488;--bg-section:#eee9e0;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--black);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.7;}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:20px 56px;border-bottom:1px solid var(--rule);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);}
-.nav-brand{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
-.nav-back{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
-.nav-back:hover{color:var(--white);}
-.hero{padding:140px 72px 64px;border-bottom:1px solid var(--rule);max-width:900px;}
-.eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.eye::before{content:'';width:24px;height:1px;background:var(--accent);}
-h1{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,58px);font-weight:700;line-height:1.05;margin-bottom:28px;letter-spacing:-0.01em;}
-.byline{display:flex;gap:32px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
-.body{padding:64px 72px;max-width:780px;}
-.body p{font-size:15px;line-height:2;color:rgba(248,246,241,0.7);margin-bottom:28px;}
-.body h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;line-height:1.2;margin:56px 0 20px;color:var(--white);border-left:3px solid var(--accent);padding-left:16px;letter-spacing:-0.01em;}
-.body h3{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin:36px 0 14px;color:var(--white);}
-.body blockquote{margin:36px 0;padding:20px 28px;border-left:2px solid var(--accent);background:#0d0c0a;}
-.body blockquote p{font-size:14px;color:var(--mid);margin-bottom:0;}
-.body strong{color:var(--white);font-weight:600;}
-.body em{font-style:italic;color:var(--accent);}
-.body hr{border:none;border-top:1px solid var(--rule);margin:48px 0;}
-.foot{padding:56px 72px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
-.foot a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
-.foot a:hover{color:var(--white);}
-.foot-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);}
-@media(max-width:900px){nav{padding:16px 24px;}.hero{padding:120px 24px 48px;}.body{padding:48px 24px;}.foot{padding:32px 24px;flex-direction:column;gap:16px;}}
+body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;font-size:13px;line-height:1.8;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--light-rule);}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--ink);}
+.nav-back{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+.nav-back:hover{color:var(--ink);}
+.hero{padding:140px 72px 64px;border-bottom:1px solid var(--light-rule);}
+.hi{max-width:860px;margin:0 auto;}
+.eye{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,52px);font-weight:300;line-height:1.1;margin-bottom:24px;}
+.byline{display:flex;gap:32px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--faded);}
+.byline span{display:flex;align-items:center;gap:8px;}
+.byline span::before{content:'';display:inline-block;width:16px;height:1px;background:var(--warm-mid);}
+.ab{padding:64px 72px;}
+.ai{max-width:680px;margin:0 auto;}
+.ab p{font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;margin-bottom:28px;}
+.ab h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;line-height:1.2;margin:56px 0 20px;color:var(--ink);border-left:3px solid var(--accent);padding-left:16px;}
+.ab h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;font-style:italic;margin:36px 0 14px;color:var(--ink);}
+.ab blockquote{margin:36px 0;padding:20px 28px;border-left:2px solid var(--warm-mid);background:var(--bg-section);}
+.ab blockquote p{font-size:14px;color:var(--faded);margin-bottom:0;}
+.ab strong{color:var(--ink);font-weight:500;}
+.ab em{font-style:italic;color:var(--accent);}
+.ab hr{border:none;border-top:1px solid var(--light-rule);margin:48px 0;}
+.foot{padding:56px 72px;border-top:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center;}
+.foot a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+.foot a:hover{color:var(--ink);}
+.ft{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);}
+@media(max-width:900px){nav{padding:16px 24px;}.hero{padding:120px 32px 48px;}.ab{padding:48px 32px;}.foot{padding:32px;flex-direction:column;gap:16px;align-items:flex-start;}}
 </style>
 </head>
 <body>
 <nav>
-  <a class="nav-brand" href="index.html">Ivy Liu</a>
-  <a class="nav-back" href="index.html#writing">← Writing</a>
+  <a class="nav-brand" href="index.html">Ivy Liu · 策略營運</a>
+  <a class="nav-back" href="index.html#writing">← 返回文章列表</a>
 </nav>
+
 <div class="hero">
-  <div class="eye">Operations Thinking</div>
-  <h1>The Most Common Document Management Mistake Early Startups Make — and Why It Explodes When You're Busiest</h1>
-  <div class="byline"><span>March 2026</span><span>Ivy Liu</span></div>
+  <div class="hi">
+    <div class="eye">營運思維</div>
+    <h1>早期新創最常犯的文件管理錯誤<br>——以及為什麼它會在你最忙的時候炸掉</h1>
+    <div class="byline"><span>2026年3月</span><span>Ivy Liu</span></div>
+  </div>
 </div>
-<div class="body">
-  <h3>From a year of operational experience: architecture isn't overhead, it's infrastructure</h3>
-  <hr>
-  <p>Before I joined this fintech startup, the company had been running for a few years. But those years were almost exclusively product development — no operations, no marketing, no systematic documentation of anything.</p>
-  <p>I was the first person brought in specifically for operations and marketing. And like most people, I started with a "ship first, organise later" mentality. In a startup, you have to move fast before you know what the problems are. That logic isn't wrong.</p>
-  <p>But I later discovered there's an important line between "ship first, organise later" and "never organise at all." That line is: <strong>the moment you hire your first person.</strong></p>
-  <hr>
-  <h2>I. The problem doesn't surface when it's just you</h2>
-  <p>When a company has three to five people running on instant messages and verbal agreements, you can't feel the problem. Everyone knows the rules because the rules live in everyone's head.</p>
-  <p>The problem explodes the moment a new person joins. You suddenly need to onboard someone and discover there's no onboarding process. A customer complains, and the new hire doesn't know the refund policy, because the refund policy was a tacit agreement between you and the founder — never written down. Someone asks about the communication standard, and you say "it depends" because you're genuinely not sure what the standard is.</p>
-  <p>Every "it depends" is a landmine waiting to detonate.</p>
-  <hr>
-  <h2>II. What I observed at a structured company</h2>
-  <p>During this period, I spent time at a local UK tech company with around 100 employees. Their onboarding was thorough enough to be almost startling. Every role had clear accountability definitions, standard operating procedures, and a "things you need to know in your first month" document. New hires in week one already knew who to ask for what, and what they could decide independently versus what needed escalation.</p>
-  <p>This isn't bureaucracy. This is efficiency.</p>
-  <p>When an organisation's knowledge lives entirely inside human heads, the scaling limit of that organisation is the memory capacity of those humans.</p>
-  <hr>
-  <h2>III. Documentation is a form of organisational design</h2>
-  <p>Many people think "building documentation" is administrative busywork — written and then left to gather dust in some folder nobody visits. But I've come to understand that the act of building documentation is itself organisational design.</p>
-  <p>When you create a folder for each department, you're drawing an org chart. When you decide whether a document belongs under "Legal" or "Operations," you're defining accountability boundaries. When you write a refund SOP, you're making a decision — not deferring it to later. You're making it once, and everyone gets to use it forever after.</p>
-  <p><strong>An org chart isn't for external display. It's for internal use.</strong> It tells you which roles need to be filled as you go from three people to ten, which processes need to be split, which decisions can be delegated.</p>
-  <hr>
-  <h2>IV. What I only realised once I started: compliance comes first</h2>
-  <p>Before I actually built our document architecture, I assumed our core departments would be Commercial Development, Marketing, and Customer Service.</p>
-  <p>Doing the work revealed that <strong>compliance and legal should come first.</strong></p>
-  <p>We're a payment system operating under FCA regulation in the UK. Customer funds flow through our infrastructure. A bug, a chargeback dispute, a compliance question — any of these can freeze the system and leave a customer's money stuck. This isn't something you think about "later." It's the defence you build on day one.</p>
-  <p>I ultimately isolated Legal as its own category — not because we had a legal department, but because the frequency with which legal issues appeared was far higher than I'd anticipated: vendor contracts, fraud cases, FCA requirements, cross-jurisdictional compliance. Centralising all of it made every subsequent legal interaction — finding a solicitor, collecting evidence, checking a regulation — dramatically faster.</p>
-  <p>That act of organisation was itself a form of risk management.</p>
-  <hr>
-  <h2>V. External and internal operations — both matter simultaneously</h2>
-  <p>Many startups, when they think "operations," only think outward — customer service, brand communications, commercial partnerships. Internal operations matter just as much, and are usually more urgent.</p>
-  <p>When a colleague hits an emergency, they need an SOP telling them what to do next. Without one, they message you, you get interrupted, and your time is no longer yours. When a customer asks about refunds, an unstandardised "it depends" produces inconsistent customer experiences, which slowly erodes brand trust — not because of any single bad decision, but because of the absence of a decision.</p>
-  <p><strong>Standards themselves are protection for brand reputation.</strong></p>
-  <hr>
-  <h2>VI. When to start building documentation</h2>
-  <p>Not on day one. On day one of a startup, you should be doing things, not writing about things. You need to run first to understand what's tripping you.</p>
-  <p>But if you're paying attention, somewhere around six to eight months in, you'll start seeing patterns — which problems keep recurring, which decisions keep needing re-explanation, which processes keep breaking when personnel changes.</p>
-  <p><strong>That's when you build documentation.</strong> Not because you have time. Because you now have enough material to know what needs building.</p>
-  <hr>
-  <h2>VII. Using AI to accelerate, not to replace judgment</h2>
-  <p>The tools available now can handle a lot of the structural work: you describe your industry, your operational situation, your customer profile, and AI can generate a first draft of a document map, a naming logic, a folder structure. That's genuinely useful.</p>
-  <p>But there's one thing AI cannot do: it doesn't know where your company is most fragile. That knowledge requires being inside the system, stepping on the landmines, and then looking back to say "this is where we need a wall." AI gives you the map. You tell it which roads you've walked and where the potholes are. Together, you turn that map into something actually usable.</p>
-  <hr>
-  <h2>Conclusion: "We'll sort it later" is the most expensive sentence</h2>
-  <p>Every time you say "we'll sort it later," you're scheduling an overtime session for your future self. Not today's overtime — the overtime in the moment when you're most stretched, most exhausted, and most in need of systems holding things together. That moment is usually: when you've just hired someone new, when you've just landed a big client, or when a crisis you didn't anticipate has just landed in your inbox.</p>
-  <p>You don't need to build every document on day one. You just need to write down the answer when you know the answer.</p>
-  <p>Those written-down answers become your organisational architecture.</p>
-  <hr>
-  <p><em>Next: Why your English marketing copy isn't converting — and what AI can and can't fix</em></p>
+
+<div class="ab">
+  <div class="ai">
+    <h3>從一年運營經驗學到的教訓：架構不是負擔，是基礎設施</h3>
+    <hr>
+    <p>在我加入這家 Fintech 新創之前，公司已經運行了幾年。但那幾年，幾乎只有技術團隊在開發產品——沒有運營、沒有行銷、沒有任何系統性的文件管理。所有重要資訊都存在每個人的腦袋裡，或者散落在各自的本機硬碟和 WhatsApp 對話框裡。</p>
+    <p>一開始，我跟大多數人一樣，覺得「先做再說」。這個邏輯沒有錯。但我後來發現，「先做再說」跟「永遠不整理」之間，有一條很重要的分水嶺。那條線叫做：<strong>你第一次招人的時候。</strong></p>
+    <hr>
+    <h2>一、問題不是在你一個人的時候爆發的</h2>
+    <p>當公司只有三到五個人，靠著即時通訊和口頭溝通勉強運作，你感覺不到問題。問題是在新人進來的那一刻才炸的。</p>
+    <p>新同事要 onboard，你才發現根本沒有 onboarding 流程——每個人都用自己的方式跟新人說明，說的內容不一樣，版本不一樣，甚至有些基本資訊根本沒人提到。有客戶投訴，新人不知道退款規則，因為退款規則從來沒有寫下來過，只存在於某個資深同事的「那就是這樣啊」裡面。</p>
+    <p>每一個「看情況」，都是一個等待爆炸的地雷。</p>
+    <hr>
+    <h2>二、文件是架構的語言</h2>
+    <p>很多人把「建文件」想成一件行政雜事。但我後來理解，建文件這件事本身，就是在做組織設計。</p>
+    <p>當你為每一個部門建立一個資料夾，你就是在畫組織架構圖。當你寫下退款 SOP，你就是在做決策——不是之後再做，是現在做，做一次，之後每個人都可以用。當你設計命名規則，你就是在解決一個不斷有人問的問題：「這個檔案要放哪裡？」</p>
+    <blockquote><p>文件系統是你做過最便宜的組織設計——花一次時間，之後每個人都省時間。</p></blockquote>
+    <p><strong>組織架構圖不是給外人看的，是給你自己用的。</strong> 它讓你知道：這件事應該由誰負責、應該存放在哪裡、應該怎麼執行。</p>
+    <hr>
+    <h2>三、在 FCA 監管環境下，架構長歪的代價更高</h2>
+    <p>在我真正開始整理文件之前，我以為公司的核心部門就是：商業開發、行銷、客服。做了之後才發現，<strong>法規合規和風險管理應該排在最前面。</strong></p>
+    <p>我們做的是支付系統，在英國受 FCA 監管。一個 bug、一筆退款爭議、一個合規問題，都可能讓整個系統卡住。更重要的是：當稽核機關進來檢查的時候，他們要的文件不是你剛剛做的——他們要的是你「一直以來都在做」的記錄。這兩件事，差距是巨大的。</p>
+    <p>這也是為什麼我在設計文件架構的時候，把合規相關的資料夾放在最前面、獨立分層——不是因為它每天都用到，而是因為它在最重要的時刻必須清楚可找。</p>
+    <hr>
+    <h2>四、命名規則比你想的更重要</h2>
+    <p>我觀察過很多團隊的 Google Drive，最常見的問題不是「沒有資料夾」，而是：</p>
+    <p>有一個叫「最終版」的檔案，旁邊還有一個叫「最終版_真的最終版」的檔案，再旁邊還有一個叫「最終版_修改後」的。</p>
+    <p>沒有人知道哪個才是真的最終版。開會的時候每個人打開的是不同的版本。這不是個性問題，這是命名規則的缺失。</p>
+    <p>我在建立 NeroPay 的文件架構時，採用的是 ISO 8601 日期格式加版本號：<strong>[YYYYMMDD]_[類別]_[說明]_[V版本號]</strong>。這個規則的好處是：任何人按照「上次修改時間」排序，最新版本自然浮到最上面。不需要靠記憶，不需要問人，不需要猜。</p>
+    <hr>
+    <h2>五、「之後再整理」是最昂貴的一句話</h2>
+    <p>每次你說「之後再整理」，你都在未來替自己預約一場加班。而且，等你真的有時間整理的時候，通常已經是危機當下——新人第一天、稽核到來、客戶投訴——你沒有時間從頭整理，你只能在混亂中即時拼湊。</p>
+    <p>你不需要第一天就把所有文件都建好。你只需要確立兩件事：<strong>一、每個文件有它應該在的位置；二、每次有新資訊，你知道它應該去哪裡。</strong></p>
+    <p>這兩件事做到了，組織就有了骨架。其他的，是骨架長出來之後才需要補的肉。</p>
+    <hr>
+    <p><em>下一篇：為什麼你的英文行銷文案沒有轉換率——以及 AI 能幫你修什麼、不能幫你修什麼。</em></p>
+  </div>
 </div>
+
 <div class="foot">
-  <a href="index.html#writing">← Back to Writing</a>
-  <div class="foot-tag">Operations Thinking</div>
+  <a href="index.html#writing">← 返回文章列表</a>
+  <div class="ft">營運思維</div>
 </div>
 </body>
 </html>

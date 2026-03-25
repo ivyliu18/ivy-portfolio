@@ -1,216 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case B — AI Menu Data Automation | Ivy Liu</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>案例 B — AI 菜單資料自動化清洗流程 | Ivy Liu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--black:#0a0a0a;--white:#f8f6f1;--cream:#ede9e1;--mid:#8a8278;--rule:#252320;--accent:#c8a96e;--bg2:#0d0c0a;}
+:root{--ink:#1a1814;--paper:#f5f2ec;--warm-mid:#c4a882;--accent:#8b3a2a;--light-rule:#e0dbd0;--faded:#9c9488;--bg-section:#eee9e0;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--black);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.7;}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:20px 56px;border-bottom:1px solid var(--rule);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);}
-.nav-brand{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
-.nav-back{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
-.nav-back:hover{color:var(--white);}
-.hero{padding:140px 72px 80px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
-.eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.eye::before{content:'';width:24px;height:1px;background:var(--accent);}
-h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,56px);font-weight:700;line-height:1.05;margin-bottom:24px;letter-spacing:-0.01em;}
+body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;font-size:13px;line-height:1.8;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(245,242,236,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--light-rule);}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--ink);}
+.nav-back{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+.nav-back:hover{color:var(--ink);}
+.hero{padding:140px 72px 80px;border-bottom:1px solid var(--light-rule);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.eye{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,56px);font-weight:300;line-height:1.1;margin-bottom:24px;}
 h1 em{font-style:italic;color:var(--accent);}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
-.tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--rule);color:var(--mid);}
-.summary{font-size:15px;line-height:1.9;color:rgba(248,246,241,0.65);border-left:2px solid var(--accent);padding-left:20px;}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);}
-.s-item{background:var(--black);padding:28px 24px;}
-.s-n{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1;margin-bottom:6px;}
-.s-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);}
-.body{padding:72px;max-width:960px;}
-.sec-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
-.sec-eye::before{content:'';width:24px;height:1px;background:var(--accent);}
+.tag{font-size:10px;letter-spacing:0.1em;padding:5px 12px;background:var(--bg-section);border:1px solid var(--light-rule);color:var(--ink);}
+.summary{font-family:'Noto Serif TC',serif;font-size:15px;line-height:2;color:#3a3630;border-left:2px solid var(--warm-mid);padding-left:20px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--light-rule);border:1px solid var(--light-rule);}
+.s-item{background:var(--paper);padding:28px 24px;}
+.s-n{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1;margin-bottom:6px;}
+.s-l{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);}
+.body{padding:72px;max-width:900px;}
+.sec-eye{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;}
 .sec-block{margin-bottom:64px;}
-.sec-block h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
-.sec-block p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:16px;}
-.flow{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
-.flow-row{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;}
-.flow-node{background:var(--bg2);border:1px solid var(--rule);padding:24px 28px;}
-.flow-node.dark{background:#161410;}
-.node-step{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
-.node-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;margin-bottom:8px;}
-.node-tool{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:3px 8px;border:1px solid rgba(200,169,110,0.4);color:var(--accent);display:inline-block;margin-bottom:10px;}
-.node-why{font-size:12px;color:var(--mid);line-height:1.75;}
-.flow-mid{display:flex;align-items:center;justify-content:center;background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);color:var(--accent);font-size:18px;}
-.flow-connector{display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:3px;}
-.fc-line{width:1px;height:12px;background:var(--accent);opacity:0.3;}
-.fc-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.5;}
-.fc-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--mid);text-align:center;margin-top:4px;}
-.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:24px;}
-.tool-card{background:var(--black);padding:28px 24px;}
-.tool-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:6px;}
-.tool-role{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
-.tool-desc{font-size:12px;color:var(--mid);line-height:1.8;}
-.sop-steps{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
-.sop-step{display:grid;grid-template-columns:48px 1fr 80px;gap:20px;background:var(--bg2);padding:20px 24px;border:1px solid var(--rule);align-items:start;}
-.sn{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);line-height:1;}
-.sc h4{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;color:var(--white);}
-.sc p{font-size:12px;color:var(--mid);margin:0;line-height:1.75;}
-.st{font-family:'Space Mono',monospace;font-size:9px;color:var(--mid);text-align:right;padding-top:2px;}
-.outcome{background:var(--cream);color:var(--black);padding:44px;margin-top:64px;}
-.outcome h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:16px;letter-spacing:-0.01em;}
-.outcome p{font-size:14px;line-height:2;color:rgba(10,10,10,0.65);margin-bottom:12px;}
-.os-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(10,10,10,0.15);margin-top:28px;}
-.os{padding:24px;background:rgba(255,255,255,0.4);}
-.os-n{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--black);line-height:1;margin-bottom:4px;}
-.os-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(10,10,10,0.5);}
-.rationale{border:1px solid var(--rule);padding:44px;margin-top:40px;}
-.rationale h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:14px;}
-.rationale p{font-size:14px;line-height:2;color:rgba(248,246,241,0.6);margin-bottom:14px;}
-.pull{border-left:3px solid var(--accent);padding:16px 24px;background:var(--bg2);margin:20px 0;}
-.pull p{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--white);margin:0;}
-.foot-nav{padding:72px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
-.foot-nav a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
-.foot-nav a:hover{color:var(--white);}
+.sec-block h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:16px;}
+.sec-block p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:16px;}
+.steps{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
+.step{display:grid;grid-template-columns:48px 1fr;gap:24px;background:var(--bg-section);padding:24px;border:1px solid var(--light-rule);}
+.s-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--accent);line-height:1;}
+.s-c h4{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;color:var(--ink);}
+.s-c p{font-family:'Noto Serif TC',serif;font-size:13px;line-height:1.8;color:var(--faded);margin:0;}
+.outcome{background:var(--ink);color:var(--paper);padding:44px;margin-top:64px;}
+.outcome h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:16px;color:var(--paper);}
+.outcome p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:rgba(245,242,236,0.7);}
+.rationale{border:1px solid var(--light-rule);padding:44px;margin-top:40px;}
+.rationale h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:14px;}
+.rationale p{font-family:'Noto Serif TC',serif;font-size:14px;line-height:2;color:#3a3630;margin-bottom:14px;}
+.pull{border-left:3px solid var(--accent);padding:16px 24px;background:var(--bg-section);margin:20px 0;}
+.pull p{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--ink);margin:0;}
+.foot-nav{padding:72px;border-top:1px solid var(--light-rule);display:flex;justify-content:space-between;align-items:center;}
+.foot-nav a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);text-decoration:none;transition:color 0.2s;}
+.foot-nav a:hover{color:var(--ink);}
 .next-block{text-align:right;}
-.next-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-bottom:4px;}
-.next-t{font-family:'Playfair Display',serif;font-size:18px;color:var(--white);text-decoration:none;}
-@media(max-width:900px){nav{padding:16px 24px;}.hero{grid-template-columns:1fr;padding:120px 24px 56px;gap:40px;}.body{padding:48px 24px;}.tool-grid,.os-grid{grid-template-columns:1fr;}.flow-row{grid-template-columns:1fr;}.flow-mid{display:none;}.sop-step{grid-template-columns:40px 1fr;}.st{display:none;}.foot-nav{padding:48px 24px;flex-direction:column;gap:24px;text-align:center;}}
+.next-l{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--faded);margin-bottom:4px;}
+.next-t{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--ink);text-decoration:none;}
+@media(max-width:900px){nav{padding:16px 24px;}.hero{grid-template-columns:1fr;padding:120px 24px 56px;gap:40px;}.body{padding:48px 24px;}.foot-nav{padding:48px 24px;flex-direction:column;gap:24px;text-align:center;}}
 </style>
 </head>
 <body>
 <nav>
-  <a class="nav-brand" href="index.html">Ivy Liu</a>
-  <a class="nav-back" href="index.html#cases">← All Cases</a>
+  <a class="nav-brand" href="index.html">Ivy Liu · 策略營運</a>
+  <a class="nav-back" href="index.html#cases">← 返回所有案例</a>
 </nav>
 <div class="hero">
   <div>
-    <div class="eye">Case B · AI Workflow · Process Optimisation</div>
-    <h1>AI-Driven Menu Data<br><em>Automation Pipeline</em></h1>
-    <div class="tags">
-      <span class="tag">UK · Fintech</span><span class="tag">Claude</span><span class="tag">ChatGPT</span><span class="tag">100 Items / 5 Min</span><span class="tag">Replicable SOP</span>
-    </div>
-    <p class="summary">Merchant menus arrived in chaos — scanned PDFs, WhatsApp screenshots, mixed-language documents. I designed a structured semi-automated AI workflow that compressed 100-item menu processing to 5 minutes, and built a replicable SOP for the whole team.</p>
+    <div class="eye">案例 B · AI 工作流 · 流程優化</div>
+    <h1>AI 驅動的菜單資料<br><em>自動化清洗流程</em></h1>
+    <div class="tags"><span class="tag">英國 · Fintech</span><span class="tag">Claude · ChatGPT</span><span class="tag">100 項目 / 5 分鐘</span><span class="tag">可複製 SOP</span></div>
+    <p class="summary">商家客戶提供的菜單格式混亂——掃描圖、截圖、中英混排。我以 AI 為工具，設計結構化的半自動化流程，將 100 項菜單資料的處理時間壓縮至 5 分鐘，並建立 SOP 供全團隊複製執行。</p>
   </div>
   <div>
-    <div class="stats">
-      <div class="s-item"><div class="s-n">5<span style="font-size:18px">min</span></div><div class="s-l">Per 100 Menu Items</div></div>
-      <div class="s-item"><div class="s-n">0</div><div class="s-l">Extra Headcount Needed</div></div>
-      <div class="s-item"><div class="s-n">High</div><div class="s-l">Accuracy Post-Review</div></div>
-      <div class="s-item"><div class="s-n">SOP</div><div class="s-l">Team-Replicable System</div></div>
-    </div>
+    <div class="stats"><div class="s-item"><div class="s-n">5min</div><div class="s-l">每 100 項目</div></div><div class="s-item"><div class="s-n">0</div><div class="s-l">額外人力</div></div><div class="s-item"><div class="s-n">高</div><div class="s-l">人工審核後準確率</div></div><div class="s-item"><div class="s-n">SOP</div><div class="s-l">可完整交接的系統</div></div></div>
   </div>
 </div>
 <div class="body">
   <div class="sec-block">
-    <div class="sec-eye">Background</div>
-    <h3>Every menu was a format disaster</h3>
-    <p>NeroPay's merchant customers — mostly Middle Eastern and Turkish restaurants — needed to submit menu data for system import when joining the platform. But these menus arrived in every format imaginable: PDF scans, WhatsApp screenshots, mixed-language Word documents, with inconsistent field names, price formats, and category structures throughout.</p>
-    <p>The traditional approach was fully manual data entry. As merchant volume increased, that cost would scale linearly. My judgement: this is pattern-based work with fixed logic. AI can intervene.</p>
+    <div class="sec-eye">背景</div>
+    <h3>情境說明</h3>
+    <p>NeroPay 的商家客戶——多數是中東與土耳其餐廳——加入服務時需提交菜單資料供系統匯入。但這些菜單格式極度混亂：PDF 掃描圖片、WhatsApp 截圖、中英混排的 Word 文件，欄位名稱、價格格式、分類方式全都不統一。傳統做法是全手動整理。隨著商家數量增加，這個成本會線性增長——而我的判斷是：這是一個有固定規律的工作，AI 可以介入。</p>
   </div>
   <div class="sec-block">
-    <div class="sec-eye">Workflow</div>
-    <h3>From raw image to system import — the logic behind each step</h3>
-    <div class="flow">
-      <div class="flow-row">
-        <div class="flow-node">
-          <div class="node-step">Input A</div>
-          <div class="node-title">Download Sample CSV</div>
-          <span class="node-tool">ePost Editor</span>
-          <div class="node-why">Export the standard field template from NeroPay's internal system. This step defines "what correct output looks like" — without this baseline, AI has nothing to align to.</div>
-        </div>
-        <div class="flow-mid">+</div>
-        <div class="flow-node">
-          <div class="node-step">Input B</div>
-          <div class="node-title">Merchant Menu Upload</div>
-          <span class="node-tool">PDF · Image · Screenshot</span>
-          <div class="node-why">Merchant-provided raw format — scanned photos, PDF files, WhatsApp screenshots all accepted. No format restrictions — AI handles recognition and conversion.</div>
-        </div>
-      </div>
-      <div class="flow-connector">
-        <div class="fc-line"></div><div class="fc-dot"></div><div class="fc-line"></div>
-        <div class="fc-label">Both inputs uploaded to Claude simultaneously</div>
-        <div class="fc-line"></div><div class="fc-dot"></div><div class="fc-line"></div>
-      </div>
-      <div class="flow-row">
-        <div class="flow-node dark">
-          <div class="node-step">Step 01 · AI Processing</div>
-          <div class="node-title">Prompt Design</div>
-          <span class="node-tool">Claude</span>
-          <div class="node-why">Instruction to Claude: "Using the sample CSV's field structure as the standard, convert all items in the menu image to the same format." Prompt design is the core — describing the standard clearly matters more than which tool is used.</div>
-        </div>
-        <div class="flow-mid" style="background:#161410;border-color:#252320;">→</div>
-        <div class="flow-node dark">
-          <div class="node-step">Step 02 · AI Output</div>
-          <div class="node-title">Structured CSV Generated</div>
-          <span class="node-tool">Claude · Structured Output</span>
-          <div class="node-why">Claude identifies item names, prices, and categories from the image, aligns to the sample field structure, and outputs a standardised CSV. 100 items typically complete in seconds.</div>
-        </div>
-      </div>
-      <div class="flow-connector">
-        <div class="fc-line"></div><div class="fc-dot"></div><div class="fc-line"></div>
-        <div class="fc-label">Output CSV enters human QA stage</div>
-        <div class="fc-line"></div><div class="fc-dot"></div><div class="fc-line"></div>
-      </div>
-      <div class="flow-row">
-        <div class="flow-node">
-          <div class="node-step">Step 03 · Human QA</div>
-          <div class="node-title">Manual Spot-Check</div>
-          <span class="node-tool">Manual Review</span>
-          <div class="node-why">Quick scan of output to confirm no field misalignment or recognition errors. AI accuracy is high; this step takes only a few minutes. Role shifts from operator to reviewer.</div>
-        </div>
-        <div class="flow-mid">→</div>
-        <div class="flow-node">
-          <div class="node-step">Step 04 · Final</div>
-          <div class="node-title">Direct System Import</div>
-          <span class="node-tool">ePost Editor · Import</span>
-          <div class="node-why">Confirmed CSV imported directly. 100 items live on the platform. Total time: approximately 5 minutes. No manual line-by-line entry required.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="sec-block">
-    <div class="sec-eye">Tool Selection Rationale</div>
-    <h3>Not the most popular tool — the most appropriate one</h3>
-    <p>I use multiple AI tools daily, but each has a different strength. These choices were deliberate, not default.</p>
-    <div class="tool-grid">
-      <div class="tool-card"><div class="tool-name">Claude</div><div class="tool-role">Structured Data · CSV Processing</div><div class="tool-desc">Claude performs most stably on structured output, field alignment, and format conversion. It understands "field logic" rather than just "text recognition" — critical for reliable CSV generation.</div></div>
-      <div class="tool-card"><div class="tool-name">ChatGPT</div><div class="tool-role">Conversational Drafts · Quick Copy</div><div class="tool-desc">Better suited for rapid natural language generation — marketing copy drafts, customer communication templates. Complementary to Claude, not a replacement.</div></div>
-      <div class="tool-card"><div class="tool-name">Higgs · Perplexity</div><div class="tool-role">Image Generation · Live Research</div><div class="tool-desc">Higgs used for marketing visuals — far cheaper than design resources. Perplexity for queries requiring real-time web information.</div></div>
-    </div>
-  </div>
-  <div class="sec-block">
-    <div class="sec-eye">Standard Operating Procedure</div>
-    <h3>Designed so the process doesn't depend on one person</h3>
-    <p>This pipeline was built by me and currently run by me, but it was designed to be fully handoff-ready — any team member can follow the SOP without re-asking or re-inventing anything.</p>
-    <div class="sop-steps">
-      <div class="sop-step"><div class="sn">01</div><div class="sc"><h4>Download sample CSV from ePost Editor</h4><p>Ensure you have the latest field template version. Save to local working folder.</p></div><div class="st">~1 min</div></div>
-      <div class="sop-step"><div class="sn">02</div><div class="sc"><h4>Collect merchant's raw menu files</h4><p>Accepted formats: PDF, image screenshots, WhatsApp photos. If multi-page, combine before uploading.</p></div><div class="st">~2 min</div></div>
-      <div class="sop-step"><div class="sn">03</div><div class="sc"><h4>Upload both to Claude with standard prompt</h4><p>Upload sample CSV and menu image simultaneously. Use the established prompt template requesting output in the sample's field structure.</p></div><div class="st">~1 min</div></div>
-      <div class="sop-step"><div class="sn">04</div><div class="sc"><h4>Download output CSV — manual spot-check</h4><p>Key checks: item name recognition, price fields, category accuracy. Any anomalies: fix manually for that item.</p></div><div class="st">~2–3 min</div></div>
-      <div class="sop-step"><div class="sn">05</div><div class="sc"><h4>Import into ePost Editor — confirm live</h4><p>Use system import function to load CSV directly. Confirm item count matches expected. Done.</p></div><div class="st">~1 min</div></div>
-    </div>
+    <div class="sec-eye">執行流程</div>
+    <h3>主要執行步驟</h3>
+    <div class="steps"><div class="step"><div class="s-num">01</div><div class="s-c"><h4>設計 AI Prompt 模板</h4><p>同時上傳範例 CSV 與菜單圖片至 Claude，要求以範例欄位結構輸出新的 CSV 檔案。Prompt 設計是核心——清晰描述標準比使用哪個工具更重要。</p></div></div><div class="step"><div class="s-num">02</div><div class="s-c"><h4>建立資料清洗 SOP</h4><p>每個步驟皆有明確說明，任何同事都可以按照 SOP 操作，無需每次重新判斷或詢問我。</p></div></div><div class="step"><div class="s-num">03</div><div class="s-c"><h4>輸出標準化格式</h4><p>Claude 辨識圖片中的品項名稱、價格、分類，對齊範例欄位，輸出標準化 CSV。100 個品項通常在數秒內完成。</p></div></div><div class="step"><div class="s-num">04</div><div class="s-c"><h4>半自動匯入流程</h4><p>快速人工確認後直接匯入系統，無需逐筆手動輸入，全程約 5 分鐘。</p></div></div></div>
   </div>
   <div class="outcome">
-    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Outcome</div>
-    <h3>From manual entry to five-minute completion</h3>
-    <p>This pipeline reduced the marginal cost of merchant menu onboarding to near zero. As merchant volume grows, the system scales without adding headcount. The entire SOP is designed for full handoff — my role shifted from executor to process designer.</p>
-    <div class="os-grid">
-      <div class="os"><div class="os-n">5 min</div><div class="os-l">100 Items Processing Time</div></div>
-      <div class="os"><div class="os-n">High</div><div class="os-l">Accuracy After QA</div></div>
-      <div class="os"><div class="os-n">0</div><div class="os-l">Extra Headcount Required</div></div>
-    </div>
+    <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-mid);margin-bottom:16px;">成果</div>
+    <h3>交付物完成，可複製的框架留了下來</h3>
+    <p>這套流程將商家菜單上架的邊際成本壓縮至接近零。隨著商家數量增加，系統規模化能力不受人力限制，且整套 SOP 設計為可完整交接——我的角色從執行者轉為流程設計者。</p>
   </div>
   <div class="rationale">
-    <h3>My Rationale</h3>
-    <p>Choosing Claude over other tools was a deliberate decision based on the nature of the problem. This is a "structural conversion" task, not a "text generation" task. Claude is more stable on field-logic alignment and formatted output.</p>
-    <div class="pull"><p>"AI's value isn't replacing thinking — it's replacing repetition. Menu processing has fixed logic. Once you can clearly describe 'what is the standard format,' AI can execute it reliably."</p></div>
-    <p>Designing the prompt is essentially writing rules, not just using a tool. That framing — starting from the problem structure rather than from "what can this tool do" — is how I approach AI integration across every workflow.</p>
+    <h3>我的判斷</h3>
+    <p>選擇 Claude 而非其他工具，是因為這個問題的本質是「結構轉換」，而不是「文字生成」。Claude 在理解欄位邏輯、對齊格式輸出方面更為穩定。設計 Prompt 的過程，本質上是在寫規則，而不只是在使用工具。這個思維讓我在使用 AI 時始終從「問題結構」出發，而不是從「這個工具能做什麼」出發。</p>
   </div>
 </div>
 <div class="foot-nav">
-  <a href="case-a.html">← Case A — Fraud & Legal Ops</a>
+  <a href="index.html#cases">← 返回所有案例</a>
   <div class="next-block">
-    <div class="next-l">Next Case</div>
-    <a href="case-c.html" class="next-t">Case C — HR Systems from Zero →</a>
+    <div class="next-l">下一個案例</div>
+    <a href="case-c.html" class="next-t">案例 C — 從零建立 HR 體系 →</a>
   </div>
 </div>
 </body>
