@@ -1,1941 +1,591 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ivy Liu — Strategic Operations & Brand Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Ivy Liu — Strategic Operations</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #1a1814;
-    --paper: #f5f2ec;
-    --warm-mid: #c4a882;
-    --accent: #8b3a2a;
-    --light-rule: #e0dbd0;
-    --faded: #9c9488;
-    --bg-section: #eee9e0;
-    --pale: #eae4d8;
-    --sage: #4f6652;
-    --slate: #3a4a5c;
-  }
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    line-height: 1.8;
-    overflow-x: hidden;
-  }
-
-  /* NOISE OVERLAY */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.6;
-  }
-
-  /* ── NAVIGATION ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 48px;
-    background: rgba(245, 242, 236, 0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--light-rule);
-  }
-
-  .nav-brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--faded);
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--ink); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 72px;
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 48px 80px 72px;
-    border-right: 1px solid var(--light-rule);
-  }
-
-  .lang-tags {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-  }
-
-  .lang-tag {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--faded);
-    border: 1px solid var(--light-rule);
-    padding: 4px 10px;
-  }
-
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-  }
-
-  .hero-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(52px, 6vw, 84px);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 8px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.35s forwards;
-  }
-
-  .hero-name em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 300;
-    color: var(--faded);
-    letter-spacing: 0.06em;
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.5s forwards;
-  }
-
-  .hero-bio {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 14px;
-    line-height: 2;
-    color: #3a3630;
-    max-width: 500px;
-    border-left: 2px solid var(--warm-mid);
-    padding-left: 20px;
-    margin-bottom: 48px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.65s forwards;
-  }
-
-  .hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
-  }
-
-  .tag {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    padding: 5px 12px;
-    background: var(--bg-section);
-    border: 1px solid var(--light-rule);
-    color: var(--ink);
-  }
-
-  .hero-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 80px 72px 80px 48px;
-    position: relative;
-  }
-
-  .hero-right::before {
-    content: '';
-    position: absolute;
-    top: 80px; right: 72px;
-    width: 200px; height: 200px;
-    border: 1px solid var(--light-rule);
-    border-radius: 50%;
-    opacity: 0.4;
-  }
-
-  .hero-right::after {
-    content: '';
-    position: absolute;
-    top: 120px; right: 112px;
-    width: 120px; height: 120px;
-    border: 1px solid var(--warm-mid);
-    border-radius: 50%;
-    opacity: 0.3;
-  }
-
-  .stat-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--light-rule);
-    border: 1px solid var(--light-rule);
-    margin-bottom: 48px;
-  }
-
-  .stat-item {
-    background: var(--paper);
-    padding: 28px 24px;
-  }
-
-  .stat-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 42px;
-    font-weight: 300;
-    line-height: 1;
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-
-  .stat-label {
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--faded);
-  }
-
-  .nav-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-
-  .nav-btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 24px;
-    background: var(--bg-section);
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--ink);
-    transition: background 0.2s;
-    border-left: 3px solid transparent;
-  }
-
-  .nav-btn:hover {
-    background: var(--light-rule);
-    border-left-color: var(--accent);
-  }
-
-  .nav-btn-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-weight: 400;
-  }
-
-  .nav-btn-sub {
-    font-size: 10px;
-    color: var(--faded);
-    letter-spacing: 0.1em;
-    margin-top: 2px;
-  }
-
-  .nav-btn-arrow {
-    font-size: 18px;
-    color: var(--faded);
-    transition: transform 0.2s;
-  }
-
-  .nav-btn:hover .nav-btn-arrow { transform: translateX(4px); }
-
-  /* ── SECTION ── */
-  section {
-    padding: 80px 72px;
-    border-top: 1px solid var(--light-rule);
-  }
-
-  .section-eyebrow {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
-  }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 16px;
-  }
-
-  .section-desc {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 14px;
-    color: var(--faded);
-    max-width: 600px;
-    line-height: 1.9;
-    margin-bottom: 56px;
-  }
-
-  /* ── NeroPay CASE STUDIES ── */
-  .case-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--light-rule);
-    border: 1px solid var(--light-rule);
-  }
-
-  .case-card {
-    background: var(--paper);
-    padding: 40px 36px;
-    cursor: pointer;
-    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .case-card:hover {
-    background: var(--bg-section);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    transform: translateY(-2px);
-  }
-
-  .case-card.full-width { grid-column: 1 / -1; }
-
-  .case-num {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--faded);
-    margin-bottom: 20px;
-  }
-
-  .case-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.3;
-    margin-bottom: 12px;
-  }
-
-  .case-meta {
-    font-size: 11px;
-    color: var(--faded);
-    letter-spacing: 0.06em;
-    margin-bottom: 20px;
-  }
-
-  .case-body {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 13px;
-    line-height: 1.9;
-    color: #3a3630;
-    margin-bottom: 24px;
-  }
-
-  .case-detail-row {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 16px;
-    margin-bottom: 12px;
-    font-size: 12px;
-  }
-
-  .case-detail-label {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--faded);
-    padding-top: 2px;
-  }
-
-  .case-detail-val {
-    font-family: 'Noto Serif TC', serif;
-    color: #3a3630;
-    line-height: 1.7;
-  }
-
-  .case-outcome {
-    display: inline-block;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    background: var(--ink);
-    color: var(--paper);
-    margin-top: 16px;
-  }
-
-  .case-detail-block {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--light-rule);
-  }
-
-  /* ── BRAND STRATEGY SECTION (dark) ── */
-  #brand-strategy {
-    background: var(--ink);
-    color: var(--paper);
-    border-top: none;
-  }
-
-  #brand-strategy .section-eyebrow { color: var(--warm-mid); }
-  #brand-strategy .section-title { color: var(--paper); }
-  #brand-strategy .section-desc { color: rgba(245,242,236,0.5); }
-
-  .brand-cases-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-  }
-
-  .brand-card {
-    background: #1e1c19;
-    padding: 48px 44px;
-    cursor: pointer;
-    transition: background 0.4s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .brand-card:hover { background: #252320; }
-
-  .brand-card::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 0; height: 2px;
-    background: var(--warm-mid);
-    transition: width 0.5s ease;
-  }
-
-  .brand-card:hover::before { width: 100%; }
-
-  .brand-card-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--warm-mid);
-    opacity: 0.7;
-    margin-bottom: 24px;
-    display: block;
-  }
-
-  .brand-card-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 34px;
-    font-weight: 400;
-    color: var(--paper);
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
-  }
-
-  .brand-card-type {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.3);
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .brand-card-summary {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 13px;
-    line-height: 1.85;
-    color: rgba(245,240,232,0.5);
-    margin-bottom: 28px;
-  }
-
-  .brand-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .b-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border: 1px solid rgba(196,168,130,0.25);
-    color: rgba(196,168,130,0.7);
-  }
-
-  /* Brand case expandable detail */
-  .brand-detail {
-    display: none;
-    grid-column: 1 / -1;
-    background: var(--pale);
-    padding: 72px 64px;
-    position: relative;
-    animation: slideDown 0.45s ease;
-    color: var(--ink);
-  }
-
-  .brand-detail.open { display: block; }
-
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .brand-detail-close {
-    position: absolute;
-    top: 28px; right: 44px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--faded);
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: color 0.3s;
-    background: none;
-    border: none;
-  }
-
-  .brand-detail-close:hover { color: var(--accent); }
-
-  .brand-detail-grid {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 72px;
-  }
-
-  .detail-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--warm-mid);
-    margin-bottom: 14px;
-    display: block;
-  }
-
-  .detail-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px;
-    font-weight: 300;
-    letter-spacing: -0.01em;
-    margin-bottom: 20px;
-    line-height: 1.15;
-    color: var(--ink);
-  }
-
-  .detail-body {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 14px;
-    line-height: 1.9;
-    color: rgba(26,24,20,0.65);
-    margin-bottom: 32px;
-  }
-
-  .detail-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.6;
-    color: var(--ink);
-    padding: 28px 0;
-    border-top: 1px solid var(--light-rule);
-    border-bottom: 1px solid var(--light-rule);
-    margin: 32px 0;
-  }
-
-  .detail-steps { margin: 32px 0; }
-
-  .d-step {
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    gap: 20px;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--light-rule);
-  }
-
-  .d-step:last-child { border-bottom: none; }
-
-  .d-step-n {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--warm-mid);
-    padding-top: 3px;
-  }
-
-  .d-step-body strong {
-    font-family: 'Noto Serif TC', serif;
-    font-weight: 700;
-    font-size: 14px;
-    display: block;
-    margin-bottom: 4px;
-    color: var(--ink);
-  }
-
-  .d-step-body p {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 13px;
-    color: rgba(26,24,20,0.55);
-    line-height: 1.75;
-  }
-
-  .detail-sidebar { padding-top: 4px; }
-
-  .sidebar-block {
-    padding: 24px;
-    background: var(--paper);
-    margin-bottom: 14px;
-    border: 1px solid var(--light-rule);
-  }
-
-  .sidebar-block:last-child { margin-bottom: 0; }
-
-  .sidebar-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--warm-mid);
-    margin-bottom: 14px;
-  }
-
-  .sidebar-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-  }
-
-  .sidebar-list li {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 12px;
-    line-height: 1.6;
-    color: rgba(26,24,20,0.65);
-    display: flex;
-    gap: 10px;
-  }
-
-  .sidebar-list li::before {
-    content: '→';
-    color: var(--warm-mid);
-    flex-shrink: 0;
-  }
-
-  .sidebar-insight {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.65;
-    color: var(--ink);
-    font-style: italic;
-  }
-
-  /* ── SKILLS WALL ── */
-  .skills-wall {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--light-rule);
-    border: 1px solid var(--light-rule);
-  }
-
-  .skill-card {
-    background: var(--paper);
-    padding: 36px 32px;
-    transition: background 0.2s;
-  }
-
-  .skill-card:hover { background: var(--bg-section); }
-
-  .skill-icon {
-    font-size: 28px;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .skill-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 8px;
-  }
-
-  .skill-years {
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
-  }
-
-  .skill-desc {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 12px;
-    line-height: 1.8;
-    color: var(--faded);
-  }
-
-  /* ── HOW I WORK ── */
-  #approach { background: var(--pale); }
-
-  .approach-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--light-rule);
-    border: 1px solid var(--light-rule);
-  }
-
-  .approach-item {
-    background: var(--paper);
-    padding: 44px 36px;
-    transition: background 0.2s;
-  }
-
-  .approach-item:hover { background: var(--bg-section); }
-
-  .approach-icon {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 52px;
-    font-weight: 300;
-    color: var(--warm-mid);
-    line-height: 1;
-    margin-bottom: 20px;
-  }
-
-  .approach-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-
-  .approach-body {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 13px;
-    line-height: 1.85;
-    color: rgba(26,24,20,0.6);
-  }
-
-  /* ── SERVICES ── */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--light-rule);
-    border: 1px solid var(--light-rule);
-    margin-bottom: 48px;
-  }
-
-  .service-card {
-    background: var(--paper);
-    padding: 36px 28px;
-    transition: background 0.2s;
-  }
-
-  .service-card:hover { background: var(--bg-section); }
-
-  .service-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 40px;
-    font-weight: 300;
-    color: var(--light-rule);
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-
-  .service-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 12px;
-  }
-
-  .service-desc {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 12px;
-    line-height: 1.9;
-    color: var(--faded);
-    margin-bottom: 20px;
-  }
-
-  .service-for {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  /* ── ABOUT / EXPERIENCE ── */
-  #about {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-    background: var(--bg-section);
-  }
-
-  .about-text {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 14px;
-    line-height: 1.95;
-    color: rgba(26,24,20,0.65);
-    margin-bottom: 20px;
-  }
-
-  .about-text strong {
-    font-weight: 700;
-    color: var(--ink);
-  }
-
-  .exp-item {
-    padding: 28px 0;
-    border-bottom: 1px solid var(--light-rule);
-  }
-
-  .exp-item:first-child { border-top: 1px solid var(--light-rule); }
-
-  .exp-role {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: var(--ink);
-  }
-
-  .exp-where {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    color: var(--accent);
-    margin-bottom: 8px;
-    text-transform: uppercase;
-  }
-
-  .exp-desc {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 12px;
-    color: rgba(26,24,20,0.55);
-    line-height: 1.75;
-  }
-
-  /* ── WRITING SECTION ── */
-  .writing-row {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 1px;
-    background: var(--light-rule);
-    border: 1px solid var(--light-rule);
-    margin-bottom: 1px;
-  }
-
-  .writing-cat {
-    background: var(--bg-section);
-    padding: 28px 24px;
-    display: flex;
-    align-items: center;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--faded);
-    writing-mode: vertical-lr;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-  }
-
-  .writing-excerpt {
-    background: var(--paper);
-    padding: 28px 32px;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 14px;
-    line-height: 1.9;
-    color: #3a3630;
-    font-style: italic;
-  }
-
-  .writing-excerpt .title {
-    font-style: normal;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--faded);
-    margin-bottom: 8px;
-    display: block;
-  }
-
-  /* ── CONTACT ── */
-  .contact-section {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 80px 72px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    border-top: none;
-  }
-
-  .contact-section .section-eyebrow { color: var(--warm-mid); }
-  .contact-section .section-title { color: var(--paper); }
-  .contact-section .section-desc { color: rgba(245,242,236,0.6); }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .form-label {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(245,242,236,0.5);
-  }
-
-  .form-input {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 12px 16px;
-    color: var(--paper);
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    outline: none;
-    transition: border-color 0.2s;
-    resize: none;
-  }
-
-  .form-input:focus { border-color: var(--warm-mid); }
-  .form-input::placeholder { color: rgba(245,242,236,0.3); }
-
-  .submit-btn {
-    padding: 14px 32px;
-    background: var(--warm-mid);
-    border: none;
-    color: var(--ink);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s;
-    align-self: flex-start;
-    margin-top: 8px;
-  }
-
-  .submit-btn:hover { background: #d4b892; }
-
-  .contact-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 28px;
-  }
-
-  .contact-item-label {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(245,242,236,0.4);
-    margin-bottom: 4px;
-  }
-
-  .contact-item-val {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    color: var(--paper);
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 8px;
-  }
-
-  .contact-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(245,242,236,0.4);
-    text-decoration: none;
-    transition: color 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .contact-link::before { content: '→'; color: var(--warm-mid); }
-  .contact-link:hover { color: var(--warm-mid); }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--ink);
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 24px 72px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: rgba(245,242,236,0.3);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-  }
-
-  /* ── FADE IN ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 60px 32px; border-right: none; border-bottom: 1px solid var(--light-rule); }
-    .hero-right { padding: 40px 32px; }
-    .case-grid, .skills-wall, .services-grid, .approach-grid { grid-template-columns: 1fr; }
-    .case-card.full-width { grid-column: auto; }
-    .brand-cases-grid { grid-template-columns: 1fr; }
-    .brand-detail { padding: 48px 24px; }
-    .brand-detail-grid { grid-template-columns: 1fr; gap: 40px; }
-    section { padding: 56px 32px; }
-    #about { grid-template-columns: 1fr; gap: 48px; padding: 56px 32px; }
-    .contact-section { grid-template-columns: 1fr; gap: 48px; padding: 56px 32px; }
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
-    .writing-row { grid-template-columns: 1fr; }
-    .writing-cat { writing-mode: horizontal-tb; transform: none; }
-  }
+:root{--black:#0a0a0a;--white:#f8f6f1;--cream:#ede9e1;--mid:#8a8278;--rule:#252320;--accent:#c8a96e;--bg2:#0d0c0a;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.7;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:20px 56px;border-bottom:1px solid var(--rule);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);}
+.nav-brand{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:72px;border-bottom:1px solid var(--rule);}
+.hero-left{padding:80px 56px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center;}
+.hero-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+.hero-tag::before{content:'';width:32px;height:1px;background:var(--accent);}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(56px,7vw,100px);font-weight:700;line-height:0.9;margin-bottom:32px;letter-spacing:-0.02em;}
+.hero-name em{font-style:italic;color:var(--accent);display:block;}
+.hero-role{font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:40px;}
+.hero-bio{font-size:15px;line-height:1.85;color:rgba(248,246,241,0.6);max-width:480px;margin-bottom:48px;border-left:2px solid var(--accent);padding-left:20px;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--rule);color:var(--mid);transition:border-color 0.2s,color 0.2s;cursor:default;}
+.chip:hover{border-color:var(--accent);color:var(--accent);}
+.hero-right{padding:80px 56px;display:flex;flex-direction:column;justify-content:space-between;}
+.stat-block{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:40px;}
+.stat{background:var(--black);padding:32px 28px;}
+.stat-n{font-family:'Playfair Display',serif;font-size:52px;font-weight:700;line-height:1;color:var(--white);margin-bottom:6px;}
+.stat-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);}
+.hero-nav{display:flex;flex-direction:column;gap:1px;}
+.hn-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;background:var(--bg2);border:none;border-left:3px solid transparent;text-decoration:none;color:var(--white);cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+.hn-btn:hover{border-left-color:var(--accent);background:#161410;}
+.hn-main{font-family:'Playfair Display',serif;font-size:18px;font-weight:400;margin-bottom:2px;}
+.hn-sub{font-size:10px;color:var(--mid);letter-spacing:0.08em;}
+.hn-arr{font-size:16px;color:var(--mid);}
+section{padding:88px 56px;border-top:1px solid var(--rule);}
+.sec-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sec-eye::before{content:'';width:24px;height:1px;background:var(--accent);}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,58px);font-weight:700;line-height:1.05;margin-bottom:16px;letter-spacing:-0.01em;}
+.sec-title em{font-style:italic;color:var(--accent);}
+.sec-desc{font-size:14px;color:var(--mid);max-width:560px;line-height:1.85;margin-bottom:56px;}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.case-card{background:var(--black);padding:44px 40px;cursor:pointer;position:relative;overflow:hidden;transition:background 0.25s;text-decoration:none;color:inherit;display:block;}
+.case-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.4s ease;}
+.case-card:hover{background:#111009;}
+.case-card:hover::after{width:100%;}
+.case-card.full{grid-column:1/-1;}
+.case-num{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
+.case-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;line-height:1.25;margin-bottom:10px;letter-spacing:-0.01em;}
+.case-meta{font-family:'Space Mono',monospace;font-size:9px;color:var(--mid);letter-spacing:0.1em;margin-bottom:20px;}
+.case-body{font-size:13px;line-height:1.85;color:rgba(248,246,241,0.5);margin-bottom:24px;}
+.ctag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.ctag{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--rule);color:var(--mid);}
+.case-outcome{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;display:inline-block;padding:5px 14px;background:var(--accent);color:var(--black);}
+.case-detail{margin-top:20px;padding-top:20px;border-top:1px solid var(--rule);}
+.dr{display:grid;grid-template-columns:110px 1fr;gap:16px;margin-bottom:10px;}
+.dl{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
+.dv{font-size:12px;color:rgba(248,246,241,0.55);line-height:1.7;}
+#brand{background:#0d0c0a;}
+.brand-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.brand-card{background:#111009;padding:52px 44px;cursor:pointer;position:relative;overflow:hidden;transition:background 0.3s;}
+.brand-card:hover{background:#161410;}
+.brand-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height 0.4s ease;}
+.brand-card:hover::before{height:100%;}
+.bc-num{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--accent);opacity:0.6;margin-bottom:24px;}
+.bc-name{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--white);margin-bottom:6px;letter-spacing:-0.01em;}
+.bc-type{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(248,246,241,0.3);margin-bottom:18px;display:block;}
+.bc-summary{font-size:13px;line-height:1.85;color:rgba(248,246,241,0.45);margin-bottom:24px;}
+.bc-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.btag{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(200,169,110,0.25);color:rgba(200,169,110,0.6);}
+.brand-expand{display:none;grid-column:1/-1;background:var(--cream);color:var(--black);padding:72px 56px;position:relative;animation:expandDown 0.4s ease;}
+.brand-expand.open{display:block;}
+@keyframes expandDown{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:translateY(0);}}
+.exp-close{position:absolute;top:28px;right:44px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--mid);cursor:pointer;background:none;border:none;text-transform:uppercase;transition:color 0.2s;}
+.exp-close:hover{color:#c0392b;}
+.exp-grid{display:grid;grid-template-columns:1fr 300px;gap:64px;}
+.exp-eye{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.exp-h{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;line-height:1.15;margin-bottom:18px;color:var(--black);letter-spacing:-0.01em;}
+.exp-body{font-size:14px;line-height:1.85;color:rgba(10,10,10,0.6);margin-bottom:28px;}
+.exp-quote{font-family:'Playfair Display',serif;font-size:19px;font-style:italic;line-height:1.6;color:var(--black);border-top:1px solid #ccc7be;border-bottom:1px solid #ccc7be;padding:24px 0;margin:28px 0;}
+.exp-steps{display:flex;flex-direction:column;}
+.exp-step{display:grid;grid-template-columns:44px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid #ccc7be;}
+.exp-step:last-child{border-bottom:none;}
+.esn{font-family:'Space Mono',monospace;font-size:9px;color:var(--accent);padding-top:3px;}
+.esb strong{font-size:14px;display:block;margin-bottom:4px;color:var(--black);}
+.esb p{font-size:12px;color:rgba(10,10,10,0.5);line-height:1.75;}
+.esb-block{background:var(--white);border:1px solid #ccc7be;padding:22px;margin-bottom:12px;}
+.esb-block:last-child{margin-bottom:0;}
+.esb-title{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.esb-list{list-style:none;}
+.esb-list li{font-size:12px;color:rgba(10,10,10,0.6);line-height:1.7;padding:4px 0 4px 16px;position:relative;}
+.esb-list li::before{content:'→';position:absolute;left:0;color:var(--accent);}
+.esb-insight{font-family:'Playfair Display',serif;font-size:15px;font-style:italic;line-height:1.65;color:var(--black);}
+#skills{background:var(--black);}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.skill{background:var(--black);padding:40px 32px;transition:background 0.2s;}
+.skill:hover{background:#111009;}
+.skill-icon{font-size:32px;margin-bottom:18px;}
+.skill-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:6px;}
+.skill-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.skill-desc{font-size:12px;line-height:1.85;color:var(--mid);}
+#approach{background:#0d0c0a;}
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.ap-item{background:var(--bg2);padding:48px 36px;transition:background 0.2s;}
+.ap-item:hover{background:#161410;}
+.ap-n{font-family:'Playfair Display',serif;font-size:64px;font-weight:700;color:var(--rule);line-height:1;margin-bottom:20px;}
+.ap-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:12px;}
+.ap-body{font-size:13px;line-height:1.85;color:var(--mid);}
+#writing{background:var(--black);}
+.writing-list{border:1px solid var(--rule);}
+.w-row{display:grid;grid-template-columns:140px 1fr 120px;gap:36px;padding:32px;border-bottom:1px solid var(--rule);align-items:start;transition:background 0.2s;text-decoration:none;color:inherit;}
+.w-row:last-child{border-bottom:none;}
+.w-row:hover{background:#111009;}
+.w-cat{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);padding-top:4px;}
+.w-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:8px;line-height:1.3;letter-spacing:-0.01em;}
+.w-excerpt{font-size:12px;color:var(--mid);line-height:1.8;}
+.w-meta{text-align:right;}
+.w-date{font-family:'Space Mono',monospace;font-size:9px;color:var(--mid);margin-bottom:8px;letter-spacing:0.06em;}
+.w-link{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;}
+.w-soon{font-family:'Space Mono',monospace;font-size:9px;color:var(--mid);opacity:0.5;text-transform:uppercase;letter-spacing:0.08em;}
+#services{background:#0d0c0a;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:56px;}
+.svc{background:var(--bg2);padding:40px 28px;transition:background 0.2s;}
+.svc:hover{background:#161410;}
+.svc-n{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--rule);line-height:1;margin-bottom:18px;}
+.svc-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;margin-bottom:10px;}
+.svc-desc{font-size:12px;line-height:1.85;color:var(--mid);margin-bottom:16px;}
+.svc-for{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);}
+#about{background:var(--black);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.about-text{font-size:14px;line-height:1.9;color:rgba(248,246,241,0.6);margin-bottom:18px;}
+.about-text strong{color:var(--white);font-weight:600;}
+.exp-entry{padding:28px 0;border-bottom:1px solid var(--rule);}
+.exp-entry:first-child{border-top:1px solid var(--rule);}
+.er-role{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:4px;}
+.er-where{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.er-desc{font-size:12px;color:var(--mid);line-height:1.75;}
+.contact-wrap{background:var(--cream);color:var(--black);padding:88px 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;border-top:1px solid var(--rule);}
+.contact-wrap .sec-eye{color:var(--accent);}
+.contact-wrap .sec-title{color:var(--black);}
+.contact-wrap .sec-desc{color:rgba(10,10,10,0.5);}
+.c-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(10,10,10,0.45);margin-bottom:4px;}
+.c-val{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:20px;color:var(--black);}
+.c-links{display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+.c-link{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(10,10,10,0.45);text-decoration:none;display:flex;align-items:center;gap:10px;transition:color 0.2s;}
+.c-link::before{content:'→';color:var(--accent);}
+.c-link:hover{color:var(--black);}
+form{display:flex;flex-direction:column;gap:14px;}
+.f-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(10,10,10,0.4);margin-bottom:4px;display:block;}
+.f-input{width:100%;background:rgba(10,10,10,0.06);border:1px solid rgba(10,10,10,0.15);padding:12px 14px;color:var(--black);font-family:'Space Grotesk',sans-serif;font-size:13px;outline:none;transition:border-color 0.2s;resize:none;}
+.f-input:focus{border-color:var(--accent);}
+.f-btn{padding:14px 32px;background:var(--black);border:none;color:var(--white);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;align-self:flex-start;margin-top:6px;transition:background 0.2s;}
+.f-btn:hover{background:#222;}
+footer{background:var(--black);padding:24px 56px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--rule);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;color:rgba(248,246,241,0.2);}
+.fi{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:no-preference){
+  .fi{opacity:0;transform:translateY(18px);transition:opacity 0.7s ease,transform 0.7s ease;}
+  .fi.vis{opacity:1;transform:translateY(0);}
+}
+@media(max-width:900px){
+  nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-left,.hero-right{padding:56px 24px;}
+  .hero-left{border-right:none;border-bottom:1px solid var(--rule);}
+  section{padding:64px 24px;}
+  .case-grid,.skills-grid,.svc-grid,.approach-grid{grid-template-columns:1fr;}
+  .case-card.full{grid-column:auto;}
+  .brand-grid{grid-template-columns:1fr;}
+  .brand-expand{padding:48px 24px;}
+  .exp-grid{grid-template-columns:1fr;gap:40px;}
+  #about{grid-template-columns:1fr;padding:64px 24px;}
+  .contact-wrap{grid-template-columns:1fr;padding:64px 24px;}
+  .w-row{grid-template-columns:1fr;gap:8px;}
+  .w-meta{text-align:left;}
+  footer{padding:20px 24px;flex-direction:column;gap:8px;text-align:center;}
+}
 </style>
 </head>
 <body>
-
-<!-- NAVIGATION -->
 <nav>
-  <div class="nav-brand">Ivy Liu &nbsp;·&nbsp; Strategic Operations</div>
+  <a class="nav-brand" href="index.html">Ivy Liu</a>
   <ul class="nav-links">
-    <li><a href="#cases">NeroPay Cases</a></li>
-    <li><a href="#brand-strategy">Brand Strategy</a></li>
+    <li><a href="#cases">Cases</a></li>
+    <li><a href="#brand">Brand Strategy</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#approach">Approach</a></li>
+    <li><a href="#writing">Writing</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-left">
-    <div class="lang-tags">
-      <span class="lang-tag">Traditional Chinese</span>
-      <span class="lang-tag">English</span>
-      <span class="lang-tag">Japanese</span>
-    </div>
-    <div class="hero-eyebrow">Operations · Brand Strategy · English-Market Execution</div>
-    <h1 class="hero-name"><em>Ivy</em><br>Liu</h1>
-    <div class="hero-title">營運系統 · 品牌策略 · 英語市場執行</div>
-    <p class="hero-bio">
-      我把模糊的商業需求，轉化成可被任何人執行的系統與策略。<br><br>
-      從跨境詐騙危機到英國 Fintech 從零建立 HR 系統，從台灣多品牌 B2B 開發機制到 AI 半自動化工作流——我進去混亂的地方，然後建立秩序。<br><br>
-      你雇一個我，不需要同時找營運顧問、品牌策略師、英文內容團隊和 AI 工具整合師。
-    </p>
-    <div class="hero-tags">
-      <span class="tag">#英語市場營運</span>
-      <span class="tag">#品牌策略</span>
-      <span class="tag">#系統建構</span>
-      <span class="tag">#AI 工作流優化</span>
-      <span class="tag">#B2B 開發設計</span>
-      <span class="tag">#跨境風險控管</span>
-      <span class="tag">#草創期全端夥伴</span>
+    <div class="hero-tag">Strategic Operations · English-Market Execution</div>
+    <h1 class="hero-name">Ivy<em>Liu.</em></h1>
+    <div class="hero-role">Operations · Brand Strategy · AI Workflows · Legal Ops</div>
+    <p class="hero-bio">I turn ambiguous business challenges into systems anyone can execute. From cross-border fraud crisis management to building HR infrastructure from scratch at a UK fintech startup — I walk into chaos and build order.<br><br>Hire one of me instead of a separate ops consultant, brand strategist, English content team, and AI integration specialist.</p>
+    <div class="hero-chips">
+      <span class="chip">English-Market Operations</span>
+      <span class="chip">Brand Strategy</span>
+      <span class="chip">Systems Building</span>
+      <span class="chip">AI Workflow Design</span>
+      <span class="chip">B2B Development</span>
+      <span class="chip">Cross-Border Risk</span>
+      <span class="chip">Early-Stage Partner</span>
     </div>
   </div>
   <div class="hero-right">
-    <div class="stat-grid">
-      <div class="stat-item">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Working Languages</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Brand Strategy Cases</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">6</div>
-        <div class="stat-label">Operations Cases (NeroPay)</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">7+</div>
-        <div class="stat-label">Years Cross-Industry Experience</div>
-      </div>
+    <div class="stat-block">
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Working Languages</div></div>
+      <div class="stat"><div class="stat-n">4</div><div class="stat-l">Brand Strategy Cases</div></div>
+      <div class="stat"><div class="stat-n">7</div><div class="stat-l">Cases — NeroPay + P&G</div></div>
+      <div class="stat"><div class="stat-n">7+</div><div class="stat-l">Years Cross-Industry</div></div>
     </div>
-    <div class="nav-buttons">
-      <a class="nav-btn" href="#cases">
-        <div>
-          <div class="nav-btn-label">英國 Fintech 營運案例</div>
-          <div class="nav-btn-sub">NeroPay Cases — 詐騙、HR、AI、行銷</div>
-        </div>
-        <span class="nav-btn-arrow">→</span>
-      </a>
-      <a class="nav-btn" href="#brand-strategy">
-        <div>
-          <div class="nav-btn-label">台灣品牌策略經驗</div>
-          <div class="nav-btn-sub">Brand Strategy — NESS · WUWOW · Apollo</div>
-        </div>
-        <span class="nav-btn-arrow">→</span>
-      </a>
-      <a class="nav-btn" href="#services">
-        <div>
-          <div class="nav-btn-label">顧問服務</div>
-          <div class="nav-btn-sub">Services — 委託我來做</div>
-        </div>
-        <span class="nav-btn-arrow">→</span>
-      </a>
+    <div class="hero-nav">
+      <a class="hn-btn" href="#cases"><div><div class="hn-main">UK Fintech Operations</div><div class="hn-sub">NeroPay Cases — Fraud, HR, AI, Marketing</div></div><span class="hn-arr">→</span></a>
+      <a class="hn-btn" href="#brand"><div><div class="hn-main">Taiwan Brand Strategy</div><div class="hn-sub">NESS · WUWOW · Apollo · Multi-brand</div></div><span class="hn-arr">→</span></a>
+      <a class="hn-btn" href="#services"><div><div class="hn-main">Consulting Services</div><div class="hn-sub">Let's work together</div></div><span class="hn-arr">→</span></a>
     </div>
   </div>
 </div>
 
-<!-- ── NeroPay CASE STUDIES ── -->
 <section id="cases">
-  <div class="section-eyebrow">NeroPay Cases — 英國 Fintech 核心專案</div>
-  <h2 class="section-title">解題紀錄，<em style="font-family:'Cormorant Garamond',serif;font-style:italic">不是職責清單</em></h2>
-  <p class="section-desc">每一個案例都代表一種混亂狀態——沒有 SOP、沒有先例、沒有律師、沒有系統。我進去，然後建立秩序。</p>
-
+  <div class="sec-eye">NeroPay Cases — UK Fintech</div>
+  <h2 class="sec-title">Problem-solving records,<br><em>not job descriptions.</em></h2>
+  <p class="sec-desc">Each case represents a state of chaos or an unstructured brief — no SOP, no precedent, no lawyer, no system, or a client who needs answers their own team can't yet produce. I walked in and built something real.</p>
   <div class="case-grid">
-
-    <!-- Case A -->
-    <div class="case-card fade-in" onclick="location.href='case-a.html'" style="cursor:pointer;">
-      <div class="case-num">案例 A / Case A</div>
-      <div class="case-title">三起跨境詐騙危機<br>處置與風控機制建立</div>
-      <div class="case-meta">英國 · Fintech · 無律師獨立作業 · 全程英文</div>
-      <div class="case-body">公司遭遇三起跨境商業詐騙，無法律顧問、無先例可循。我獨立建立完整證據鏈、撰寫英國法院格式 Witness Statement、對接英國警政機關，並在事後設計系統性安全檢核程序，防止同類事件再發生。</div>
-      <div class="case-detail-block">
-        <div class="case-detail-row">
-          <div class="case-detail-label">危機處置</div>
-          <div class="case-detail-val">梳理往來紀錄 → 建立時間軸證據鏈 → 撰寫 Witness Statement → 對接警察局 → 追蹤強制執行</div>
-        </div>
-        <div class="case-detail-row">
-          <div class="case-detail-label">制度建立</div>
-          <div class="case-detail-val">供應商安全檢核 SOP、付款授權流程、紅旗識別清單——將危機轉化為可複製的風控系統</div>
-        </div>
-        <span class="case-outcome">風險控管 · 法律營運 · 制度建立</span>
+    <a class="case-card fi" href="case-a.html">
+      <div class="case-num">Case A · Risk Management · Legal Ops</div>
+      <div class="case-title">Cross-Border Merchant Fraud: Detection, Prosecution & Risk Controls</div>
+      <div class="case-meta">UK · Fintech · No Lawyers · Full English · Court Documents</div>
+      <div class="case-body">NeroPay faced multiple cross-border merchant fraud incidents — no legal counsel, no precedent. I independently identified fraud patterns, built a complete evidence chain, drafted UK County Court Witness Statements, and designed systemic risk SOPs to prevent recurrence.</div>
+      <div class="ctag-row"><span class="ctag">England & Wales County Court</span><span class="ctag">Witness Statement</span><span class="ctag">OSINT</span><span class="ctag">Chargeback Management</span><span class="ctag">0→1 SOP</span></div>
+      <div class="case-detail">
+        <div class="dr"><div class="dl">Stats</div><div class="dv">2 claims filed · £12,014 total · 0 external lawyers · 6 weeks zero-to-filed</div></div>
+        <div class="dr"><div class="dl">Exhibits</div><div class="dv">8 court exhibits · Stripe records · WhatsApp logs · KYC docs · OSINT media reports</div></div>
       </div>
-    </div>
-
-    <!-- Case B -->
-    <div class="case-card fade-in" onclick="location.href='case-b.html'" style="cursor:pointer;transition-delay:0.08s">
-      <div class="case-num">案例 B / Case B</div>
-      <div class="case-title">AI 驅動的菜單資料<br>自動化清洗流程</div>
-      <div class="case-meta">英國 · Fintech · Claude + ChatGPT/Gemini/Perplexity/Canva · 效率提升 ×3</div>
-      <div class="case-body">客戶提供的點餐菜單格式混亂——中英混排、格式不一、欄位缺漏。我以 AI 為工具，設計結構化的提示流程，建立半自動化匯入系統，處理時間大幅縮短。</div>
-      <div class="case-detail-block">
-        <div class="case-detail-row">
-          <div class="case-detail-label">解法</div>
-          <div class="case-detail-val">設計 AI Prompt 模板 → 建立資料清洗 SOP → 輸出標準化格式 → 半自動匯入流程</div>
-        </div>
-        <div class="case-detail-row">
-          <div class="case-detail-label">成果</div>
-          <div class="case-detail-val">人力從全手動降至人工確認，可複製應用於所有同類客戶</div>
-        </div>
-        <span class="case-outcome">AI 工作流 · 流程優化</span>
+      <div style="margin-top:20px;"><span class="case-outcome">Risk Management · Legal Operations</span></div>
+    </a>
+    <a class="case-card fi" href="case-b.html" style="transition-delay:0.08s">
+      <div class="case-num">Case B · AI Workflow · Process Optimisation</div>
+      <div class="case-title">AI-Driven Menu Data Automation Pipeline</div>
+      <div class="case-meta">UK · Fintech · Claude · 100 items / 5 min · Replicable SOP</div>
+      <div class="case-body">Merchant menus arrived in chaos — scanned PDFs, screenshots, mixed-language documents. I designed a structured semi-automated AI workflow compressing 100-item menu processing to 5 minutes, with a replicable SOP for the whole team.</div>
+      <div class="ctag-row"><span class="ctag">Claude</span><span class="ctag">Structured Output</span><span class="ctag">CSV Automation</span><span class="ctag">Replicable SOP</span></div>
+      <div class="case-detail">
+        <div class="dr"><div class="dl">Result</div><div class="dv">5 min per 100 items · High accuracy post-QA · 0 extra headcount needed</div></div>
       </div>
-    </div>
+      <div style="margin-top:20px;"><span class="case-outcome">AI Workflow · Process Design</span></div>
+    </a>
+    <a class="case-card full fi" href="case-c.html" style="transition-delay:0.16s">
+      <div class="case-num">Case C · People Operations · Compliance</div>
+      <div class="case-title">Building Recruitment, Payroll & Onboarding Systems from Zero</div>
+      <div class="case-meta">UK · Fintech · No Existing HR Systems · End-to-End Independent Design · UK Labour Law Compliant</div>
+      <div class="case-body">The company entered rapid growth with zero HR infrastructure. I built everything from scratch: multilingual job descriptions, candidate screening, structured interview frameworks, Offer Letters, payroll tracking, onboarding SOPs — all compliant with UK employment law.</div>
+      <div class="case-detail" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div><div class="dr"><div class="dl">Recruitment</div><div class="dv">Multilingual JDs → screening → structured interviews → offer management</div></div><div class="dr"><div class="dl">Payroll</div><div class="dv">Self-built tracking, UK tax & NI, bank transfer coordination</div></div></div>
+        <div><div class="dr"><div class="dl">Onboarding</div><div class="dv">SOP design, system guides, contact maps — new hires independent by week one</div></div><div class="dr"><div class="dl">Compliance</div><div class="dv">Multi-jurisdiction NDA review, law firm coordination</div></div></div>
+      </div>
+      <div style="margin-top:20px;"><span class="case-outcome">People Ops · HR Design · Compliance</span></div>
+    </a>
+    <a class="case-card fi" href="case-d.html" style="transition-delay:0.08s">
+      <div class="case-num">Case D · Commercial Strategy · Business Development</div>
+      <div class="case-title">High-Value Client Bespoke Sales Proposals</div>
+      <div class="case-meta">UK · Fintech · 100% English · Bespoke per Client · No External Copywriters</div>
+      <div class="case-body">For high-value prospects already using a competitor, a generic pitch wouldn't cut it. I designed fully customised English-language proposals — competitor analysis, bespoke pricing, ROI modelling, and visual design — independently, end to end.</div>
+      <div class="case-detail"><div class="dr"><div class="dl">Process</div><div class="dv">Client research → competitor mapping → custom pricing → full visual proposal document</div></div></div>
+      <div style="margin-top:20px;"><span class="case-outcome">Commercial Strategy · English Proposals</span></div>
+    </a>
+    <a class="case-card fi" href="case-e.html" style="transition-delay:0.16s">
+      <div class="case-num">Case E · Marketing · Ad Ops · AI Tools</div>
+      <div class="case-title">End-to-End Marketing: Strategy to Paid Ads to Content</div>
+      <div class="case-meta">UK · Fintech · Meta · Google · Print Ads · Higgsfield AI</div>
+      <div class="case-body">One-person marketing department: market positioning, audience targeting, social content, and physical advertising — all run independently. Used Higgsfield AI for image generation and Claude for semi-automated copywriting without sacrificing brand quality.</div>
+      <div class="case-detail">
+        <div class="dr"><div class="dl">Channels</div><div class="dv">Meta / Google paid ads · Social content · Print collateral · Merchant marketing advisory</div></div>
+        <div class="dr"><div class="dl">AI Stack</div><div class="dv">Higgsfield (image gen) + Claude (copy) → replicable content SOP → 0 designers needed</div></div>
+      </div>
+      <div style="margin-top:20px;"><span class="case-outcome">Marketing · Ad Ops · AI Tools</span></div>
+    </a>
+    <a class="case-card full fi" href="case-f.html" style="transition-delay:0.08s">
+      <div class="case-num">Case F · Systems · Knowledge Management · Compliance Design</div>
+      <div class="case-title">Designing a Knowledge Management Architecture for FCA-Regulated Environments</div>
+      <div class="case-meta">UK · Fintech · Google Drive · 9-Layer Architecture · FCA Audit-Ready · ISO 8601</div>
+      <div class="case-body">The most common hidden risk in early fintech isn't missing systems — it's systems that grew crooked and can't be fixed. I designed a document management architecture with FCA audit logic at its core: anyone, at any time, can find the right version of the right document.</div>
+      <div class="case-detail" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div><div class="dr"><div class="dl">Design</div><div class="dv">Compliance-first: Corporate & Legal + Compliance & Risk isolated from daily ops</div></div><div class="dr"><div class="dl">Naming</div><div class="dv">ISO 8601 standard + version control = single source of truth</div></div></div>
+        <div><div class="dr"><div class="dl">Access</div><div class="dv">PII & banking data: Viewer-only. External sharing: CEO approval required.</div></div><div class="dr"><div class="dl">Onboarding</div><div class="dv">Company Standards doc as single entry point for all new hires</div></div></div>
+      </div>
+      <div style="font-family:'Space Mono',monospace;font-size:10px;line-height:2.2;color:var(--mid);background:#0d0c0a;padding:20px 24px;margin-top:20px;border:1px solid var(--rule);">
+        <div style="color:var(--accent);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;">Drive Architecture Overview</div>
+        <div><span style="color:var(--white);">00</span>_Company_Standards &nbsp;<span style="color:var(--accent);font-size:9px;">← All-staff baseline, first doc for new hires</span></div>
+        <div><span style="color:var(--white);">01</span>_Corporate_&_Legal &nbsp;<span style="color:var(--accent);font-size:9px;">← Restricted · CEO Office Only</span></div>
+        <div><span style="color:var(--white);">02</span>_Compliance_&_Risk &nbsp;<span style="color:var(--accent);font-size:9px;">← AML · KYB · Transaction Monitoring</span></div>
+        <div><span style="color:var(--white);">03</span>_Operations_&_CS &nbsp;<span style="color:var(--accent);font-size:9px;">← Internal SOP · External SOP · Hardware</span></div>
+        <div><span style="color:var(--white);">04</span>_Product_&_Engineering &nbsp;<span style="color:var(--accent);font-size:9px;">← Roadmap · Tech Docs · Product Lines</span></div>
+        <div><span style="color:var(--white);">05</span>_Sales_&_Marketing &nbsp;<span style="color:var(--accent);font-size:9px;">← Assets · Campaigns · BD</span></div>
+        <div><span style="color:var(--white);">06</span>_Finance_&_HR &nbsp;<span style="color:var(--accent);font-size:9px;">← Reports · Payroll · Contracts</span></div>
+        <div><span style="color:var(--white);">07</span>_Project_Management &nbsp;<span style="color:var(--accent);font-size:9px;">← Minutes · Current Projects</span></div>
+        <div><span style="color:var(--white);">08</span>_Archive &nbsp;<span style="color:var(--accent);font-size:9px;">← Superseded versions only</span></div>
+      </div>
+      <div style="margin-top:20px;"><span class="case-outcome">Systems Design · Knowledge Mgmt · Compliance</span></div>
+    </a>
 
-    <!-- Case C -->
-    <div class="case-card full-width fade-in" onclick="location.href='case-c.html'" style="cursor:pointer;transition-delay:0.16s">
-      <div class="case-num">案例 C / Case C</div>
-      <div class="case-title">從零建立招聘、薪資與新人培訓系統</div>
-      <div class="case-meta">英國 · Fintech · 無現成系統 · 全流程獨立設計</div>
-      <div class="case-body">公司進入快速擴張期，但完全沒有 HR 系統。我從職位描述撰寫、履歷篩選、面試框架、到 Offer Letter 格式與薪資管理，全部從零自建——同時設計新人 Onboarding 流程與內部培訓架構，兼顧英國勞動法規合規要求。</div>
-      <div class="case-detail-block" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+    <a class="case-card full fi" href="case-g.html" style="transition-delay:0.16s;border-top:2px solid var(--accent);">
+      <div class="case-num">Case G · Consumer Strategy · Research Methods · Services Marketing</div>
+      <div class="case-title" style="display:flex;align-items:baseline;gap:16px;">
+        Procter &amp; Gamble — <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent);font-size:22px;">Envie de Plus</em> Cashback Programme Redesign
+        <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;border:1px solid var(--accent);color:var(--accent);padding:3px 8px;font-style:normal;margin-left:auto;">MSc · University of Manchester</span>
+      </div>
+      <div class="case-meta">P&G France · External Consultant · Mixed-Methods Research · NVivo + SPSS · 7,500-word Consulting Report</div>
+      <div class="case-body">Delivered an independent consulting engagement for Procter &amp; Gamble France — diagnosing why Gen Z and Millennial consumers weren't engaging with the Envie de Plus digital cashback programme, and designing a research-backed strategic roadmap to improve awareness, UX, and long-term retention.</div>
+      <div class="case-detail" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
         <div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">招聘</div>
-            <div class="case-detail-val">撰寫多語言 JD → 建立篩選標準 → 設計面試問題框架 → 管理 Offer 流程</div>
-          </div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">薪資</div>
-            <div class="case-detail-val">自建薪資追蹤表格、計算英國稅務與 NI 貢獻、對接銀行轉帳</div>
-          </div>
-        </div>
-        <div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">新人培訓</div>
-            <div class="case-detail-val">設計 Onboarding SOP、建立系統操作指南、讓新人第一週就能獨立運作</div>
-          </div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">合規</div>
-            <div class="case-detail-val">多國廠商 NDA 審閱、法律事務所溝通協調、App Store 上架文件整理</div>
-          </div>
-        </div>
-      </div>
-      <span class="case-outcome">組織設計 · 人才培育 · 合規 · 全端營運</span>
-    </div>
-
-    <!-- Case D -->
-    <div class="case-card fade-in" onclick="location.href='case-d.html'" style="cursor:pointer;transition-delay:0.08s">
-      <div class="case-num">案例 D / Case D</div>
-      <div class="case-title">高價值客戶全英文<br>商業提案設計</div>
-      <div class="case-meta">英國 · Fintech · 全英文 · 客製化提案</div>
-      <div class="case-body">針對潛在高價值商業客戶，從零設計全英文客製化銷售提案——包含競爭者分析、客製化定價方案、ROI 試算與視覺呈現。</div>
-      <div class="case-detail-block">
-        <div class="case-detail-row">
-          <div class="case-detail-label">策略</div>
-          <div class="case-detail-val">研究客戶痛點 → 客製化定價邏輯 → 競爭者對比 → 全英文視覺化提案</div>
-        </div>
-        <div class="case-detail-row">
-          <div class="case-detail-label">執行</div>
-          <div class="case-detail-val">獨立完成文案、數據整理、版面設計，無需外部設計師或文案團隊</div>
-        </div>
-        <span class="case-outcome">商業策略 · 英文提案 · 客戶開發</span>
-      </div>
-    </div>
-
-    <!-- Case E -->
-    <div class="case-card fade-in" onclick="location.href='case-e.html'" style="cursor:pointer;transition-delay:0.16s">
-      <div class="case-num">案例 E / Case E</div>
-      <div class="case-title">行銷一條龍——從策略<br>到廣告投放與內容產出</div>
-      <div class="case-meta">英國 · Fintech · Meta · Google · 實體廣告 · AI 產圖</div>
-      <div class="case-body">為商家提供完整行銷支援：從市場定位、廣告受眾設定、到社群內容產出與實體廣告設計。以 Higgsfield AI 產圖取代傳統小編，大幅降低內容製作成本，同時維持品牌質感。</div>
-      <div class="case-detail-block">
-        <div class="case-detail-row">
-          <div class="case-detail-label">廣告投放</div>
-          <div class="case-detail-val">Meta / Google 數位廣告實操、受眾分析與優化、實體廣告設計與執行</div>
-        </div>
-        <div class="case-detail-row">
-          <div class="case-detail-label">AI 內容</div>
-          <div class="case-detail-val">Higgsfield 產圖取代攝影師、Claude 半自動化文案生成、建立可複製內容 SOP</div>
-        </div>
-        <span class="case-outcome">行銷策略 · 廣告投放 · AI 工具應用</span>
-      </div>
-    </div>
-
-    <!-- Case F -->
-    <div class="case-card full-width fade-in" onclick="location.href='case-f.html'" style="cursor:pointer;transition-delay:0.08s">
-      <div class="case-num">案例 F / Case F</div>
-      <div class="case-title">為 FCA 監管環境設計<br>知識管理架構</div>
-      <div class="case-meta">英國 · Fintech · Google Drive · 9 層架構 · 合規就緒</div>
-      <div class="case-body">以 FCA 稽核邏輯為核心，設計一套可隨公司規模擴張的文件管理架構——讓任何人在任何時候都能找到正確版本的正確文件。</div>
-      <div class="case-detail-block" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-        <div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">設計原則</div>
-            <div class="case-detail-val">合規優先——Corporate & Legal、Compliance & Risk 獨立分層，確保監管文件不與日常操作文件混放</div>
-          </div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">架構決策</div>
-            <div class="case-detail-val">9 層主資料夾 + ISO 8601 命名規則 + 版本控制，建立 single source of truth</div>
-          </div>
+          <div class="dr"><div class="dl">Research</div><div class="dv">15 semi-structured interviews · 48-respondent online survey · secondary desk research on French cashback market</div></div>
+          <div class="dr"><div class="dl">Analysis</div><div class="dv">NVivo (reflective thematic analysis) · SPSS (descriptives, non-parametric tests, reliability checks)</div></div>
         </div>
         <div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">Access Control</div>
-            <div class="case-detail-val">按文件敏感度設計存取層級——PII、銀行資料限制為 Viewer only；外部分享需 CEO 審批</div>
-          </div>
-          <div class="case-detail-row">
-            <div class="case-detail-label">延伸建設</div>
-            <div class="case-detail-val">同步建立 Company Standards 文件（遠端規範、溝通準則、行為守則）作為新員工單一入口</div>
-          </div>
+          <div class="dr"><div class="dl">Benchmarking</div><div class="dv">Competitor analysis across UX, personalisation, gamification, and sustainability — identifying specific P&G service gaps</div></div>
+          <div class="dr"><div class="dl">Deliverable</div><div class="dv">7,500-word consulting report with phased implementation roadmap and feasibility assessment</div></div>
+        </div>
+        <div>
+          <div class="dr"><div class="dl">Recommendations</div><div class="dv">On-pack awareness triggers · simplified cashback communication · gamified journey · opt-in personalisation · AI-driven support</div></div>
+          <div class="dr"><div class="dl">Context</div><div class="dv">MSc Business Consultancy Project, University of Manchester · 2025</div></div>
         </div>
       </div>
-      <div style="margin-top:24px;padding:20px 24px;background:var(--bg-section);border:1px solid var(--light-rule);font-family:'DM Mono',monospace;font-size:11px;line-height:2;color:var(--faded);">
-        <div style="color:var(--accent);letter-spacing:0.1em;font-size:10px;text-transform:uppercase;margin-bottom:10px;">Drive Architecture — 架構概覽</div>
-        <div><span style="color:var(--ink);">00</span>_Company_Standards &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← 全員基礎規範</span></div>
-        <div><span style="color:var(--ink);">01</span>_Corporate_&amp;_Legal &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Restricted · CEO Office</span></div>
-        <div><span style="color:var(--ink);">02</span>_Compliance_&amp;_Risk &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← AML · KYB · Transaction Monitoring</span></div>
-        <div><span style="color:var(--ink);">03</span>_Operations_&amp;_CS &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Internal SOP · External SOP</span></div>
-        <div><span style="color:var(--ink);">04</span>_Product_&amp;_Engineering &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Roadmap · Tech Docs</span></div>
-        <div><span style="color:var(--ink);">05</span>_Sales_&amp;_Marketing &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Assets · Campaigns · BD</span></div>
-        <div><span style="color:var(--ink);">06</span>_Finance_&amp;_HR &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Reports · Payroll · Contracts</span></div>
-        <div><span style="color:var(--ink);">07</span>_Project_Management &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Minutes · Current Projects</span></div>
-        <div><span style="color:var(--ink);">08</span>_Archive &nbsp;<span style="color:var(--warm-mid);font-size:10px;">← Superseded versions</span></div>
-      </div>
-      <span class="case-outcome">系統建構 · 知識管理 · 合規設計</span>
-    </div>
+      <div style="margin-top:20px;"><span class="case-outcome">Consumer Research · Services Marketing · Consulting Strategy</span></div>
+    </a>
 
   </div>
 </section>
 
-<!-- ── BRAND STRATEGY SECTION ── -->
-<section id="brand-strategy" style="padding:80px 72px;">
-  <div class="section-eyebrow">Brand Strategy — 台灣品牌策略經驗</div>
-  <h2 class="section-title" style="color:var(--paper);">策略分析，<em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--warm-mid);">讓任何人都能執行</em></h2>
-  <p class="section-desc">代理商多品牌環境下，為 B2B、EdTech、HR Tech、Wellness 品牌設計可落地的策略與 SOP——不只提建議，也讓建議可以被別人執行。</p>
-
-  <div class="brand-cases-grid">
-
-    <!-- NESS -->
-    <div class="brand-card fade-in" onclick="toggleBrand('ness')">
-      <span class="brand-card-num">01 / 04</span>
-      <h3 class="brand-card-name">NESS Wellness</h3>
-      <span class="brand-card-type">企業內訓 · B2B 開發系統設計</span>
-      <p class="brand-card-summary">為代理品牌 NESS 設計一套完整的企業客戶開發機制，讓無銷售背景的成員也能找到並引起企業 HR 窗口的興趣。</p>
-      <div class="brand-tags">
-        <span class="b-tag">流程設計</span>
-        <span class="b-tag">Target Role 分類</span>
-        <span class="b-tag">Reach Out SOP</span>
-        <span class="b-tag">B2B</span>
-      </div>
+<section id="brand">
+  <div class="sec-eye">Brand Strategy — Taiwan Market Experience</div>
+  <h2 class="sec-title">Strategy designed<br><em>to be executed.</em></h2>
+  <p class="sec-desc">In a multi-brand agency environment, I built B2B development systems, differentiated positioning, and content architectures across Wellness, EdTech, HR Tech, and Benefits. Strategies that don't stay in decks.</p>
+  <div class="brand-grid">
+    <div class="brand-card fi" onclick="toggleBrand('ness')">
+      <div class="bc-num">01 / 04</div>
+      <h3 class="bc-name">NESS Wellness</h3>
+      <span class="bc-type">Corporate Wellness · B2B Development System</span>
+      <p class="bc-summary">Designed a complete enterprise client acquisition mechanism for NESS — allowing team members with no sales background to reach and engage corporate HR contacts effectively.</p>
+      <div class="bc-tags"><span class="btag">B2B System</span><span class="btag">Target Role Mapping</span><span class="btag">Outreach SOP</span></div>
     </div>
-    <div class="brand-detail" id="brand-detail-ness">
-      <button class="brand-detail-close" onclick="toggleBrand('ness')">✕ Close</button>
-      <div class="brand-detail-grid">
+    <div class="brand-expand" id="brand-expand-ness">
+      <button class="exp-close" onclick="toggleBrand('ness')">✕ Close</button>
+      <div class="exp-grid">
         <div>
-          <span class="detail-label">案例 01 — NESS Wellness</span>
-          <h3 class="detail-heading">把「幫品牌找客戶」<br>設計成任何人都能執行的系統</h3>
-          <p class="detail-body">台灣代理商承接 NESS 的企業內訓推廣，需要從零建立 B2B 客戶開發機制。挑戰在於：執行者多半沒有業務背景，但仍需要有效率地找到企業窗口並引起興趣。</p>
-          <div class="detail-quote">"如何讓人不需要懂銷售，也能讓對方主動說出『可以了解看看』？"</div>
-          <div class="detail-steps">
-            <div class="d-step">
-              <span class="d-step-n">01</span>
-              <div class="d-step-body">
-                <strong>找到對的人</strong>
-                <p>定義 6 大目標角色（HR、L&D、ESG、行政、部門主管、醫療教育），每個角色都有對應的優先順序與開發邏輯。</p>
-              </div>
-            </div>
-            <div class="d-step">
-              <span class="d-step-n">02</span>
-              <div class="d-step-body">
-                <strong>引起興趣，而非推銷</strong>
-                <p>設計 9 大名單來源策略（LinkedIn、104、官網、FB 社群、商會、活動平台等），為 HR / 行政 / 主管三種角色各設計一套無壓力訊息模板。</p>
-              </div>
-            </div>
-            <div class="d-step">
-              <span class="d-step-n">03</span>
-              <div class="d-step-body">
-                <strong>明確的轉介觸發點</strong>
-                <p>列出所有「有興趣」的判斷標準，一旦符合就立即轉介，不等待、不追進度——轉介後任務完成。</p>
-              </div>
-            </div>
+          <div class="exp-eye">Case 01 — NESS Wellness</div>
+          <h3 class="exp-h">Making "find clients for a brand" into a system anyone can execute</h3>
+          <p class="exp-body">A Taiwan agency took on NESS's corporate wellness promotion and needed to build a B2B client acquisition mechanism from zero. The challenge: most executors had no sales background, yet needed to efficiently identify enterprise contacts and generate genuine interest.</p>
+          <div class="exp-quote">"How do you make someone who doesn't know sales get a decision-maker to say 'tell me more'?"</div>
+          <div class="exp-steps">
+            <div class="exp-step"><span class="esn">01</span><div class="esb"><strong>Find the Right Person</strong><p>Defined 6 target roles (HR, L&D, ESG, Admin, Department Heads, Medical/Education), each with its own prioritisation logic and outreach sequence.</p></div></div>
+            <div class="exp-step"><span class="esn">02</span><div class="esb"><strong>Generate Interest, Not a Pitch</strong><p>Designed 9 lead-source strategies (LinkedIn, job boards, company websites, FB communities, trade associations, events). Built separate low-pressure message templates for HR, Admin, and Manager personas.</p></div></div>
+            <div class="exp-step"><span class="esn">03</span><div class="esb"><strong>Clear Handoff Trigger Points</strong><p>Listed all "interested" signals. Once met, immediately hand off — no chasing, no progress tracking. Task complete at handoff.</p></div></div>
           </div>
         </div>
-        <div class="detail-sidebar">
-          <div class="sidebar-block">
-            <p class="sidebar-title">核心設計原則</p>
-            <ul class="sidebar-list">
-              <li>不提品牌名，先確認需求</li>
-              <li>不介紹課程內容、不報價</li>
-              <li>明確的「停止點」：轉介後即結束</li>
-              <li>降低執行者的判斷成本</li>
-            </ul>
-          </div>
-          <div class="sidebar-block">
-            <p class="sidebar-title">9 大名單來源</p>
-            <ul class="sidebar-list">
-              <li>LinkedIn（外商首選）</li>
-              <li>104 人力銀行（台灣中小企業）</li>
-              <li>公司官網 HR 信箱</li>
-              <li>Facebook HR 社群</li>
-              <li>協會商會會員名單</li>
-              <li>舊客戶同產業外擴（成功率最高）</li>
-            </ul>
-          </div>
-          <div class="sidebar-block">
-            <p class="sidebar-insight">"數據衡量執行結果，但這份文件展示的是讓結果成為可能的系統設計本身。"</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- WUWOW -->
-    <div class="brand-card fade-in" style="transition-delay:0.1s" onclick="toggleBrand('wuwow')">
-      <span class="brand-card-num">02 / 04</span>
-      <h3 class="brand-card-name">WUWOW × TutorABC</h3>
-      <span class="brand-card-type">EdTech · 校園推廣 + 社群重定位</span>
-      <p class="brand-card-summary">為兩個英語教學品牌設計差異化定位、校園 KOC 計畫、社群內容策略，以及透過合作場域擴大觸及的三階段 Outreach 模型。</p>
-      <div class="brand-tags">
-        <span class="b-tag">品牌定位</span>
-        <span class="b-tag">KOC 計畫</span>
-        <span class="b-tag">社群策略</span>
-        <span class="b-tag">EdTech</span>
-      </div>
-    </div>
-    <div class="brand-detail" id="brand-detail-wuwow">
-      <button class="brand-detail-close" onclick="toggleBrand('wuwow')">✕ Close</button>
-      <div class="brand-detail-grid">
         <div>
-          <span class="detail-label">案例 02 — WUWOW × TutorABC</span>
-          <h3 class="detail-heading">兩個品牌，兩種定位，<br>一套完整的學生族群滲透策略</h3>
-          <p class="detail-body">TutorABC 強調品質與認證，WUWOW 強調趣味與敏捷學習。我的工作是把這兩個品牌的差異化講清楚，並設計各自的學生市場切入點。</p>
-          <div class="detail-quote">"WUWOW 的迷因內容帶來流量，但笑完就走——真正需要解決的是：誰願意信任品牌來學英文？"</div>
-          <div class="detail-steps">
-            <div class="d-step">
-              <span class="d-step-n">01</span>
-              <div class="d-step-body">
-                <strong>校園 KOC 招募計畫</strong>
-                <p>設計大使招募機制、獎勵制度（課程點數 → 數位證書 → 實習推薦路徑），把 referral 包裝成「Campus Marketing Lab」，避免直銷感。</p>
-              </div>
-            </div>
-            <div class="d-step">
-              <span class="d-step-n">02</span>
-              <div class="d-step-body">
-                <strong>社群內容三層架構</strong>
-                <p>拉新（高互動短影音）→ 留存（系列知識型貼文）→ 導流（CTA + 免費資源包），每層功能明確，不混在一起。</p>
-              </div>
-            </div>
-            <div class="d-step">
-              <span class="d-step-n">03</span>
-              <div class="d-step-body">
-                <strong>LinkedIn 數位徽章差異化</strong>
-                <p>讓學生把 TutorABC 學習成果放上 LinkedIn 履歷，把課程平台升級為「履歷加值工具」。</p>
-              </div>
-            </div>
-            <div class="d-step">
-              <span class="d-step-n">04</span>
-              <div class="d-step-body">
-                <strong>場域合作三階段 Outreach</strong>
-                <p>市場篩選 → 初次接觸（一頁式合作簡介，強調對方好處）→ 深入提案（Demo + 分潤模式說明）。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="detail-sidebar">
-          <div class="sidebar-block">
-            <p class="sidebar-title">TutorABC vs WUWOW 定位差異</p>
-            <ul class="sidebar-list">
-              <li>TutorABC → 專業、認證、職場英文</li>
-              <li>WUWOW → 趣味、敏捷、口說、學生族群</li>
-              <li>合體 = Top-down + Bottom-up</li>
-            </ul>
-          </div>
-          <div class="sidebar-block">
-            <p class="sidebar-title">KOC 計畫 KPI</p>
-            <ul class="sidebar-list">
-              <li>第一批校園大使 10 位</li>
-              <li>每人產出 ≥2 則 UGC 內容</li>
-              <li>2–3 場校園活動曝光</li>
-              <li>每場觸及 ≥100 名學生</li>
-            </ul>
-          </div>
-          <div class="sidebar-block">
-            <p class="sidebar-insight">"把 referral 包裝成學習成長——讓學生覺得參與的是社群，而不是在幫品牌做業務。"</p>
-          </div>
+          <div class="esb-block"><div class="esb-title">Core Design Principles</div><ul class="esb-list"><li>Don't mention the brand first — confirm the need</li><li>Never quote pricing or describe courses</li><li>Clear stop point: handoff = done</li><li>Reduce executor decision cost to near zero</li></ul></div>
+          <div class="esb-block"><div class="esb-title">9 Lead Sources</div><ul class="esb-list"><li>LinkedIn (foreign companies)</li><li>104.com.tw (local SMEs)</li><li>Company website HR mailbox</li><li>Facebook HR communities</li><li>Trade association member lists</li><li>Existing client industry expansion (highest success rate)</li></ul></div>
+          <div class="esb-block"><p class="esb-insight">"Data measures execution results. This document shows the system that makes results possible."</p></div>
         </div>
       </div>
     </div>
-
-    <!-- Apollo -->
-    <div class="brand-card fade-in" style="transition-delay:0.2s" onclick="toggleBrand('apollo')">
-      <span class="brand-card-num">03 / 04</span>
-      <h3 class="brand-card-name">Apollo (MayoHR)</h3>
-      <span class="brand-card-type">HR Tech · 外商市場切入分析</span>
-      <p class="brand-card-summary">分析台灣人資系統的品牌定位落差，找出切入外商市場的策略缺口——並提出從內容策略到決策鏈滲透的具體行動方案。</p>
-      <div class="brand-tags">
-        <span class="b-tag">市場分析</span>
-        <span class="b-tag">B2B 行銷</span>
-        <span class="b-tag">HR Tech</span>
-        <span class="b-tag">外商策略</span>
-      </div>
+    <div class="brand-card fi" style="transition-delay:0.1s" onclick="toggleBrand('wuwow')">
+      <div class="bc-num">02 / 04</div>
+      <h3 class="bc-name">WUWOW × TutorABC</h3>
+      <span class="bc-type">EdTech · Campus KOC + Social Repositioning</span>
+      <p class="bc-summary">Differentiated positioning for two English learning brands, a campus ambassador programme, a three-layer social content strategy, and a three-stage venue partnership outreach model.</p>
+      <div class="bc-tags"><span class="btag">Brand Positioning</span><span class="btag">KOC Programme</span><span class="btag">Social Strategy</span><span class="btag">EdTech</span></div>
     </div>
-    <div class="brand-detail" id="brand-detail-apollo">
-      <button class="brand-detail-close" onclick="toggleBrand('apollo')">✕ Close</button>
-      <div class="brand-detail-grid">
+    <div class="brand-expand" id="brand-expand-wuwow">
+      <button class="exp-close" onclick="toggleBrand('wuwow')">✕ Close</button>
+      <div class="exp-grid">
         <div>
-          <span class="detail-label">案例 03 — Apollo (MayoHR)</span>
-          <h3 class="detail-heading">功能很強，但外商不買單——<br>問題出在訊息傳遞，不在產品</h3>
-          <p class="detail-body">Apollo 的 HR 系統在台灣法規合規與全流程整合上具備明顯優勢，理論上非常適合外商在台公司。但 LinkedIn 內容幾乎沒有互動——問題不在產品，在於他們用的是台灣本土 HR 的語言，而不是外商決策者想聽的語言。</p>
-          <div class="detail-quote">"外商 HR Manager 要看的不是功能清單，而是：這個系統能讓我在總部面前交出什麼 KPI？"</div>
-          <div class="detail-steps">
-            <div class="d-step">
-              <span class="d-step-n">診斷</span>
-              <div class="d-step-body">
-                <strong>定位與行銷的落差</strong>
-                <p>Apollo 具備切入外商的所有條件（ISO27001、在地法規更新、全模組整合），但訊息傳遞鎖定本土中小企業，錯失外商 HR/Finance 的需求語言。</p>
-              </div>
-            </div>
-            <div class="d-step">
-              <span class="d-step-n">切入</span>
-              <div class="d-step-body">
-                <strong>外商決策鏈的三個層次</strong>
-                <p>全球 HR/IT 設定系統標準 → 區域 HR/IT 篩選在地方案 → 在地 HR 實際使用。先打在地 HR，再給他們英文資料向總部提案。</p>
-              </div>
-            </div>
-            <div class="d-step">
-              <span class="d-step-n">策略</span>
-              <div class="d-step-body">
-                <strong>內容重構方向</strong>
-                <p>外商在台 HR 法規痛點白皮書（中英雙語）、外商 HR 訪談影片、KPI 型案例標題（「導入後薪資結算時間縮短 40%，避免 300 萬勞檢罰金」）。</p>
-              </div>
-            </div>
-            <div class="d-step">
-              <span class="d-step-n">背書</span>
-              <div class="d-step-body">
-                <strong>品牌國際化路徑</strong>
-                <p>與 Deloitte、PwC 等顧問公司合作打包方案；公開外商合作案例；參展 HR Tech Asia 等國際活動。</p>
-              </div>
-            </div>
+          <div class="exp-eye">Case 02 — WUWOW × TutorABC</div>
+          <h3 class="exp-h">Two brands, two positionings, one complete student penetration strategy</h3>
+          <p class="exp-body">TutorABC emphasises quality and certification; WUWOW emphasises fun and agile learning. My work was to clarify the differentiation and design separate student market entry points for each brand.</p>
+          <div class="exp-quote">"WUWOW memes drive traffic — but people laugh and leave. The real problem: who actually trusts a brand enough to pay to learn English?"</div>
+          <div class="exp-steps">
+            <div class="exp-step"><span class="esn">01</span><div class="esb"><strong>Campus KOC Recruitment</strong><p>Designed ambassador recruitment mechanism and incentive structure (course credits → digital certificates → internship referral pathway). Packaged referrals as a "Campus Marketing Lab" to avoid MLM feel.</p></div></div>
+            <div class="exp-step"><span class="esn">02</span><div class="esb"><strong>Three-Layer Social Architecture</strong><p>Acquisition (high-engagement short video) → Retention (series knowledge posts) → Conversion (CTA + free resource packs). Each layer has a distinct function — no mixing.</p></div></div>
+            <div class="exp-step"><span class="esn">03</span><div class="esb"><strong>LinkedIn Digital Badge Differentiation</strong><p>Let students add TutorABC credentials to LinkedIn profiles — upgrading the platform from "course provider" to "résumé enhancement tool".</p></div></div>
           </div>
         </div>
-        <div class="detail-sidebar">
-          <div class="sidebar-block">
-            <p class="sidebar-title">Apollo 的切入優勢</p>
-            <ul class="sidebar-list">
-              <li>台灣勞基法自動更新，外商最怕合規出錯</li>
-              <li>ISO27001，符合外商 IT 審核</li>
-              <li>全模組一站式整合</li>
-            </ul>
-          </div>
-          <div class="sidebar-block">
-            <p class="sidebar-title">外商滲透率低的根因</p>
-            <ul class="sidebar-list">
-              <li>LinkedIn 內容以本土 HR 為受眾</li>
-              <li>缺少英文內容與外商案例</li>
-              <li>沒有對應外商決策者的 KPI 語言</li>
-            </ul>
-          </div>
-          <div class="sidebar-block">
-            <p class="sidebar-insight">"先打在地 HR 建立需求，再提供英文資料讓他們提案給總部。"</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 整合品牌策略 -->
-    <div class="brand-card fade-in" style="transition-delay:0.3s" onclick="toggleBrand('strategy')">
-      <span class="brand-card-num">04 / 04</span>
-      <h3 class="brand-card-name">整合品牌策略</h3>
-      <span class="brand-card-type">多品牌經營 · 代理商運營架構設計</span>
-      <p class="brand-card-summary">統籌 NESS、Fully、Apollo 等多品牌的 B2B 推廣策略，設計跨品牌協作架構、社群發文系統、以及講師的三期商業化路徑。</p>
-      <div class="brand-tags">
-        <span class="b-tag">多品牌策略</span>
-        <span class="b-tag">社群系統設計</span>
-        <span class="b-tag">商業化路徑</span>
-      </div>
-    </div>
-    <div class="brand-detail" id="brand-detail-strategy">
-      <button class="brand-detail-close" onclick="toggleBrand('strategy')">✕ Close</button>
-      <div class="brand-detail-grid">
         <div>
-          <span class="detail-label">案例 04 — 整合品牌策略</span>
-          <h3 class="detail-heading">跨品牌代理商的<br>運營架構從無到有</h3>
-          <p class="detail-body">同時負責多個代理品牌的策略規劃——員工福祉（NESS）、彈性福利（Fully）、人資系統（Apollo），到英語教育（WUWOW/TutorABC）。這份案例展示如何在多品牌環境下，設計統一的運營邏輯與差異化的推廣策略。</p>
-          <div class="detail-quote">"代理商不是每個品牌都從頭做——而是找到共同的企業窗口，用不同品牌回應他們不同的需求。"</div>
-          <div class="detail-steps">
-            <div class="d-step">
-              <span class="d-step-n">架構</span>
-              <div class="d-step-body">
-                <strong>品牌企劃組 vs 企業組分工</strong>
-                <p>品牌企劃組負責策略制定與素材提供；企業組負責發信、對接、名單跟進。分工讓每個人專注在自己最有效的部分。</p>
-              </div>
-            </div>
-            <div class="d-step">
-              <span class="d-step-n">社群</span>
-              <div class="d-step-body">
-                <strong>5–6 篇/週的內容架構</strong>
-                <p>設計週發文系統：週一教育資訊、週二生活趣聞、週三互動流行、週四人物故事、週五資源分享。搭配台灣受眾最佳時段與 A/B 測試機制。</p>
-              </div>
-            </div>
-            <div class="d-step">
-              <span class="d-step-n">商業化</span>
-              <div class="d-step-body">
-                <strong>講師三期商業化路徑</strong>
-                <p>短期（個人品牌打中小企業）→ 中期（平台講師 + Bundle Selling）→ 長期（認證制度 + 授權模組化），設計明確的收入雙軌：線下授課 + 訂閱制錄播課。</p>
-              </div>
-            </div>
-            <div class="d-step">
-              <span class="d-step-n">組合</span>
-              <div class="d-step-body">
-                <strong>Fully + NESS 組合提案</strong>
-                <p>Fully 強調數位化彈性福利與 ESG 整合；NESS 強調沉浸式體驗與測評數據回饋，可形成組合提案，瞄準同一批企業 HR 窗口。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="detail-sidebar">
-          <div class="sidebar-block">
-            <p class="sidebar-title">涵蓋品牌類型</p>
-            <ul class="sidebar-list">
-              <li>NESS — 企業身心健康 / EAP</li>
-              <li>Fully — 數位彈性福利平台</li>
-              <li>Apollo — HR Tech / 人資系統</li>
-              <li>WUWOW/TutorABC — EdTech</li>
-            </ul>
-          </div>
-          <div class="sidebar-block">
-            <p class="sidebar-title">共同目標客群</p>
-            <ul class="sidebar-list">
-              <li>外商、科技業、金融業：高預算、重 ESG</li>
-              <li>快速成長新創：需要系統但缺乏專業人資</li>
-              <li>醫療、製造：法規合規壓力大</li>
-            </ul>
-          </div>
-          <div class="sidebar-block">
-            <p class="sidebar-insight">"不同品牌，同一批企業窗口——學會用對的順序敲對的門。"</p>
-          </div>
+          <div class="esb-block"><div class="esb-title">Positioning Difference</div><ul class="esb-list"><li>TutorABC → Professional, certified, workplace English</li><li>WUWOW → Fun, agile, speaking-focused, students</li><li>Combined = Top-down + Bottom-up strategy</li></ul></div>
+          <div class="esb-block"><div class="esb-title">KOC Programme KPIs</div><ul class="esb-list"><li>First cohort: 10 campus ambassadors</li><li>Each produces ≥2 UGC content pieces</li><li>2–3 campus events, each reaching ≥100 students</li></ul></div>
+          <div class="esb-block"><p class="esb-insight">"Package referrals as growth, not sales — make students feel they're joining a community, not doing business development."</p></div>
         </div>
       </div>
     </div>
-
-  </div>
-</section>
-
-<!-- ── SKILLS WALL ── -->
-<section id="skills" style="background: var(--bg-section);">
-  <div class="section-eyebrow">Multi-Skill Wall — 跨領域能力</div>
-  <h2 class="section-title">每個技能都有<em style="font-family:'Cormorant Garamond',serif;font-style:italic">真實的下線保障</em></h2>
-  <p class="section-desc">我不追求單一領域的 100 分，但每一項都能快速到達 80 分的可交付狀態——這是通才的核心價值。</p>
-
-  <div class="skills-wall">
-    <div class="skill-card fade-in">
-      <span class="skill-icon">⚖️</span>
-      <div class="skill-name">法律與危機營運</div>
-      <div class="skill-years">Fintech · 英國市場 · 三起詐騙案</div>
-      <div class="skill-desc">跨境詐騙處理、合規文件審閱、警政機關溝通、證據鏈建立。無律師狀態下獨立完成英國法院格式文件，並事後建立系統性安全檢核程序。</div>
+    <div class="brand-card fi" style="transition-delay:0.2s" onclick="toggleBrand('apollo')">
+      <div class="bc-num">03 / 04</div>
+      <h3 class="bc-name">Apollo (MayoHR)</h3>
+      <span class="bc-type">HR Tech · Foreign Enterprise Market Entry</span>
+      <p class="bc-summary">Analysed positioning gaps in Taiwan's HR software market, identified the strategic gap for entering the foreign enterprise segment, and proposed a concrete action plan from content strategy to decision-chain penetration.</p>
+      <div class="bc-tags"><span class="btag">Market Analysis</span><span class="btag">B2B Marketing</span><span class="btag">HR Tech</span><span class="btag">Foreign Enterprise</span></div>
     </div>
-    <div class="skill-card fade-in" style="transition-delay:0.06s">
-      <span class="skill-icon">🤖</span>
-      <div class="skill-name">AI 工作流設計</div>
-      <div class="skill-years">Claude · Higgsfield · ChatGPT · Perplexity</div>
-      <div class="skill-desc">將 AI 作為真正的生產力槓桿。Claude 半自動化資料處理、Higgsfield 產圖取代小編——擅長找出最值得 AI 化的環節，設計可複製的半自動化流程。</div>
+    <div class="brand-expand" id="brand-expand-apollo">
+      <button class="exp-close" onclick="toggleBrand('apollo')">✕ Close</button>
+      <div class="exp-grid">
+        <div>
+          <div class="exp-eye">Case 03 — Apollo (MayoHR)</div>
+          <h3 class="exp-h">Strong product. Foreign enterprises aren't buying. The problem is messaging, not the product.</h3>
+          <p class="exp-body">Apollo's HR system has clear advantages in Taiwan regulatory compliance and full-stack integration — theoretically perfect for foreign companies in Taiwan. But LinkedIn content had almost no engagement. They were speaking the language of local Taiwanese HR, not foreign decision-makers.</p>
+          <div class="exp-quote">"A foreign HR Manager doesn't want a feature list. They want: what KPIs can this system help me show to HQ?"</div>
+          <div class="exp-steps">
+            <div class="exp-step"><span class="esn">Diagnosis</span><div class="esb"><strong>The Positioning-Marketing Gap</strong><p>Apollo has everything to penetrate foreign enterprises (ISO27001, automatic local law updates, full-module integration), but messaging targets local SMEs — missing foreign HR/Finance's need-language entirely.</p></div></div>
+            <div class="exp-step"><span class="esn">Entry</span><div class="esb"><strong>Three Levels of the Foreign Enterprise Decision Chain</strong><p>Global HR/IT sets standards → Regional HR/IT screens solutions → Local HR uses daily. Strategy: reach local HR first, equip them with English materials to pitch to HQ.</p></div></div>
+            <div class="exp-step"><span class="esn">Content</span><div class="esb"><strong>Content Restructuring Direction</strong><p>Bilingual white paper on Taiwan HR regulatory pain points for foreign firms. KPI-framed case titles: "Payroll processing time cut 40%, avoided significant labour inspection fines".</p></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="esb-block"><div class="esb-title">Apollo's Entry Advantages</div><ul class="esb-list"><li>Auto-updates for Taiwan Labour Standards Act</li><li>ISO27001 — passes foreign enterprise IT audits</li><li>Full-module single platform integration</li></ul></div>
+          <div class="esb-block"><div class="esb-title">Root Causes of Low Foreign Penetration</div><ul class="esb-list"><li>LinkedIn content audience = local HR only</li><li>No English content or foreign company case studies</li><li>Missing the KPI language of foreign decision-makers</li></ul></div>
+          <div class="esb-block"><p class="esb-insight">"Win local HR first, then give them English materials to advocate upward to HQ."</p></div>
+        </div>
+      </div>
     </div>
-    <div class="skill-card fade-in" style="transition-delay:0.12s">
-      <span class="skill-icon">🌐</span>
-      <div class="skill-name">全英文商務執行</div>
-      <div class="skill-years">法律文件 · 商業提案 · 廠商溝通 · 內容寫作</div>
-      <div class="skill-desc">不只是英文好——而是能代表你的公司在英語市場做有效的商務溝通。從法律文件到銷售提案、從廠商談判到品牌內容，全程獨立處理。</div>
+    <div class="brand-card fi" style="transition-delay:0.3s" onclick="toggleBrand('multi')">
+      <div class="bc-num">04 / 04</div>
+      <h3 class="bc-name">Multi-Brand Strategy</h3>
+      <span class="bc-type">Multi-Brand Operations · Agency Architecture Design</span>
+      <p class="bc-summary">Coordinated B2B promotion strategy across NESS, Fully, Apollo, and WUWOW/TutorABC — designing cross-brand collaboration frameworks, weekly social publishing systems, and a three-phase speaker commercialisation roadmap.</p>
+      <div class="bc-tags"><span class="btag">Multi-Brand</span><span class="btag">Social Systems</span><span class="btag">Commercialisation</span><span class="btag">Agency Ops</span></div>
     </div>
-    <div class="skill-card fade-in" style="transition-delay:0.06s">
-      <span class="skill-icon">📊</span>
-      <div class="skill-name">品牌策略設計</div>
-      <div class="skill-years">B2B · EdTech · HR Tech · Wellness · 多品牌</div>
-      <div class="skill-desc">從市場分析到可執行 SOP——為代理商品牌設計差異化定位、開發系統與社群策略。讓策略不只停在 deck 裡，而是真的被執行。</div>
-    </div>
-    <div class="skill-card fade-in" style="transition-delay:0.12s">
-      <span class="skill-icon">📣</span>
-      <div class="skill-name">行銷策略與投放</div>
-      <div class="skill-years">Meta · Google · 實體廣告 · 商家行銷諮詢</div>
-      <div class="skill-desc">數位廣告實操、受眾分析、實體廣告設計，到為商家提供一條龍行銷諮詢。理解品牌溢價邏輯，不為轉化率犧牲品牌質感。</div>
-    </div>
-    <div class="skill-card fade-in" style="transition-delay:0.18s">
-      <span class="skill-icon">🏗️</span>
-      <div class="skill-name">草創期全端營運</div>
-      <div class="skill-years">10 人以下 · 從零建立 · 英語市場</div>
-      <div class="skill-desc">招聘、薪資、合規、物流、廣告投放、文件系統、新人培訓——在沒有系統的狀態下，用自建的 SOP 讓公司運轉。這是多數人沒機會積累的稀缺經驗。</div>
+    <div class="brand-expand" id="brand-expand-multi">
+      <button class="exp-close" onclick="toggleBrand('multi')">✕ Close</button>
+      <div class="exp-grid">
+        <div>
+          <div class="exp-eye">Case 04 — Multi-Brand Strategy</div>
+          <h3 class="exp-h">Building agency operating architecture across four brand verticals</h3>
+          <p class="exp-body">Simultaneously managing strategy across employee wellness (NESS), flexible benefits (Fully), HR software (Apollo), and English education (WUWOW/TutorABC). This case demonstrates unified operating logic with differentiated promotion strategies in a multi-brand environment.</p>
+          <div class="exp-quote">"An agency doesn't start from scratch with each brand — it finds the same enterprise contacts and responds to different needs with different brands."</div>
+          <div class="exp-steps">
+            <div class="exp-step"><span class="esn">Structure</span><div class="esb"><strong>Planning Team vs Enterprise Team Division</strong><p>Brand planning handles strategy and materials; enterprise team handles outreach, contact, and pipeline. Clear ownership means everyone works in their highest-value zone.</p></div></div>
+            <div class="exp-step"><span class="esn">Social</span><div class="esb"><strong>5–6 Posts/Week Content Architecture</strong><p>Monday: educational; Tuesday: lifestyle; Wednesday: interactive; Thursday: people stories; Friday: resources. Optimised posting times with A/B testing built in.</p></div></div>
+            <div class="exp-step"><span class="esn">Revenue</span><div class="esb"><strong>Three-Phase Speaker Commercialisation</strong><p>Short-term (personal brand, SME targeting) → Mid-term (platform speaker + bundle selling) → Long-term (certification system + licensed modules), with dual revenue: live sessions + subscription recordings.</p></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="esb-block"><div class="esb-title">Brand Verticals</div><ul class="esb-list"><li>NESS — Corporate Wellness / EAP</li><li>Fully — Digital Flexible Benefits Platform</li><li>Apollo — HR Tech / HRIS</li><li>WUWOW/TutorABC — EdTech</li></ul></div>
+          <div class="esb-block"><div class="esb-title">Shared Target Clients</div><ul class="esb-list"><li>Foreign firms, tech, finance: high budget, ESG-focused</li><li>Fast-growth startups: need systems, lack HR expertise</li><li>Healthcare, manufacturing: heavy compliance pressure</li></ul></div>
+          <div class="esb-block"><p class="esb-insight">"Different brands, same enterprise contact — learn to knock the right door in the right order."</p></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── HOW I WORK ── -->
+<section id="skills">
+  <div class="sec-eye">Skills — Cross-Domain Capabilities</div>
+  <h2 class="sec-title">Every skill has a<br><em>real deliverable floor.</em></h2>
+  <p class="sec-desc">I don't pursue 100 in one domain. But I can reach a deliverable 80 in each — fast. That's the core value of a genuine generalist.</p>
+  <div class="skills-grid">
+    <div class="skill fi"><div class="skill-icon">⚖️</div><div class="skill-name">Legal & Crisis Operations</div><div class="skill-sub">Fintech · UK Market · Fraud Cases</div><div class="skill-desc">Cross-border fraud management, compliance document review, law enforcement liaison, evidence chain construction. Independently completed UK County Court format documents with no legal counsel, then built systemic security SOPs.</div></div>
+    <div class="skill fi" style="transition-delay:0.06s"><div class="skill-icon">🤖</div><div class="skill-name">AI Workflow Design</div><div class="skill-sub">Claude · Higgsfield · ChatGPT · Perplexity</div><div class="skill-desc">Using AI as a genuine productivity multiplier. Semi-automated data processing with Claude, image generation with Higgsfield replacing photographers — identifying where AI adds most value and designing replicable semi-automated pipelines.</div></div>
+    <div class="skill fi" style="transition-delay:0.12s"><div class="skill-icon">🌐</div><div class="skill-name">Full English Business Execution</div><div class="skill-sub">Legal Docs · Proposals · Vendor Comms · Content</div><div class="skill-desc">Not just fluent English — representing your company effectively in English-language markets. From legal documents to sales proposals, vendor negotiation to brand content, handled independently end-to-end.</div></div>
+    <div class="skill fi" style="transition-delay:0.06s"><div class="skill-icon">📊</div><div class="skill-name">Brand Strategy Design</div><div class="skill-sub">B2B · EdTech · HR Tech · Wellness · Multi-brand</div><div class="skill-desc">From market analysis to executable SOPs — designing differentiated positioning, development systems, and social strategies for agency-represented brands. Strategies that get implemented, not just presented.</div></div>
+    <div class="skill fi" style="transition-delay:0.12s"><div class="skill-icon">📣</div><div class="skill-name">Marketing Strategy & Ad Operations</div><div class="skill-sub">Meta · Google · Print · Merchant Marketing</div><div class="skill-desc">Hands-on paid advertising, audience analysis, physical ad design, and end-to-end merchant marketing advisory. Understanding brand premium logic — never sacrificing brand quality for short-term conversion rates.</div></div>
+    <div class="skill fi" style="transition-delay:0.18s"><div class="skill-icon">🏗️</div><div class="skill-name">Early-Stage Full-Stack Operations</div><div class="skill-sub">Sub-10 Headcount · Zero-to-One · English Markets</div><div class="skill-desc">Recruitment, payroll, compliance, logistics, advertising, document systems, new hire training — running a company on self-built SOPs in a zero-system environment. A rare compound experience most people never accumulate.</div></div>
+  </div>
+</section>
+
 <section id="approach">
-  <div class="section-eyebrow">How I Work — 思考框架</div>
-  <h2 class="section-title">每個專案背後，<em style="font-family:'Cormorant Garamond',serif;font-style:italic">三個固定框架</em></h2>
-  <p class="section-desc">不管是 Fintech 營運還是品牌策略，我用同樣的思考邏輯進入每一個混亂的場景。</p>
-
+  <div class="sec-eye">How I Work — Thinking Framework</div>
+  <h2 class="sec-title">Three consistent frameworks<br><em>behind every project.</em></h2>
+  <p class="sec-desc">Whether it's fintech operations or brand strategy, I enter every chaotic situation with the same thinking logic.</p>
   <div class="approach-grid">
-    <div class="approach-item fade-in">
-      <div class="approach-icon">問</div>
-      <h3 class="approach-title">先問「為什麼不做」</h3>
-      <p class="approach-body">設計流程前，我習慣先定義邊界——哪些事是這個人不應該做的，往往比「應該做什麼」更能降低執行摩擦、提高成功率。</p>
-    </div>
-    <div class="approach-item fade-in" style="transition-delay:0.1s">
-      <div class="approach-icon">拆</div>
-      <h3 class="approach-title">把模糊需求拆解成維度</h3>
-      <p class="approach-body">「幫品牌找客戶」這種需求，我會把它拆成：誰是目標（角色）× 在哪裡找（來源）× 怎麼說（訊息）× 什麼時候停（轉介點）。拆完之後，任何人都能執行。</p>
-    </div>
-    <div class="approach-item fade-in" style="transition-delay:0.2s">
-      <div class="approach-icon">測</div>
-      <h3 class="approach-title">設計可測試的假設</h3>
-      <p class="approach-body">每個策略都應該可以被驗證。我在設計時就埋入 KPI、A/B 測試邏輯或階段性里程碑，讓後來的人能追蹤與調整——即使我不在場。</p>
-    </div>
+    <div class="ap-item fi"><div class="ap-n">01</div><div class="ap-title">Ask "why not" first</div><div class="ap-body">Before designing a process, I define the boundaries — what this person shouldn't be doing often clarifies what they should. Defining exclusions reduces execution friction and raises success rates more than any instruction list.</div></div>
+    <div class="ap-item fi" style="transition-delay:0.1s"><div class="ap-n">02</div><div class="ap-title">Decompose fuzzy requests into dimensions</div><div class="ap-body">A brief like "help the brand find clients" gets decomposed into: who's the target (role) × where to find them (source) × what to say (message) × when to stop (handoff trigger). Once decomposed, anyone can execute.</div></div>
+    <div class="ap-item fi" style="transition-delay:0.2s"><div class="ap-n">03</div><div class="ap-title">Design testable hypotheses</div><div class="ap-body">Every strategy should be verifiable. I embed KPIs, A/B test logic, or milestone checkpoints at design time — so whoever comes after me can track and adjust, even when I'm not in the room.</div></div>
   </div>
 </section>
 
-<!-- ── SERVICES ── -->
+<section id="writing">
+  <div class="sec-eye">Writing — Thinking in Public</div>
+  <h2 class="sec-title">How I<br><em>see the world.</em></h2>
+  <p class="sec-desc">I write long-form essays every few weeks. Topics span organisational design, cross-cultural business, AI tools in practice, and personal philosophy. Not content marketing — it's how I think.</p>
+  <div class="writing-list">
+    <a class="w-row" href="article-fraud.html">
+      <div class="w-cat">Business Observation</div>
+      <div><div class="w-title">How I Handled a Cross-Border Fraud Case in the UK — Without a Lawyer</div><div class="w-excerpt">When fraud hit, most people's first instinct is to call a lawyer. But what if you're a three-person company, in the UK, and it's never happened before? This piece documents how I independently built the evidence chain, drafted court documents, and coordinated with law enforcement — and the decision framework I took away.</div></div>
+      <div class="w-meta"><div class="w-date">March 2026</div><span class="w-link">Read →</span></div>
+    </a>
+    <a class="w-row" href="article-docs.html">
+      <div class="w-cat">Operations Thinking</div>
+      <div><div class="w-title">The Most Common Document Management Mistake Early Startups Make</div><div class="w-excerpt">"We'll organise it later" is the most expensive sentence in a startup. This essay analyses common document management failures and how I designed an FCA-audit-logic-driven knowledge architecture that scales from 3 to 30 people.</div></div>
+      <div class="w-meta"><div class="w-date">March 2026</div><span class="w-link">Read →</span></div>
+    </a>
+    <div class="w-row" style="cursor:default;">
+      <div class="w-cat">AI in Practice</div>
+      <div><div class="w-title">Why Your English Marketing Copy Doesn't Convert — and What AI Can (and Can't) Fix</div><div class="w-excerpt">Many non-native brands' English copy reads like a direct translation. This isn't just a language problem — it's a cultural context problem. Exploring the fundamental difference between English-market persuasion logic and where AI accelerates the fix.</div></div>
+      <div class="w-meta"><div class="w-date">Coming Soon</div><div class="w-soon">Soon</div></div>
+    </div>
+    <a class="w-row" href="article-org.html">
+      <div class="w-cat">Workplace Structure</div>
+      <div><div class="w-title">Feeling Suffocated at a Big Company Isn't a Personality Problem</div><div class="w-excerpt">On the structural misfit of "chaos-adaptive" personality types in institutional environments — and why the same people thrive in early-stage startups. A framework-driven analysis, not a rant.</div></div>
+      <div class="w-meta"><div class="w-date">March 2026</div><span class="w-link">Read →</span></div>
+    </a>
+  </div>
+</section>
+
 <section id="services">
-  <div class="section-eyebrow">Services — 顧問服務</div>
-  <h2 class="section-title">委託我，而不是<em style="font-family:'Cormorant Garamond',serif;font-style:italic">應徵我</em></h2>
-  <p class="section-desc">我接受的合作形式是「委託」與「顧問」，而不是成為你組織內另一個等待審批的員工。如果你需要的是一個可以直接解決混亂、給出判斷、推動執行的人，我們可以談。</p>
-
-  <div class="services-grid">
-    <div class="service-card fade-in">
-      <div class="service-num">01</div>
-      <div class="service-title">草創期營運診斷</div>
-      <div class="service-desc">針對 10 人以下的早期團隊，梳理當前營運盲點、建立基礎 SOP 架構、找出最優先需要系統化的環節。</div>
-      <div class="service-for">適合 → 台灣早期新創</div>
-    </div>
-    <div class="service-card fade-in" style="transition-delay:0.06s">
-      <div class="service-num">02</div>
-      <div class="service-title">英語市場商務支援</div>
-      <div class="service-desc">協助台灣品牌或新創進入英語市場：全英文提案撰寫、廠商溝通代理、合規文件整理、客製化銷售策略。</div>
-      <div class="service-for">適合 → 海外市場拓展</div>
-    </div>
-    <div class="service-card fade-in" style="transition-delay:0.12s">
-      <div class="service-num">03</div>
-      <div class="service-title">AI 工作流導入</div>
-      <div class="service-desc">幫助 5–20 人的小型組織找到最值得 AI 化的工作環節，設計實際可用的半自動化流程，降低重複性人工成本。</div>
-      <div class="service-for">適合 → 需要降本增效的品牌</div>
-    </div>
-    <div class="service-card fade-in" style="transition-delay:0.06s">
-      <div class="service-num">04</div>
-      <div class="service-title">品牌策略與 B2B 開發設計</div>
-      <div class="service-desc">為台灣品牌設計可落地的 B2B 開發機制、定位差異化策略與社群內容架構——讓策略不只停在 deck 裡，而是真的被執行。</div>
-      <div class="service-for">適合 → 代理商 · 多品牌企業</div>
-    </div>
-    <div class="service-card fade-in" style="transition-delay:0.12s">
-      <div class="service-num">05</div>
-      <div class="service-title">產業研究與市場報告</div>
-      <div class="service-desc">為你的市場進入決策或投資提案提供研究支撐——競品分析、產業趨勢、目標市場規模。全英文輸出，交付可直接使用的成品報告。</div>
-      <div class="service-for">適合 → 準備進入新市場的新創</div>
-    </div>
-    <div class="service-card fade-in" style="transition-delay:0.18s">
-      <div class="service-num">06</div>
-      <div class="service-title">商業流程建立與 SOP 設計</div>
-      <div class="service-desc">為沒有系統的早期團隊從零設計可執行、可交接的標準作業流程——onboarding、客服、合規、HR 皆可。</div>
-      <div class="service-for">適合 → 準備擴張或交接的草創團隊</div>
-    </div>
-  </div>
-
-  <!-- 收費結構 -->
-  <div style="margin-top: 64px; border-top: 1px solid var(--light-rule); padding-top: 48px;">
-    <div class="section-eyebrow" style="margin-bottom: 32px;">Service — 服務方式</div>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--light-rule); border: 1px solid var(--light-rule);">
-      <div style="background: var(--paper); padding: 32px 28px;">
-        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Starter</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:4px;">Bespoke Rate</div>
-        <div style="font-size:10px;color:var(--faded);letter-spacing:0.08em;margin-bottom:20px;">單次診斷諮詢 · 2 小時</div>
-        <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--ink);line-height:1.8;">梳理你目前的營運或策略問題，給出具體可執行的方向建議。</div>
-      </div>
-      <div style="background: var(--bg-section); padding: 32px 28px; position:relative;">
-        <div style="position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:var(--paper);padding:3px 8px;">Most Common</div>
-        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Project</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:4px;">Bespoke Rate</div>
-        <div style="font-size:10px;color:var(--faded);letter-spacing:0.08em;margin-bottom:20px;">固定範圍專案委託</div>
-        <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--ink);line-height:1.8;">範圍明確、交付具體，完成即結案。</div>
-      </div>
-      <div style="background: var(--paper); padding: 32px 28px;">
-        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Retainer</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;margin-bottom:4px;">Bespoke Rate</div>
-        <div style="font-size:10px;color:var(--faded);letter-spacing:0.08em;margin-bottom:20px;">月度顧問 · 固定時數</div>
-        <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--ink);line-height:1.8;">持續性的營運或策略支援，適合需要長期夥伴的早期團隊。</div>
-      </div>
-    </div>
-    <div style="margin-top:16px;font-family:'Noto Serif TC',serif;font-size:11px;color:var(--faded);line-height:1.8;">
-      目前提供早期合作優惠價，名額有限。歡迎先聊聊你的情況，我會根據實際需求給出報價——不需要準備好所有問題才能聯絡我。
-    </div>
+  <div class="sec-eye">Services — What I Offer</div>
+  <h2 class="sec-title">Commission me,<br><em>don't just hire me.</em></h2>
+  <p class="sec-desc">I accept commissions and consulting engagements — not becoming another approval-waiting employee inside your org. If you need someone who can walk into chaos, make a call, and push execution forward, let's talk.</p>
+  <div class="svc-grid">
+    <div class="svc fi"><div class="svc-n">01</div><div class="svc-title">Early-Stage Operations Audit</div><div class="svc-desc">For teams under 10: map current operational blind spots, build baseline SOP architecture, identify the highest-priority systems to formalise first.</div><div class="svc-for">→ Early-stage startups</div></div>
+    <div class="svc fi" style="transition-delay:0.06s"><div class="svc-n">02</div><div class="svc-title">English-Market Business Support</div><div class="svc-desc">Help brands enter English-language markets: full English proposal writing, vendor communication, compliance documentation, bespoke sales strategy.</div><div class="svc-for">→ Overseas market expansion</div></div>
+    <div class="svc fi" style="transition-delay:0.12s"><div class="svc-n">03</div><div class="svc-title">AI Workflow Implementation</div><div class="svc-desc">Help 5–20 person organisations identify highest-ROI automation opportunities, design practical semi-automated pipelines, and reduce repetitive labour costs.</div><div class="svc-for">→ Brands needing efficiency gains</div></div>
+    <div class="svc fi" style="transition-delay:0.06s"><div class="svc-n">04</div><div class="svc-title">Brand Strategy & B2B Development</div><div class="svc-desc">Build executable B2B development mechanisms, differentiated positioning, and social content architecture — strategies that get implemented, not just presented in decks.</div><div class="svc-for">→ Agencies · Multi-brand companies</div></div>
+    <div class="svc fi" style="transition-delay:0.12s"><div class="svc-n">05</div><div class="svc-title">Industry Research & Market Reports</div><div class="svc-desc">Research support for market entry decisions or investment pitches — competitor analysis, industry trends, target market sizing. Full English output, delivered as a ready-to-use document.</div><div class="svc-for">→ Startups entering new markets</div></div>
+    <div class="svc fi" style="transition-delay:0.18s"><div class="svc-n">06</div><div class="svc-title">Process Design & SOP Architecture</div><div class="svc-desc">Build executable, handoff-ready standard operating procedures from zero — onboarding, customer service, compliance, HR — for teams with no existing systems.</div><div class="svc-for">→ Scaling or transitioning teams</div></div>
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
 <section id="about">
   <div>
-    <div class="section-eyebrow">About — 關於我</div>
-    <h2 class="section-title">跨語言、跨文化、<em style="font-family:'Cormorant Garamond',serif;font-style:italic">跨產業的操盤者</em></h2>
-    <p class="about-text">我的背景很雜——<strong>七年教學經驗</strong>、英語教育、健身訓練、跨國工作，然後進入行銷策略與 Fintech 營運領域。這些經歷讓我習慣站在使用者的角度想事情，而不只是從品牌端出發。</p>
-    <p class="about-text">在台灣品牌企劃組的工作讓我獨立建立從 <strong>分析 → 策略 → SOP</strong> 的完整流程。在英國 NeroPay 的工作讓我在沒有系統的環境下，從零建立可運作的公司骨架。</p>
-    <p class="about-text">目前正在籌備自己的<strong>策略顧問服務</strong>，專注協助台灣早期品牌進入英語市場。預計 2026 年正式啟動。</p>
-    <div class="lang-tags" style="margin-top:32px;">
-      <span class="lang-tag">繁體中文</span>
-      <span class="lang-tag">English</span>
-      <span class="lang-tag">日本語</span>
+    <div class="sec-eye">About — Background</div>
+    <h2 class="sec-title">Cross-language,<br><em>cross-industry.</em></h2>
+    <p class="about-text">My background is genuinely varied — <strong>seven years of teaching</strong>, English education, fitness training, cross-national work, then into marketing strategy and fintech operations. These experiences trained me to think from the user's perspective, not just the brand's.</p>
+    <p class="about-text">Working at a Taiwan brand strategy agency taught me to build a complete pipeline from <strong>analysis → strategy → executable SOP</strong>. Working at NeroPay UK taught me to build a functioning company skeleton from zero in a zero-system environment.</p>
+    <p class="about-text">Currently building my own <strong>strategic consulting practice</strong>, focused on helping early-stage brands — particularly those navigating English-language markets for the first time.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;">
+      <span class="chip">English</span><span class="chip">Traditional Chinese</span><span class="chip">Japanese</span>
     </div>
   </div>
   <div>
-    <div class="exp-item fade-in">
-      <p class="exp-role">Operations & AI Workflow</p>
-      <p class="exp-where">NeroPay · 英國 Fintech 新創</p>
-      <p class="exp-desc">負責商戶開發、詐欺案件管理、AI 流程優化、行銷活動、HR 系統建立、合規文件，以及針對中東餐飲商戶的業務開發。從零建立公司各項運作系統。</p>
-    </div>
-    <div class="exp-item fade-in" style="transition-delay:0.1s">
-      <p class="exp-role">品牌企劃組 專案經理 / 企劃</p>
-      <p class="exp-where">台灣行銷公司（代理 NESS, WUWOW, Apollo, Fully 等品牌）</p>
-      <p class="exp-desc">負責多品牌策略規劃與品牌導入企劃，設計可執行的 B2B 開發系統、社群內容架構與 KOC 計畫。</p>
-    </div>
-    <div class="exp-item fade-in" style="transition-delay:0.2s">
-      <p class="exp-role">英語教師 / 跨文化教育</p>
-      <p class="exp-where">多國工作 · 7 年教學經驗</p>
-      <p class="exp-desc">建立跨文化溝通能力，教學背景使我習慣把複雜概念拆解成可消化的形式傳達給不同受眾。</p>
-    </div>
+    <div class="exp-entry fi"><div class="er-role">External Consultant — Envie de Plus Cashback Programme</div><div class="er-where">Procter & Gamble France · MSc Business Consultancy Project, University of Manchester · 2025</div><div class="er-desc">Delivered a 7,500-word consulting report for P&G France on redesigning their digital cashback programme for Gen Z and Millennial consumers. Conducted mixed-methods research (15 interviews, 48-respondent survey), ran NVivo thematic analysis and SPSS quantitative tests, benchmarked competitors, and developed a phased strategic roadmap covering gamification, personalisation, simplified UX, and ethical positioning.</div></div>
+    <div class="exp-entry fi" style="transition-delay:0.05s"><div class="er-role">Operations & AI Workflow</div><div class="er-where">NeroPay · UK Fintech Startup</div><div class="er-desc">Merchant development, fraud case management, AI process optimisation, marketing campaigns, HR system architecture, compliance documentation, and business development for Middle Eastern and Turkish restaurant merchants. Built every operational system from zero.</div></div>
+    <div class="exp-entry fi" style="transition-delay:0.1s"><div class="er-role">Brand Strategy Project Manager</div><div class="er-where">Taiwan Marketing Agency (NESS, WUWOW, Apollo, Fully)</div><div class="er-desc">Multi-brand strategy planning and brand integration proposals. Designed executable B2B development systems, social content architecture, and KOC programmes for agency-represented brands across wellness, EdTech, HR tech, and benefits.</div></div>
+    <div class="exp-entry fi" style="transition-delay:0.2s"><div class="er-role">English Teacher / Cross-Cultural Education</div><div class="er-where">Multiple Countries · 7 Years</div><div class="er-desc">Built cross-cultural communication capabilities and a teaching background that trained me to decompose complex concepts into digestible forms for different audiences — a skill that translates directly into strategy and systems work.</div></div>
   </div>
 </section>
 
-<!-- ── WRITING ── -->
-<section id="writing" style="background: var(--bg-section);">
-  <div class="section-eyebrow">Writing — 思維觀察</div>
-  <h2 class="section-title">我怎麼<em style="font-family:'Cormorant Garamond',serif;font-style:italic">看世界</em></h2>
-  <p class="section-desc">我每一兩週會寫一篇幾千字的長文，主題涵蓋組織結構、跨文化關係、個人成長、形上學。這不是內容行銷，是我思考的方式。</p>
-
-  <div style="border: 1px solid var(--light-rule);">
-    <div class="writing-row">
-      <div class="writing-cat">職場結構</div>
-      <div class="writing-excerpt">
-        <span class="title">代表主題</span>
-        為什麼你在大公司感到窒息不是性格問題——關於「混沌適應型」人格在制式環境中的結構性不適
-      </div>
-    </div>
-    <div class="writing-row">
-      <div class="writing-cat">跨文化</div>
-      <div class="writing-excerpt">
-        <span class="title">代表主題</span>
-        文化差異如何成為關係的透鏡：當你不再用自己的預設值理解另一個人
-      </div>
-    </div>
-    <div class="writing-row">
-      <div class="writing-cat">個人成長</div>
-      <div class="writing-excerpt">
-        <span class="title">代表主題</span>
-        關於通才的焦慮：當你什麼都能做到八十分，你要如何向世界證明你值得被選擇
-      </div>
-    </div>
-    <div class="writing-row" style="margin-bottom:0;">
-      <div class="writing-cat">形上學</div>
-      <div class="writing-excerpt">
-        <span class="title">代表主題</span>
-        死亡作為一種校準工具：當你想清楚了最壞的結局，所有的中間選擇都變得更容易做
-      </div>
-    </div>
-  </div>
-  <div style="margin-top: 24px; font-size: 12px; color: var(--faded); font-family: 'Noto Serif TC', serif; line-height: 1.8;">
-    文章陸續發布於 Medium。
-  </div>
-</section>
-
-<!-- ── CONTACT ── -->
-<div class="contact-section" id="contact">
+<div class="contact-wrap" id="contact">
   <div>
-    <div class="section-eyebrow">Contact — 聯絡</div>
-    <h2 class="section-title">如果你在找的是<br><em style="font-style:italic;color:var(--warm-mid)">一個能解決混亂的人</em></h2>
-    <p class="section-desc">我目前接受有限度的顧問合作與長期夥伴關係。如果你是早期新創創辦人、需要跨境支援的品牌，或對合作有任何想法，請告訴我你的情況。</p>
-    <div class="contact-info">
-      <div>
-        <div class="contact-item-label">語言</div>
-        <div class="contact-item-val">繁體中文 · English · 日本語</div>
-      </div>
-      <div>
-        <div class="contact-item-label">時區</div>
-        <div class="contact-item-val">UK / Taiwan — 彈性遠端</div>
-      </div>
-      <div>
-        <div class="contact-item-label">合作形式</div>
-        <div class="contact-item-val">顧問委託 · 專案合作 · 長期夥伴</div>
-      </div>
-      <div>
-        <div class="contact-item-label">Connect</div>
-        <div class="contact-links">
-          <a href="mailto:liushihyu1@gmail.com" class="contact-link">Email</a>
-          <a href="https://www.linkedin.com/in/shihyu-liu/" target="_blank" class="contact-link">LinkedIn</a>
-          <a href="https://drive.google.com/file/d/1hkiOyCb9_Jwao18kWvy7ksZ530fnE2Ka/view?usp=drive_link" target="_blank" class="contact-link">Download CV</a>
-        </div>
+    <div class="sec-eye">Contact</div>
+    <h2 class="sec-title">Looking for someone<br><em>who solves chaos?</em></h2>
+    <p class="sec-desc">I'm open to a limited number of consulting partnerships and long-term collaborations. If you're an early-stage founder, a brand needing cross-border support, or have any idea worth discussing — tell me your situation.</p>
+    <div>
+      <div class="c-label">Languages</div><div class="c-val">English · 繁體中文 · 日本語</div>
+      <div class="c-label">Time Zone</div><div class="c-val">UK / Taiwan — Flexible Remote</div>
+      <div class="c-label">Engagement Types</div><div class="c-val">Consulting · Project · Long-term Retainer</div>
+      <div class="c-label">Connect</div>
+      <div class="c-links">
+        <a href="/cdn-cgi/l/email-protection#0e62677b7d666766777b3f4e69636f6762206d6163" class="c-link">Email</a>
+        <a href="https://www.linkedin.com/in/shihyu-liu/" target="_blank" class="c-link">LinkedIn</a>
+        <a href="https://drive.google.com/file/d/1hkiOyCb9_Jwao18kWvy7ksZ530fnE2Ka/view?usp=drive_link" target="_blank" class="c-link">Download CV</a>
       </div>
     </div>
   </div>
   <div>
-    <form class="contact-form" action="https://formspree.io/f/xkovyoad" method="POST">
-      <div class="form-field">
-        <label class="form-label">你是誰 / Who are you</label>
-        <input class="form-input" type="text" name="name" placeholder="名字 · 公司 · 身份" required>
-      </div>
-      <div class="form-field">
-        <label class="form-label">你需要什麼 / What do you need</label>
-        <select class="form-input" name="service" style="background:rgba(255,255,255,0.07);cursor:pointer;" required>
-          <option value="" style="background:#1a1814;">請選擇 / Please select</option>
-          <option value="草創期營運診斷" style="background:#1a1814;">草創期營運診斷</option>
-          <option value="英語市場商務支援" style="background:#1a1814;">英語市場商務支援</option>
-          <option value="AI工作流導入" style="background:#1a1814;">AI 工作流導入</option>
-          <option value="品牌策略與B2B開發設計" style="background:#1a1814;">品牌策略與 B2B 開發設計</option>
-          <option value="產業研究與市場報告" style="background:#1a1814;">產業研究與市場報告</option>
-          <option value="商業流程建立與SOP設計" style="background:#1a1814;">商業流程建立與 SOP 設計</option>
-          <option value="其他合作" style="background:#1a1814;">其他合作</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label class="form-label">簡單說說 / Tell me more</label>
-        <textarea class="form-input" name="message" rows="4" placeholder="你目前的狀況、希望解決的問題、或任何想說的事..."></textarea>
-      </div>
-      <div class="form-field">
-        <label class="form-label">Email</label>
-        <input class="form-input" type="email" name="email" placeholder="your@email.com" required>
-      </div>
-      <button class="submit-btn" type="submit">送出 / Send →</button>
+    <form action="https://formspree.io/f/xkovyoad" method="POST">
+      <div><label class="f-label">Who are you</label><input class="f-input" type="text" name="name" placeholder="Name · Company · Role" required></div>
+      <div><label class="f-label">What do you need</label><select class="f-input" name="service" required><option value="">Select a service</option><option>Early-Stage Operations Audit</option><option>English-Market Business Support</option><option>AI Workflow Implementation</option><option>Brand Strategy & B2B Development</option><option>Industry Research & Market Reports</option><option>Process Design & SOP Architecture</option><option>Other / Not sure yet</option></select></div>
+      <div><label class="f-label">Tell me more</label><textarea class="f-input" name="message" rows="4" placeholder="Your situation, the problem you want to solve, or anything you'd like to share..."></textarea></div>
+      <div><label class="f-label">Email</label><input class="f-input" type="email" name="email" placeholder="your@email.com" required></div>
+      <button class="f-btn" type="submit">Send →</button>
     </form>
   </div>
 </div>
 
-<!-- ── FOOTER ── -->
 <footer>
-  <span>Ivy Liu · Strategic Operations & Brand Portfolio</span>
-  <span>Traditional Chinese · English · Japanese</span>
-  <span>© 2026 · Built with intention</span>
+  <span>Ivy Liu · Strategic Operations</span>
+  <span>English · 繁體中文 · 日本語</span>
+  <span>© 2026</span>
 </footer>
 
 <script>
-  // Scroll fade-in
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('visible');
-    });
-  }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-
-  // Brand strategy expandable
-  function toggleBrand(id) {
-    const detail = document.getElementById('brand-detail-' + id);
-    const isOpen = detail.classList.contains('open');
-    document.querySelectorAll('.brand-detail').forEach(d => d.classList.remove('open'));
-    if (!isOpen) {
-      detail.classList.add('open');
-      setTimeout(() => {
-        detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
-    }
-  }
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+function toggleBrand(id) {
+  const el = document.getElementById('brand-expand-' + id);
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.brand-expand').forEach(d => d.classList.remove('open'));
+  if (!isOpen) { el.classList.add('open'); setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); }
+}
 </script>
-
 </body>
 </html>
